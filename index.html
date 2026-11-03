@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101721">
+  <title>LFCFoundry Typeface Studio</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101721;--panel:#192331;--line:#344356;--ink:#f0f3f7;--muted:#b3c0cf;--accent:#9ee4c2;--warm:#ffd08a}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0,#263547 0,transparent 38rem),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:1050px;margin:auto;padding:clamp(1.25rem,4vw,3.5rem)}a{color:var(--accent);text-underline-offset:3px}a:hover{color:#d0ffe8}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--accent);font-weight:700}h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;letter-spacing:-.055em;margin:.6rem 0 1rem}h2{font-size:1.4rem;margin:.2rem 0 .5rem}p{color:var(--muted);margin:.4rem 0 1rem}.hero{padding:2rem 0 2.4rem;max-width:780px}.hero p{font-size:1.12rem}.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem;color:var(--warm);font-size:.82rem;margin:.2rem .3rem .2rem 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1rem;margin:1rem 0 2rem}.card{border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 92%,transparent);border-radius:16px;padding:1.2rem}.card p{min-height:3.2em}.button{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:.65rem .95rem;background:var(--accent);color:#102018;text-decoration:none;font-weight:750}.button:hover{color:#102018;filter:brightness(1.08)}.downloads{columns:2;column-gap:2rem;padding-left:1.2rem}.downloads li{break-inside:avoid;margin:.4rem 0}.note{border-left:3px solid var(--warm);padding:.25rem 0 .25rem 1rem}.links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;color:var(--muted);font-size:.9rem}
+    @media(max-width:520px){.downloads{columns:1}.card p{min-height:0}}
+  </style>
+</head>
+<body><main>
+  <header class="hero">
+    <div class="eyebrow">LFCFoundry · browser-based type design experiment</div>
+    <h1>Typeface Studio</h1>
+    <p>Explore how an offline natural-language brief can drive procedural glyph construction and produce real TrueType outlines. This page presents an isolated contour-engine prototype alongside the separate production MVP.</p>
+    <span class="pill">Experimental</span><span class="pill">Self-contained browser demo</span><span class="pill">10 prototype glyphs</span>
+    <div class="links"><a class="button" href="prototype/dist/typeface-studio-contour-prototype.html">Open contour prototype</a><a href="dist/typeface-studio.html">Open production MVP</a></div>
+  </header>
+
+  <section aria-labelledby="systems"><div class="eyebrow">Three construction systems</div><h2 id="systems">Compare glyph anatomy</h2><p>Each system uses distinct construction recipes. The links open the same prototype with the corresponding system selected; its comparison view lets you switch among all three.</p>
+    <div class="grid">
+      <article class="card"><h2>Geometric</h2><p>Controlled geometric bowls, shared stem logic, and proportion rules.</p><a class="button" href="prototype/dist/typeface-studio-contour-prototype.html?system=geometric">Explore geometric</a></article>
+      <article class="card"><h2>Humanist-inspired</h2><p>Differentiated lowercase anatomy and more open, humanist-inspired forms.</p><a class="button" href="prototype/dist/typeface-studio-contour-prototype.html?system=humanist">Explore humanist-inspired</a></article>
+      <article class="card"><h2>Serif</h2><p>Serif structures and curved or tapered transitions built into the recipes.</p><a class="button" href="prototype/dist/typeface-studio-contour-prototype.html?system=serif">Explore serif</a></article>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="fonts"><div class="eyebrow">Generated artifacts</div><h2 id="fonts">Download the six prototype TTF files</h2><p>These are experimental outputs for inspection. The prototype covers ten representative letters (A, B, E, H, O, a, e, n, o, g); it does not claim broad Unicode coverage or professional font production readiness.</p>
+    <ul class="downloads">
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-geometric-Regular.ttf" download>Geometric Regular</a></li>
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-geometric-Bold.ttf" download>Geometric Bold</a></li>
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-humanist-Regular.ttf" download>Humanist-inspired Regular</a></li>
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-humanist-Bold.ttf" download>Humanist-inspired Bold</a></li>
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-serif-Regular.ttf" download>Serif Regular</a></li>
+      <li><a href="prototype/artifacts/LFCFoundry-Contour-serif-Bold.ttf" download>Serif Bold</a></li>
+    </ul>
+  </section>
+
+  <section class="grid">
+    <article class="card"><div class="eyebrow">How it works</div><h2>Brief → specification → contours → TTF</h2><p>A deterministic, offline interpreter produces a structured design specification. Separate parametric recipes build quadratic contours, and the bundled fontsketch compiler writes TrueType files. The prototype is isolated from the production MVP.</p></article>
+    <article class="card"><div class="eyebrow">Project status</div><h2>Experimental, with known limits</h2><p>The prototype is a ten-glyph engineering demonstration. Browser rendering and installation still need hands-on verification; independent fontTools/OTS validation is not available in the current environment. See the README for test and validation details.</p><div class="links"><a href="https://github.com/lfcfoundry/typeface-studio#readme">Project README</a><a href="https://github.com/lfcfoundry/typeface-studio">GitHub repository</a></div></article>
+  </section>
+  <p class="note">The production MVP remains a separate offline application with its own broader ASCII-oriented grid generator. The contour prototype is not integrated into or a replacement for that application.</p>
+  <footer>Typeface Studio is an LFCFoundry browser application experiment. The prototype bundle and linked artifacts are served as static files; normal demo operation requires no server-side application or runtime dependency download.</footer>
+</main></body></html>

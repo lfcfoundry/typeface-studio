@@ -1,0 +1,15 @@
+{
+  "name": "typeface-studio-contour-prototype",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "fonts": "node src/write-fonts.mjs",
+    "benchmark": "node src/benchmark.mjs"
+  },
+  "dependencies": {
+    "compromise": "14.19.0"
+  }
+}

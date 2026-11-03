@@ -1,0 +1,22 @@
+export const BENCHMARK = [
+  { id: 1, brief: 'A modern geometric sans-serif with circular forms and wide proportions.', expected: ['construction.geometric', 'classification.sans-serif', 'proportion.width=wide', 'character tone: modern unsupported'] },
+  { id: 2, brief: 'A friendly humanist sans-serif with generous proportions, open apertures, slightly rounded terminals, and medium weight.', expected: ['construction.humanist', 'classification.sans-serif', 'proportion.width=wide', 'aperture.open', 'terminal.rounded', 'weight.static=500'] },
+  { id: 3, brief: 'A condensed display face for posters, with tall capitals, tight spacing, and bold strokes.', expected: ['proportion.width=condensed', 'usage.display unsupported', 'spacing.tight', 'weight.static=700', 'cap height unsupported'] },
+  { id: 4, brief: 'An editorial serif with high contrast, elegant proportions, bracketed serifs, and a generous x-height.', expected: ['classification.serif', 'stroke.contrast=high', 'serif.bracketed', 'character.editorial unsupported', 'x-height=high'] },
+  { id: 5, brief: 'A neutral grotesque with uniform strokes, compact spacing, and a sturdy medium weight.', expected: ['construction.grotesque approximate', 'stroke.contrast=low', 'spacing.tight', 'weight.static=500'] },
+  { id: 6, brief: 'A slab serif for a technical manual, broad and heavy, with square terminals.', expected: ['classification.slab-serif', 'proportion.width=wide', 'weight.static=700', 'terminal.square', 'character.technical unsupported'] },
+  { id: 7, brief: 'Make a geometric sans that is not too rounded and not especially wide.', expected: ['construction.geometric', 'terminal.square', 'width remains default'] },
+  { id: 8, brief: 'Use both wide proportions and a condensed construction, with light strokes but a bold overall weight.', expected: ['conflict: width', 'conflict: weight', 'later explicit values selected'] },
+  { id: 9, brief: 'A narrow, squeezed display style with ample letter spacing and open counters.', expected: ['proportion.width=condensed', 'usage.display unsupported', 'spacing.open', 'aperture.open'] },
+  { id: 10, brief: 'A black-weight face with hairline crossbars and very thick vertical stems.', expected: ['weight.static=700', 'stroke.contrast=high', 'hairline applies to crossbars'] },
+  { id: 11, brief: 'Keep the shapes open and airy, but set the letters tightly for a compact headline.', expected: ['spacing.tight', 'usage.headline', 'open-form request unsupported or unspecified'] },
+  { id: 12, brief: 'Give lowercase letters a large x-height and capitals a tall cap height.', expected: ['x-height=high', 'cap-height=high'] },
+  { id: 13, brief: 'Open the apertures of e and a, keep counters generous, and shorten the descenders.', expected: ['aperture.open', 'glyph scope=e,a', 'descenders unsupported'] },
+  { id: 14, brief: 'An old-style humanist serif with bracketed serifs, diagonal stress, and tapered terminals.', expected: ['construction.humanist unsupported in serif combination', 'classification.serif', 'serif.bracketed', 'diagonal stress unsupported', 'tapered terminals unsupported'] },
+  { id: 15, brief: 'Make the round letters almost square, with a playful but restrained character.', expected: ['near-square bowls', 'playful character approximate', 'conflict/disambiguation surfaced'] },
+  { id: 16, brief: 'Like ink pressed into metal: severe, elegant, and sharply cut, but easy to read on screens.', expected: ['metaphor unsupported', 'screen is usage context', 'no false parameter change'] },
+  { id: 17, brief: 'A monospaced typewriter face with regular weight and square construction.', expected: ['spacing.monospaced', 'weight.static=400', 'square construction'] },
+  { id: 18, brief: 'A normal-width regular typeface with ordinary proportions.', expected: ['width=normal', 'weight.static=400'] },
+  { id: 19, brief: 'High contrast between vertical stems and thin horizontal strokes; keep spacing loose.', expected: ['stroke.contrast=high', 'spacing.open', 'thin does not change overall weight'] },
+  { id: 20, brief: 'Build a double-storey a and g, open e, diagonal leg on R, and a curved tail on Q.', expected: ['double-storey a/g unsupported by 10-glyph prototype', 'e aperture', 'R leg/Q tail outside prototype'] }
+];
