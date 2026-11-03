@@ -1,0 +1,30 @@
+{
+  "README.md": {
+    "bytes": 2393,
+    "sha256": "24b56ffa07ab03761ec71484462080aa351b91db72bd31a3b483a7fbfc08dd3e"
+  },
+  "font-inventory.json": {
+    "bytes": 26163,
+    "sha256": "1f4ff48d12a10ae2540977d08203cf60a3d075069ff4e3c2aa2f2b3022962c22"
+  },
+  "git-state.json": {
+    "bytes": 1156,
+    "sha256": "7c8d836383d74bdbdd4549ef1c42bf2c632285b1ed379f55e425087ab8084c74"
+  },
+  "http-access.log": {
+    "bytes": 129,
+    "sha256": "7204ba4e0e5467942a5804618e2e820ba03055039b9880500a2b52734914a1ad"
+  },
+  "results.json": {
+    "bytes": 15592,
+    "sha256": "843ba9a31c88ea97264d26dc392bee163733c91c4a0ae53ee49e38893e1cb6e3"
+  },
+  "review.html": {
+    "bytes": 3803,
+    "sha256": "ad4b72eacc3432be77b6dcf3dffcc55d4b02f757913987e65ddb992c203d65a4"
+  },
+  "server.py": {
+    "bytes": 1250,
+    "sha256": "fb33e7f8cbd6ad3445ebb6402536c21d59bf480bdfc107ff138f6920e5b9792e"
+  }
+}

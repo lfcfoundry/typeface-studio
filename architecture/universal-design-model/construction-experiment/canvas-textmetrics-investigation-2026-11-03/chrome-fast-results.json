@@ -1,0 +1,1272 @@
+{
+  "schema": "typeface-studio.canvas-textmetrics-threshold-alignment.v1",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+  "devicePixelRatio": 2.8860480785369873,
+  "canvasBitmap": {
+    "width": 760,
+    "height": 560
+  },
+  "fontSizeCssPx": 512,
+  "origin": {
+    "x": 400,
+    "y": 540
+  },
+  "unitsPerEm": 1000,
+  "thresholds": [
+    0,
+    16,
+    128
+  ],
+  "alignments": [
+    "start",
+    "left",
+    "center",
+    "right",
+    "end"
+  ],
+  "fontFaceLoads": {
+    "a-flat": {
+      "status": "loaded",
+      "check": true
+    },
+    "a-chamfered": {
+      "status": "loaded",
+      "check": true
+    },
+    "spine-flat": {
+      "status": "loaded",
+      "check": true
+    },
+    "spine-chamfered": {
+      "status": "loaded",
+      "check": true
+    }
+  },
+  "samples": [
+    {
+      "run": 1,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36605
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36476
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35878
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "left",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36605
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36476
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35878
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "center",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 142.39971923828125,
+      "actualBoundingBoxRight": 145.60028076171875,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 257.60028076171875,
+        "xMax": 545.6002807617188,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 36639
+        },
+        "16": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 36523
+        },
+        "128": {
+          "xMin": 262,
+          "yMin": 284,
+          "xMax": 537,
+          "yMax": 539,
+          "pixelCount": 35800
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "right",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36582
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36455
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 35856
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "end",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36582
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36455
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 35856
+        }
+      }
+    },
+    {
+      "run": 2,
+      "fontId": "a-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-flat\"",
+      "acceptedFont": "512px a-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36605
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36476
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35878
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36568
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36431
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35833
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "left",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36568
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36431
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35833
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "center",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 142.39971923828125,
+      "actualBoundingBoxRight": 145.60028076171875,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 257.60028076171875,
+        "xMax": 545.6002807617188,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 36594
+        },
+        "16": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 36478
+        },
+        "128": {
+          "xMin": 262,
+          "yMin": 284,
+          "xMax": 537,
+          "yMax": 539,
+          "pixelCount": 35755
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "right",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36546
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36419
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 35811
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "end",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36546
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 36419
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 35811
+        }
+      }
+    },
+    {
+      "run": 2,
+      "fontId": "a-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"a-chamfered\"",
+      "acceptedFont": "512px a-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36568
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 36431
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 35833
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34338
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34188
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33350
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "left",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34338
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34188
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33350
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "center",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 142.39971923828125,
+      "actualBoundingBoxRight": 145.60028076171875,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 257.60028076171875,
+        "xMax": 545.6002807617188,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 34390
+        },
+        "16": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 34246
+        },
+        "128": {
+          "xMin": 262,
+          "yMin": 284,
+          "xMax": 537,
+          "yMax": 539,
+          "pixelCount": 33279
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "right",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34308
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34167
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 33326
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "end",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34308
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34167
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 33326
+        }
+      }
+    },
+    {
+      "run": 2,
+      "fontId": "spine-flat",
+      "profile": "flat",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-flat\"",
+      "acceptedFont": "512px spine-flat",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34338
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34188
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33350
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34302
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34143
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33305
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "left",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34302
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34143
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33305
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "center",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 142.39971923828125,
+      "actualBoundingBoxRight": 145.60028076171875,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 257.60028076171875,
+        "xMax": 545.6002807617188,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 34344
+        },
+        "16": {
+          "xMin": 261,
+          "yMin": 284,
+          "xMax": 538,
+          "yMax": 539,
+          "pixelCount": 34201
+        },
+        "128": {
+          "xMin": 262,
+          "yMin": 284,
+          "xMax": 537,
+          "yMax": 539,
+          "pixelCount": 33234
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "right",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34272
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34131
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 33281
+        }
+      }
+    },
+    {
+      "run": 1,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "end",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": 308.7994384765625,
+      "actualBoundingBoxRight": -20.7994384765625,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 91.2005615234375,
+        "xMax": 379.2005615234375,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34272
+        },
+        "16": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 34131
+        },
+        "128": {
+          "xMin": 95,
+          "yMin": 284,
+          "xMax": 371,
+          "yMax": 539,
+          "pixelCount": 33281
+        }
+      }
+    },
+    {
+      "run": 2,
+      "fontId": "spine-chamfered",
+      "profile": "chamfered",
+      "fontSizeCssPx": 512,
+      "requestedFont": "400 512px \"spine-chamfered\"",
+      "acceptedFont": "512px spine-chamfered",
+      "fontFaceCheck": true,
+      "text": "a",
+      "textAlign": "start",
+      "direction": "ltr",
+      "textBaseline": "alphabetic",
+      "alignmentPoint": {
+        "x": 400,
+        "y": 540
+      },
+      "width": 332.7994384765625,
+      "actualBoundingBoxLeft": -24,
+      "actualBoundingBoxRight": 312,
+      "actualBoundingBoxAscent": 256,
+      "actualBoundingBoxDescent": 0,
+      "textMetricsBounds": {
+        "xMin": 424,
+        "xMax": 712,
+        "yMin": 284,
+        "yMax": 540
+      },
+      "rasterBounds": {
+        "0": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34302
+        },
+        "16": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 34143
+        },
+        "128": {
+          "xMin": 428,
+          "yMin": 284,
+          "xMax": 704,
+          "yMax": 539,
+          "pixelCount": 33305
+        }
+      }
+    }
+  ],
+  "runtimeErrors": []
+}

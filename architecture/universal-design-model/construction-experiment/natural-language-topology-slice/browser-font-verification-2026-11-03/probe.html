@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typeface Studio browser font verification</title>
+<style>
+  body { font: 16px/1.4 system-ui, sans-serif; margin: 1rem; color: #222; }
+  iframe { width: 100%; height: 900px; border: 1px solid #777; }
+  canvas { display: block; width: 800px; height: 600px; max-width: 100%; border: 1px solid #777; }
+  pre { white-space: pre-wrap; }
+</style>
+<h1>Browser font verification</h1>
+<p>The canvases below are rendered by the browser from the existing font files. Results and PNG bytes are saved by the local verification server.</p>
+<div id="renders"></div>
+<pre id="result">Probe running…</pre>
+<h2>Existing review page</h2>
+<iframe id="review" src="/review.html"></iframe>
+<script type="module">
+const fontFiles = [
+  { key: 'source', name: 'LFCSourceProbe', url: '/artifacts/LFCFoundry-NL-Topology-Single-Storey-A.ttf', expectedCounters: 1 },
+  { key: 'candidate', name: 'LFCCandidateProbe', url: '/artifacts/LFCFoundry-NL-Topology-Double-Storey-A.ttf', expectedCounters: 2 }
+];
+const errors = [];
+const oldConsoleError = console.error.bind(console);
+console.error = (...items) => { errors.push(items.map(item => String(item?.stack || item)).join(' ')); oldConsoleError(...items); };
+window.addEventListener('error', event => errors.push(`window error: ${event.message || event.type}`));
+window.addEventListener('unhandledrejection', event => errors.push(`unhandled rejection: ${String(event.reason)}`));
+
+function rasterStats(canvas, threshold = 250) {
+  const { width, height } = canvas;
+  const pixels = canvas.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, width, height).data;
+  const ink = (x, y) => {
+    const offset = (y * width + x) * 4;
+    const luminance = (pixels[offset] * 299 + pixels[offset + 1] * 587 + pixels[offset + 2] * 114) / 1000;
+    return luminance < threshold;
+  };
+  let xMin = width, yMin = height, xMax = -1, yMax = -1, inkPixels = 0;
+  const mask = new Uint8Array(width * height);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) if (ink(x, y)) {
+    mask[y * width + x] = 1; inkPixels++;
+    xMin = Math.min(xMin, x); yMin = Math.min(yMin, y); xMax = Math.max(xMax, x); yMax = Math.max(yMax, y);
+  }
+  if (xMax < 0) return { threshold, empty: true, inkPixels: 0, bounds: null, enclosedBackgroundComponents: 0 };
+
+  const cropWidth = xMax - xMin + 1, cropHeight = yMax - yMin + 1;
+  const seen = new Uint8Array(cropWidth * cropHeight), queue = new Int32Array(cropWidth * cropHeight);
+  const cropInk = (x, y) => mask[(y + yMin) * width + x + xMin] !== 0;
+  let holes = 0;
+  const flood = (start, countHole) => {
+    let head = 0, tail = 0, touchesEdge = false;
+    queue[tail++] = start; seen[start] = 1;
+    while (head < tail) {
+      const cell = queue[head++], x = cell % cropWidth, y = Math.floor(cell / cropWidth);
+      if (x === 0 || y === 0 || x === cropWidth - 1 || y === cropHeight - 1) touchesEdge = true;
+      for (const next of [x > 0 ? cell - 1 : -1, x + 1 < cropWidth ? cell + 1 : -1,
+        y > 0 ? cell - cropWidth : -1, y + 1 < cropHeight ? cell + cropWidth : -1]) {
+        if (next >= 0 && !seen[next] && !cropInk(next % cropWidth, Math.floor(next / cropWidth))) {
+          seen[next] = 1; queue[tail++] = next;
+        }
+      }
+    }
+    if (countHole && !touchesEdge) holes++;
+  };
+  for (let x = 0; x < cropWidth; x++) {
+    const top = x, bottom = (cropHeight - 1) * cropWidth + x;
+    if (!cropInk(x, 0) && !seen[top]) flood(top, false);
+    if (!cropInk(x, cropHeight - 1) && !seen[bottom]) flood(bottom, false);
+  }
+  for (let y = 0; y < cropHeight; y++) {
+    const left = y * cropWidth, right = left + cropWidth - 1;
+    if (!cropInk(0, y) && !seen[left]) flood(left, false);
+    if (!cropInk(cropWidth - 1, y) && !seen[right]) flood(right, false);
+  }
+  for (let y = 1; y < cropHeight - 1; y++) for (let x = 1; x < cropWidth - 1; x++) {
+    const cell = y * cropWidth + x;
+    if (!cropInk(x, y) && !seen[cell]) flood(cell, true);
+  }
+  return { threshold, empty: false, inkPixels,
+    bounds: { xMin, yMin, xMax, yMax, width: cropWidth, height: cropHeight },
+    enclosedBackgroundComponents: holes };
+}
+
+async function captureFont(font) {
+  const response = await fetch(font.url, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`${font.key} font request returned HTTP ${response.status}`);
+  const bytes = await response.arrayBuffer();
+  const face = new FontFace(font.name, bytes);
+  const loaded = await face.load();
+  document.fonts.add(loaded);
+  await document.fonts.load(`1000px "${font.name}"`, 'a');
+  const applied = document.fonts.check(`1000px "${font.name}"`, 'a');
+  const canvas = document.createElement('canvas');
+  canvas.width = 800; canvas.height = 600;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = '#111'; context.textAlign = 'left'; context.textBaseline = 'alphabetic'; context.direction = 'ltr';
+  context.font = `1000px "${font.name}"`;
+  const metrics = context.measureText('a');
+  context.fillText('a', 20, 550);
+  const raster = rasterStats(canvas);
+  const png = await new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Canvas PNG encoding failed')), 'image/png'));
+  const pngBytes = await png.arrayBuffer();
+  const hashBuffer = await crypto.subtle.digest('SHA-256', pngBytes);
+  const pngSha256 = [...new Uint8Array(hashBuffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  const pngName = `${font.key}-canvas.png`;
+  const saved = await fetch(`/capture/${pngName}`, { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: pngBytes });
+  if (!saved.ok) throw new Error(`Could not save ${pngName}: HTTP ${saved.status}`);
+  document.querySelector('#renders').append(`${font.key}: `, canvas, document.createElement('br'));
+  return { key: font.key, file: font.url, bytes: bytes.byteLength, loaded: face.status === 'loaded', applied,
+    cssFont: context.font, textAlign: context.textAlign, textBaseline: context.textBaseline, direction: context.direction,
+    canvasMetrics: { width: metrics.width, actualBoundingBoxLeft: metrics.actualBoundingBoxLeft,
+      actualBoundingBoxRight: metrics.actualBoundingBoxRight, actualBoundingBoxAscent: metrics.actualBoundingBoxAscent,
+      actualBoundingBoxDescent: metrics.actualBoundingBoxDescent },
+    expectedCounterCount: font.expectedCounters, raster, png: { file: pngName, bytes: pngBytes.byteLength, sha256: pngSha256 } };
+}
+
+async function waitForReview() {
+  const frame = document.querySelector('#review');
+  await new Promise((resolve, reject) => {
+    if (frame.contentDocument?.readyState === 'complete') resolve();
+    else { frame.addEventListener('load', resolve, { once: true }); frame.addEventListener('error', () => reject(new Error('Review iframe failed to load')), { once: true }); }
+  });
+  const started = performance.now();
+  while (performance.now() - started < 10000) {
+    const source = frame.contentDocument?.querySelector('#source-status')?.textContent;
+    const candidate = frame.contentDocument?.querySelector('#candidate-status')?.textContent;
+    if (source?.includes('loaded') || source?.includes('failed')) if (candidate?.includes('loaded') || candidate?.includes('failed')) return { source, candidate };
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  return { source: frame.contentDocument?.querySelector('#source-status')?.textContent || 'unavailable',
+    candidate: frame.contentDocument?.querySelector('#candidate-status')?.textContent || 'unavailable', timedOut: true };
+}
+
+try {
+  const ua = navigator.userAgent;
+  let userAgentData = null;
+  if (navigator.userAgentData?.getHighEntropyValues) {
+    try { userAgentData = await navigator.userAgentData.getHighEntropyValues(['platformVersion', 'fullVersionList', 'model']); } catch {}
+  }
+  const reviewFontFaces = await waitForReview();
+  const reviewDoc = document.querySelector('#review').contentDocument;
+  const reviewSample = id => {
+    const section = [...reviewDoc.querySelectorAll('section')].find(item => item.querySelector(`#${id}-status`));
+    const sample = section?.querySelector('.sample');
+    const family = id === 'source' ? 'SourceA' : 'CandidateA';
+    const style = sample ? reviewDoc.defaultView.getComputedStyle(sample) : null;
+    return { text: sample?.textContent || null, computedFontFamily: style?.fontFamily || null,
+      computedFontSize: style?.fontSize || null,
+      fontFaceCheck: reviewDoc.fonts.check(`80px "${family}"`, 'a'), faceStatus: reviewFontFaces[id] };
+  };
+  const fonts = [];
+  for (const font of fontFiles) fonts.push(await captureFont(font));
+  const result = { capturedAt: new Date().toISOString(), browser: { userAgent: ua, userAgentData,
+      platform: navigator.platform, language: navigator.language, devicePixelRatio: window.devicePixelRatio },
+    reviewPage: { loaded: true, source: reviewSample('source'), candidate: reviewSample('candidate') },
+    rendering: { mechanism: 'Android Chrome Canvas 2D fillText; not a full-page screenshot', fontSizeCssPx: 1000,
+      text: 'a', baseline: 550, originX: 20, fill: '#111', background: '#fff', rasterThresholdLuminance: '<250' },
+    fonts, consoleOrRuntimeErrors: errors,
+    resourceFailures: performance.getEntriesByType('resource').filter(entry => entry.responseStatus >= 400)
+      .map(entry => ({ name: entry.name, status: entry.responseStatus })) };
+  const response = await fetch('/capture/results.json', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(result, null, 2) });
+  if (!response.ok) throw new Error(`Could not save results: HTTP ${response.status}`);
+  document.querySelector('#result').textContent = JSON.stringify(result, null, 2);
+} catch (error) {
+  errors.push(`probe failure: ${error.stack || error}`);
+  document.querySelector('#result').textContent = JSON.stringify({ status: 'failed', errors }, null, 2);
+}
+</script>
+</html>

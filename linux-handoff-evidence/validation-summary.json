@@ -1,0 +1,28 @@
+{
+  "importAudit": {
+    "entryModules": 97,
+    "resolvedSourceInputs": 113,
+    "warnings": 0,
+    "missingSourceImports": 0
+  },
+  "tests": {
+    "full": {
+      "total": 196,
+      "passed": 192,
+      "historicalWorkspaceFailures": 4
+    },
+    "portable": {
+      "passed": 192,
+      "failed": 0,
+      "excludedHistoricalWorkspaceAssertions": 4
+    }
+  },
+  "fontInventoryCount": 44,
+  "linuxRendererHelper": "Python syntax checked only; Pillow/FreeType unavailable locally",
+  "stagedWhitespace": {
+    "exitStatus": 2,
+    "output": "architecture/universal-design-model/construction-experiment/canvas-textmetrics-investigation-2026-11-03/findings.md:3: trailing whitespace.\n+Date: 2026-11-03  \narchitecture/universal-design-model/construction-experiment/canvas-textmetrics-investigation-2026-11-03/threshold-alignment-report.md:3: trailing whitespace.\n+Date: 2026-11-03  \narchitecture/universal-design-model/construction-experiment/terminal-profile-font-validation-2026-11-03/validation-report.md:3: trailing whitespace.\n+Date: 2026-11-03  \narchitecture/universal-design-model/contract.test.mjs:127: new blank line at EOF.\narchitecture/universal-design-model/fixtures.mjs:182: new blank line at EOF.\narchitecture/universal-design-model/integration-experiment/README.md:51: new blank line at EOF.\narchitecture/universal-design-model/integration-experiment/engine.mjs:708: new blank line at EOF.\narchitecture/universal-design-model/integration-experiment/integration.test.mjs:296: new blank line at EOF.\narchitecture/universal-design-model/integration-experiment/run-scenarios.mjs:39: new blank line at EOF.\narchitecture/universal-design-model/integration-experiment/scenarios.mjs:54: new blank line at EOF.\nlinux-handoff-evidence/architecture-full.log:212: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:215: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:235: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:238: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:258: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:261: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:281: trailing whitespace.\n+  \nlinux-handoff-evidence/architecture-full.log:284: trailing whitespace.\n+  \n",
+    "classification": "Exact preserved historical files plus raw assertion-output whitespace; no source normalization applied."
+  },
+  "sourceWorktree": "All320 initial tracked/untracked file hashes and status matched; branch/head unchanged"
+}

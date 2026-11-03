@@ -1,0 +1,408 @@
+{
+  "experiment": "distinct-lowercase-h-topology-slice-v1",
+  "request": {
+    "text": "Add a lowercase h with a vertical stem and shoulder, preserving every existing glyph.",
+    "sourceRevisionId": "rev:bf2ab23572a8c71d",
+    "candidateRevisionId": "rev:9e756b95e08bc7de",
+    "operationId": "op:nl-add-stem-shoulder-h",
+    "explicit": [
+      "new lowercase h",
+      "vertical stem",
+      "shoulder",
+      "preserve every existing glyph"
+    ],
+    "inferred": [
+      "ascender aligns to the existing cap-height decision",
+      "the open shoulder counter reaches the exterior at the baseline",
+      "advance width uses the experiment fixture width and side bearings are recomputed from derived bounds"
+    ],
+    "spans": [
+      {
+        "intentId": "intent:nl-add-lowercase-h",
+        "start": 6,
+        "end": 51,
+        "text": "lowercase h with a vertical stem and shoulder"
+      },
+      {
+        "intentId": "intent:nl-preserve-existing-glyphs",
+        "start": 53,
+        "end": 84,
+        "text": "preserving every existing glyph"
+      }
+    ]
+  },
+  "topology": {
+    "method": "construction.ascender-stem-shoulder-return",
+    "supportedScope": "one new lowercase h in this experiment",
+    "components": [
+      {
+        "id": "part:h-ascender-stem",
+        "kind": "anatomy.stem",
+        "role": "left-ascender-stem"
+      },
+      {
+        "id": "part:h-shoulder",
+        "kind": "anatomy.shoulder",
+        "role": "arched-return"
+      },
+      {
+        "id": "part:h-open-counter",
+        "kind": "anatomy.open-space",
+        "role": "shoulder-open-counter"
+      },
+      {
+        "id": "part:h-stem-shoulder-join",
+        "kind": "anatomy.join",
+        "role": "stem-shoulder-attachment"
+      },
+      {
+        "id": "part:h-upper-terminal",
+        "kind": "anatomy.terminal",
+        "role": "upper-stem-terminal"
+      },
+      {
+        "id": "part:h-lower-terminal",
+        "kind": "anatomy.terminal",
+        "role": "lower-stem-terminal"
+      },
+      {
+        "id": "part:h-return-terminal",
+        "kind": "anatomy.terminal",
+        "role": "lower-shoulder-return-terminal"
+      }
+    ],
+    "boundaries": [
+      {
+        "id": "boundary:h:stem-outer-wall",
+        "role": "left-stem-outer-wall",
+        "ownerId": "part:h-ascender-stem"
+      },
+      {
+        "id": "boundary:h:upper-stem-terminal",
+        "role": "upper-stem-terminal-edge",
+        "ownerId": "part:h-upper-terminal"
+      },
+      {
+        "id": "boundary:h:stem-shoulder-junction",
+        "role": "stem-shoulder-junction",
+        "ownerId": "part:h-stem-shoulder-join"
+      },
+      {
+        "id": "boundary:h:shoulder-outer-arch",
+        "role": "shoulder-outer-arch",
+        "ownerId": "part:h-shoulder"
+      },
+      {
+        "id": "boundary:h:return-outer-wall",
+        "role": "shoulder-return-outer-wall",
+        "ownerId": "part:h-shoulder"
+      },
+      {
+        "id": "boundary:h:shoulder-return-terminal",
+        "role": "shoulder-return-terminal-edge",
+        "ownerId": "part:h-return-terminal"
+      },
+      {
+        "id": "boundary:h:open-space-return-wall",
+        "role": "open-space-return-wall",
+        "ownerId": "part:h-shoulder"
+      },
+      {
+        "id": "boundary:h:open-space-shoulder-wall",
+        "role": "open-space-shoulder-wall",
+        "ownerId": "part:h-shoulder"
+      },
+      {
+        "id": "boundary:h:open-space-stem-wall",
+        "role": "open-space-stem-wall",
+        "ownerId": "part:h-ascender-stem"
+      },
+      {
+        "id": "boundary:h:lower-stem-terminal",
+        "role": "lower-stem-terminal-edge",
+        "ownerId": "part:h-lower-terminal"
+      },
+      {
+        "id": "boundary:h:baseline-opening",
+        "role": "baseline-opening",
+        "ownerId": "part:h-open-counter"
+      }
+    ],
+    "differenceFromExistingN": {
+      "h": "one ascender stem; the shoulder owns an integrated descending return; open space and the baseline opening are explicit",
+      "n": "two semantic stems connected by an arched bridge; lower negative space is not represented as this explicit open-space node"
+    },
+    "terminalRoles": [
+      {
+        "id": "part:h-upper-terminal",
+        "role": "upper-stem-terminal",
+        "profile": "flat",
+        "alignmentDecisionId": "decision:h-ascender"
+      },
+      {
+        "id": "part:h-lower-terminal",
+        "role": "lower-stem-terminal",
+        "profile": "flat",
+        "alignmentDecisionId": "decision:baseline"
+      },
+      {
+        "id": "part:h-return-terminal",
+        "role": "lower-shoulder-return-terminal",
+        "profile": "flat",
+        "alignmentDecisionId": "decision:baseline"
+      }
+    ]
+  },
+  "geometry": {
+    "bounds": {
+      "xMin": 55,
+      "yMin": 0,
+      "xMax": 595,
+      "yMax": 700
+    },
+    "metrics": {
+      "advanceWidth": 650,
+      "leftSideBearing": 55,
+      "rightSideBearing": 55
+    },
+    "contourCount": 1,
+    "segmentTypes": [
+      "line",
+      "line",
+      "line",
+      "quadratic",
+      "line",
+      "line",
+      "line",
+      "quadratic",
+      "line",
+      "line"
+    ],
+    "explicitOpenSpace": [
+      {
+        "id": "part:h-open-counter",
+        "boundaryIds": [
+          "boundary:h:open-space-stem-wall",
+          "boundary:h:open-space-shoulder-wall",
+          "boundary:h:open-space-return-wall"
+        ],
+        "openingBoundaryId": "boundary:h:baseline-opening"
+      }
+    ],
+    "validation": "Existing validateGlyph checks point range, winding, area, sampled self-intersection and containment. Sample-based checks are not mathematical proofs.",
+    "boundsMethod": "contourBounds computes endpoints and quadratic extrema analytically for this path.",
+    "geometryValidatedByTransactionExecutor": true,
+    "geometryPointRecordsMatchCompilerInput": true,
+    "metricPolicy": {
+      "advance": "preserve-explicit-source-metric",
+      "bearings": "recompute-from-derived-bounds",
+      "kerning": "invalidate-for-review"
+    },
+    "kerningReviewFlag": true
+  },
+  "transaction": {
+    "status": "committed-candidate",
+    "revisionStatus": "candidate",
+    "parentRevisionIds": [
+      "rev:bf2ab23572a8c71d"
+    ],
+    "changedGlyphIds": [
+      "glyph:u0068"
+    ],
+    "preservedGlyphIds": [
+      "glyph:u006f",
+      "glyph:u006e",
+      "glyph:u0048",
+      "glyph:u0061"
+    ],
+    "targetGlyphIds": [
+      "glyph:u0068"
+    ],
+    "acceptedParentUnchanged": true
+  },
+  "fonts": {
+    "compiler": "fontsketch 0.1.0 through prototype/src/font.js",
+    "internalAudit": "prototype/src/sfnt-audit.js and compiler parse; not independent validation",
+    "independentValidator": "not run; no independent validator was installed or used",
+    "source": {
+      "path": "artifacts/LFCFoundry-Distinct-Topology-Parent.ttf",
+      "bytes": 1640,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c",
+      "internalAuditValid": true,
+      "glyphOrder": [
+        "o",
+        "n",
+        "H",
+        "a"
+      ]
+    },
+    "candidate": {
+      "path": "artifacts/LFCFoundry-Distinct-Topology-H.ttf",
+      "bytes": 1700,
+      "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb",
+      "internalAuditValid": true,
+      "glyphOrder": [
+        "o",
+        "n",
+        "H",
+        "a",
+        "h"
+      ],
+      "lowercaseH": {
+        "name": "h",
+        "unicodes": [
+          104
+        ],
+        "advanceWidth": 650,
+        "compiledContourCount": 1,
+        "compiledPointsEqualValidatedFamilyPoints": true
+      },
+      "rawGlyfHeaderForU0068": {
+        "glyphId": 6,
+        "contourCount": 1,
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 800
+      },
+      "outlineBoundsVsStoredGlyphHeader": {
+        "analyticContourBounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 700
+        },
+        "rawGlyfHeader": {
+          "glyphId": 6,
+          "contourCount": 1,
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 800
+        },
+        "note": "The glyf header includes the shoulder quadratic control point at y=800; the curve extrema and visible raster top remain at y=700. This is reported as the stored point box, not the exact ink bounds."
+      }
+    },
+    "existingCompiledGlyphsUnchanged": [
+      "o",
+      "n",
+      "H",
+      "a"
+    ],
+    "existingGlyphRecordsEqual": true
+  },
+  "browser": {
+    "status": "verified-visible-canvas-render",
+    "browserVersionFromUserAgent": "156.0.0.0",
+    "environment": {
+      "deviceModel": "Pixel 7 Pro",
+      "androidRelease": "17",
+      "androidApiLevel": "37",
+      "environmentEvidenceCommand": "getprop ro.build.version.release; getprop ro.build.version.sdk; getprop ro.product.model",
+      "browser": "Android Chrome Mobile",
+      "browserVersionFromNavigatorUserAgent": "156.0.0.0 (reduced user agent; major version 156)",
+      "fullBrowserBuildVersion": "not exposed by the available browser page or package query",
+      "browserPlatformValue": "Linux armv81",
+      "devicePixelRatio": 2.8860480785369873
+    },
+    "operatingSystemAsReportedByUserAgent": "Linux; Android 10; K",
+    "fontFaces": {
+      "parent": {
+        "loaded": true,
+        "status": "loaded",
+        "byteLength": 1640
+      },
+      "candidate": {
+        "loaded": true,
+        "status": "loaded",
+        "byteLength": 1700
+      },
+      "parentCheck": true,
+      "candidateCheck": true
+    },
+    "runtimeErrors": [],
+    "evidence": {
+      "screenshotType": "Android Chrome Canvas raster of loaded font glyphs",
+      "file": "android-chrome-canvas.png",
+      "bytes": 18140,
+      "sha256": "e3656b0ff25853248e74a9950f548324ae94abc9f4a00f9c050a7223dacb4fec",
+      "dimensions": {
+        "width": 800,
+        "height": 440
+      },
+      "initialResultsFile": "android-chrome-results.json",
+      "initialRasterMaskWasSuperseded": true
+    },
+    "render": {
+      "fontSizeCssPx": 300,
+      "textAlign": "left",
+      "textBaseline": "alphabetic",
+      "fillStyle": "#171512",
+      "parentOrigin": {
+        "x": 100,
+        "y": 360
+      },
+      "candidateOrigin": {
+        "x": 500,
+        "y": 360
+      },
+      "metrics": {
+        "parentN": {
+          "text": "n",
+          "font": "300px HParent",
+          "x": 100,
+          "baseline": 360,
+          "width": 194.99966430664062,
+          "actualBoundingBoxLeft": -14.0625,
+          "actualBoundingBoxRight": 182.8125,
+          "actualBoundingBoxAscent": 164.0625,
+          "actualBoundingBoxDescent": 0
+        },
+        "candidateH": {
+          "text": "h",
+          "font": "300px HCandidate",
+          "x": 500,
+          "baseline": 360,
+          "width": 194.99966430664062,
+          "actualBoundingBoxLeft": -14.0625,
+          "actualBoundingBoxRight": 182.8125,
+          "actualBoundingBoxAscent": 243.75,
+          "actualBoundingBoxDescent": 0
+        }
+      },
+      "rasterBounds": {
+        "parentN": {
+          "xMin": 116,
+          "yMin": 198,
+          "xMax": 278,
+          "yMax": 359,
+          "pixelCount": 11460,
+          "alphaThreshold": 24,
+          "rgbDarkestChannelThreshold": 245
+        },
+        "candidateH": {
+          "xMin": 516,
+          "yMin": 150,
+          "xMax": 678,
+          "yMax": 359,
+          "pixelCount": 15734,
+          "alphaThreshold": 24,
+          "rgbDarkestChannelThreshold": 245
+        }
+      },
+      "alphaThreshold": 24,
+      "rasterMaskCorrection": "Original capture had an opaque white background; alpha alone included the full crop. Bounds were recomputed from the same browser PNG using alpha > 24 and darkest RGB channel < 245."
+    },
+    "interpretation": "The PNG is an actual Android Chrome Canvas raster. The parent n and candidate h are visibly different as expected. Canvas TextMetrics and thresholded raster bounds use different measurement mechanisms; both raw measurements are retained. The raster bounds were recomputed from RGB darkness because the canvas background was opaque.",
+    "intermediateFiles": [
+      "browser-evidence/android-chrome-results.json (initial alpha-only mask counted opaque background)",
+      "browser-evidence/android-chrome-results-corrected.json (intermediate crop-min initialization error)",
+      "browser-evidence/android-chrome-results-final.json (authoritative offline bounds from the unchanged Chrome PNG)"
+    ]
+  },
+  "limits": [
+    "One new topology is demonstrated; no arbitrary topology compiler is provided.",
+    "Outline validation includes sampled checks and does not prove all geometric properties.",
+    "Internal SFNT audit is not independent font validation; no general shaping or installability claim is made."
+  ]
+}

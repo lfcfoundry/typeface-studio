@@ -1,0 +1,821 @@
+{
+  "type": "lfcfoundry.whole-font-brief-resolution",
+  "schemaVersion": 1,
+  "resolutionStatus": "resolved-with-limitations",
+  "brief": {
+    "messageId": "msg:whole-font-brief-1",
+    "text": "Create a humanist sans-serif typeface with moderately condensed proportions, consistent stroke weight, a relatively tall x-height, generous counters, slightly rounded terminals, and a conventional double-storey lowercase a. Prioritize readability at small sizes.",
+    "language": "en",
+    "languageCapability": "this resolver only"
+  },
+  "intents": [
+    {
+      "id": "intent:humanist-direction",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "classification.humanist",
+      "value": {
+        "kind": "qualitative",
+        "value": "humanist"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 9,
+        "end": 28,
+        "text": "humanist sans-serif"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unsupported",
+        "capability": "unsupported",
+        "reason": "The available semantic constructors do not encode humanist-specific proportions, modulation, or joins."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:sans-serif",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "classification.serif-treatment",
+      "value": {
+        "kind": "qualitative",
+        "value": "sans-serif"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 9,
+        "end": 28,
+        "text": "humanist sans-serif"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "resolved",
+        "capability": "approximate",
+        "reason": "The planned specimen has no serif components, but its existing constructors are not a validated family style."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:condensed-proportions",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "proportion.width",
+      "value": {
+        "kind": "qualitative",
+        "value": "moderately condensed"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 43,
+        "end": 75,
+        "text": "moderately condensed proportions"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unsupported",
+        "capability": "unsupported",
+        "reason": "No calibrated family-wide width policy currently regenerates the supported constructions."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:stroke-consistency",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "stroke.consistency",
+      "value": {
+        "kind": "qualitative",
+        "value": "consistent"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 77,
+        "end": 101,
+        "text": "consistent stroke weight"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "resolved",
+        "capability": "approximate",
+        "reason": "The specimen reuses a 90-unit stem decision, but optical weight consistency across bowls, joins, and raster sizes is not established."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:tall-x-height",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "proportion.x-height",
+      "value": {
+        "kind": "qualitative",
+        "value": "relatively tall"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 103,
+        "end": 129,
+        "text": "a relatively tall x-height"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unresolved",
+        "capability": "unresolved",
+        "reason": "“Relatively tall” has no calibrated family threshold. The source fixture measures x-height 500 and cap height 700; that measurement is not treated as proof that the request is satisfied."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:generous-counters",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "counter.character",
+      "value": {
+        "kind": "qualitative",
+        "value": "generous"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 131,
+        "end": 148,
+        "text": "generous counters"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unresolved",
+        "capability": "unresolved",
+        "reason": "Only selected enclosed/open spaces exist; there is no cross-glyph counter policy or calibrated meaning for “generous”."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:rounded-terminals",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "terminal.profile",
+      "value": {
+        "kind": "qualitative",
+        "value": "slightly rounded"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 150,
+        "end": 176,
+        "text": "slightly rounded terminals"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unsupported",
+        "capability": "unsupported",
+        "reason": "The planned constructors support flat terminals and a bounded chamfer, not rounded terminals."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:small-size-readability",
+      "kind": "characteristic",
+      "subject": {
+        "scope": "family"
+      },
+      "predicate": "legibility.small-size",
+      "value": {
+        "kind": "goal",
+        "value": "prioritize readability"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 224,
+        "end": 261,
+        "text": "Prioritize readability at small sizes"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "resolved",
+        "capability": "review-required",
+        "reason": "This goal requires small-size raster review and cannot be resolved by a geometry parameter alone."
+      },
+      "supersedes": [],
+      "conflicts": []
+    },
+    {
+      "id": "intent:lowercase-a-topology",
+      "kind": "construction",
+      "subject": {
+        "scope": "glyph",
+        "glyphId": "glyph:u0061"
+      },
+      "predicate": "glyph.construction.topology",
+      "value": {
+        "kind": "qualitative",
+        "value": "conventional double-storey"
+      },
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 184,
+        "end": 222,
+        "text": "conventional double-storey lowercase a"
+      },
+      "origin": "explicit",
+      "confidence": 1,
+      "resolution": {
+        "status": "unsupported",
+        "capability": "unsupported",
+        "reason": "A double-storey construction experiment exists, but its saved Android Chrome raster reads as stacked loops rather than a conventional lowercase a. It is excluded from compliant construction planning."
+      },
+      "supersedes": [],
+      "conflicts": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision:humanist-direction",
+      "property": "classification.humanist",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "humanist"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 9,
+        "end": 28,
+        "text": "humanist sans-serif"
+      },
+      "capability": "unsupported",
+      "explanation": "The available semantic constructors do not encode humanist-specific proportions, modulation, or joins."
+    },
+    {
+      "id": "decision:sans-serif",
+      "property": "classification.serif-treatment",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "sans-serif"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 9,
+        "end": 28,
+        "text": "humanist sans-serif"
+      },
+      "capability": "approximate",
+      "explanation": "The planned specimen has no serif components, but its existing constructors are not a validated family style."
+    },
+    {
+      "id": "decision:condensed-proportions",
+      "property": "proportion.width",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "moderately condensed"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 43,
+        "end": 75,
+        "text": "moderately condensed proportions"
+      },
+      "capability": "unsupported",
+      "explanation": "No calibrated family-wide width policy currently regenerates the supported constructions."
+    },
+    {
+      "id": "decision:stroke-consistency",
+      "property": "stroke.consistency",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "consistent"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 77,
+        "end": 101,
+        "text": "consistent stroke weight"
+      },
+      "capability": "approximate",
+      "explanation": "The specimen reuses a 90-unit stem decision, but optical weight consistency across bowls, joins, and raster sizes is not established.",
+      "currentEvidence": {
+        "decisionId": "decision:shared-stem-width",
+        "value": 90,
+        "origin": "inherited-from-accepted-source"
+      }
+    },
+    {
+      "id": "decision:tall-x-height",
+      "property": "proportion.x-height",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "relatively tall"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 103,
+        "end": 129,
+        "text": "a relatively tall x-height"
+      },
+      "capability": "unresolved",
+      "explanation": "“Relatively tall” has no calibrated family threshold. The source fixture measures x-height 500 and cap height 700; that measurement is not treated as proof that the request is satisfied.",
+      "currentEvidence": {
+        "xHeight": 500,
+        "capHeight": 700,
+        "ratio": 0.7142857142857143,
+        "origin": "inherited-fixture-measurement"
+      }
+    },
+    {
+      "id": "decision:generous-counters",
+      "property": "counter.character",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "generous"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 131,
+        "end": 148,
+        "text": "generous counters"
+      },
+      "capability": "unresolved",
+      "explanation": "Only selected enclosed/open spaces exist; there is no cross-glyph counter policy or calibrated meaning for “generous”."
+    },
+    {
+      "id": "decision:rounded-terminals",
+      "property": "terminal.profile",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "slightly rounded"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 150,
+        "end": 176,
+        "text": "slightly rounded terminals"
+      },
+      "capability": "unsupported",
+      "explanation": "The planned constructors support flat terminals and a bounded chamfer, not rounded terminals."
+    },
+    {
+      "id": "decision:small-size-readability",
+      "property": "legibility.small-size",
+      "scope": {
+        "kind": "family"
+      },
+      "value": {
+        "kind": "goal",
+        "value": "prioritize readability"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 224,
+        "end": 261,
+        "text": "Prioritize readability at small sizes"
+      },
+      "capability": "review-required",
+      "explanation": "This goal requires small-size raster review and cannot be resolved by a geometry parameter alone."
+    },
+    {
+      "id": "decision:lowercase-a-topology",
+      "property": "glyph.construction.topology",
+      "scope": {
+        "kind": "glyph",
+        "glyphId": "glyph:u0061"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "conventional double-storey"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 184,
+        "end": 222,
+        "text": "conventional double-storey lowercase a"
+      },
+      "capability": "unsupported",
+      "explanation": "A double-storey construction experiment exists, but its saved Android Chrome raster reads as stacked loops rather than a conventional lowercase a. It is excluded from compliant construction planning."
+    }
+  ],
+  "defaults": [
+    {
+      "id": "default:specimen-inventory",
+      "property": "specimen.glyph-inventory",
+      "origin": "defaulted",
+      "value": [
+        "o",
+        "n",
+        "H",
+        "a",
+        "h"
+      ],
+      "source": null,
+      "justification": "Use the available ring, shoulder, crossbar, single-storey-a, and ascender-shoulder constructions to evaluate shared traits. The a is included only as accepted-source context because its requested topology is unsupported."
+    }
+  ],
+  "constraints": [
+    {
+      "id": "constraint:shared-stroke-reference",
+      "kind": "shared-parameter",
+      "decisionIds": [
+        "decision:stroke-consistency"
+      ],
+      "parameterId": "decision:shared-stem-width",
+      "value": 90,
+      "status": "inherited-and-checked-in-specimen",
+      "affectedGlyphs": [
+        "o",
+        "n",
+        "H",
+        "a",
+        "h"
+      ]
+    },
+    {
+      "id": "constraint:do-not-substitute-a-topology",
+      "kind": "no-silent-substitution",
+      "decisionIds": [
+        "decision:lowercase-a-topology"
+      ],
+      "status": "blocks-compliance",
+      "reason": "Preserve the accepted single-storey a only for comparison; do not claim it satisfies the requested double-storey form."
+    },
+    {
+      "id": "constraint:human-review-before-approval",
+      "kind": "visual-acceptance",
+      "decisionIds": [
+        "decision:small-size-readability"
+      ],
+      "status": "required"
+    }
+  ],
+  "dependencies": [],
+  "conflicts": [],
+  "unsupported": [
+    {
+      "decisionId": "decision:humanist-direction",
+      "property": "classification.humanist",
+      "reason": "The available semantic constructors do not encode humanist-specific proportions, modulation, or joins."
+    },
+    {
+      "decisionId": "decision:condensed-proportions",
+      "property": "proportion.width",
+      "reason": "No calibrated family-wide width policy currently regenerates the supported constructions."
+    },
+    {
+      "decisionId": "decision:rounded-terminals",
+      "property": "terminal.profile",
+      "reason": "The planned constructors support flat terminals and a bounded chamfer, not rounded terminals."
+    },
+    {
+      "decisionId": "decision:lowercase-a-topology",
+      "property": "glyph.construction.topology",
+      "reason": "A double-storey construction experiment exists, but its saved Android Chrome raster reads as stacked loops rather than a conventional lowercase a. It is excluded from compliant construction planning."
+    }
+  ],
+  "unresolved": [
+    {
+      "decisionId": "decision:tall-x-height",
+      "property": "proportion.x-height",
+      "reason": "“Relatively tall” has no calibrated family threshold. The source fixture measures x-height 500 and cap height 700; that measurement is not treated as proof that the request is satisfied.",
+      "status": "unresolved"
+    },
+    {
+      "decisionId": "decision:generous-counters",
+      "property": "counter.character",
+      "reason": "Only selected enclosed/open spaces exist; there is no cross-glyph counter policy or calibrated meaning for “generous”.",
+      "status": "unresolved"
+    },
+    {
+      "decisionId": "decision:small-size-readability",
+      "property": "legibility.small-size",
+      "reason": "This goal requires small-size raster review and cannot be resolved by a geometry parameter alone.",
+      "status": "review-required"
+    }
+  ],
+  "glyphExceptions": [
+    {
+      "id": "decision:lowercase-a-topology",
+      "property": "glyph.construction.topology",
+      "scope": {
+        "kind": "glyph",
+        "glyphId": "glyph:u0061"
+      },
+      "value": {
+        "kind": "qualitative",
+        "value": "conventional double-storey"
+      },
+      "origin": "explicit",
+      "source": {
+        "messageId": "msg:whole-font-brief-1",
+        "start": 184,
+        "end": 222,
+        "text": "conventional double-storey lowercase a"
+      },
+      "capability": "unsupported",
+      "explanation": "A double-storey construction experiment exists, but its saved Android Chrome raster reads as stacked loops rather than a conventional lowercase a. It is excluded from compliant construction planning."
+    }
+  ],
+  "specimenPlan": {
+    "version": 1,
+    "scope": "coordinated-diagnostic-specimen",
+    "sourceRevisionId": "rev:bf2ab23572a8c71d",
+    "glyphs": [
+      {
+        "glyphId": "glyph:u006f",
+        "name": "o",
+        "acceptedConstructionMethod": "construction.ring-from-bowl-counter",
+        "plannedConstructionMethod": "construction.ring-from-bowl-counter",
+        "action": "reuse-accepted-construction",
+        "constructionCapability": "available-experimentally",
+        "familyDecisionIds": [
+          "decision:stroke-consistency",
+          "decision:tall-x-height",
+          "decision:generous-counters"
+        ],
+        "glyphSpecificDecisionIds": []
+      },
+      {
+        "glyphId": "glyph:u006e",
+        "name": "n",
+        "acceptedConstructionMethod": "construction.connected-stems-and-shoulder",
+        "plannedConstructionMethod": "construction.connected-stems-and-shoulder",
+        "action": "reuse-accepted-construction",
+        "constructionCapability": "available-experimentally",
+        "familyDecisionIds": [
+          "decision:stroke-consistency",
+          "decision:tall-x-height"
+        ],
+        "glyphSpecificDecisionIds": []
+      },
+      {
+        "glyphId": "glyph:u0048",
+        "name": "H",
+        "acceptedConstructionMethod": "construction.parallel-stems-and-crossbar",
+        "plannedConstructionMethod": "construction.parallel-stems-and-crossbar",
+        "action": "reuse-accepted-construction",
+        "constructionCapability": "available-experimentally",
+        "familyDecisionIds": [
+          "decision:stroke-consistency"
+        ],
+        "glyphSpecificDecisionIds": []
+      },
+      {
+        "glyphId": "glyph:u0061",
+        "name": "a",
+        "scope": "glyph-specific-exception",
+        "requested": {
+          "kind": "qualitative",
+          "value": "conventional double-storey"
+        },
+        "acceptedConstructionMethod": "construction.bowl-with-attached-stem",
+        "plannedConstructionMethod": null,
+        "action": "carry-forward-accepted-glyph-for-comparison-only",
+        "constructionCapability": "blocked",
+        "reason": "No construction is selected as a substitute for the requested conventional double-storey form.",
+        "familyDecisionIds": [
+          "decision:stroke-consistency",
+          "decision:tall-x-height",
+          "decision:generous-counters"
+        ]
+      },
+      {
+        "glyphId": "glyph:u0068",
+        "name": "h",
+        "acceptedConstructionMethod": null,
+        "plannedConstructionMethod": "construction.ascender-stem-shoulder-return",
+        "action": "add-default-specimen-glyph",
+        "constructionCapability": "available-experimentally",
+        "familyDecisionIds": [
+          "decision:stroke-consistency",
+          "decision:tall-x-height"
+        ],
+        "glyphSpecificDecisionIds": []
+      }
+    ],
+    "excludedGlyphs": [
+      {
+        "glyphId": null,
+        "name": "remaining Latin and Unicode repertoire",
+        "reason": "The brief is not expanded into a complete alphabet, digits, punctuation, marks, or script inventory."
+      }
+    ],
+    "dependencies": [
+      {
+        "decisionId": "decision:stroke-consistency",
+        "parameterDecisionId": "decision:shared-stem-width",
+        "currentValue": 90,
+        "glyphId": "glyph:u006f",
+        "glyphName": "o",
+        "semanticNodeIds": [
+          "part:o-bowl",
+          "part:o-counter"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:stroke-consistency",
+        "parameterDecisionId": "decision:shared-stem-width",
+        "currentValue": 90,
+        "glyphId": "glyph:u006e",
+        "glyphName": "n",
+        "semanticNodeIds": [
+          "part:n-left-stem",
+          "part:n-right-stem"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:stroke-consistency",
+        "parameterDecisionId": "decision:shared-stem-width",
+        "currentValue": 90,
+        "glyphId": "glyph:u0048",
+        "glyphName": "H",
+        "semanticNodeIds": [
+          "part:H-left-stem",
+          "part:H-right-stem",
+          "part:H-crossbar"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:stroke-consistency",
+        "parameterDecisionId": "decision:shared-stem-width",
+        "currentValue": 90,
+        "glyphId": "glyph:u0061",
+        "glyphName": "a",
+        "semanticNodeIds": [
+          "part:a-stem",
+          "part:a-counter"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:stroke-consistency",
+        "parameterDecisionId": "decision:shared-stem-width",
+        "currentValue": 90,
+        "glyphId": "glyph:u0068",
+        "glyphName": "h",
+        "semanticNodeIds": [
+          "part:h-ascender-stem",
+          "part:h-shoulder"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:tall-x-height",
+        "parameterDecisionId": "decision:x-height",
+        "currentValue": 500,
+        "glyphId": "glyph:u006f",
+        "glyphName": "o",
+        "semanticNodeIds": [
+          "part:o-bowl"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:tall-x-height",
+        "parameterDecisionId": "decision:x-height",
+        "currentValue": 500,
+        "glyphId": "glyph:u006e",
+        "glyphName": "n",
+        "semanticNodeIds": [
+          "part:n-shoulder"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      },
+      {
+        "decisionId": "decision:tall-x-height",
+        "parameterDecisionId": "decision:x-height",
+        "currentValue": 500,
+        "glyphId": "glyph:u0061",
+        "glyphName": "a",
+        "semanticNodeIds": [
+          "part:a-bowl"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "inherited-but-topology-blocked-for-request"
+      },
+      {
+        "decisionId": "decision:tall-x-height",
+        "parameterDecisionId": "decision:x-height",
+        "currentValue": 500,
+        "glyphId": "glyph:u0068",
+        "glyphName": "h",
+        "semanticNodeIds": [
+          "part:h-shoulder"
+        ],
+        "relation": "shared-family-decision-to-construction",
+        "status": "declared-dependency"
+      }
+    ],
+    "capabilitySummary": {
+      "availableMethods": [
+        "construction.ring-from-bowl-counter",
+        "construction.connected-stems-and-shoulder",
+        "construction.parallel-stems-and-crossbar",
+        "construction.ascender-stem-shoulder-return"
+      ],
+      "unsupportedRequirements": [
+        "decision:humanist-direction",
+        "decision:condensed-proportions",
+        "decision:rounded-terminals",
+        "decision:lowercase-a-topology"
+      ],
+      "unresolvedRequirements": [
+        "decision:tall-x-height",
+        "decision:generous-counters",
+        "decision:small-size-readability"
+      ],
+      "usesDoubleStoreyAExperiment": false,
+      "compliance": "partial; preserve source a only for comparison and report the topology requirement as unsupported"
+    },
+    "default": {
+      "origin": "defaulted",
+      "inventory": [
+        "o",
+        "n",
+        "H",
+        "a",
+        "h"
+      ],
+      "rationale": "Select one round lowercase, connected lowercase, uppercase, requested-exception context, and existing ascender-shoulder construction. The extra h is a specimen choice, not an additional user request."
+    }
+  },
+  "briefCompliance": {
+    "status": "incomplete-blocked",
+    "reasons": [
+      "decision:humanist-direction",
+      "decision:condensed-proportions",
+      "decision:rounded-terminals",
+      "decision:lowercase-a-topology",
+      "decision:tall-x-height",
+      "decision:generous-counters",
+      "decision:small-size-readability"
+    ]
+  },
+  "diagnostics": [
+    {
+      "code": "bounded-vocabulary",
+      "message": "Exact phrase grammar only; no arbitrary-language interpretation is claimed."
+    }
+  ]
+}

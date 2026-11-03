@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family x-height propagation browser verification</title>
+<style>
+body{font:16px system-ui,sans-serif;margin:18px;color:#111}.row{border:1px solid #777;margin:10px 0;padding:8px}
+.line{margin:5px 0}.glyph{font-family:PropSource,serif}.candidate{font-family:PropCandidate,serif}
+.small{font-size:12px}.size16{font-size:16px}.size24{font-size:24px}.size32{font-size:32px}.size48{font-size:48px}
+canvas{width:min(100%,1100px);height:auto;border:1px solid #777}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+</style>
+<h1>X-height 500 → 520: browser verification</h1>
+<p>Actual compiled source and candidate fonts. Human visual approval remains pending.</p>
+<div id="status">Loading fonts…</div><div id="samples"></div>
+<h2>Canvas raster specimen</h2><canvas id="specimen" width="1400" height="900"></canvas><pre id="data"></pre>
+<script>
+(async()=>{
+ const R={userAgent:navigator.userAgent,platform:navigator.platform,language:navigator.language,dpr:devicePixelRatio,
+ viewport:{innerWidth,innerHeight,screenWidth:screen.width,screenHeight:screen.height},fonts:[],errors:[],measurements:[],visualApproval:'not-reviewed'};
+ try{
+  for(const [family,url] of [['PropSource','../artifacts-final/source.ttf'],['PropCandidate','../artifacts-final/candidate.ttf']]){
+   const f=await new FontFace(family,'url('+url+')').load();document.fonts.add(f);await document.fonts.ready;
+   const ok=document.fonts.check('48px "'+family+'"','onhaH');R.fonts.push({family,status:f.status,documentFontsCheck:ok,url});
+   if(f.status!=='loaded'||!ok)throw Error('Font did not load/check: '+family);
+  }
+  const rows=[['small',12],['size16',16],['size24',24],['size32',32],['size48',48]];
+  for(const [family,cls] of [['Source','glyph'],['Candidate','glyph candidate']]){
+   const box=document.createElement('section');box.className='row';box.innerHTML='<h2>'+family+'</h2>';
+   for(const [cl,px] of rows){const line=document.createElement('div');line.className='line '+cl;line.innerHTML='<span>'+px+'px </span><span class="'+cls+'">o n H a h | oo nn aa hh Hh | Hanna · noon · anon</span>';box.append(line);}
+   document.querySelector('#samples').append(box);
+  }
+  const c=document.querySelector('#specimen'),ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#000';
+  for(const [i,family] of ['PropSource','PropCandidate'].entries()){
+   ctx.font='240px "'+family+'"';ctx.textBaseline='alphabetic';ctx.textAlign='left';ctx.fillText((i?'Candidate':'Source')+'  o n H a h',20,270+i*420);
+   ctx.font='100px "'+family+'"';ctx.fillText('oo nn aa hh Hh',20,390+i*420);
+   ctx.font='72px "'+family+'"';ctx.fillText('Hanna · noon · anon',20,500+i*420);
+   for(const text of ['o','n','H','a','h','Hh','Hanna','noon','anon']){
+    const m=ctx.measureText(text);R.measurements.push({family,text,font:ctx.font,width:m.width,left:m.actualBoundingBoxLeft,right:m.actualBoundingBoxRight,ascent:m.actualBoundingBoxAscent,descent:m.actualBoundingBoxDescent});
+   }
+  }
+  R.canvas=c.toDataURL('image/png');R.status='rendered';document.querySelector('#status').textContent='Both FontFace objects loaded; document.fonts.check passed.';
+ }catch(e){R.status='failed';R.errors.push(String(e),e.stack||'');document.querySelector('#status').textContent='FAILED: '+String(e);}
+ document.querySelector('#data').textContent=JSON.stringify({...R,canvas:undefined},null,2);
+ try{const r=await fetch('/collect',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(R)});document.querySelector('#data').textContent+='\nCollector HTTP '+r.status;}
+ catch(e){document.querySelector('#data').textContent+='\nCollector error '+String(e);}
+})();
+</script>

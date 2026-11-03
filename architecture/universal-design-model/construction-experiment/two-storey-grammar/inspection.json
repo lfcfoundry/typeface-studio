@@ -1,0 +1,1585 @@
+{
+  "contract": {
+    "extension": "lfcfoundry.spine-bowl-grammar",
+    "version": 1
+  },
+  "constructions": [
+    {
+      "extension": "lfcfoundry.spine-bowl-grammar",
+      "version": 1,
+      "universalModelVersion": 2,
+      "id": "glyph:a.single",
+      "name": "a",
+      "characterIdentity": [
+        97
+      ],
+      "encoding": [
+        97
+      ],
+      "decisions": {
+        "stem": 90,
+        "xHeight": 500,
+        "baseline": 0,
+        "advance": 650,
+        "bearing": 55,
+        "connectorRadius": 20
+      },
+      "provenance": {
+        "origin": "explicit",
+        "source": "isolated topology experiment",
+        "parentConstruction": "construction.bowl-with-attached-stem"
+      },
+      "construction": {
+        "version": 1,
+        "nodes": [
+          {
+            "id": "spine",
+            "component": "spine"
+          },
+          {
+            "id": "top",
+            "component": "terminal"
+          },
+          {
+            "id": "bottom",
+            "component": "terminal"
+          },
+          {
+            "id": "bowl:0",
+            "component": "bowl",
+            "parameters": {
+              "bottom": 0,
+              "top": 1,
+              "width": 0.9
+            }
+          },
+          {
+            "id": "counter:0",
+            "component": "counter",
+            "parameters": {
+              "inset": 1
+            }
+          }
+        ],
+        "relations": [
+          {
+            "type": "terminates",
+            "source": "top",
+            "target": "spine",
+            "port": "top"
+          },
+          {
+            "type": "terminates",
+            "source": "bottom",
+            "target": "spine",
+            "port": "bottom"
+          },
+          {
+            "type": "attaches",
+            "source": "bowl:0",
+            "target": "spine",
+            "side": "left"
+          },
+          {
+            "type": "contained-by",
+            "source": "counter:0",
+            "target": "bowl:0"
+          }
+        ]
+      },
+      "revision": {
+        "id": "revision:base",
+        "status": "accepted",
+        "parent": null
+      }
+    },
+    {
+      "extension": "lfcfoundry.spine-bowl-grammar",
+      "version": 1,
+      "universalModelVersion": 2,
+      "id": "glyph:a.double",
+      "name": "a.alt",
+      "characterIdentity": [
+        97
+      ],
+      "encoding": [],
+      "decisions": {
+        "stem": 90,
+        "xHeight": 500,
+        "baseline": 0,
+        "advance": 650,
+        "bearing": 55,
+        "connectorRadius": 20
+      },
+      "provenance": {
+        "origin": "explicit",
+        "source": "isolated topology experiment",
+        "parentConstruction": "construction.bowl-with-attached-stem"
+      },
+      "construction": {
+        "version": 1,
+        "nodes": [
+          {
+            "id": "spine",
+            "component": "spine"
+          },
+          {
+            "id": "top",
+            "component": "terminal"
+          },
+          {
+            "id": "bottom",
+            "component": "terminal"
+          },
+          {
+            "id": "bowl:0",
+            "component": "bowl",
+            "parameters": {
+              "bottom": 0,
+              "top": 0.58,
+              "width": 0.9
+            }
+          },
+          {
+            "id": "counter:0",
+            "component": "counter",
+            "parameters": {
+              "inset": 0.65
+            }
+          },
+          {
+            "id": "bowl:1",
+            "component": "bowl",
+            "parameters": {
+              "bottom": 0.66,
+              "top": 1,
+              "width": 0.68
+            }
+          },
+          {
+            "id": "counter:1",
+            "component": "counter",
+            "parameters": {
+              "inset": 0.5
+            }
+          },
+          {
+            "id": "join:1",
+            "component": "connector"
+          }
+        ],
+        "relations": [
+          {
+            "type": "terminates",
+            "source": "top",
+            "target": "spine",
+            "port": "top"
+          },
+          {
+            "type": "terminates",
+            "source": "bottom",
+            "target": "spine",
+            "port": "bottom"
+          },
+          {
+            "type": "attaches",
+            "source": "bowl:0",
+            "target": "spine",
+            "side": "left"
+          },
+          {
+            "type": "contained-by",
+            "source": "counter:0",
+            "target": "bowl:0"
+          },
+          {
+            "type": "attaches",
+            "source": "bowl:1",
+            "target": "spine",
+            "side": "left"
+          },
+          {
+            "type": "contained-by",
+            "source": "counter:1",
+            "target": "bowl:1"
+          },
+          {
+            "type": "connects",
+            "source": "join:1",
+            "lower": "bowl:0",
+            "upper": "bowl:1",
+            "target": "spine",
+            "continuity": "G1"
+          }
+        ]
+      },
+      "revision": {
+        "id": "revision:base",
+        "status": "accepted",
+        "parent": null
+      }
+    }
+  ],
+  "candidate": {
+    "revision": {
+      "id": "revision:086b415b60b1b4ab",
+      "parent": "revision:base",
+      "status": "candidate",
+      "operation": {
+        "type": "construct.parameter.set",
+        "targetNodeId": "bowl:1",
+        "parameter": "width",
+        "value": 0.62,
+        "origin": "explicit"
+      }
+    },
+    "diff": {
+      "changedNodeIds": [
+        "bowl:1"
+      ],
+      "beforeHash": "eba87af8382542258e9bbf3046556eb97677c113c56f76a73b5298f7ad48bf7e",
+      "afterHash": "4f50da7d6d7ea68529950c1a5632552b1497f2f4acdbad46d43b5162334e689d",
+      "preservedCounterIds": [
+        "counter:0"
+      ]
+    }
+  },
+  "fonts": {
+    "inventory": {
+      "file": "LFCFoundry-Grammar-a-Alternates.ttf",
+      "sha256": "ce54c1bdaf5549fb3aeda1ef8cfc9bd50ae059058486b1331da32c6120cf9eb6",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 4,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 90,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 410,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 410,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 90,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "a.alt": {
+          "name": "a.alt",
+          "unicodes": [],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 165,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 165,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 210,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 210,
+                  "y": 375,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "single": {
+      "file": "LFCFoundry-Grammar-Single-Review.ttf",
+      "sha256": "ceb247148c395cca4e98833f53dfd794ab606f28cf1b7cc5eea9fbb86ec80869",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 90,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 410,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 410,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 90,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "double": {
+      "file": "LFCFoundry-Grammar-Double-Review.ttf",
+      "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 165,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 165,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 210,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 210,
+                  "y": 375,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "narrow": {
+      "file": "LFCFoundry-Grammar-Narrow-Upper-Review.ttf",
+      "sha256": "3dcda27af834fe2019ba416b8b254cf8db5c3e0a0c6d95f42d15c5be1148da36",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 195,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 195,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 240,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 240,
+                  "y": 375,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "geometry": [
+    {
+      "id": "glyph:a.single",
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "contourCount": 2,
+      "continuity": [
+        [
+          {
+            "from": "terminal.top",
+            "to": "spine.outer",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "spine.outer",
+            "to": "terminal.bottom",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "terminal.bottom",
+            "to": "bowl:0.lower",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "bowl:0.lower",
+            "to": "bowl:0.upper",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "bowl:0.upper",
+            "to": "terminal.top",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          }
+        ],
+        [
+          {
+            "from": "wall",
+            "to": "upper",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "upper",
+            "to": "lower",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "lower",
+            "to": "wall",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          }
+        ]
+      ]
+    },
+    {
+      "id": "glyph:a.double",
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "contourCount": 3,
+      "continuity": [
+        [
+          {
+            "from": "terminal.top",
+            "to": "spine.outer",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "spine.outer",
+            "to": "terminal.bottom",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "terminal.bottom",
+            "to": "bowl:0.lower",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "bowl:0.lower",
+            "to": "bowl:0.upper",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "bowl:0.upper",
+            "to": "join:1.exit",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "join:1.exit",
+            "to": "join:1.entry",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "join:1.entry",
+            "to": "bowl:1.lower",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "bowl:1.lower",
+            "to": "bowl:1.upper",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "bowl:1.upper",
+            "to": "terminal.top",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          }
+        ],
+        [
+          {
+            "from": "wall",
+            "to": "upper",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "upper",
+            "to": "lower",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "lower",
+            "to": "wall",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          }
+        ],
+        [
+          {
+            "from": "wall",
+            "to": "upper",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "upper",
+            "to": "lower",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "lower",
+            "to": "wall",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          }
+        ]
+      ]
+    },
+    {
+      "id": "glyph:a.double",
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "contourCount": 3,
+      "continuity": [
+        [
+          {
+            "from": "terminal.top",
+            "to": "spine.outer",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "spine.outer",
+            "to": "terminal.bottom",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "terminal.bottom",
+            "to": "bowl:0.lower",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "bowl:0.lower",
+            "to": "bowl:0.upper",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "bowl:0.upper",
+            "to": "join:1.exit",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "join:1.exit",
+            "to": "join:1.entry",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "join:1.entry",
+            "to": "bowl:1.lower",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "bowl:1.lower",
+            "to": "bowl:1.upper",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "bowl:1.upper",
+            "to": "terminal.top",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          }
+        ],
+        [
+          {
+            "from": "wall",
+            "to": "upper",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "upper",
+            "to": "lower",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "lower",
+            "to": "wall",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          }
+        ],
+        [
+          {
+            "from": "wall",
+            "to": "upper",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "upper",
+            "to": "lower",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "lower",
+            "to": "wall",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          }
+        ]
+      ]
+    }
+  ],
+  "evidence": {
+    "semanticValidation": "executed",
+    "geometryValidation": "executed; sampled intersection and containment checks, not exact computational geometry proof",
+    "internalSFNT": "executed",
+    "independentParser": "not available: fontTools import failed",
+    "OTS": "not available",
+    "browserRendering": "not observed",
+    "GSUB": "not implemented"
+  }
+}

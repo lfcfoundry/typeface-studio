@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lowercase h Android Chrome raster capture</title>
+<style>
+body{font:16px/1.45 system-ui,sans-serif;margin:20px;background:#f5f1e9;color:#29241e}canvas{width:min(800px,100%);height:auto;background:#fff;border:1px solid #aaa}.status{font-weight:600}.error{color:#a21b12}
+</style>
+<h1>Lowercase h browser raster capture</h1>
+<p>This page loads the isolated parent and candidate fonts, renders the parent <code>n</code> and candidate <code>h</code> at the same Canvas size and baseline, and posts the canvas PNG and measurement record to the local experiment server.</p>
+<p id="status" class="status">Loading local fonts…</p>
+<canvas id="glyphs" width="800" height="440" aria-label="Parent n and candidate h rendered in Canvas"></canvas>
+<pre id="details"></pre>
+<script type="module">
+const errors=[];
+addEventListener('error',event=>errors.push({type:'error',message:event.message||'runtime error'}));
+addEventListener('unhandledrejection',event=>errors.push({type:'unhandledrejection',message:String(event.reason)}));
+const status=document.querySelector('#status');
+const measure=(ctx,text,font,x,baseline)=>{
+  ctx.font=font;ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  const metrics=ctx.measureText(text);
+  return {text,font,x,baseline,width:metrics.width,actualBoundingBoxLeft:metrics.actualBoundingBoxLeft,
+    actualBoundingBoxRight:metrics.actualBoundingBoxRight,actualBoundingBoxAscent:metrics.actualBoundingBoxAscent,
+    actualBoundingBoxDescent:metrics.actualBoundingBoxDescent};
+};
+const thresholdBounds=(ctx,region,threshold=24)=>{
+  const image=ctx.getImageData(region.x,region.y,region.width,region.height),pixels=image.data;
+  let xMin=region.width,yMin=region.height,xMax=-1,yMax=-1,count=0;
+  for(let y=0;y<region.height;y++)for(let x=0;x<region.width;x++){
+    const offset=(y*region.width+x)*4,alpha=pixels[offset+3],red=pixels[offset],green=pixels[offset+1],blue=pixels[offset+2];
+    if(alpha>threshold&&Math.min(red,green,blue)<245){xMin=Math.min(xMin,x);yMin=Math.min(yMin,y);xMax=Math.max(xMax,x);yMax=Math.max(yMax,y);count++}
+  }
+  return count?{xMin:xMin+region.x,yMin:yMin+region.y,xMax:xMax+region.x,yMax:yMax+region.y,pixelCount:count,alphaThreshold:threshold,rgbInkCriterion:'at least one RGB channel < 245'}:null;
+};
+try{
+  const [parentResponse,candidateResponse]=await Promise.all([
+    fetch('/artifacts/LFCFoundry-Distinct-Topology-Parent.ttf',{cache:'no-store'}),
+    fetch('/artifacts/LFCFoundry-Distinct-Topology-H.ttf',{cache:'no-store'})
+  ]);
+  if(!parentResponse.ok||!candidateResponse.ok)throw new Error('A local diagnostic font request failed.');
+  const [parentBytes,candidateBytes]=await Promise.all([parentResponse.arrayBuffer(),candidateResponse.arrayBuffer()]);
+  const parentFace=await new FontFace('HParent',parentBytes).load();document.fonts.add(parentFace);
+  const candidateFace=await new FontFace('HCandidate',candidateBytes).load();document.fonts.add(candidateFace);
+  await Promise.all([document.fonts.load('300px HParent'),document.fonts.load('300px HCandidate')]);
+  const canvas=document.querySelector('#glyphs'),ctx=canvas.getContext('2d',{willReadFrequently:true});
+  ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#171512';ctx.font='300px HParent';ctx.textAlign='left';ctx.textBaseline='alphabetic';ctx.fillText('n',100,360);
+  ctx.font='300px HCandidate';ctx.textAlign='left';ctx.textBaseline='alphabetic';ctx.fillText('h',500,360);
+  ctx.fillStyle='#5e584e';ctx.font='18px system-ui';ctx.textAlign='left';ctx.fillText('Parent font: n',100,410);ctx.fillText('Candidate font: h',500,410);
+  const measurement={browser:{userAgent:navigator.userAgent,platform:navigator.platform,language:navigator.language,
+      devicePixelRatio,location:location.href},
+    fonts:{parent:{loaded:parentFace.status==='loaded',status:parentFace.status,byteLength:parentBytes.byteLength},
+      candidate:{loaded:candidateFace.status==='loaded',status:candidateFace.status,byteLength:candidateBytes.byteLength},
+      parentCheck:document.fonts.check('300px HParent','n'),candidateCheck:document.fonts.check('300px HCandidate','h')},
+    render:{fontSizeCssPx:300,textAlign:'left',textBaseline:'alphabetic',fillStyle:'#171512',parentOrigin:{x:100,y:360},candidateOrigin:{x:500,y:360},
+      metrics:{parentN:measure(ctx,'n','300px HParent',100,360),candidateH:measure(ctx,'h','300px HCandidate',500,360)},
+      rasterBounds:{parentN:thresholdBounds(ctx,{x:70,y:30,width:330,height:340}),candidateH:thresholdBounds(ctx,{x:470,y:30,width:300,height:340})},
+      alphaThreshold:24,rgbInkThreshold:245},runtimeErrors:errors,completedAt:new Date().toISOString()};
+  const png=canvas.toDataURL('image/png').split(',')[1];
+  const response=await fetch('/capture',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({measurement,pngBase64:png})});
+  if(!response.ok)throw new Error('The local evidence server did not accept the browser capture.');
+  const saved=await response.json();
+  status.textContent='Both FontFace objects loaded. Browser raster and measurements saved.';
+  document.querySelector('#details').textContent=JSON.stringify({...measurement,saved},null,2);
+  window.typefaceStudioHBrowserEvidence={...measurement,saved};
+}catch(error){status.textContent='Browser verification failed: '+error.message;status.className='status error';document.querySelector('#details').textContent=JSON.stringify({error:String(error),runtimeErrors:errors,userAgent:navigator.userAgent},null,2);window.typefaceStudioHBrowserEvidence={error:String(error),runtimeErrors:errors,userAgent:navigator.userAgent}}
+</script>
+</html>

@@ -1,0 +1,29 @@
+✔ project schema round-trips and rejects malformed imports (222.757202ms)
+✔ prompt interpretation is deterministic and does not classify incidental words as unknown (8.100179ms)
+✔ short natural-language briefs map to real shared parameters (1.609741ms)
+✔ detailed editorial description reports implemented and unsupported instructions separately (1.443441ms)
+✔ geometric sans description resolves proportions, construction and stroke vocabulary (0.862548ms)
+✔ humanist brief is recognized but explicitly not represented as humanist glyph construction (0.840821ms)
+✔ condensed display brief changes width and clearly labels display as an approximation (0.887736ms)
+✔ high-contrast serif brief selects real outline construction settings (0.781413ms)
+✔ vague briefs leave unsupported dimensions at defaults without spurious word warnings (0.810954ms)
+✔ ordinary words such as screen, can, scale, well, and header are not design errors (1.098755ms)
+✔ contradictory directions are reported and the last explicit direction wins (1.165934ms)
+✔ negated descriptors are not applied as positive instructions (1.014445ms)
+✔ weight vocabulary controls stroke thickness and character mappings stay explicit (1.021403ms)
+✔ generator changes actual width, weight, contrast, corners, spacing, serifs, and fixed-pitch metrics (643.031413ms)
+✔ exported TTF bytes preserve interpreted width, weight, contrast, serif contours, and monospaced advances (867.962607ms)
+✔ generator covers printable ASCII and gives deterministic geometry (144.602132ms)
+✔ manual outline and metric edits survive generation and can be restored (152.573161ms)
+✔ side-bearing controls change actual outline bounds and advance metrics (81.088826ms)
+✔ IndexedDB persistence adapter saves and restores the latest project (222.898397ms)
+✔ Regular and Bold compile to distinct self-parsing TrueType fonts (399.881022ms)
+✔ release HTML is self-contained and carries dependency notice (17.365112ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3447.216962

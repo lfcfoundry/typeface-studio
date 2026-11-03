@@ -1,0 +1,2430 @@
+{
+  "operation": {
+    "id": "op:open-boundary",
+    "type": "semantic.aperture.open",
+    "phase": "construction",
+    "target": {
+      "glyphId": "glyph:a.double",
+      "nodeIds": [
+        "bowl:1"
+      ]
+    },
+    "parameters": {
+      "boundary": "free-bowl-side",
+      "halfExtent": 0.25,
+      "terminal": "flat",
+      "metricPolicy": "preserve-advance-recompute-bearings"
+    },
+    "preconditions": {
+      "revisionId": "revision:base",
+      "topology": "enclosed"
+    },
+    "provenance": {
+      "origin": "explicit",
+      "intentIds": [
+        "intent:open-selected-bowl"
+      ]
+    },
+    "dependsOn": []
+  },
+  "accepted": {
+    "extension": "lfcfoundry.spine-bowl-grammar",
+    "version": 1,
+    "universalModelVersion": 2,
+    "id": "glyph:a.double",
+    "name": "a.alt",
+    "characterIdentity": [
+      97
+    ],
+    "encoding": [],
+    "decisions": {
+      "stem": 90,
+      "xHeight": 500,
+      "baseline": 0,
+      "advance": 650,
+      "bearing": 55,
+      "connectorRadius": 20
+    },
+    "provenance": {
+      "origin": "explicit",
+      "source": "isolated topology experiment",
+      "parentConstruction": "construction.bowl-with-attached-stem"
+    },
+    "construction": {
+      "version": 1,
+      "nodes": [
+        {
+          "id": "spine",
+          "component": "spine"
+        },
+        {
+          "id": "top",
+          "component": "terminal"
+        },
+        {
+          "id": "bottom",
+          "component": "terminal"
+        },
+        {
+          "id": "bowl:0",
+          "component": "bowl",
+          "parameters": {
+            "bottom": 0,
+            "top": 0.58,
+            "width": 0.9
+          }
+        },
+        {
+          "id": "counter:0",
+          "component": "counter",
+          "parameters": {
+            "inset": 0.65
+          }
+        },
+        {
+          "id": "bowl:1",
+          "component": "bowl",
+          "parameters": {
+            "bottom": 0.66,
+            "top": 1,
+            "width": 0.68
+          }
+        },
+        {
+          "id": "counter:1",
+          "component": "counter",
+          "parameters": {
+            "inset": 0.5
+          }
+        },
+        {
+          "id": "join:1",
+          "component": "connector"
+        }
+      ],
+      "relations": [
+        {
+          "type": "terminates",
+          "source": "top",
+          "target": "spine",
+          "port": "top"
+        },
+        {
+          "type": "terminates",
+          "source": "bottom",
+          "target": "spine",
+          "port": "bottom"
+        },
+        {
+          "type": "attaches",
+          "source": "bowl:0",
+          "target": "spine",
+          "side": "left"
+        },
+        {
+          "type": "contained-by",
+          "source": "counter:0",
+          "target": "bowl:0"
+        },
+        {
+          "type": "attaches",
+          "source": "bowl:1",
+          "target": "spine",
+          "side": "left"
+        },
+        {
+          "type": "contained-by",
+          "source": "counter:1",
+          "target": "bowl:1"
+        },
+        {
+          "type": "connects",
+          "source": "join:1",
+          "lower": "bowl:0",
+          "upper": "bowl:1",
+          "target": "spine",
+          "continuity": "G1"
+        }
+      ]
+    },
+    "revision": {
+      "id": "revision:base",
+      "status": "accepted",
+      "parent": null
+    },
+    "apertureExtension": {
+      "version": 1,
+      "apertures": [],
+      "ports": []
+    }
+  },
+  "candidate": {
+    "extension": "lfcfoundry.spine-bowl-grammar",
+    "version": 1,
+    "universalModelVersion": 2,
+    "id": "glyph:a.double",
+    "name": "a.alt",
+    "characterIdentity": [
+      97
+    ],
+    "encoding": [],
+    "decisions": {
+      "stem": 90,
+      "xHeight": 500,
+      "baseline": 0,
+      "advance": 650,
+      "bearing": 55,
+      "connectorRadius": 20
+    },
+    "provenance": {
+      "origin": "explicit",
+      "source": "isolated topology experiment",
+      "parentConstruction": "construction.bowl-with-attached-stem"
+    },
+    "construction": {
+      "version": 1,
+      "nodes": [
+        {
+          "id": "spine",
+          "component": "spine"
+        },
+        {
+          "id": "top",
+          "component": "terminal"
+        },
+        {
+          "id": "bottom",
+          "component": "terminal"
+        },
+        {
+          "id": "bowl:0",
+          "component": "bowl",
+          "parameters": {
+            "bottom": 0,
+            "top": 0.58,
+            "width": 0.9
+          }
+        },
+        {
+          "id": "counter:0",
+          "component": "counter",
+          "parameters": {
+            "inset": 0.65
+          }
+        },
+        {
+          "id": "bowl:1",
+          "component": "bowl",
+          "parameters": {
+            "bottom": 0.66,
+            "top": 1,
+            "width": 0.68
+          }
+        },
+        {
+          "id": "counter:1",
+          "component": "open-space",
+          "parameters": {
+            "inset": 0.5
+          }
+        },
+        {
+          "id": "join:1",
+          "component": "connector"
+        }
+      ],
+      "relations": [
+        {
+          "type": "terminates",
+          "source": "top",
+          "target": "spine",
+          "port": "top"
+        },
+        {
+          "type": "terminates",
+          "source": "bottom",
+          "target": "spine",
+          "port": "bottom"
+        },
+        {
+          "type": "attaches",
+          "source": "bowl:0",
+          "target": "spine",
+          "side": "left"
+        },
+        {
+          "type": "contained-by",
+          "source": "counter:0",
+          "target": "bowl:0"
+        },
+        {
+          "type": "attaches",
+          "source": "bowl:1",
+          "target": "spine",
+          "side": "left"
+        },
+        {
+          "type": "open-space-of",
+          "source": "counter:1",
+          "target": "bowl:1"
+        },
+        {
+          "type": "connects",
+          "source": "join:1",
+          "lower": "bowl:0",
+          "upper": "bowl:1",
+          "target": "spine",
+          "continuity": "G1"
+        }
+      ]
+    },
+    "revision": {
+      "id": "revision:202c8178a2cb1e39",
+      "parent": "revision:base",
+      "status": "candidate",
+      "operation": {
+        "id": "op:open-boundary",
+        "type": "semantic.aperture.open",
+        "phase": "construction",
+        "target": {
+          "glyphId": "glyph:a.double",
+          "nodeIds": [
+            "bowl:1"
+          ]
+        },
+        "parameters": {
+          "boundary": "free-bowl-side",
+          "halfExtent": 0.25,
+          "terminal": "flat",
+          "metricPolicy": "preserve-advance-recompute-bearings"
+        },
+        "preconditions": {
+          "revisionId": "revision:base",
+          "topology": "enclosed"
+        },
+        "provenance": {
+          "origin": "explicit",
+          "intentIds": [
+            "intent:open-selected-bowl"
+          ]
+        },
+        "dependsOn": []
+      }
+    },
+    "apertureExtension": {
+      "version": 1,
+      "apertures": [
+        {
+          "id": "aperture:op:open-boundary",
+          "bowlId": "bowl:1",
+          "spaceId": "counter:1",
+          "boundary": "free-bowl-side",
+          "halfExtent": 0.25,
+          "terminal": "flat",
+          "metricPolicy": "preserve-advance-recompute-bearings",
+          "portIds": [
+            "aperture:op:open-boundary:lower",
+            "aperture:op:open-boundary:upper"
+          ]
+        }
+      ],
+      "ports": [
+        {
+          "id": "aperture:op:open-boundary:lower",
+          "apertureId": "aperture:op:open-boundary",
+          "bowlId": "bowl:1",
+          "side": "lower",
+          "connects": [
+            "outer",
+            "inner"
+          ],
+          "treatment": "flat"
+        },
+        {
+          "id": "aperture:op:open-boundary:upper",
+          "apertureId": "aperture:op:open-boundary",
+          "bowlId": "bowl:1",
+          "side": "upper",
+          "connects": [
+            "outer",
+            "inner"
+          ],
+          "treatment": "flat"
+        }
+      ]
+    }
+  },
+  "diff": {
+    "changedNodeIds": [
+      "counter:1"
+    ],
+    "addedApertureIds": [
+      "aperture:op:open-boundary"
+    ],
+    "addedPortIds": [
+      "aperture:op:open-boundary:lower",
+      "aperture:op:open-boundary:upper"
+    ],
+    "preservedDecisionIds": [
+      "stem",
+      "xHeight",
+      "baseline",
+      "advance",
+      "bearing",
+      "connectorRadius"
+    ],
+    "metrics": {
+      "policy": "preserve-advance-recompute-bearings",
+      "before": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "after": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "reason": "Opening may remove an extreme ink point; keep advance and derive bearings from resulting ink bounds."
+    },
+    "preservedCounterIds": [
+      "counter:0"
+    ]
+  },
+  "geometry": {
+    "enclosed": {
+      "id": "glyph:a.double",
+      "name": "a.alt",
+      "unicode": null,
+      "contours": [
+        {
+          "id": "glyph:a.double.outer",
+          "role": "outer",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 500
+          },
+          "segments": [
+            {
+              "id": "terminal.top",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 500
+              }
+            },
+            {
+              "id": "spine.outer",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 0
+              }
+            },
+            {
+              "id": "terminal.bottom",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 0
+              },
+              "to": {
+                "x": 505,
+                "y": 0
+              }
+            },
+            {
+              "id": "bowl:0.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 0
+              },
+              "control": {
+                "x": 55,
+                "y": 0
+              },
+              "to": {
+                "x": 55,
+                "y": 145
+              }
+            },
+            {
+              "id": "bowl:0.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 55,
+                "y": 145
+              },
+              "control": {
+                "x": 55,
+                "y": 290
+              },
+              "to": {
+                "x": 485,
+                "y": 290
+              }
+            },
+            {
+              "id": "join:1.exit",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 290
+              },
+              "control": {
+                "x": 505,
+                "y": 290
+              },
+              "to": {
+                "x": 505,
+                "y": 310
+              }
+            },
+            {
+              "id": "join:1.entry",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 310
+              },
+              "control": {
+                "x": 505,
+                "y": 330
+              },
+              "to": {
+                "x": 485,
+                "y": 330
+              }
+            },
+            {
+              "id": "bowl:1.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 330
+              },
+              "control": {
+                "x": 165,
+                "y": 330
+              },
+              "to": {
+                "x": 165,
+                "y": 415
+              }
+            },
+            {
+              "id": "bowl:1.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 165,
+                "y": 415
+              },
+              "control": {
+                "x": 165,
+                "y": 500
+              },
+              "to": {
+                "x": 505,
+                "y": 500
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.outer.start",
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.top.end",
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.spine.outer.end",
+              "x": 595,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.bottom.end",
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.control",
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.end",
+              "x": 55,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.control",
+              "x": 55,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.end",
+              "x": 485,
+              "y": 290,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.control",
+              "x": 505,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.end",
+              "x": 505,
+              "y": 310,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.control",
+              "x": 505,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.end",
+              "x": 485,
+              "y": 330,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.control",
+              "x": 165,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.end",
+              "x": 165,
+              "y": 415,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.upper.control",
+              "x": 165,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "id": "glyph:a.double.counter:0",
+          "role": "counter",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 59
+          },
+          "segments": [
+            {
+              "id": "wall",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 231
+              }
+            },
+            {
+              "id": "upper",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 231
+              },
+              "control": {
+                "x": 114,
+                "y": 231
+              },
+              "to": {
+                "x": 114,
+                "y": 145
+              }
+            },
+            {
+              "id": "lower",
+              "type": "quadratic",
+              "from": {
+                "x": 114,
+                "y": 145
+              },
+              "control": {
+                "x": 114,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 59
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.counter:0.start",
+              "x": 505,
+              "y": 59,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.wall.end",
+              "x": 505,
+              "y": 231,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.control",
+              "x": 114,
+              "y": 231,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.end",
+              "x": 114,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.lower.control",
+              "x": 114,
+              "y": 59,
+              "on": false
+            }
+          ]
+        },
+        {
+          "id": "glyph:a.double.counter:1",
+          "role": "counter",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 375
+          },
+          "segments": [
+            {
+              "id": "wall",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 455
+              }
+            },
+            {
+              "id": "upper",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 455
+              },
+              "control": {
+                "x": 210,
+                "y": 455
+              },
+              "to": {
+                "x": 210,
+                "y": 415
+              }
+            },
+            {
+              "id": "lower",
+              "type": "quadratic",
+              "from": {
+                "x": 210,
+                "y": 415
+              },
+              "control": {
+                "x": 210,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 375
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.counter:1.start",
+              "x": 505,
+              "y": 375,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:1.wall.end",
+              "x": 505,
+              "y": 455,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:1.upper.control",
+              "x": 210,
+              "y": 455,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.counter:1.upper.end",
+              "x": 210,
+              "y": 415,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:1.lower.control",
+              "x": 210,
+              "y": 375,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "components": [
+        {
+          "id": "spine",
+          "kind": "anatomy.stem"
+        },
+        {
+          "id": "top",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bottom",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bowl:0",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:0",
+          "kind": "anatomy.counter"
+        },
+        {
+          "id": "bowl:1",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:1",
+          "kind": "anatomy.counter"
+        },
+        {
+          "id": "join:1",
+          "kind": "anatomy.join"
+        }
+      ]
+    },
+    "open": {
+      "id": "glyph:a.double",
+      "name": "a.alt",
+      "unicode": null,
+      "contours": [
+        {
+          "id": "glyph:a.double.outer",
+          "role": "outer",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 500
+          },
+          "segments": [
+            {
+              "id": "terminal.top",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 500
+              }
+            },
+            {
+              "id": "spine.outer",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 0
+              }
+            },
+            {
+              "id": "terminal.bottom",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 0
+              },
+              "to": {
+                "x": 505,
+                "y": 0
+              }
+            },
+            {
+              "id": "bowl:0.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 0
+              },
+              "control": {
+                "x": 55,
+                "y": 0
+              },
+              "to": {
+                "x": 55,
+                "y": 145
+              }
+            },
+            {
+              "id": "bowl:0.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 55,
+                "y": 145
+              },
+              "control": {
+                "x": 55,
+                "y": 290
+              },
+              "to": {
+                "x": 485,
+                "y": 290
+              }
+            },
+            {
+              "id": "join:1.exit",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 290
+              },
+              "control": {
+                "x": 505,
+                "y": 290
+              },
+              "to": {
+                "x": 505,
+                "y": 310
+              }
+            },
+            {
+              "id": "join:1.entry",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 310
+              },
+              "control": {
+                "x": 505,
+                "y": 330
+              },
+              "to": {
+                "x": 485,
+                "y": 330
+              }
+            },
+            {
+              "id": "bowl:1.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 330
+              },
+              "control": {
+                "x": 245,
+                "y": 330
+              },
+              "to": {
+                "x": 185,
+                "y": 378
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:lower.cap",
+              "type": "line",
+              "from": {
+                "x": 185,
+                "y": 378
+              },
+              "to": {
+                "x": 228,
+                "y": 398
+              }
+            },
+            {
+              "id": "counter:1.lower-open-boundary",
+              "type": "quadratic",
+              "from": {
+                "x": 228,
+                "y": 398
+              },
+              "control": {
+                "x": 284,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 375
+              }
+            },
+            {
+              "id": "counter:1.spine-wall",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 455
+              }
+            },
+            {
+              "id": "counter:1.upper-open-boundary",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 455
+              },
+              "control": {
+                "x": 284,
+                "y": 455
+              },
+              "to": {
+                "x": 228,
+                "y": 433
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:upper.cap",
+              "type": "line",
+              "from": {
+                "x": 228,
+                "y": 433
+              },
+              "to": {
+                "x": 186,
+                "y": 452
+              }
+            },
+            {
+              "id": "bowl:1.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 186,
+                "y": 452
+              },
+              "control": {
+                "x": 250,
+                "y": 500
+              },
+              "to": {
+                "x": 505,
+                "y": 500
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.outer.start",
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.top.end",
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.spine.outer.end",
+              "x": 595,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.bottom.end",
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.control",
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.end",
+              "x": 55,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.control",
+              "x": 55,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.end",
+              "x": 485,
+              "y": 290,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.control",
+              "x": 505,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.end",
+              "x": 505,
+              "y": 310,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.control",
+              "x": 505,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.end",
+              "x": 485,
+              "y": 330,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.control",
+              "x": 245,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.end",
+              "x": 185,
+              "y": 378,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.aperture:op:open-boundary:lower.cap.end",
+              "x": 228,
+              "y": 398,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.lower-open-boundary.control",
+              "x": 284,
+              "y": 375,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.lower-open-boundary.end",
+              "x": 505,
+              "y": 375,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.spine-wall.end",
+              "x": 505,
+              "y": 455,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.upper-open-boundary.control",
+              "x": 284,
+              "y": 455,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.upper-open-boundary.end",
+              "x": 228,
+              "y": 433,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.aperture:op:open-boundary:upper.cap.end",
+              "x": 186,
+              "y": 452,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.upper.control",
+              "x": 250,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "id": "glyph:a.double.counter:0",
+          "role": "counter",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 59
+          },
+          "segments": [
+            {
+              "id": "wall",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 231
+              }
+            },
+            {
+              "id": "upper",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 231
+              },
+              "control": {
+                "x": 114,
+                "y": 231
+              },
+              "to": {
+                "x": 114,
+                "y": 145
+              }
+            },
+            {
+              "id": "lower",
+              "type": "quadratic",
+              "from": {
+                "x": 114,
+                "y": 145
+              },
+              "control": {
+                "x": 114,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 59
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.counter:0.start",
+              "x": 505,
+              "y": 59,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.wall.end",
+              "x": 505,
+              "y": 231,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.control",
+              "x": 114,
+              "y": 231,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.end",
+              "x": 114,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.lower.control",
+              "x": 114,
+              "y": 59,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "components": [
+        {
+          "id": "spine",
+          "kind": "anatomy.stem"
+        },
+        {
+          "id": "top",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bottom",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bowl:0",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:0",
+          "kind": "anatomy.counter"
+        },
+        {
+          "id": "bowl:1",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:1",
+          "kind": "anatomy.open-space"
+        },
+        {
+          "id": "join:1",
+          "kind": "anatomy.join"
+        }
+      ],
+      "aperturePorts": [
+        {
+          "id": "aperture:op:open-boundary:lower",
+          "capSegmentId": "aperture:op:open-boundary:lower.cap",
+          "endpoints": {
+            "outer": {
+              "x": 185,
+              "y": 378
+            },
+            "inner": {
+              "x": 228,
+              "y": 398
+            }
+          }
+        },
+        {
+          "id": "aperture:op:open-boundary:upper",
+          "capSegmentId": "aperture:op:open-boundary:upper.cap",
+          "endpoints": {
+            "outer": {
+              "x": 186,
+              "y": 452
+            },
+            "inner": {
+              "x": 228,
+              "y": 433
+            }
+          }
+        }
+      ]
+    }
+  },
+  "continuity": [
+    [
+      {
+        "from": "terminal.top",
+        "to": "spine.outer",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "spine.outer",
+        "to": "terminal.bottom",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "terminal.bottom",
+        "to": "bowl:0.lower",
+        "G0": true,
+        "G1": true,
+        "C1": false
+      },
+      {
+        "from": "bowl:0.lower",
+        "to": "bowl:0.upper",
+        "G0": true,
+        "G1": true,
+        "C1": true
+      },
+      {
+        "from": "bowl:0.upper",
+        "to": "join:1.exit",
+        "G0": true,
+        "G1": true,
+        "C1": false
+      },
+      {
+        "from": "join:1.exit",
+        "to": "join:1.entry",
+        "G0": true,
+        "G1": true,
+        "C1": true
+      },
+      {
+        "from": "join:1.entry",
+        "to": "bowl:1.lower",
+        "G0": true,
+        "G1": true,
+        "C1": false
+      },
+      {
+        "from": "bowl:1.lower",
+        "to": "aperture:op:open-boundary:lower.cap",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "aperture:op:open-boundary:lower.cap",
+        "to": "counter:1.lower-open-boundary",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "counter:1.lower-open-boundary",
+        "to": "counter:1.spine-wall",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "counter:1.spine-wall",
+        "to": "counter:1.upper-open-boundary",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "counter:1.upper-open-boundary",
+        "to": "aperture:op:open-boundary:upper.cap",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "aperture:op:open-boundary:upper.cap",
+        "to": "bowl:1.upper",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "bowl:1.upper",
+        "to": "terminal.top",
+        "G0": true,
+        "G1": true,
+        "C1": false
+      }
+    ],
+    [
+      {
+        "from": "wall",
+        "to": "upper",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      },
+      {
+        "from": "upper",
+        "to": "lower",
+        "G0": true,
+        "G1": true,
+        "C1": true
+      },
+      {
+        "from": "lower",
+        "to": "wall",
+        "G0": true,
+        "G1": false,
+        "C1": false
+      }
+    ]
+  ],
+  "synthetic": {
+    "status": "candidate",
+    "diff": {
+      "changedNodeIds": [
+        "counter:0"
+      ],
+      "addedApertureIds": [
+        "aperture:op:open-boundary"
+      ],
+      "addedPortIds": [
+        "aperture:op:open-boundary:lower",
+        "aperture:op:open-boundary:upper"
+      ],
+      "preservedDecisionIds": [
+        "stem",
+        "xHeight",
+        "baseline",
+        "advance",
+        "bearing",
+        "connectorRadius"
+      ],
+      "metrics": {
+        "policy": "preserve-advance-recompute-bearings",
+        "before": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "after": {
+          "advanceWidth": 650,
+          "leftSideBearing": 83,
+          "rightSideBearing": 55
+        },
+        "reason": "Opening may remove an extreme ink point; keep advance and derive bearings from resulting ink bounds."
+      },
+      "preservedCounterIds": []
+    }
+  },
+  "fonts": {
+    "enclosed": {
+      "sha256": "66d899f4046eb23b885bea538f62f198f9e7af2df9c1601e1e4a49f641d968c4",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 165,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 165,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 210,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 210,
+                  "y": 375,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "open": {
+      "sha256": "b26e0c27e185e0c8eaef261d9514706501be559c49cb16609afd21ce55a97f04",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 245,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 185,
+                  "y": 378,
+                  "on": true
+                },
+                {
+                  "x": 228,
+                  "y": 398,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 375,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 228,
+                  "y": 433,
+                  "on": true
+                },
+                {
+                  "x": 186,
+                  "y": 452,
+                  "on": true
+                },
+                {
+                  "x": 250,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "inventory": {
+      "sha256": "1286cbf2b918db24ab48127bd0553061408b6cf2faa12f6a8fb150be7e273897",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 4,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 165,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 165,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 210,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 210,
+                  "y": 375,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "a.open": {
+          "name": "a.open",
+          "unicodes": [],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 245,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 185,
+                  "y": 378,
+                  "on": true
+                },
+                {
+                  "x": 228,
+                  "y": 398,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 375,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 228,
+                  "y": 433,
+                  "on": true
+                },
+                {
+                  "x": 186,
+                  "y": 452,
+                  "on": true
+                },
+                {
+                  "x": 250,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "semantic": "passed",
+    "transaction": "passed",
+    "geometry": "passed; sampled intersection/containment checks, not exact proofs",
+    "internalFont": "passed",
+    "independentParser": "not tested: unavailable",
+    "browserRendering": "not observed",
+    "GSUB": "not implemented"
+  }
+}

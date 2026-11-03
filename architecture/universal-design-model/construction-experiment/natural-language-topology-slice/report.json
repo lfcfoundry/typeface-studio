@@ -1,0 +1,165 @@
+{
+  "experiment": "natural-language-single-to-double-storey-a-v1",
+  "request": {
+    "text": "Make the lowercase a double-storey and leave the other glyphs unchanged.",
+    "sourceRevisionId": "rev:bf2ab23572a8c71d",
+    "intentIds": [
+      "intent:nl-double-storey-a",
+      "intent:nl-preserve-other-glyphs"
+    ],
+    "requestedTopology": "double-storey",
+    "explicit": [
+      "target",
+      "topology",
+      "preserve-other-glyphs"
+    ],
+    "inferred": []
+  },
+  "operation": {
+    "id": "op:nl-double-storey-a",
+    "type": "construct.glyph.set-topology",
+    "targetGlyphId": "glyph:u0061",
+    "parentRevisionId": "rev:bf2ab23572a8c71d",
+    "candidateRevisionId": "rev:ea5c3ba4ac53a4b1",
+    "acceptedSourceUnchanged": true,
+    "candidateStatus": "candidate",
+    "metricPolicy": {
+      "advance": "preserve",
+      "bearings": "recompute-from-derived-bounds",
+      "kerning": "invalidate-for-review"
+    },
+    "preservedGlyphIds": [
+      "glyph:u0048",
+      "glyph:u006e",
+      "glyph:u006f"
+    ]
+  },
+  "semanticTopology": {
+    "source": {
+      "method": "construction.bowl-with-attached-stem",
+      "topology": "single-storey",
+      "bowls": 1,
+      "counters": 1
+    },
+    "candidate": {
+      "method": "construction.spine-and-bowl-stack",
+      "topology": "double-storey",
+      "bowls": 2,
+      "counters": 2,
+      "preservedNodeIds": [
+        "part:a-stem",
+        "part:a-upper-terminal",
+        "part:a-lower-terminal",
+        "part:a-bowl",
+        "part:a-counter",
+        "part:a-lower-join",
+        "part:a-upper-join"
+      ],
+      "addedNodeIds": [
+        "part:a-upper-bowl",
+        "part:a-upper-counter",
+        "part:a-middle-connector"
+      ]
+    }
+  },
+  "geometry": {
+    "source": {
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "contourCount": 2,
+      "counters": 1
+    },
+    "candidate": {
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "contourCount": 3,
+      "counters": 2
+    },
+    "validation": "Existing semantic grammar resolver and validateGlyph lifecycle; counter containment uses sampled curves, not an exact geometry proof.",
+    "sourceOfTruth": "Two-storey PathBuilder segment paths; orientContour rebuilds TrueType point records from the segments.",
+    "compilerBoundary": "canonicalizeInitialGeometry rebuilds points from segments. The v2 executor validates those same family contours; compilerProject passes the same model geometry to fontPoints.",
+    "validatedGeometryMatchesCompilerInput": true
+  },
+  "fonts": {
+    "compiler": "fontsketch 0.1.0 through prototype/src/font.js",
+    "internalAudit": "prototype/src/sfnt-audit.js; fontsketch parser and checksum validation",
+    "independentValidator": "not run; FontTools/OTS were not installed for the earlier architecture checks.",
+    "source": {
+      "path": "artifacts/LFCFoundry-NL-Topology-Single-Storey-A.ttf",
+      "bytes": 1640,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c",
+      "valid": true,
+      "glyphOrder": [
+        "o",
+        "n",
+        "H",
+        "a"
+      ],
+      "lowercaseA": {
+        "unicodes": [
+          97
+        ],
+        "advanceWidth": 650,
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    },
+    "candidate": {
+      "path": "artifacts/LFCFoundry-NL-Topology-Double-Storey-A.ttf",
+      "bytes": 1668,
+      "sha256": "b796fa7dd5ef93627caad2cd70c85a638b777993c34cc3a2976b0a95b1c3081e",
+      "valid": true,
+      "glyphOrder": [
+        "o",
+        "n",
+        "H",
+        "a"
+      ],
+      "lowercaseA": {
+        "unicodes": [
+          97
+        ],
+        "advanceWidth": 650,
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    }
+  },
+  "scope": "This creates two separate diagnostic fonts for review. It does not create an OpenType alternate or implement GSUB."
+}

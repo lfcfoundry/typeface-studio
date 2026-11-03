@@ -1,0 +1,295 @@
+{
+  "version": 1,
+  "sourceRevisionId": "rev:9e756b95e08bc7de",
+  "registryRevisionId": "rev:70672ea4505e136a",
+  "sourceHash": "ca011dc03657384f31da04b0de8a6810c999e0a707cd343fb460088252e9b6d6",
+  "decisionId": "decision:x-height",
+  "dependencies": [
+    {
+      "glyphId": "glyph:u006f",
+      "method": "construction.ring-from-bowl-counter",
+      "constructionHash": "0ff3c64c613a0200001d8dc5a0138fe91859514331edabe0a8a4fdb9b9d45600",
+      "reads": [
+        {
+          "nodeId": "part:o-bowl",
+          "field": "xHeightDecisionId",
+          "decisionId": "decision:x-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:o-bowl",
+          "field": "uses-parameter",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:o-counter",
+          "field": "uses-parameter",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        }
+      ]
+    },
+    {
+      "glyphId": "glyph:u006e",
+      "method": "construction.connected-stems-and-shoulder",
+      "constructionHash": "d6803c9fa4053a0893cf780cb6a83eb3f86a8ed9114e147f747e0e8fc2ee91bc",
+      "reads": [
+        {
+          "nodeId": "part:n-left-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:n-right-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:n-shoulder",
+          "field": "xHeightDecisionId",
+          "decisionId": "decision:x-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        }
+      ]
+    },
+    {
+      "glyphId": "glyph:u0048",
+      "method": "construction.parallel-stems-and-crossbar",
+      "constructionHash": "5b7b188ad633df65a854693099f4a42589f359f491a1a169514ea439a35786a0",
+      "reads": [
+        {
+          "nodeId": "part:H-left-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:H-left-stem",
+          "field": "capHeightDecisionId",
+          "decisionId": "decision:cap-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:H-right-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:H-right-stem",
+          "field": "capHeightDecisionId",
+          "decisionId": "decision:cap-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:H-crossbar",
+          "field": "thicknessDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        }
+      ]
+    },
+    {
+      "glyphId": "glyph:u0061",
+      "method": "construction.bowl-with-attached-stem",
+      "constructionHash": "70c8ca03bea49c72f0b42b672c039df3e3a6aa9605cfbcfa6ca37fdb7b51a4d0",
+      "reads": [
+        {
+          "nodeId": "part:a-bowl",
+          "field": "xHeightDecisionId",
+          "decisionId": "decision:x-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:a-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        }
+      ]
+    },
+    {
+      "glyphId": "glyph:u0068",
+      "method": "construction.ascender-stem-shoulder-return",
+      "constructionHash": "20e0327f616da91ba01260a35643464465b4334888b7ed7d0c44073cd8814b30",
+      "reads": [
+        {
+          "nodeId": "part:h-ascender-stem",
+          "field": "widthDecisionId",
+          "decisionId": "decision:shared-stem-width",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-ascender-stem",
+          "field": "ascenderDecisionId",
+          "decisionId": "decision:h-ascender",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-shoulder",
+          "field": "xHeightDecisionId",
+          "decisionId": "decision:x-height",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-shoulder",
+          "field": "ascenderDecisionId",
+          "decisionId": "decision:h-ascender",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-upper-terminal",
+          "field": "alignmentDecisionId",
+          "decisionId": "decision:h-ascender",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-lower-terminal",
+          "field": "alignmentDecisionId",
+          "decisionId": "decision:baseline",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        },
+        {
+          "nodeId": "part:h-return-terminal",
+          "field": "alignmentDecisionId",
+          "decisionId": "decision:baseline",
+          "effects": [
+            "geometry",
+            "bounds",
+            "bearings",
+            "spacing-review",
+            "visual-review"
+          ]
+        }
+      ]
+    }
+  ],
+  "overrides": [],
+  "affected": [
+    "glyph:u0061",
+    "glyph:u0068",
+    "glyph:u006e",
+    "glyph:u006f"
+  ],
+  "unaffected": [
+    "glyph:u0048"
+  ],
+  "hash": "cde75c69d8b03c15b9ff5295393f31eb8bc38f60a985bd0ef5a68a1740d5c446"
+}

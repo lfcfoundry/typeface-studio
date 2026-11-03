@@ -1,0 +1,26 @@
+{
+  "artifacts/LFCFoundry-Cross-Grammar-closed.ttf": {
+    "bytes": 1348,
+    "sha256": "cdc80c5b4a906db3ae585d4761e57bacd0e663f7d9bcc907246c4a45ae0d48ba"
+  },
+  "artifacts/LFCFoundry-Cross-Grammar-open.ttf": {
+    "bytes": 1340,
+    "sha256": "34ea0feea9a813973f97bc7153f6131322e2c94e2229a21245301f0dfc7168cb"
+  },
+  "artifacts/LFCFoundry-Cross-Grammar-inventory.ttf": {
+    "bytes": 1348,
+    "sha256": "d12c6b5c77531d3546afa9be2973f2594349e3cd9eabf9eaf3fc7e3e8e8f2707"
+  },
+  "artifacts/LFCFoundry-Cross-Grammar-spine.ttf": {
+    "bytes": 1324,
+    "sha256": "f15bf179f1790da8806e98cb9360ceb6ac3e6f3f66ea99637ed3c2afc3d1424f"
+  },
+  "inspection.json": {
+    "bytes": 66551,
+    "sha256": "3847be3bc17da462e1474f9af3db510c33b93edcfc3172e4f9a3795af43a0e8a"
+  },
+  "review.html": {
+    "bytes": 10416,
+    "sha256": "8895282c68790520b1cbcf961ad0a7fd202f45822165199027d409775b2f679b"
+  }
+}

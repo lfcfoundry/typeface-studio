@@ -1,0 +1,474 @@
+{
+  "generatedAt": "reproducible inspection; no timestamp recorded",
+  "tools": {
+    "parser": "fontsketch 0.1.0",
+    "compilerRelated": true,
+    "externalValidator": null
+  },
+  "fonts": {
+    "base": {
+      "filename": "LFCFoundry-Semantic-Construction-Base.ttf",
+      "bytes": 1580,
+      "sha256": "f94fcae18a65a32d3f486d7f4fa652826c8f87832a79a3eae02bff76e9473824",
+      "parser": {
+        "name": "fontsketch parseFont (same implementation family as compiler)",
+        "glyphNames": [
+          ".notdef",
+          "space",
+          "o",
+          "n",
+          "H"
+        ],
+        "glyphs": {
+          "o": {
+            "unicode": [
+              111
+            ],
+            "advanceWidth": 620,
+            "contours": 2,
+            "metric": {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": -8,
+                "xMax": 565,
+                "yMax": 508,
+                "pointCount": 4
+              },
+              {
+                "xMin": 181,
+                "yMin": 119,
+                "xMax": 439,
+                "yMax": 381,
+                "pointCount": 4
+              }
+            ]
+          },
+          "n": {
+            "unicode": [
+              110
+            ],
+            "advanceWidth": 650,
+            "contours": 1,
+            "metric": {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": 0,
+                "xMax": 595,
+                "yMax": 620,
+                "pointCount": 16
+              }
+            ]
+          },
+          "H": {
+            "unicode": [
+              72
+            ],
+            "advanceWidth": 650,
+            "contours": 1,
+            "metric": {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": 0,
+                "xMax": 595,
+                "yMax": 700,
+                "pointCount": 12
+              }
+            ]
+          }
+        }
+      },
+      "internalCompilerChecksumErrors": [],
+      "internalSfntAudit": {
+        "valid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "glyphCount": 5,
+        "cmapSummary": {
+          "format": 4
+        },
+        "metricsErrors": [],
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ]
+      },
+      "sfntTableDirectory": {
+        "OS/2": {
+          "checksum": "532d593a",
+          "offset": 296,
+          "length": 96
+        },
+        "cmap": {
+          "checksum": "00ce0101",
+          "offset": 412,
+          "length": 72
+        },
+        "glyf": {
+          "checksum": "d65bbd2a",
+          "offset": 496,
+          "length": 192
+        },
+        "head": {
+          "checksum": "24fbbf33",
+          "offset": 172,
+          "length": 54
+        },
+        "hhea": {
+          "checksum": "059801fe",
+          "offset": 228,
+          "length": 36
+        },
+        "hmtx": {
+          "checksum": "08930091",
+          "offset": 392,
+          "length": 18
+        },
+        "loca": {
+          "checksum": "005c009e",
+          "offset": 484,
+          "length": 12
+        },
+        "maxp": {
+          "checksum": "00080011",
+          "offset": 264,
+          "length": 32
+        },
+        "name": {
+          "checksum": "48274d5d",
+          "offset": 688,
+          "length": 845
+        },
+        "post": {
+          "checksum": "fff700af",
+          "offset": 1536,
+          "length": 44
+        }
+      }
+    },
+    "candidate": {
+      "filename": "LFCFoundry-Semantic-Construction-Open-Counter.ttf",
+      "bytes": 1580,
+      "sha256": "00065a4210071d36ecaf4f25ed7808fb74ee04f665627f0f204e4c6131492018",
+      "parser": {
+        "name": "fontsketch parseFont (same implementation family as compiler)",
+        "glyphNames": [
+          ".notdef",
+          "space",
+          "o",
+          "n",
+          "H"
+        ],
+        "glyphs": {
+          "o": {
+            "unicode": [
+              111
+            ],
+            "advanceWidth": 620,
+            "contours": 2,
+            "metric": {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": -8,
+                "xMax": 565,
+                "yMax": 508,
+                "pointCount": 4
+              },
+              {
+                "xMin": 145,
+                "yMin": 82,
+                "xMax": 475,
+                "yMax": 418,
+                "pointCount": 4
+              }
+            ]
+          },
+          "n": {
+            "unicode": [
+              110
+            ],
+            "advanceWidth": 650,
+            "contours": 1,
+            "metric": {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": 0,
+                "xMax": 595,
+                "yMax": 620,
+                "pointCount": 16
+              }
+            ]
+          },
+          "H": {
+            "unicode": [
+              72
+            ],
+            "advanceWidth": 650,
+            "contours": 1,
+            "metric": {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            "contourBoundsByControlPoint": [
+              {
+                "xMin": 55,
+                "yMin": 0,
+                "xMax": 595,
+                "yMax": 700,
+                "pointCount": 12
+              }
+            ]
+          }
+        }
+      },
+      "internalCompilerChecksumErrors": [],
+      "internalSfntAudit": {
+        "valid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "glyphCount": 5,
+        "cmapSummary": {
+          "format": 4
+        },
+        "metricsErrors": [],
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ]
+      },
+      "sfntTableDirectory": {
+        "OS/2": {
+          "checksum": "532d593a",
+          "offset": 296,
+          "length": 96
+        },
+        "cmap": {
+          "checksum": "00ce0101",
+          "offset": 412,
+          "length": 72
+        },
+        "glyf": {
+          "checksum": "445bbc2a",
+          "offset": 496,
+          "length": 192
+        },
+        "head": {
+          "checksum": "24fbbf33",
+          "offset": 172,
+          "length": 54
+        },
+        "hhea": {
+          "checksum": "059801fe",
+          "offset": 228,
+          "length": 36
+        },
+        "hmtx": {
+          "checksum": "08930091",
+          "offset": 392,
+          "length": 18
+        },
+        "loca": {
+          "checksum": "005c009e",
+          "offset": 484,
+          "length": 12
+        },
+        "maxp": {
+          "checksum": "00080011",
+          "offset": 264,
+          "length": 32
+        },
+        "name": {
+          "checksum": "48274d5d",
+          "offset": 688,
+          "length": 845
+        },
+        "post": {
+          "checksum": "fff700af",
+          "offset": 1536,
+          "length": 44
+        }
+      }
+    }
+  },
+  "comparison": {
+    "sameGlyphOrder": true,
+    "perGlyph": {
+      ".notdef": {
+        "outlineIdentical": true,
+        "advanceIdentical": true,
+        "unicodeIdentical": true
+      },
+      "space": {
+        "outlineIdentical": true,
+        "advanceIdentical": true,
+        "unicodeIdentical": true
+      },
+      "o": {
+        "outlineIdentical": false,
+        "advanceIdentical": true,
+        "unicodeIdentical": true
+      },
+      "n": {
+        "outlineIdentical": true,
+        "advanceIdentical": true,
+        "unicodeIdentical": true
+      },
+      "H": {
+        "outlineIdentical": true,
+        "advanceIdentical": true,
+        "unicodeIdentical": true
+      }
+    },
+    "lowercaseO": {
+      "outerContourIdentical": true,
+      "counterContourIdentical": false,
+      "counterPointBoundsBase": {
+        "xMin": 181,
+        "yMin": 119,
+        "xMax": 439,
+        "yMax": 381,
+        "pointCount": 4
+      },
+      "counterPointBoundsCandidate": {
+        "xMin": 145,
+        "yMin": 82,
+        "xMax": 475,
+        "yMax": 418,
+        "pointCount": 4
+      }
+    },
+    "lowercaseOCounterControlBounds": {
+      "base": {
+        "xMin": 181,
+        "yMin": 119,
+        "xMax": 439,
+        "yMax": 381,
+        "pointCount": 4
+      },
+      "candidate": {
+        "xMin": 145,
+        "yMin": 82,
+        "xMax": 475,
+        "yMax": 418,
+        "pointCount": 4
+      }
+    },
+    "tableBytesIdentical": {
+      "OS/2": true,
+      "cmap": true,
+      "glyf": false,
+      "head": false,
+      "hhea": true,
+      "hmtx": true,
+      "loca": true,
+      "maxp": true,
+      "name": true,
+      "post": true
+    },
+    "differingTableBytes": [
+      {
+        "tag": "glyf",
+        "baseLength": 192,
+        "candidateLength": 192,
+        "differingByteCount": 5,
+        "differingOffsetsWithinTable": [
+          70,
+          72,
+          74,
+          78,
+          80
+        ],
+        "headAdjustmentOnly": false
+      },
+      {
+        "tag": "head",
+        "baseLength": 54,
+        "candidateLength": 54,
+        "differingByteCount": 2,
+        "differingOffsetsWithinTable": [
+          8,
+          10
+        ],
+        "headAdjustmentOnly": true
+      }
+    ],
+    "differingTableRecords": [
+      {
+        "tag": "glyf",
+        "base": {
+          "checksum": "d65bbd2a",
+          "offset": 496,
+          "length": 192
+        },
+        "candidate": {
+          "checksum": "445bbc2a",
+          "offset": 496,
+          "length": 192
+        }
+      },
+      {
+        "tag": "head",
+        "base": {
+          "checksum": "24fbbf33",
+          "offset": 172,
+          "length": 54
+        },
+        "candidate": {
+          "checksum": "24fbbf33",
+          "offset": 172,
+          "length": 54
+        }
+      }
+    ]
+  },
+  "reviewPage": {
+    "exactEmbeddedArtifactBytes": {
+      "base": true,
+      "candidate": true
+    },
+    "allEmbeddedBytesMatch": true
+  },
+  "interpretation": {
+    "expectedChangedGlyph": true,
+    "unaffectedGlyphOutlinesExact": true,
+    "allMetricsAndMappingsExact": true,
+    "independentValidationPerformed": false
+  }
+}

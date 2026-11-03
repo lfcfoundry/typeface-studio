@@ -1,0 +1,97 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+    "platform": "Linux armv81",
+    "language": "en-US",
+    "devicePixelRatio": 2.8860480785369873,
+    "location": "http://127.0.0.1:8765/browser-evidence/capture.html"
+  },
+  "fonts": {
+    "parent": {
+      "loaded": true,
+      "status": "loaded",
+      "byteLength": 1640
+    },
+    "candidate": {
+      "loaded": true,
+      "status": "loaded",
+      "byteLength": 1700
+    },
+    "parentCheck": true,
+    "candidateCheck": true
+  },
+  "render": {
+    "fontSizeCssPx": 300,
+    "textAlign": "left",
+    "textBaseline": "alphabetic",
+    "fillStyle": "#171512",
+    "parentOrigin": {
+      "x": 100,
+      "y": 360
+    },
+    "candidateOrigin": {
+      "x": 500,
+      "y": 360
+    },
+    "metrics": {
+      "parentN": {
+        "text": "n",
+        "font": "300px HParent",
+        "x": 100,
+        "baseline": 360,
+        "width": 194.99966430664062,
+        "actualBoundingBoxLeft": -14.0625,
+        "actualBoundingBoxRight": 182.8125,
+        "actualBoundingBoxAscent": 164.0625,
+        "actualBoundingBoxDescent": 0
+      },
+      "candidateH": {
+        "text": "h",
+        "font": "300px HCandidate",
+        "x": 500,
+        "baseline": 360,
+        "width": 194.99966430664062,
+        "actualBoundingBoxLeft": -14.0625,
+        "actualBoundingBoxRight": 182.8125,
+        "actualBoundingBoxAscent": 243.75,
+        "actualBoundingBoxDescent": 0
+      }
+    },
+    "rasterBounds": {
+      "parentN": {
+        "xMin": 116,
+        "yMin": 198,
+        "xMax": 278,
+        "yMax": 359,
+        "pixelCount": 11460,
+        "alphaThreshold": 24,
+        "rgbDarkestChannelThreshold": 245
+      },
+      "candidateH": {
+        "xMin": 516,
+        "yMin": 150,
+        "xMax": 678,
+        "yMax": 359,
+        "pixelCount": 15734,
+        "alphaThreshold": 24,
+        "rgbDarkestChannelThreshold": 245
+      }
+    },
+    "alphaThreshold": 24,
+    "rasterMaskCorrection": "Original capture had an opaque white background; alpha alone included the full crop. Bounds were recomputed from the same browser PNG using alpha > 24 and darkest RGB channel < 245."
+  },
+  "runtimeErrors": [],
+  "completedAt": "2026-11-03T16:27:28.812Z",
+  "evidence": {
+    "screenshotType": "Android Chrome Canvas raster of loaded font glyphs",
+    "file": "android-chrome-canvas.png",
+    "bytes": 18140,
+    "sha256": "e3656b0ff25853248e74a9950f548324ae94abc9f4a00f9c050a7223dacb4fec",
+    "dimensions": {
+      "width": 800,
+      "height": 440
+    },
+    "initialResultsFile": "android-chrome-results.json",
+    "initialRasterMaskWasSuperseded": true
+  }
+}

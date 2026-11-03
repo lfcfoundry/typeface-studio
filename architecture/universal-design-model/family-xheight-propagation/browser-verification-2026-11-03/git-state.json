@@ -1,0 +1,24 @@
+{
+  "branch": "codex/typeface-studio-transaction-composition",
+  "head": "c6145af55231e4688225acb3844d759ea487aa3e",
+  "staged": [],
+  "trackedModified": [
+    "architecture/universal-design-model/construction-experiment/transaction-composition/composition.test.mjs",
+    "architecture/universal-design-model/construction-experiment/transaction-composition/file-hashes.sha256",
+    "architecture/universal-design-model/construction-experiment/transaction-composition/integration.mjs",
+    "architecture/universal-design-model/construction-experiment/transaction-composition/preservation.json",
+    "prototype/README.md",
+    "prototype/dist/typeface-studio-contour-prototype.html",
+    "prototype/prototype.css",
+    "prototype/src/app.js",
+    "prototype/src/benchmark.mjs",
+    "prototype/src/brief.js",
+    "prototype/src/ontology.js",
+    "prototype/src/recipes.js",
+    "prototype/src/spec.js"
+  ],
+  "untrackedCount": 230,
+  "outsideExperimentStatusMatchesInitial": true,
+  "newEvidenceDirectory": "architecture/universal-design-model/family-xheight-propagation/browser-verification-2026-11-03",
+  "existingSourceOrFontFilesModifiedByThisTask": []
+}

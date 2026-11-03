@@ -1,0 +1,403 @@
+{
+  "title": "End-to-end semantic chamfered terminal font validation",
+  "date": "2026-11-03",
+  "repositoryHead": "c6145af55231e4688225acb3844d759ea487aa3e",
+  "compiler": {
+    "package": "fontsketch",
+    "version": "0.1.0",
+    "path": "prototype/src/font.js",
+    "node": "v26.13.0"
+  },
+  "sourcePath": [
+    "accepted semantic design",
+    "semantic.terminal.set-profile transaction",
+    "construction adapter geometry derivation",
+    "compileTypeface / compileSemanticDesign",
+    "internal parseFont and auditSfnt checks"
+  ],
+  "revisions": {
+    "a": {
+      "outerBase": "rev:transaction-base",
+      "outerAccepted": "rev:0f698cdca556439a",
+      "semanticBase": "rev:1f967f7a1606afec",
+      "semanticAccepted": "rev:dd644429432468d4",
+      "operationId": "op:font-validation-a"
+    },
+    "spine": {
+      "outerBase": "rev:transaction-base",
+      "outerAccepted": "rev:5b047400b34e5723",
+      "semanticBase": "revision:base",
+      "semanticAccepted": "revision:9b5f9432040844cc",
+      "operationId": "op:font-validation-spine"
+    }
+  },
+  "fonts": {
+    "single-storey-a-flat": {
+      "file": "single-storey-a-flat.ttf",
+      "bytes": 1640,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c",
+      "internalAudit": {
+        "valid": true,
+        "tableCount": 10,
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "wholeChecksumValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        }
+      },
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H",
+        "a"
+      ],
+      "mapping": {
+        "codePoint": "U+0061",
+        "glyphIndex": 5,
+        "glyphName": "a",
+        "unicodes": [
+          97
+        ]
+      },
+      "compiledGlyph": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55,
+        "contourCount": 2,
+        "pointBounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "glyfBounds": {
+          "contourCount": 2,
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        }
+      },
+      "semanticGeometry": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "contourCount": 2
+      },
+      "outlineHash": "3ada5147d35c0e921e509430d881a5c6987483199b570a10a7cd57747d13fb5d"
+    },
+    "single-storey-a-chamfered": {
+      "file": "single-storey-a-chamfered.ttf",
+      "bytes": 1644,
+      "sha256": "24c605a34f77c98389334bdd5de80bf9c1e070ea7cab900a71640e0a46d1f856",
+      "internalAudit": {
+        "valid": true,
+        "tableCount": 10,
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "wholeChecksumValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        }
+      },
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H",
+        "a"
+      ],
+      "mapping": {
+        "codePoint": "U+0061",
+        "glyphIndex": 5,
+        "glyphName": "a",
+        "unicodes": [
+          97
+        ]
+      },
+      "compiledGlyph": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55,
+        "contourCount": 2,
+        "pointBounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "glyfBounds": {
+          "contourCount": 2,
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        }
+      },
+      "semanticGeometry": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "contourCount": 2
+      },
+      "outlineHash": "59c35e3d2b1ac9c523980eec246354ae2374ffc5129a7188e151cfa03bfa7791"
+    },
+    "spine-bowl-flat": {
+      "file": "spine-bowl-flat.ttf",
+      "bytes": 1344,
+      "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8",
+      "internalAudit": {
+        "valid": true,
+        "tableCount": 10,
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "wholeChecksumValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        }
+      },
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "a"
+      ],
+      "mapping": {
+        "codePoint": "U+0061",
+        "glyphIndex": 2,
+        "glyphName": "a",
+        "unicodes": [
+          97
+        ]
+      },
+      "compiledGlyph": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55,
+        "contourCount": 3,
+        "pointBounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "glyfBounds": {
+          "contourCount": 3,
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        }
+      },
+      "semanticGeometry": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "contourCount": 3
+      },
+      "outlineHash": "f7a9c42b5db6c1fe253f401c1be551a6d794cc8fa8c400004656d5e32c6ca3a1"
+    },
+    "spine-bowl-chamfered": {
+      "file": "spine-bowl-chamfered.ttf",
+      "bytes": 1348,
+      "sha256": "2521d6b42248ef8439d1937b97847ebf0172a33ca656b76a5692225cef3efb2f",
+      "internalAudit": {
+        "valid": true,
+        "tableCount": 10,
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "wholeChecksumValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        }
+      },
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "a"
+      ],
+      "mapping": {
+        "codePoint": "U+0061",
+        "glyphIndex": 2,
+        "glyphName": "a",
+        "unicodes": [
+          97
+        ]
+      },
+      "compiledGlyph": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55,
+        "contourCount": 3,
+        "pointBounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "glyfBounds": {
+          "contourCount": 3,
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        }
+      },
+      "semanticGeometry": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "contourCount": 3
+      },
+      "outlineHash": "459534149e0cb570a9c0391802d63ca6f0bfe271e3e74fc3bb167ea7e023d13a"
+    }
+  },
+  "flatBaselineComparisons": {
+    "single-storey-a-flat": {
+      "savedArtifact": "LFCFoundry-Semantic-Construction-Lowercase-A-Experiment.ttf",
+      "byteIdentical": true,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+    },
+    "spine-bowl-flat": {
+      "savedArtifact": "LFCFoundry-Grammar-Double-Review.ttf",
+      "byteIdentical": true,
+      "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8"
+    }
+  },
+  "comparison": {
+    "advanceWidthPreserved": true,
+    "leftSideBearingPreserved": true,
+    "rightSideBearingPreserved": true,
+    "actualGlyfBoundsPreserved": true,
+    "aCounterPreserved": true,
+    "spineCountersPreserved": true,
+    "unrelatedGlyphsPreserved": true,
+    "terminalIdentityAndRelationshipsPreserved": true,
+    "semanticAChamfer": {
+      "profile": "chamfered",
+      "alignmentDecisionId": "decision:x-height",
+      "orientation": "outer-right",
+      "cutRatio": 0.2
+    },
+    "semanticSpineChamfer": {
+      "profile": "chamfered",
+      "orientation": "outer-right",
+      "cutRatio": 0.2
+    },
+    "kerning": "Not represented by these diagnostic fonts; the operation policy flags kerning for review."
+  },
+  "independentValidation": {
+    "fontTools": "unavailable (Python import check: no module)",
+    "ots": "unavailable (ots-sanitize/ots commands not installed)",
+    "fontForge": "unavailable (command not installed)",
+    "fontconfig": "unavailable (fc-scan/fc-query not installed)",
+    "harfBuzz": "unavailable (hb-shape not installed)",
+    "browser": "No independent command-line SFNT validator was available. Chrome 156.0.0.0 on Android 10 independently loaded each font with FontFace and rasterized U+0061 with Canvas; details are in browser-results.json."
+  },
+  "rendering": {
+    "status": "font-load-and-canvas-rasterization-passed; screenshot-capture-unavailable",
+    "environment": "Chrome 156.0.0.0 on Android 10",
+    "reviewPage": "review.html",
+    "probePage": "browser-probe.html",
+    "results": "browser-results.json"
+  }
+}

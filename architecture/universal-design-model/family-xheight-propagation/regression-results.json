@@ -1,0 +1,79 @@
+{
+  "architecture": {
+    "command": [
+      "node",
+      "--test",
+      "architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs",
+      "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs",
+      "architecture/universal-design-model/construction-experiment/lowercase-h-topology-slice/scenario.test.mjs",
+      "architecture/universal-design-model/construction-experiment/natural-language-topology-slice/scenario.test.mjs",
+      "architecture/universal-design-model/construction-experiment/related-glyph-reuse/test/related-glyphs.test.mjs",
+      "architecture/universal-design-model/construction-experiment/test/construction.test.mjs",
+      "architecture/universal-design-model/construction-experiment/test/lowercase-a.test.mjs",
+      "architecture/universal-design-model/construction-experiment/test/terminal-profile.test.mjs",
+      "architecture/universal-design-model/construction-experiment/transaction-composition/composition.test.mjs",
+      "architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs",
+      "architecture/universal-design-model/contract.test.mjs",
+      "architecture/universal-design-model/family-xheight-propagation/propagation.test.mjs",
+      "architecture/universal-design-model/integration-experiment/integration.test.mjs",
+      "architecture/universal-design-model/operation-composition.test.mjs",
+      "architecture/universal-design-model/shaping-request-adapter.test.mjs",
+      "architecture/universal-design-model/whole-font-brief-specimen/test/whole-font.test.mjs",
+      "architecture/universal-design-model/writing-context.test.mjs"
+    ],
+    "exitStatus": 0,
+    "summary": [
+      "\u2714 existing Latin heart and reflection architecture fixtures retain their original v2 meaning (1.180013ms)",
+      "\u2139 tests 195",
+      "\u2139 suites 0",
+      "\u2139 pass 195",
+      "\u2139 fail 0",
+      "\u2139 cancelled 0",
+      "\u2139 skipped 0",
+      "\u2139 todo 0",
+      "\u2139 duration_ms 10633.257859"
+    ]
+  },
+  "prototype": {
+    "command": [
+      "node",
+      "--test",
+      "prototype/test/brief.test.mjs",
+      "prototype/test/contours.test.mjs",
+      "prototype/test/font.test.mjs",
+      "prototype/test/glyph-instructions.test.mjs"
+    ],
+    "exitStatus": 0,
+    "summary": [
+      "\u2714 degree modifiers have documented, distinct terminal radius and geometry effects (42.021851ms)",
+      "\u2139 tests 28",
+      "\u2139 suites 0",
+      "\u2139 pass 28",
+      "\u2139 fail 0",
+      "\u2139 cancelled 0",
+      "\u2139 skipped 0",
+      "\u2139 todo 0",
+      "\u2139 duration_ms 4711.342165"
+    ]
+  },
+  "production": {
+    "command": [
+      "node",
+      "--test",
+      "test/core.test.mjs",
+      "test/release.test.mjs"
+    ],
+    "exitStatus": 0,
+    "summary": [
+      "\u2714 release HTML is self-contained and carries dependency notice (17.365112ms)",
+      "\u2139 tests 21",
+      "\u2139 suites 0",
+      "\u2139 pass 21",
+      "\u2139 fail 0",
+      "\u2139 cancelled 0",
+      "\u2139 skipped 0",
+      "\u2139 todo 0",
+      "\u2139 duration_ms 3447.216962"
+    ]
+  }
+}

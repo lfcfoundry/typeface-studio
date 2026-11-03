@@ -1,0 +1,34 @@
+{
+  "capturedBeforeImplementation": true,
+  "repository": {
+    "root": "/data/data/com.termux/files/home/lfcfoundry/typeface-studio",
+    "branch": "codex/typeface-studio-transaction-composition",
+    "head": "c6145af55231e4688225acb3844d759ea487aa3e",
+    "stagedChanges": 0,
+    "preexistingTrackedModifications": 13,
+    "preexistingUntrackedPaths": 129
+  },
+  "targetExperimentDirectoryExisted": false,
+  "sourceFileSha256": {
+    "architecture/universal-design-model/integration-experiment/engine.mjs": "a23fa2e5a8d3fa75b5bc75b79cf5ea1974f61f2cbf44e0777fab5ea48f1eebd6",
+    "architecture/universal-design-model/construction-experiment/a-experiment.mjs": "ac3fbe1871f33df63f1cc19a9236ee5321274c6e613fd2e98d1a31096aa7b178",
+    "architecture/universal-design-model/construction-experiment/model.mjs": "742efe1122da69977d7e79d1b252994f7e66cf0e412787bdfd51916f3198d84f",
+    "architecture/universal-design-model/construction-experiment/geometry.mjs": "e0f2c927648666bf0181d109786957989a7ad34ba51fe7a3f39ac54d10d6cc5c",
+    "architecture/universal-design-model/construction-experiment/font-adapter.mjs": "7836fe40fbba04209194cb22623bdf10e7c2d66f904ab5ac44c1c78977c08d34",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.mjs": "3384daf9c9149cfde19eda9785e2197e9eaa1462720414cac371f64b5af7c4f9",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/font.mjs": "43cceb76ffffd84706830aba8e90d504f2fedd29b67d49426aae4c9ad56c34a0",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs": "ee5f98c9d51132f1ecdb78ce00b35b355b92f09f8d670bb79cfbedb931e31b76",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/README.md": "428c3ea805d28626ebeda5f8258ef62ca3b7c2243b356c20bc20156b91fd1091",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/preservation-baseline.json": "7046b2cf1ecfb43b070ea68ed81dc08e835c1369ef50f8dde4529c954e4a464f",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/review.html": "412cb517e4713d470545a92432b464df5707c2849b0f814682d653cc99b621a2",
+    "prototype/src/font.js": "de9bd0df81c04397221cb2266e5aba56b19792fb38e7b5154716bde523fa7717",
+    "prototype/src/sfnt-audit.js": "6bb5a34532d22621a4d25e7dffa05f4b5f2b13444ba305c9d88a50d79ec4882f",
+    "prototype/src/contours.js": "447c874ec5cc8dc6011a540c65d55e97db733e0643a77161377655ee57ce5907"
+  },
+  "existingArtifactSha256": {
+    "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Lowercase-A-Experiment.ttf": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Single-Review.ttf": "ceb247148c395cca4e98833f53dfd794ab606f28cf1b7cc5eea9fbb86ec80869",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Double-Review.ttf": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8"
+  },
+  "note": "The original terminal-profile flat-a and flat spine artifacts are the same two-storey/single-storey baselines listed above. No existing artifact is an output target of this experiment."
+}

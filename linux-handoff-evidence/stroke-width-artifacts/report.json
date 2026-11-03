@@ -1,0 +1,350 @@
+{
+  "scope": "in-memory diagnostic derivation; no weight transaction or accepted revision",
+  "xHeight": 520,
+  "fonts": [
+    {
+      "width": 90,
+      "status": "compiled-diagnostic",
+      "filename": "primary-width-90.ttf",
+      "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f",
+      "bytes": 1700,
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 7,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 4,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 37
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": [
+        {
+          "glyph": "o",
+          "bounds": {
+            "xMin": 55,
+            "yMin": -8,
+            "xMax": 565,
+            "yMax": 528
+          },
+          "metrics": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "n",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 560
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "H",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 700
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "a",
+          "bounds": {
+            "xMin": 37,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 520
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 37,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "h",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 700
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        }
+      ]
+    },
+    {
+      "width": 100,
+      "status": "compiled-diagnostic",
+      "filename": "primary-width-100.ttf",
+      "sha256": "0d64f58cef5d61f33d1e59abbe1e9cbd6bbeaf62dd0371a7fc9742f5a242f769",
+      "bytes": 1704,
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 7,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 4,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 27
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": [
+        {
+          "glyph": "o",
+          "bounds": {
+            "xMin": 55,
+            "yMin": -8,
+            "xMax": 565,
+            "yMax": 528
+          },
+          "metrics": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "n",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 564
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "H",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 700
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "a",
+          "bounds": {
+            "xMin": 27,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 520
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 27,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "h",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 700
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        }
+      ]
+    },
+    {
+      "width": 95,
+      "status": "unsupported-dimensions",
+      "glyphs": [
+        {
+          "glyph": "o",
+          "bounds": {
+            "xMin": 55,
+            "yMin": -8,
+            "xMax": 565,
+            "yMax": 528
+          },
+          "metrics": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "n",
+          "error": "glyph:u006e: C1 shoulder construction requires a span divisible by four and an even rise in font units."
+        },
+        {
+          "glyph": "H",
+          "bounds": {
+            "xMin": 55,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 700
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "a",
+          "bounds": {
+            "xMin": 32,
+            "yMin": 0,
+            "xMax": 595,
+            "yMax": 520
+          },
+          "metrics": {
+            "advanceWidth": 650,
+            "leftSideBearing": 32,
+            "rightSideBearing": 55
+          }
+        },
+        {
+          "glyph": "h",
+          "error": "The semantic stem, shoulder, opening, or ascender dimensions cannot form a valid h outline."
+        }
+      ]
+    }
+  ]
+}

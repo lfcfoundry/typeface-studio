@@ -1,0 +1,31 @@
+{
+  "architecture/universal-design-model/construction-experiment/two-storey-grammar/file-hashes.sha256": {
+    "exitStatus": 0,
+    "output": "README.md: OK\nartifacts/LFCFoundry-Grammar-Double-Review.ttf: OK\nartifacts/LFCFoundry-Grammar-Narrow-Upper-Review.ttf: OK\nartifacts/LFCFoundry-Grammar-Single-Review.ttf: OK\nartifacts/LFCFoundry-Grammar-a-Alternates.ttf: OK\nbuild.mjs: OK\nfont.mjs: OK\ngrammar.mjs: OK\n../terminal-profile-record.mjs: OK\ngrammar.test.mjs: OK\nhashes.json: OK\ninspection.json: OK\npreservation-baseline.json: OK\nreview.html: OK\n"
+  },
+  "architecture/universal-design-model/construction-experiment/aperture-operation/file-hashes.sha256": {
+    "exitStatus": 0,
+    "output": "README.md: OK\naperture.mjs: OK\naperture.test.mjs: OK\nartifacts/LFCFoundry-Aperture-enclosed.ttf: OK\nartifacts/LFCFoundry-Aperture-inventory.ttf: OK\nartifacts/LFCFoundry-Aperture-open.ttf: OK\nbaseline.json: OK\nbuild.mjs: OK\nhashes.json: OK\ninspection.json: OK\nreview.html: OK\n"
+  },
+  "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/file-hashes.sha256": {
+    "exitStatus": 0,
+    "output": "README.md: OK\nartifacts/LFCFoundry-Cross-Grammar-closed.ttf: OK\nartifacts/LFCFoundry-Cross-Grammar-inventory.ttf: OK\nartifacts/LFCFoundry-Cross-Grammar-open.ttf: OK\nartifacts/LFCFoundry-Cross-Grammar-spine.ttf: OK\nbaseline.json: OK\nboundary-contract.md: OK\nboundary.mjs: OK\nbuild.mjs: OK\nexperiment.test.mjs: OK\ngrammars.mjs: OK\nhashes.json: OK\ninspection.json: OK\noperation.mjs: OK\nreview.html: OK\n"
+  },
+  "architecture/universal-design-model/construction-experiment/transaction-composition/file-hashes.sha256": {
+    "exitStatus": 0,
+    "output": "README.md: OK\nartifact-hashes.json: OK\nartifacts/LFCFoundry-Composition-ring-A.ttf: OK\nartifacts/LFCFoundry-Composition-ring-B.ttf: OK\nartifacts/LFCFoundry-Composition-ring-aperture.ttf: OK\nartifacts/LFCFoundry-Composition-ring-baseline.ttf: OK\nartifacts/LFCFoundry-Composition-ring-reflection.ttf: OK\nartifacts/LFCFoundry-Composition-spine-A.ttf: OK\nartifacts/LFCFoundry-Composition-spine-B.ttf: OK\nartifacts/LFCFoundry-Composition-spine-aperture.ttf: OK\nartifacts/LFCFoundry-Composition-spine-baseline.ttf: OK\nartifacts/LFCFoundry-Composition-spine-reflection.ttf: OK\nbaseline-sources.json: OK\nbaseline/LICENSE: OK\nbaseline/THIRD-PARTY-NOTICES.md: OK\nbaseline/architecture/universal-design-model/construction-experiment/aperture-operation/aperture.mjs: OK\nbaseline/architecture/universal-design-model/construction-experiment/cross-grammar-aperture/boundary.mjs: OK\nbaseline/architecture/universal-design-model/construction-experiment/cross-grammar-aperture/grammars.mjs: OK\nbaseline/architecture/universal-design-model/construction-experiment/cross-grammar-aperture/operation.mjs: OK\nbaseline/architecture/universal-design-model/construction-experiment/two-storey-grammar/font.mjs: OK\nbaseline/architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.mjs: OK\nbaseline/architecture/universal-design-model/integration-experiment/engine.mjs: OK\nbaseline/prototype/src/contours.js: OK\nbaseline/prototype/src/font.js: OK\nbaseline/prototype/src/glyph-instructions.js: OK\nbaseline/prototype/src/glyph-operations.js: OK\nbaseline/prototype/src/sfnt-audit.js: OK\nbaseline/prototype/src/spec.js: OK\nbuild.mjs: OK\ncomposition.test.mjs: OK\nexecutor-extension.diff: OK\nextend-executor.mjs: OK\nextended-executor.mjs: OK\ninspection.json: OK\nintegration.mjs: OK\npreservation.json: OK\npublication-audit.json: OK\nreview.html: OK\nsnapshot-normalizations.json: OK\n"
+  },
+  "architecture/universal-design-model/whole-font-brief-specimen/sha256-manifest.json": {
+    "checked": 19,
+    "mismatches": []
+  },
+  "architecture/universal-design-model/construction-experiment/lowercase-h-topology-slice/sha256-manifest.json": {
+    "checked": 11,
+    "mismatches": []
+  },
+  "previous-whole-font-preservation": {
+    "exitStatus": 1,
+    "output": "{\n  \"branch\": \"codex/typeface-studio-transaction-composition\",\n  \"head\": \"c6145af55231e4688225acb3844d759ea487aa3e\",\n  \"baselineBranch\": \"codex/typeface-studio-transaction-composition\",\n  \"baselineHead\": \"c6145af55231e4688225acb3844d759ea487aa3e\",\n  \"preExistingFileCount\": 259,\n  \"missing\": [],\n  \"changed\": [],\n  \"outsideExperimentStatusMatchesBaseline\": false,\n  \"baselineOutsideStatusCount\": 182,\n  \"currentOutsideStatusCount\": 205\n}\n",
+    "classification": "All previous hashes preserved; status equality includes new experiment paths, so expected to fail its old directory scope."
+  }
+}

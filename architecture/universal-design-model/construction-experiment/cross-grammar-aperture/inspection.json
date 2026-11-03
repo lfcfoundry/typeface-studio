@@ -1,0 +1,2793 @@
+{
+  "operationFactory": "imported unchanged from aperture-operation/aperture.mjs",
+  "sharedExecutor": "operation.mjs execute",
+  "sharedGeometryRealizer": "boundary.mjs openBoundary",
+  "boundaryContractVersion": 1,
+  "apertureStateVersion": 2,
+  "ring": {
+    "accepted": {
+      "id": "glyph:ring",
+      "name": "o",
+      "characterIdentity": [
+        111
+      ],
+      "encoding": [
+        111
+      ],
+      "revision": {
+        "id": "revision:ring-base",
+        "status": "accepted",
+        "parent": null
+      },
+      "provenance": {
+        "origin": "explicit",
+        "source": "Independent elliptical-ring experiment"
+      },
+      "decisions": {
+        "cx": 325,
+        "cy": 250,
+        "rx": 270,
+        "ry": 250,
+        "strokeX": 70,
+        "strokeY": 60,
+        "advance": 650
+      },
+      "construction": {
+        "version": 1,
+        "nodes": [
+          {
+            "id": "region:ring",
+            "component": "ring",
+            "parameters": {
+              "outerId": "edge:outer",
+              "innerId": "space:ring"
+            }
+          },
+          {
+            "id": "edge:outer",
+            "component": "elliptical-boundary"
+          },
+          {
+            "id": "space:ring",
+            "component": "counter"
+          }
+        ],
+        "relations": [
+          {
+            "type": "boundary-of",
+            "source": "edge:outer",
+            "target": "region:ring"
+          },
+          {
+            "type": "contained-by",
+            "source": "space:ring",
+            "target": "region:ring"
+          },
+          {
+            "type": "concentric-with",
+            "source": "space:ring",
+            "target": "edge:outer"
+          }
+        ]
+      },
+      "apertureExtension": {
+        "version": 2,
+        "apertures": [],
+        "ports": []
+      }
+    },
+    "candidate": {
+      "id": "glyph:ring",
+      "name": "o",
+      "characterIdentity": [
+        111
+      ],
+      "encoding": [
+        111
+      ],
+      "revision": {
+        "id": "revision:c3cd8534aa766784",
+        "parent": "revision:ring-base",
+        "status": "candidate",
+        "operation": {
+          "id": "op:open-boundary",
+          "type": "semantic.aperture.open",
+          "phase": "construction",
+          "target": {
+            "glyphId": "glyph:ring",
+            "nodeIds": [
+              "region:ring"
+            ]
+          },
+          "parameters": {
+            "boundary": "free-bowl-side",
+            "halfExtent": 0.25,
+            "terminal": "flat",
+            "metricPolicy": "preserve-advance-recompute-bearings"
+          },
+          "preconditions": {
+            "revisionId": "revision:ring-base",
+            "topology": "enclosed"
+          },
+          "provenance": {
+            "origin": "explicit",
+            "intentIds": [
+              "intent:open-selected-bowl"
+            ]
+          },
+          "dependsOn": []
+        }
+      },
+      "provenance": {
+        "origin": "explicit",
+        "source": "Independent elliptical-ring experiment"
+      },
+      "decisions": {
+        "cx": 325,
+        "cy": 250,
+        "rx": 270,
+        "ry": 250,
+        "strokeX": 70,
+        "strokeY": 60,
+        "advance": 650
+      },
+      "construction": {
+        "version": 1,
+        "nodes": [
+          {
+            "id": "region:ring",
+            "component": "ring",
+            "parameters": {
+              "outerId": "edge:outer",
+              "innerId": "space:ring"
+            }
+          },
+          {
+            "id": "edge:outer",
+            "component": "elliptical-boundary"
+          },
+          {
+            "id": "space:ring",
+            "component": "open-space"
+          }
+        ],
+        "relations": [
+          {
+            "type": "boundary-of",
+            "source": "edge:outer",
+            "target": "region:ring"
+          },
+          {
+            "type": "open-space-of",
+            "source": "space:ring",
+            "target": "region:ring"
+          },
+          {
+            "type": "concentric-with",
+            "source": "space:ring",
+            "target": "edge:outer"
+          }
+        ]
+      },
+      "apertureExtension": {
+        "version": 2,
+        "apertures": [
+          {
+            "id": "aperture:op:open-boundary",
+            "structureId": "region:ring",
+            "spaceId": "space:ring",
+            "boundaryId": "boundary:region:ring:exposed-left",
+            "parameterization": "quadratic-local-t",
+            "boundary": "free-bowl-side",
+            "halfExtent": 0.25,
+            "terminal": "flat",
+            "metricPolicy": "preserve-advance-recompute-bearings",
+            "portIds": [
+              "aperture:op:open-boundary:lower",
+              "aperture:op:open-boundary:upper"
+            ]
+          }
+        ],
+        "ports": [
+          {
+            "id": "aperture:op:open-boundary:lower",
+            "apertureId": "aperture:op:open-boundary",
+            "boundaryId": "boundary:region:ring:exposed-left",
+            "structureId": "region:ring",
+            "side": "lower",
+            "connects": [
+              "outer",
+              "inner"
+            ],
+            "treatment": "flat"
+          },
+          {
+            "id": "aperture:op:open-boundary:upper",
+            "apertureId": "aperture:op:open-boundary",
+            "boundaryId": "boundary:region:ring:exposed-left",
+            "structureId": "region:ring",
+            "side": "upper",
+            "connects": [
+              "outer",
+              "inner"
+            ],
+            "treatment": "flat"
+          }
+        ]
+      }
+    },
+    "diff": {
+      "changedNodeIds": [
+        "space:ring"
+      ],
+      "preservedNodeIds": [
+        "region:ring",
+        "edge:outer"
+      ],
+      "addedPortIds": [
+        "aperture:op:open-boundary:lower",
+        "aperture:op:open-boundary:upper"
+      ],
+      "metrics": {
+        "policy": "preserve-advance-recompute-bearings",
+        "before": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "after": {
+          "advanceWidth": 650,
+          "leftSideBearing": 72,
+          "rightSideBearing": 55
+        }
+      },
+      "preservedDecisionIds": [
+        "cx",
+        "cy",
+        "rx",
+        "ry",
+        "strokeX",
+        "strokeY",
+        "advance"
+      ]
+    },
+    "descriptor": {
+      "version": 1,
+      "id": "boundary:region:ring:exposed-left",
+      "structureId": "region:ring",
+      "spaceId": "space:ring",
+      "classification": "enclosed-region",
+      "revisionId": "revision:ring-base",
+      "aliases": [
+        "exposed-side",
+        "free-bowl-side"
+      ],
+      "orientation": "outer-clockwise-inner-counterclockwise",
+      "parameterization": "quadratic-local-t",
+      "range": [
+        0.1,
+        0.4
+      ],
+      "portOrder": [
+        "lower",
+        "upper"
+      ],
+      "terminalTreatments": [
+        "flat"
+      ],
+      "outer": {
+        "contourId": "edge:outer",
+        "approach": "arc2-1",
+        "depart": "arc3-1"
+      },
+      "inner": {
+        "contourId": "space:ring",
+        "approach": "arc2-1",
+        "depart": "arc3-1"
+      }
+    },
+    "closed": {
+      "id": "glyph:ring",
+      "name": "o",
+      "unicode": 111,
+      "contours": [
+        {
+          "id": "edge:outer",
+          "role": "outer",
+          "closed": true,
+          "start": {
+            "x": 595,
+            "y": 250
+          },
+          "segments": [
+            {
+              "id": "arc-1",
+              "type": "quadratic",
+              "from": {
+                "x": 595,
+                "y": 250
+              },
+              "control": {
+                "x": 595,
+                "y": 0
+              },
+              "to": {
+                "x": 325,
+                "y": 0
+              }
+            },
+            {
+              "id": "arc2-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 0
+              },
+              "control": {
+                "x": 55,
+                "y": 0
+              },
+              "to": {
+                "x": 55,
+                "y": 250
+              }
+            },
+            {
+              "id": "arc3-1",
+              "type": "quadratic",
+              "from": {
+                "x": 55,
+                "y": 250
+              },
+              "control": {
+                "x": 55,
+                "y": 500
+              },
+              "to": {
+                "x": 325,
+                "y": 500
+              }
+            },
+            {
+              "id": "arc4-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 500
+              },
+              "control": {
+                "x": 595,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 250
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "edge:outer.start",
+              "x": 595,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc-1.control",
+              "x": 595,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc-1.end",
+              "x": 325,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc2-1.control",
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc2-1.end",
+              "x": 55,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc3-1.control",
+              "x": 55,
+              "y": 500,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc3-1.end",
+              "x": 325,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc4-1.control",
+              "x": 595,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "id": "space:ring",
+          "role": "counter",
+          "closed": true,
+          "start": {
+            "x": 525,
+            "y": 250
+          },
+          "segments": [
+            {
+              "id": "arc-1",
+              "type": "quadratic",
+              "from": {
+                "x": 525,
+                "y": 250
+              },
+              "control": {
+                "x": 525,
+                "y": 440
+              },
+              "to": {
+                "x": 325,
+                "y": 440
+              }
+            },
+            {
+              "id": "arc2-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 440
+              },
+              "control": {
+                "x": 125,
+                "y": 440
+              },
+              "to": {
+                "x": 125,
+                "y": 250
+              }
+            },
+            {
+              "id": "arc3-1",
+              "type": "quadratic",
+              "from": {
+                "x": 125,
+                "y": 250
+              },
+              "control": {
+                "x": 125,
+                "y": 60
+              },
+              "to": {
+                "x": 325,
+                "y": 60
+              }
+            },
+            {
+              "id": "arc4-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 60
+              },
+              "control": {
+                "x": 525,
+                "y": 60
+              },
+              "to": {
+                "x": 525,
+                "y": 250
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "space:ring.start",
+              "x": 525,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "space:ring.arc-1.control",
+              "x": 525,
+              "y": 440,
+              "on": false
+            },
+            {
+              "id": "space:ring.arc-1.end",
+              "x": 325,
+              "y": 440,
+              "on": true
+            },
+            {
+              "id": "space:ring.arc2-1.control",
+              "x": 125,
+              "y": 440,
+              "on": false
+            },
+            {
+              "id": "space:ring.arc2-1.end",
+              "x": 125,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "space:ring.arc3-1.control",
+              "x": 125,
+              "y": 60,
+              "on": false
+            },
+            {
+              "id": "space:ring.arc3-1.end",
+              "x": 325,
+              "y": 60,
+              "on": true
+            },
+            {
+              "id": "space:ring.arc4-1.control",
+              "x": 525,
+              "y": 60,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "components": [
+        {
+          "id": "region:ring",
+          "kind": "ring"
+        },
+        {
+          "id": "edge:outer",
+          "kind": "elliptical-boundary"
+        },
+        {
+          "id": "space:ring",
+          "kind": "counter"
+        }
+      ]
+    },
+    "opened": {
+      "id": "glyph:ring",
+      "name": "o",
+      "unicode": 111,
+      "contours": [
+        {
+          "id": "edge:outer",
+          "role": "outer",
+          "closed": true,
+          "start": {
+            "x": 595,
+            "y": 250
+          },
+          "segments": [
+            {
+              "id": "arc-1",
+              "type": "quadratic",
+              "from": {
+                "x": 595,
+                "y": 250
+              },
+              "control": {
+                "x": 595,
+                "y": 0
+              },
+              "to": {
+                "x": 325,
+                "y": 0
+              }
+            },
+            {
+              "id": "arc2-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 0
+              },
+              "control": {
+                "x": 123,
+                "y": 0
+              },
+              "to": {
+                "x": 72,
+                "y": 141
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:lower.cap",
+              "type": "line",
+              "from": {
+                "x": 72,
+                "y": 141
+              },
+              "to": {
+                "x": 138,
+                "y": 167
+              }
+            },
+            {
+              "id": "space:ring.arc3-1.open",
+              "type": "quadratic",
+              "from": {
+                "x": 138,
+                "y": 167
+              },
+              "control": {
+                "x": 175,
+                "y": 60
+              },
+              "to": {
+                "x": 325,
+                "y": 60
+              }
+            },
+            {
+              "id": "space:ring.arc4-1.open",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 60
+              },
+              "control": {
+                "x": 525,
+                "y": 60
+              },
+              "to": {
+                "x": 525,
+                "y": 250
+              }
+            },
+            {
+              "id": "space:ring.arc-1.open",
+              "type": "quadratic",
+              "from": {
+                "x": 525,
+                "y": 250
+              },
+              "control": {
+                "x": 525,
+                "y": 440
+              },
+              "to": {
+                "x": 325,
+                "y": 440
+              }
+            },
+            {
+              "id": "space:ring.arc2-1.open",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 440
+              },
+              "control": {
+                "x": 175,
+                "y": 440
+              },
+              "to": {
+                "x": 138,
+                "y": 333
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:upper.cap",
+              "type": "line",
+              "from": {
+                "x": 138,
+                "y": 333
+              },
+              "to": {
+                "x": 72,
+                "y": 359
+              }
+            },
+            {
+              "id": "arc3-1",
+              "type": "quadratic",
+              "from": {
+                "x": 72,
+                "y": 359
+              },
+              "control": {
+                "x": 123,
+                "y": 500
+              },
+              "to": {
+                "x": 325,
+                "y": 500
+              }
+            },
+            {
+              "id": "arc4-1",
+              "type": "quadratic",
+              "from": {
+                "x": 325,
+                "y": 500
+              },
+              "control": {
+                "x": 595,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 250
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "edge:outer.start",
+              "x": 595,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc-1.control",
+              "x": 595,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc-1.end",
+              "x": 325,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc2-1.control",
+              "x": 123,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc2-1.end",
+              "x": 72,
+              "y": 141,
+              "on": true
+            },
+            {
+              "id": "edge:outer.aperture:op:open-boundary:lower.cap.end",
+              "x": 138,
+              "y": 167,
+              "on": true
+            },
+            {
+              "id": "edge:outer.space:ring.arc3-1.open.control",
+              "x": 175,
+              "y": 60,
+              "on": false
+            },
+            {
+              "id": "edge:outer.space:ring.arc3-1.open.end",
+              "x": 325,
+              "y": 60,
+              "on": true
+            },
+            {
+              "id": "edge:outer.space:ring.arc4-1.open.control",
+              "x": 525,
+              "y": 60,
+              "on": false
+            },
+            {
+              "id": "edge:outer.space:ring.arc4-1.open.end",
+              "x": 525,
+              "y": 250,
+              "on": true
+            },
+            {
+              "id": "edge:outer.space:ring.arc-1.open.control",
+              "x": 525,
+              "y": 440,
+              "on": false
+            },
+            {
+              "id": "edge:outer.space:ring.arc-1.open.end",
+              "x": 325,
+              "y": 440,
+              "on": true
+            },
+            {
+              "id": "edge:outer.space:ring.arc2-1.open.control",
+              "x": 175,
+              "y": 440,
+              "on": false
+            },
+            {
+              "id": "edge:outer.space:ring.arc2-1.open.end",
+              "x": 138,
+              "y": 333,
+              "on": true
+            },
+            {
+              "id": "edge:outer.aperture:op:open-boundary:upper.cap.end",
+              "x": 72,
+              "y": 359,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc3-1.control",
+              "x": 123,
+              "y": 500,
+              "on": false
+            },
+            {
+              "id": "edge:outer.arc3-1.end",
+              "x": 325,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "edge:outer.arc4-1.control",
+              "x": 595,
+              "y": 500,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "bounds": {
+        "xMin": 72,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 72,
+        "rightSideBearing": 55
+      },
+      "components": [
+        {
+          "id": "region:ring",
+          "kind": "ring"
+        },
+        {
+          "id": "edge:outer",
+          "kind": "elliptical-boundary"
+        },
+        {
+          "id": "space:ring",
+          "kind": "anatomy.open-space"
+        }
+      ],
+      "aperturePorts": [
+        {
+          "id": "aperture:op:open-boundary:lower",
+          "endpoints": {
+            "outer": {
+              "x": 72,
+              "y": 141
+            },
+            "inner": {
+              "x": 138,
+              "y": 167
+            }
+          }
+        },
+        {
+          "id": "aperture:op:open-boundary:upper",
+          "endpoints": {
+            "outer": {
+              "x": 72,
+              "y": 359
+            },
+            "inner": {
+              "x": 138,
+              "y": 333
+            }
+          }
+        }
+      ]
+    },
+    "continuity": {
+      "closed": [
+        [
+          {
+            "from": "arc-1",
+            "to": "arc2-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc2-1",
+            "to": "arc3-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc3-1",
+            "to": "arc4-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc4-1",
+            "to": "arc-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          }
+        ],
+        [
+          {
+            "from": "arc-1",
+            "to": "arc2-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc2-1",
+            "to": "arc3-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc3-1",
+            "to": "arc4-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "arc4-1",
+            "to": "arc-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          }
+        ]
+      ],
+      "opened": [
+        [
+          {
+            "from": "arc-1",
+            "to": "arc2-1",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "arc2-1",
+            "to": "aperture:op:open-boundary:lower.cap",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "aperture:op:open-boundary:lower.cap",
+            "to": "space:ring.arc3-1.open",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "space:ring.arc3-1.open",
+            "to": "space:ring.arc4-1.open",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "space:ring.arc4-1.open",
+            "to": "space:ring.arc-1.open",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          },
+          {
+            "from": "space:ring.arc-1.open",
+            "to": "space:ring.arc2-1.open",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "space:ring.arc2-1.open",
+            "to": "aperture:op:open-boundary:upper.cap",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "aperture:op:open-boundary:upper.cap",
+            "to": "arc3-1",
+            "G0": true,
+            "G1": false,
+            "C1": false
+          },
+          {
+            "from": "arc3-1",
+            "to": "arc4-1",
+            "G0": true,
+            "G1": true,
+            "C1": false
+          },
+          {
+            "from": "arc4-1",
+            "to": "arc-1",
+            "G0": true,
+            "G1": true,
+            "C1": true
+          }
+        ]
+      ]
+    }
+  },
+  "spine": {
+    "operation": {
+      "id": "op:open-boundary",
+      "type": "semantic.aperture.open",
+      "phase": "construction",
+      "target": {
+        "glyphId": "glyph:a.double",
+        "nodeIds": [
+          "bowl:1"
+        ]
+      },
+      "parameters": {
+        "boundary": "free-bowl-side",
+        "halfExtent": 0.25,
+        "terminal": "flat",
+        "metricPolicy": "preserve-advance-recompute-bearings"
+      },
+      "preconditions": {
+        "revisionId": "revision:base",
+        "topology": "enclosed"
+      },
+      "provenance": {
+        "origin": "explicit",
+        "intentIds": [
+          "intent:open-selected-bowl"
+        ]
+      },
+      "dependsOn": []
+    },
+    "candidate": {
+      "extension": "lfcfoundry.spine-bowl-grammar",
+      "version": 1,
+      "universalModelVersion": 2,
+      "id": "glyph:a.double",
+      "name": "a.alt",
+      "characterIdentity": [
+        97
+      ],
+      "encoding": [],
+      "decisions": {
+        "stem": 90,
+        "xHeight": 500,
+        "baseline": 0,
+        "advance": 650,
+        "bearing": 55,
+        "connectorRadius": 20
+      },
+      "provenance": {
+        "origin": "explicit",
+        "source": "isolated topology experiment",
+        "parentConstruction": "construction.bowl-with-attached-stem"
+      },
+      "construction": {
+        "version": 1,
+        "nodes": [
+          {
+            "id": "spine",
+            "component": "spine"
+          },
+          {
+            "id": "top",
+            "component": "terminal"
+          },
+          {
+            "id": "bottom",
+            "component": "terminal"
+          },
+          {
+            "id": "bowl:0",
+            "component": "bowl",
+            "parameters": {
+              "bottom": 0,
+              "top": 0.58,
+              "width": 0.9
+            }
+          },
+          {
+            "id": "counter:0",
+            "component": "counter",
+            "parameters": {
+              "inset": 0.65
+            }
+          },
+          {
+            "id": "bowl:1",
+            "component": "bowl",
+            "parameters": {
+              "bottom": 0.66,
+              "top": 1,
+              "width": 0.68
+            }
+          },
+          {
+            "id": "counter:1",
+            "component": "open-space",
+            "parameters": {
+              "inset": 0.5
+            }
+          },
+          {
+            "id": "join:1",
+            "component": "connector"
+          }
+        ],
+        "relations": [
+          {
+            "type": "terminates",
+            "source": "top",
+            "target": "spine",
+            "port": "top"
+          },
+          {
+            "type": "terminates",
+            "source": "bottom",
+            "target": "spine",
+            "port": "bottom"
+          },
+          {
+            "type": "attaches",
+            "source": "bowl:0",
+            "target": "spine",
+            "side": "left"
+          },
+          {
+            "type": "contained-by",
+            "source": "counter:0",
+            "target": "bowl:0"
+          },
+          {
+            "type": "attaches",
+            "source": "bowl:1",
+            "target": "spine",
+            "side": "left"
+          },
+          {
+            "type": "open-space-of",
+            "source": "counter:1",
+            "target": "bowl:1"
+          },
+          {
+            "type": "connects",
+            "source": "join:1",
+            "lower": "bowl:0",
+            "upper": "bowl:1",
+            "target": "spine",
+            "continuity": "G1"
+          }
+        ]
+      },
+      "revision": {
+        "id": "revision:62ea6f6e2c518cf2",
+        "parent": "revision:base",
+        "status": "candidate",
+        "operation": {
+          "id": "op:open-boundary",
+          "type": "semantic.aperture.open",
+          "phase": "construction",
+          "target": {
+            "glyphId": "glyph:a.double",
+            "nodeIds": [
+              "bowl:1"
+            ]
+          },
+          "parameters": {
+            "boundary": "free-bowl-side",
+            "halfExtent": 0.25,
+            "terminal": "flat",
+            "metricPolicy": "preserve-advance-recompute-bearings"
+          },
+          "preconditions": {
+            "revisionId": "revision:base",
+            "topology": "enclosed"
+          },
+          "provenance": {
+            "origin": "explicit",
+            "intentIds": [
+              "intent:open-selected-bowl"
+            ]
+          },
+          "dependsOn": []
+        }
+      },
+      "apertureExtension": {
+        "version": 2,
+        "apertures": [
+          {
+            "id": "aperture:op:open-boundary",
+            "structureId": "bowl:1",
+            "spaceId": "counter:1",
+            "boundaryId": "boundary:bowl:1:exposed-left",
+            "parameterization": "quadratic-local-t",
+            "boundary": "free-bowl-side",
+            "halfExtent": 0.25,
+            "terminal": "flat",
+            "metricPolicy": "preserve-advance-recompute-bearings",
+            "portIds": [
+              "aperture:op:open-boundary:lower",
+              "aperture:op:open-boundary:upper"
+            ]
+          }
+        ],
+        "ports": [
+          {
+            "id": "aperture:op:open-boundary:lower",
+            "apertureId": "aperture:op:open-boundary",
+            "boundaryId": "boundary:bowl:1:exposed-left",
+            "structureId": "bowl:1",
+            "side": "lower",
+            "connects": [
+              "outer",
+              "inner"
+            ],
+            "treatment": "flat"
+          },
+          {
+            "id": "aperture:op:open-boundary:upper",
+            "apertureId": "aperture:op:open-boundary",
+            "boundaryId": "boundary:bowl:1:exposed-left",
+            "structureId": "bowl:1",
+            "side": "upper",
+            "connects": [
+              "outer",
+              "inner"
+            ],
+            "treatment": "flat"
+          }
+        ]
+      }
+    },
+    "diff": {
+      "changedNodeIds": [
+        "counter:1"
+      ],
+      "preservedNodeIds": [
+        "spine",
+        "top",
+        "bottom",
+        "bowl:0",
+        "counter:0",
+        "bowl:1",
+        "join:1"
+      ],
+      "addedPortIds": [
+        "aperture:op:open-boundary:lower",
+        "aperture:op:open-boundary:upper"
+      ],
+      "metrics": {
+        "policy": "preserve-advance-recompute-bearings",
+        "before": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        },
+        "after": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "preservedDecisionIds": [
+        "stem",
+        "xHeight",
+        "baseline",
+        "advance",
+        "bearing",
+        "connectorRadius"
+      ]
+    },
+    "descriptor": {
+      "version": 1,
+      "id": "boundary:bowl:1:exposed-left",
+      "structureId": "bowl:1",
+      "spaceId": "counter:1",
+      "classification": "enclosed-region",
+      "revisionId": "revision:base",
+      "aliases": [
+        "exposed-side",
+        "free-bowl-side"
+      ],
+      "orientation": "outer-clockwise-inner-counterclockwise",
+      "parameterization": "quadratic-local-t",
+      "range": [
+        0.1,
+        0.4
+      ],
+      "portOrder": [
+        "lower",
+        "upper"
+      ],
+      "terminalTreatments": [
+        "flat"
+      ],
+      "outer": {
+        "contourId": "glyph:a.double.outer",
+        "approach": "bowl:1.lower",
+        "depart": "bowl:1.upper"
+      },
+      "inner": {
+        "contourId": "glyph:a.double.counter:1",
+        "approach": "upper",
+        "depart": "lower"
+      }
+    },
+    "geometry": {
+      "id": "glyph:a.double",
+      "name": "a.alt",
+      "unicode": null,
+      "contours": [
+        {
+          "id": "glyph:a.double.outer",
+          "role": "outer",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 500
+          },
+          "segments": [
+            {
+              "id": "terminal.top",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 500
+              }
+            },
+            {
+              "id": "spine.outer",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 500
+              },
+              "to": {
+                "x": 595,
+                "y": 0
+              }
+            },
+            {
+              "id": "terminal.bottom",
+              "type": "line",
+              "from": {
+                "x": 595,
+                "y": 0
+              },
+              "to": {
+                "x": 505,
+                "y": 0
+              }
+            },
+            {
+              "id": "bowl:0.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 0
+              },
+              "control": {
+                "x": 55,
+                "y": 0
+              },
+              "to": {
+                "x": 55,
+                "y": 145
+              }
+            },
+            {
+              "id": "bowl:0.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 55,
+                "y": 145
+              },
+              "control": {
+                "x": 55,
+                "y": 290
+              },
+              "to": {
+                "x": 485,
+                "y": 290
+              }
+            },
+            {
+              "id": "join:1.exit",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 290
+              },
+              "control": {
+                "x": 505,
+                "y": 290
+              },
+              "to": {
+                "x": 505,
+                "y": 310
+              }
+            },
+            {
+              "id": "join:1.entry",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 310
+              },
+              "control": {
+                "x": 505,
+                "y": 330
+              },
+              "to": {
+                "x": 485,
+                "y": 330
+              }
+            },
+            {
+              "id": "bowl:1.lower",
+              "type": "quadratic",
+              "from": {
+                "x": 485,
+                "y": 330
+              },
+              "control": {
+                "x": 245,
+                "y": 330
+              },
+              "to": {
+                "x": 185,
+                "y": 378
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:lower.cap",
+              "type": "line",
+              "from": {
+                "x": 185,
+                "y": 378
+              },
+              "to": {
+                "x": 228,
+                "y": 398
+              }
+            },
+            {
+              "id": "counter:1.lower.open",
+              "type": "quadratic",
+              "from": {
+                "x": 228,
+                "y": 398
+              },
+              "control": {
+                "x": 284,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 375
+              }
+            },
+            {
+              "id": "counter:1.wall.open",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 375
+              },
+              "to": {
+                "x": 505,
+                "y": 455
+              }
+            },
+            {
+              "id": "counter:1.upper.open",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 455
+              },
+              "control": {
+                "x": 284,
+                "y": 455
+              },
+              "to": {
+                "x": 228,
+                "y": 433
+              }
+            },
+            {
+              "id": "aperture:op:open-boundary:upper.cap",
+              "type": "line",
+              "from": {
+                "x": 228,
+                "y": 433
+              },
+              "to": {
+                "x": 186,
+                "y": 452
+              }
+            },
+            {
+              "id": "bowl:1.upper",
+              "type": "quadratic",
+              "from": {
+                "x": 186,
+                "y": 452
+              },
+              "control": {
+                "x": 250,
+                "y": 500
+              },
+              "to": {
+                "x": 505,
+                "y": 500
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.outer.start",
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.top.end",
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.spine.outer.end",
+              "x": 595,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.terminal.bottom.end",
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.control",
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.lower.end",
+              "x": 55,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.control",
+              "x": 55,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:0.upper.end",
+              "x": 485,
+              "y": 290,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.control",
+              "x": 505,
+              "y": 290,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.exit.end",
+              "x": 505,
+              "y": 310,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.control",
+              "x": 505,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.join:1.entry.end",
+              "x": 485,
+              "y": 330,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.control",
+              "x": 245,
+              "y": 330,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.lower.end",
+              "x": 185,
+              "y": 378,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.aperture:op:open-boundary:lower.cap.end",
+              "x": 228,
+              "y": 398,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.lower.open.control",
+              "x": 284,
+              "y": 375,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.lower.open.end",
+              "x": 505,
+              "y": 375,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.wall.open.end",
+              "x": 505,
+              "y": 455,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.upper.open.control",
+              "x": 284,
+              "y": 455,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.outer.counter:1.upper.open.end",
+              "x": 228,
+              "y": 433,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.aperture:op:open-boundary:upper.cap.end",
+              "x": 186,
+              "y": 452,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.outer.bowl:1.upper.control",
+              "x": 250,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "id": "glyph:a.double.counter:0",
+          "role": "counter",
+          "closed": true,
+          "start": {
+            "x": 505,
+            "y": 59
+          },
+          "segments": [
+            {
+              "id": "wall",
+              "type": "line",
+              "from": {
+                "x": 505,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 231
+              }
+            },
+            {
+              "id": "upper",
+              "type": "quadratic",
+              "from": {
+                "x": 505,
+                "y": 231
+              },
+              "control": {
+                "x": 114,
+                "y": 231
+              },
+              "to": {
+                "x": 114,
+                "y": 145
+              }
+            },
+            {
+              "id": "lower",
+              "type": "quadratic",
+              "from": {
+                "x": 114,
+                "y": 145
+              },
+              "control": {
+                "x": 114,
+                "y": 59
+              },
+              "to": {
+                "x": 505,
+                "y": 59
+              }
+            }
+          ],
+          "points": [
+            {
+              "id": "glyph:a.double.counter:0.start",
+              "x": 505,
+              "y": 59,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.wall.end",
+              "x": 505,
+              "y": 231,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.control",
+              "x": 114,
+              "y": 231,
+              "on": false
+            },
+            {
+              "id": "glyph:a.double.counter:0.upper.end",
+              "x": 114,
+              "y": 145,
+              "on": true
+            },
+            {
+              "id": "glyph:a.double.counter:0.lower.control",
+              "x": 114,
+              "y": 59,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "components": [
+        {
+          "id": "spine",
+          "kind": "anatomy.stem"
+        },
+        {
+          "id": "top",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bottom",
+          "kind": "anatomy.terminal"
+        },
+        {
+          "id": "bowl:0",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:0",
+          "kind": "anatomy.counter"
+        },
+        {
+          "id": "bowl:1",
+          "kind": "anatomy.bowl"
+        },
+        {
+          "id": "counter:1",
+          "kind": "anatomy.open-space"
+        },
+        {
+          "id": "join:1",
+          "kind": "anatomy.join"
+        }
+      ],
+      "aperturePorts": [
+        {
+          "id": "aperture:op:open-boundary:lower",
+          "endpoints": {
+            "outer": {
+              "x": 185,
+              "y": 378
+            },
+            "inner": {
+              "x": 228,
+              "y": 398
+            }
+          }
+        },
+        {
+          "id": "aperture:op:open-boundary:upper",
+          "endpoints": {
+            "outer": {
+              "x": 186,
+              "y": 452
+            },
+            "inner": {
+              "x": 228,
+              "y": 433
+            }
+          }
+        }
+      ]
+    }
+  },
+  "fonts": {
+    "closed": {
+      "sha256": "cdc80c5b4a906db3ae585d4761e57bacd0e663f7d9bcc907246c4a45ae0d48ba",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "o": {
+          "name": "o",
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 525,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 125,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 125,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 525,
+                  "y": 60,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "open": {
+      "sha256": "34ea0feea9a813973f97bc7153f6131322e2c94e2229a21245301f0dfc7168cb",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 72
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "o": {
+          "name": "o",
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 123,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 72,
+                  "y": 141,
+                  "on": true
+                },
+                {
+                  "x": 138,
+                  "y": 167,
+                  "on": true
+                },
+                {
+                  "x": 175,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 60,
+                  "on": true
+                },
+                {
+                  "x": 525,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 525,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 440,
+                  "on": true
+                },
+                {
+                  "x": 175,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 138,
+                  "y": 333,
+                  "on": true
+                },
+                {
+                  "x": 72,
+                  "y": 359,
+                  "on": true
+                },
+                {
+                  "x": 123,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "inventory": {
+      "sha256": "d12c6b5c77531d3546afa9be2973f2594349e3cd9eabf9eaf3fc7e3e8e8f2707",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 4,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 72
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "o": {
+          "name": "o",
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 525,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 125,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 125,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 525,
+                  "y": 60,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "o.open": {
+          "name": "o.open",
+          "unicodes": [],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 123,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 72,
+                  "y": 141,
+                  "on": true
+                },
+                {
+                  "x": 138,
+                  "y": 167,
+                  "on": true
+                },
+                {
+                  "x": 175,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 60,
+                  "on": true
+                },
+                {
+                  "x": 525,
+                  "y": 60,
+                  "on": false
+                },
+                {
+                  "x": 525,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 440,
+                  "on": true
+                },
+                {
+                  "x": 175,
+                  "y": 440,
+                  "on": false
+                },
+                {
+                  "x": 138,
+                  "y": 333,
+                  "on": true
+                },
+                {
+                  "x": 72,
+                  "y": 359,
+                  "on": true
+                },
+                {
+                  "x": 123,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "spine": {
+      "sha256": "f15bf179f1790da8806e98cb9360ceb6ac3e6f3f66ea99637ed3c2afc3d1424f",
+      "audit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 3,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 3,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "glyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 485,
+                  "y": 330,
+                  "on": true
+                },
+                {
+                  "x": 245,
+                  "y": 330,
+                  "on": false
+                },
+                {
+                  "x": 185,
+                  "y": 378,
+                  "on": true
+                },
+                {
+                  "x": 228,
+                  "y": 398,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 375,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 375,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 284,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 228,
+                  "y": 433,
+                  "on": true
+                },
+                {
+                  "x": 186,
+                  "y": 452,
+                  "on": true
+                },
+                {
+                  "x": 250,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 59,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 231,
+                  "on": true
+                },
+                {
+                  "x": 114,
+                  "y": 231,
+                  "on": false
+                },
+                {
+                  "x": 114,
+                  "y": 59,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "semantics": "passed",
+    "transaction": "passed including late geometry rollback",
+    "geometry": "passed numerical sampled checks; not exact proofs",
+    "fontInternal": "passed",
+    "fontIndependent": "not tested: tools unavailable",
+    "browser": "not observed",
+    "OpenTypeAlternates": "not implemented"
+  }
+}

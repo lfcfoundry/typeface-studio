@@ -1,0 +1,36 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs",
+    "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs",
+    "architecture/universal-design-model/construction-experiment/lowercase-h-topology-slice/scenario.test.mjs",
+    "architecture/universal-design-model/construction-experiment/natural-language-topology-slice/scenario.test.mjs",
+    "architecture/universal-design-model/construction-experiment/related-glyph-reuse/test/related-glyphs.test.mjs",
+    "architecture/universal-design-model/construction-experiment/test/construction.test.mjs",
+    "architecture/universal-design-model/construction-experiment/test/lowercase-a.test.mjs",
+    "architecture/universal-design-model/construction-experiment/test/terminal-profile.test.mjs",
+    "architecture/universal-design-model/construction-experiment/transaction-composition/composition.test.mjs",
+    "architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs",
+    "architecture/universal-design-model/contract.test.mjs",
+    "architecture/universal-design-model/family-xheight-propagation/propagation.test.mjs",
+    "architecture/universal-design-model/integration-experiment/integration.test.mjs",
+    "architecture/universal-design-model/operation-composition.test.mjs",
+    "architecture/universal-design-model/shaping-request-adapter.test.mjs",
+    "architecture/universal-design-model/whole-font-brief-specimen/test/whole-font.test.mjs",
+    "architecture/universal-design-model/writing-context.test.mjs"
+  ],
+  "exitStatus": 1,
+  "summary": [
+    "      at Test.postRun (node:internal/test_runner/test:1542:19)",
+    "      at Test.run (node:internal/test_runner/test:1467:12)",
+    "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+    "    generatedMessage: false,",
+    "    code: 'ERR_ASSERTION',",
+    "    actual: '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392',",
+    "    expected: '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06',",
+    "    operator: 'strictEqual',",
+    "    diff: 'simple'",
+    "  }"
+  ]
+}

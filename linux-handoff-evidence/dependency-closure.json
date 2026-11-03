@@ -1,0 +1,28 @@
+{
+  "architectureFiles": 266,
+  "requiredPrototypeModules": [
+    "prototype/src/brief.js",
+    "prototype/src/contours.js",
+    "prototype/src/font.js",
+    "prototype/src/glyph-instructions.js",
+    "prototype/src/glyph-operations.js",
+    "prototype/src/glyph-svg.js",
+    "prototype/src/ontology.js",
+    "prototype/src/recipes.js",
+    "prototype/src/sfnt-audit.js",
+    "prototype/src/spec.js"
+  ],
+  "copiedBytesMatchOriginal": true,
+  "excludedDirtyPrototypeFiles": [
+    "prototype/README.md",
+    "prototype/dist/typeface-studio-contour-prototype.html",
+    "prototype/prototype.css",
+    "prototype/src/app.js",
+    "prototype/src/benchmark.mjs"
+  ],
+  "excludedUntrackedPrototypeTest": "prototype/test/glyph-instructions.test.mjs",
+  "productionAndPrototypeUI": "unchanged parent commit bytes; no dirty UI snapshot copied",
+  "unresolvedRuntimeImports": [],
+  "historicalWorkspaceOnlyTestFailures": 4,
+  "portableFunctionalTests": 192
+}

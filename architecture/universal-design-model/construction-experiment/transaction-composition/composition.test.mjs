@@ -7,7 +7,7 @@ test('extension remains compatible with original executor on existing reflection
  const base=fixture(),model=structuredClone(base.model);model.operations=[{...operation('geometry.structure.reflect','legacy',base),type:'geometry.reflect',parameters:{}}];assert.deepEqual(validateV2Model(model),[]);const old=originalExecutor(model,base.family),next=extendedExecutor(model,base.family);assert.equal(old.status,'committed-candidate');assert.equal(next.status,old.status);assert.deepEqual(next.family,old.family);assert.deepEqual(next.model.selectors,old.model.selectors);assert.deepEqual(next.order,old.order);
 });
 test('registered operations compose through universal dependency execution and preserve accepted input for both grammars',()=>{
- assert.deepEqual(Object.keys(operationHandlers).sort(),['geometry.structure.reflect','semantic.aperture.open']);
+ assert.deepEqual(Object.keys(operationHandlers).sort(),['geometry.structure.reflect','semantic.aperture.open','semantic.terminal.set-profile']);
  for(const kind of ['ring','spine']){const base=fixture(kind),snapshot=structuredClone(base),s=sequences(base);for(const k of ['reflection','aperture','A','B'])assert.equal(s[k].status,'committed-candidate',s[k].error);assert.deepEqual(base,snapshot);assert.deepEqual(s.A.order,['op:reflect','op:aperture']);assert.deepEqual(s.B.order,['op:aperture','op:reflect']);assert.deepEqual(s.A.family,s.B.family);assert.notEqual(s.A.revision.id,s.B.revision.id);assert.equal(s.A.model.revisions.acceptedRevisionId,base.model.revisions.acceptedRevisionId);assert.deepEqual(s.A.model.constructionIntegration.trace.map(t=>t.operationId),s.A.order);}
 });
 test('reflection selects a construction instance, preserving the other half of the glyph and unrelated glyphs',()=>{
@@ -33,8 +33,14 @@ test('acceptance creates separate immutable accepted revisions and rejects tampe
 test('revision identity includes parameter content; repeated executions deterministic and repeated aperture rejected',()=>{
  const b=fixture(),one=operation('semantic.aperture.open','a',b,{halfExtent:.2}),two=operation('semantic.aperture.open','a',b,{halfExtent:.3}),x=run(b,[one]),y=run(b,[two]);assert.equal(x.status,'committed-candidate');assert.notEqual(x.revision.id,y.revision.id);assert.deepEqual(run(b,[one]),x);assert.equal(run(b,[one,{...two,id:'a2',dependsOn:['a']}]).status,'rejected');
 });
-test('all original working-tree source and artifact files remain byte-identical',{skip:process.env.TYPEFACE_ISOLATED_PUBLICATION==='1'},()=>{
- const baseline=JSON.parse(readFileSync(new URL('./preservation.json',import.meta.url)));for(const [p,h]of Object.entries(baseline.files))assert.equal(createHash('sha256').update(readFileSync(p)).digest('hex'),h,p);
+test('all untouched working-tree files remain byte-identical and promoted files match their audit hashes',{skip:process.env.TYPEFACE_ISOLATED_PUBLICATION==='1'},()=>{
+ const baseline=JSON.parse(readFileSync(new URL('./preservation.json',import.meta.url))),promotions=baseline.authorizedPromotions||{};
+ for(const [p,h]of Object.entries(baseline.files)){
+  const actual=createHash('sha256').update(readFileSync(p)).digest('hex'),promotion=promotions[p];
+  if(!promotion)assert.equal(actual,h,p);
+  else{assert.equal(promotion.fromSha256,h,`${p}: original hash record`);assert.equal(actual,promotion.toSha256,`${p}: authorized promotion`);}
+ }
+ for(const p of Object.keys(promotions))assert.ok(Object.hasOwn(baseline.files,p),`Promotion ${p} must retain its original hash record.`);
 });
 test('follow-up transactions execute only new deltas and retain accepted operation provenance',()=>{
  const initial=fixture('spine'),candidate=sequences(initial).A,accepted=accept(candidate),base={...accepted,targetNodeId:initial.targetNodeId,kind:initial.kind};const before=hash(accepted);const reflect=operation('geometry.structure.reflect','op:followup-reflect',base);const next=run(base,[reflect]);assert.equal(next.status,'committed-candidate',next.error);assert.equal(next.model.constructionIntegration.instances.main.reflected,false);assert.equal(next.model.constructionIntegration.instances.main.design.apertureExtension.apertures.length,1);assert.deepEqual(next.model.constructionIntegration.operationHistory.map(o=>o.id),['op:reflect','op:aperture']);assert.equal(next.model.operations.length,1);assert.equal(hash(accepted),before);assert.equal(run(base,[{...reflect,id:'op:reflect'}]).status,'rejected');

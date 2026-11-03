@@ -1,0 +1,58 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+    "devicePixelRatio": 2.8860480785369873,
+    "renderingMethod": "Android Chrome FontFace.load and Canvas 2D rasterization at 512 CSS px; alpha-mask differences counted where alpha delta exceeds 16"
+  },
+  "fonts": {
+    "a-flat": {
+      "advancePx": 332.7994384765625,
+      "expectedAdvancePx": 332.8,
+      "actualInkBox": { "left": -24, "right": 312, "ascent": 256, "descent": 0 },
+      "pixelBounds": { "xMin": 60, "yMin": 294, "xMax": 336, "yMax": 549 },
+      "inkPixels": 36476
+    },
+    "a-chamfer": {
+      "advancePx": 332.7994384765625,
+      "expectedAdvancePx": 332.8,
+      "actualInkBox": { "left": -24, "right": 312, "ascent": 256, "descent": 0 },
+      "pixelBounds": { "xMin": 60, "yMin": 294, "xMax": 336, "yMax": 549 },
+      "inkPixels": 36431
+    },
+    "spine-flat": {
+      "advancePx": 332.7994384765625,
+      "expectedAdvancePx": 332.8,
+      "actualInkBox": { "left": -24, "right": 312, "ascent": 256, "descent": 0 },
+      "pixelBounds": { "xMin": 60, "yMin": 294, "xMax": 336, "yMax": 549 },
+      "inkPixels": 34188
+    },
+    "spine-chamfer": {
+      "advancePx": 332.7994384765625,
+      "expectedAdvancePx": 332.8,
+      "actualInkBox": { "left": -24, "right": 312, "ascent": 256, "descent": 0 },
+      "pixelBounds": { "xMin": 60, "yMin": 294, "xMax": 336, "yMax": 549 },
+      "inkPixels": 34143
+    }
+  },
+  "comparisons": [
+    {
+      "flat": "a-flat",
+      "chamfer": "a-chamfer",
+      "changedPixels": 54,
+      "differenceBounds": { "xMin": 327, "yMin": 294, "xMax": 336, "yMax": 302 },
+      "advanceDifferencePx": 0,
+      "samePixelBounds": true,
+      "differenceAtUpperRight": true
+    },
+    {
+      "flat": "spine-flat",
+      "chamfer": "spine-chamfer",
+      "changedPixels": 54,
+      "differenceBounds": { "xMin": 327, "yMin": 294, "xMax": 336, "yMax": 302 },
+      "advanceDifferencePx": 0,
+      "samePixelBounds": true,
+      "differenceAtUpperRight": true
+    }
+  ],
+  "result": "All four fonts loaded and rasterized. Each chamfer changes only a small cluster in the expected upper-right terminal region; raster bounds and advance are unchanged."
+}

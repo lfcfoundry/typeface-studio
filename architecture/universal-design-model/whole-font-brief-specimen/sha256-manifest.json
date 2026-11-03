@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "generatedBy": "write-sha256-manifest.mjs",
+  "excludesSelf": true,
+  "files": [
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/artifacts/LFCFoundry-Whole-Brief-Partial-Candidate.ttf",
+      "bytes": 1700,
+      "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/artifacts/LFCFoundry-Whole-Brief-Source.ttf",
+      "bytes": 1640,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/browser-evidence/browser-observation.json",
+      "bytes": 1106,
+      "sha256": "5582512e986ad87e02d307487f80ad18f2f637261361c89ba64dd57a40da9972"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/build-report.json",
+      "bytes": 59516,
+      "sha256": "643da5f97574e87dc1cbc8bf52f1e0eb5d3b13e3306b0e3fa79f03c1d1ef499d"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/build.mjs",
+      "bytes": 13749,
+      "sha256": "3e7a27ca4c559ae1f0cb27bc2907ee805cf92ca70f0e683a9fae135a7b539383"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/candidate.mjs",
+      "bytes": 13789,
+      "sha256": "668886e070c69ad0d00b5fb80c3d7c1e6c7620b55f09d231a5bf431f9f3699e8"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/contract.mjs",
+      "bytes": 5345,
+      "sha256": "22e10786f4d83aa9793f4dc8d7f650bada92debfb295a728e0d6afddcdf34dfa"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/planner.mjs",
+      "bytes": 5536,
+      "sha256": "766ff4223c4fcc6f7a976827b4af7f344bf3d57ff3191017972d5e8c49457c6e"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/preservation-baseline.json",
+      "bytes": 88599,
+      "sha256": "caee81455a9ecb1ae0a92294359053ff940250bc230e4f410c9dfac9f3d684b8"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/README.md",
+      "bytes": 8017,
+      "sha256": "9ab37c5abf8195d450198d09eec027459126128c9fe29dbe2b34ab02992827c2"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/record-preservation-baseline.mjs",
+      "bytes": 1489,
+      "sha256": "935dc51c95198f1b251e31e221a3c1605461afb4f5d29dff7ae6c37d87356cdd"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/refresh-generated-report.mjs",
+      "bytes": 2139,
+      "sha256": "c7f9ef4d1c351b86254dc2782a174a3d9d28f000f3d339637d5861b872563296"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/resolver.mjs",
+      "bytes": 10233,
+      "sha256": "02ac79b9b612da2a08060d839f4a524059f14fbe5d7ad689d9c19455210805ef"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/review.html",
+      "bytes": 15260,
+      "sha256": "be89daa5658e4d2bc4a4c7c0999289bf4857885f6cfd59d79b4da63183d3037c"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/serve-review.mjs",
+      "bytes": 961,
+      "sha256": "1ddc79c7e451e952933632357d618228b977a22b17464ed3505e26e72bc3a01b"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/specification.json",
+      "bytes": 26186,
+      "sha256": "caaf31facb4e06b23f2f2772cd811dc11e13b26ff40de31954d7df61bdcb91b9"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/test/whole-font.test.mjs",
+      "bytes": 11533,
+      "sha256": "e9a7756cb98c0b9bdd565135653bff641c65a30a93799c0866303d25e02a0ce7"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/verify-preservation.mjs",
+      "bytes": 1786,
+      "sha256": "a07ca814a874fcf5f082b92f351ae3dd1afb33c9c087a7704d3fdc363ce88649"
+    },
+    {
+      "file": "architecture/universal-design-model/whole-font-brief-specimen/write-sha256-manifest.mjs",
+      "bytes": 1178,
+      "sha256": "6866134ee9d864b6ac419e199ca6417df4b6c0478df630c1c6c78b88387b5909"
+    }
+  ]
+}

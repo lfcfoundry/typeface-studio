@@ -1,0 +1,22 @@
+{
+  "artifacts/LFCFoundry-Aperture-enclosed.ttf": {
+    "bytes": 1300,
+    "sha256": "66d899f4046eb23b885bea538f62f198f9e7af2df9c1601e1e4a49f641d968c4"
+  },
+  "artifacts/LFCFoundry-Aperture-open.ttf": {
+    "bytes": 1256,
+    "sha256": "b26e0c27e185e0c8eaef261d9514706501be559c49cb16609afd21ce55a97f04"
+  },
+  "artifacts/LFCFoundry-Aperture-inventory.ttf": {
+    "bytes": 1412,
+    "sha256": "1286cbf2b918db24ab48127bd0553061408b6cf2faa12f6a8fb150be7e273897"
+  },
+  "inspection.json": {
+    "bytes": 57002,
+    "sha256": "d5f5a42d1b8adaa6f41183ab019846a15ae176ac9ab3cdd76c94ac090f8d9638"
+  },
+  "review.html": {
+    "bytes": 8413,
+    "sha256": "950e73ca2a798434856c3b282371846b78d2873bff3369938585e1b479a055c3"
+  }
+}

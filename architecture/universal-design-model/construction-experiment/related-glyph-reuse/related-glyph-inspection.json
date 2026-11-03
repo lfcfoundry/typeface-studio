@@ -1,0 +1,545 @@
+{
+  "artifact": "LFCFoundry-Related-Glyph-Reuse-abdpq.ttf",
+  "bytes": 1656,
+  "sha256": "4342ebe4d617f80d56278e111dd7a39c480922efc60ba836846749763a8ce14f",
+  "internalAudit": {
+    "valid": true,
+    "tables": [
+      "OS/2",
+      "cmap",
+      "glyf",
+      "head",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "missingTables": [],
+    "badTableChecksums": [],
+    "wholeChecksumValid": true,
+    "horizontalMetrics": {
+      "count": 3,
+      "metrics": [
+        {
+          "advanceWidth": 620,
+          "leftSideBearing": 35
+        },
+        {
+          "advanceWidth": 250,
+          "leftSideBearing": 0
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        }
+      ],
+      "errors": []
+    }
+  },
+  "glyphOrder": [
+    ".notdef",
+    "space",
+    "a",
+    "b",
+    "d",
+    "p",
+    "q"
+  ],
+  "candidateRevision": {
+    "id": "rev:541e560e2c35d887",
+    "parentRevisionIds": [
+      "rev:related-glyph-a-reference"
+    ],
+    "status": "candidate",
+    "changedGlyphIds": [
+      "glyph:u0062",
+      "glyph:u0064",
+      "glyph:u0070",
+      "glyph:u0071"
+    ],
+    "preservedGlyphIds": [
+      "glyph:u0061"
+    ],
+    "operationIds": [
+      "op:add-b",
+      "op:add-d",
+      "op:add-p",
+      "op:add-q"
+    ],
+    "diff": {
+      "addedGlyphs": [
+        {
+          "id": "glyph:u0062",
+          "unicode": 98,
+          "stemSide": "left",
+          "stemExtent": "baseline-to-ascender"
+        },
+        {
+          "id": "glyph:u0064",
+          "unicode": 100,
+          "stemSide": "right",
+          "stemExtent": "baseline-to-ascender"
+        },
+        {
+          "id": "glyph:u0070",
+          "unicode": 112,
+          "stemSide": "left",
+          "stemExtent": "descender-to-xHeight"
+        },
+        {
+          "id": "glyph:u0071",
+          "unicode": 113,
+          "stemSide": "right",
+          "stemExtent": "descender-to-xHeight"
+        }
+      ]
+    }
+  },
+  "existingReferenceGeometryPreserved": {
+    "glyph:u006f": true,
+    "glyph:u006e": true,
+    "glyph:u0048": true,
+    "glyph:u0061": true
+  },
+  "glyphs": {
+    "a": {
+      "id": "glyph:u0061",
+      "unicode": [
+        97
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "outline": [
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "x": 55,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 90,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 410,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 410,
+              "on": false
+            },
+            {
+              "x": 145,
+              "y": 90,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "sharedWidth": 90
+    },
+    "b": {
+      "id": "glyph:u0062",
+      "unicode": [
+        98
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 700
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "outline": [
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 145,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 500,
+              "on": false
+            },
+            {
+              "x": 595,
+              "y": 0,
+              "on": false
+            },
+            {
+              "x": 145,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 700,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 700,
+              "on": true
+            }
+          ]
+        },
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 145,
+              "y": 410,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 90,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 90,
+              "on": false
+            },
+            {
+              "x": 505,
+              "y": 410,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "sharedWidth": 90
+    },
+    "d": {
+      "id": "glyph:u0064",
+      "unicode": [
+        100
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": 0,
+        "xMax": 595,
+        "yMax": 700
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "outline": [
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 700,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 700,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "x": 55,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 90,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 410,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 410,
+              "on": false
+            },
+            {
+              "x": 145,
+              "y": 90,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "sharedWidth": 90
+    },
+    "p": {
+      "id": "glyph:u0070",
+      "unicode": [
+        112
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": -200,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "outline": [
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 145,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 500,
+              "on": false
+            },
+            {
+              "x": 595,
+              "y": 0,
+              "on": false
+            },
+            {
+              "x": 145,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": -200,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": -200,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 500,
+              "on": true
+            }
+          ]
+        },
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 145,
+              "y": 410,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 90,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 90,
+              "on": false
+            },
+            {
+              "x": 505,
+              "y": 410,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "sharedWidth": 90
+    },
+    "q": {
+      "id": "glyph:u0071",
+      "unicode": [
+        113
+      ],
+      "bounds": {
+        "xMin": 55,
+        "yMin": -200,
+        "xMax": 595,
+        "yMax": 500
+      },
+      "metrics": {
+        "advanceWidth": 650,
+        "leftSideBearing": 55,
+        "rightSideBearing": 55
+      },
+      "outline": [
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            {
+              "x": 595,
+              "y": -200,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": -200,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 0,
+              "on": true
+            },
+            {
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            {
+              "x": 55,
+              "y": 500,
+              "on": false
+            }
+          ]
+        },
+        {
+          "closed": true,
+          "points": [
+            {
+              "x": 505,
+              "y": 90,
+              "on": true
+            },
+            {
+              "x": 505,
+              "y": 410,
+              "on": true
+            },
+            {
+              "x": 145,
+              "y": 410,
+              "on": false
+            },
+            {
+              "x": 145,
+              "y": 90,
+              "on": false
+            }
+          ]
+        }
+      ],
+      "sharedWidth": 90
+    }
+  },
+  "independentValidation": "not-run"
+}

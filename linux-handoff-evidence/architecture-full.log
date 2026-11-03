@@ -1,0 +1,298 @@
+✔ semantic aperture replaces enclosure by explicit open space and two correctly attached ports (49.728556ms)
+✔ operation rejects missing/ambiguous/incompatible targets, invalid boundaries/extents and stale revisions (12.591797ms)
+✔ semantic validator rejects absent ports, wrong attachments, duplicate scope and contradictory enclosure before geometry (17.850546ms)
+✔ successful and rejected transactions preserve accepted definitions, decisions and identity; output is deterministic (26.07133ms)
+✔ geometry exposes a real exterior channel, removes only upper hole and preserves lower counter/spine/bounds/metrics (33.374146ms)
+✔ continuity measures actual contours: G0 closure, sharp terminal caps and retained G1 waist (11.581584ms)
+✔ same operation opens a renamed one-bowl synthetic structure without glyph or node-name assumptions (3.295004ms)
+✔ compiled enclosed/open forms keep Unicode identity, correct contours and exact preserved lower outline (82.493734ms)
+✖ all pre-existing source and artifact bytes still match initial baseline (14.71167ms)
+✔ aperture extent changes actual terminal coordinates while retaining lower geometry and advance (8.014445ms)
+✔ saved review fonts match current geometry and embedded bytes without external asset loading (16.306193ms)
+✔ same imported operation factory and shared executor open both structural grammars (67.835652ms)
+✔ ring is an independent concentric-boundary grammar with valid enclosure and no spine/bowl anatomy (23.37504ms)
+✔ adapter descriptors expose explicit orientation, parameterization, scope, revision and terminal capabilities (29.034627ms)
+✔ shared realizer preserves earlier spine aperture coordinates, lower counter and metrics (45.905762ms)
+✔ operation preserves accepted state, semantic identities, unrelated nodes and decisions on both grammars (41.504557ms)
+✔ renamed ring structures and glyph identities do not select operation behavior (4.074911ms)
+✔ missing/ambiguous/stale boundaries, incompatible ports and malformed operations reject without partial mutation (9.311646ms)
+✔ open ring has real exterior channel, explicit terminal endpoints and reported metric consequences (23.248414ms)
+✔ fonts preserve ring Unicode identity, closed/open outline counts, deterministic checksums and unencoded alternate (79.539917ms)
+✖ all untouched protected files retain original hashes and promotions match their audit hashes (27.981283ms)
+✔ late realization failures roll back the entire transaction; legacy state migration is explicit (13.156535ms)
+✔ saved fonts and review HTML use current exact bytes; ring continuity distinguishes G1 and C1 (19.813355ms)
+✔ the exact request and one documented variant preserve source text, spans, and explicit preservation intent (35.786825ms)
+✔ unsupported, ambiguous, conflicting, empty, and malformed requests produce diagnostics without a candidate (307.946086ms)
+✔ the candidate-only h target resolves exactly and retains the accepted parent glyph inventory (25.837118ms)
+✔ an existing id or Unicode mapping conflicts with the new target; stale source acceptance is rejected (69.765747ms)
+✔ the semantic h grammar is distinct from n and has explicit stem, shoulder, return, terminals, and open-space boundaries (143.510538ms)
+✔ invalid component attachment and topology changes are rejected by the semantic grammar validator (23.875733ms)
+✔ invalid semantic ratios and dimensions fail transactionally before acceptance (86.344523ms)
+✔ the new handler rejects any staged change to a pre-existing glyph before constructing h (30.42277ms)
+✔ the geometry adapter follows semantic roles and dimensions rather than glyph-name dispatch (26.322551ms)
+✔ geometry failure rolls the candidate back and does not mutate accepted source state (57.727824ms)
+✔ a later dependent operation failure rolls back construction and preserves the accepted input (147.554444ms)
+✔ the accepted source is immutable, every existing glyph record is preserved, and compiled geometry matches executor-validated geometry (159.858113ms)
+✔ derived h geometry has stable boundary references, valid outline, measured bounds, and declared metrics (90.315877ms)
+✔ the diagnostic compiler adds U+0068 and leaves every pre-existing compiled glyph record unchanged (52.275025ms)
+✔ font compilation failure returns no candidate and leaves the accepted source unchanged (48.267863ms)
+✔ acceptance creates a separate immutable revision and follow-up does not replay the add-h operation (242.29773ms)
+✔ the parent revision and every request source record remain traceable in candidate provenance (187.142741ms)
+✔ the bounded interpreter preserves exact input and emits explicit construction and preservation provenance (30.603679ms)
+✔ empty, malformed, unsupported, ambiguous, and conflicting requests produce diagnostics and no operation (229.416626ms)
+✔ the maintained executor stages a semantic two-bowl topology candidate and preserves the accepted source (225.735351ms)
+✔ semantic topology contains two enclosed bowls, stable shared identities, and explicit new nodes (61.262492ms)
+✔ derived geometry and explicit metric policy agree with measured bounds (95.985107ms)
+✔ the validated canonical points are the exact points supplied to the compiler and compiled outlines agree by sampling (380.499878ms)
+✔ source and candidate fonts retain U+0061, expected metrics, and unchanged unrelated glyphs (96.233032ms)
+✔ missing and ambiguous lowercase-a targets are rejected before the executor creates a candidate (140.173991ms)
+✔ stale glyph selectors, root revisions, and incompatible current topologies are rejected (256.838257ms)
+✔ invalid semantic construction and geometry derivation roll back the complete transaction (62.950033ms)
+✔ operation validation rejects invalid derived contours without accepting or mutating the source (57.824707ms)
+✔ font compilation failure prevents candidate publication and acceptance (48.019246ms)
+✔ acceptance seals the compiled candidate and preserves separate immutable accepted revisions (73.288249ms)
+✔ a follow-up transaction applies only its new semantic delta after accepting the topology candidate (150.700114ms)
+✔ the accepted topology operation cannot be replayed as a follow-up delta (192.867147ms)
+✔ both compiled outlines use the established compiler and internal SFNT audit (50.650757ms)
+✔ component definitions are shared while glyph arrangements state stem side and extent independently (62.172038ms)
+✔ one generic arrangement constructor creates deterministic, valid counters and contours for a b d p q (29.506632ms)
+✔ geometry follows semantic relationship references and rejects contradictory anatomy links (24.575724ms)
+✔ generic lowercase a exactly reproduces the established a outline and metrics (31.970134ms)
+✔ stem side, ascender/descender reach, shared width, and horizontal metrics are consistent (75.896769ms)
+✔ adding b d p q creates a candidate revision and leaves accepted a and its source model unchanged (50.565674ms)
+✔ related glyph font compiles all mappings and preserves the reference a outline (128.670939ms)
+✔ an unsupported stem extent or missing component reference is rejected instead of silently normalized (49.290813ms)
+✔ all pre-existing construction TTFs and review pages retain their recorded hashes (4.594361ms)
+✔ semantic anatomy, construction methods, relationships, and shared parameter references validate (14.108114ms)
+✔ semantic construction derives deterministic, closed quadratic geometry with counters and coherent metrics (41.83077ms)
+✔ glyph identity, Unicode identity, and font metrics remain separate from construction node identities (4.235596ms)
+✔ scoped construction operation creates a candidate and regenerates lowercase o only (22.684164ms)
+✔ failed semantic operation is transactional and does not alter accepted state (7.827352ms)
+✔ font compiler consumes the derived contours and emits deterministic TTF with the three encoded glyphs (142.6427ms)
+✔ compiled candidate changes o outline while preserving n and H outlines and advances (70.686401ms)
+✔ the same semantic construction can be referenced in horizontal or vertical presentation without generating alternates (4.06962ms)
+✔ n shoulder joins have tested positional, tangent, and derivative continuity (7.947225ms)
+✔ corrected n changes only its outline relative to the existing base artifact (9.095541ms)
+✔ H crossbar comparison branches current, midpoint, and modestly lower placement as separate parameter candidates (50.560059ms)
+✔ lowercase a declares a distinct single-storey bowl, counter, stem, joins, and terminals (79.305461ms)
+✔ lowercase a derives deterministic valid outer and counter contours from shared construction parameters (41.567342ms)
+✔ lowercase a follows the shared stem and x-height decisions rather than duplicating their values (40.453816ms)
+✔ adding lowercase a branches a candidate revision and preserves accepted o, n, and H exactly (19.202474ms)
+✔ the four-glyph candidate compiles deterministically with lowercase a mapped and existing glyphs preserved (116.244791ms)
+✔ a two-storey topology is not silently treated as the implemented single-storey construction (1.310791ms)
+✔ shared terminal-profile record validation covers only common fields deterministically and without mutation (23.580729ms)
+✔ flat upper terminal retains the existing derived geometry and saved font bytes (157.881185ms)
+✔ upper outer-corner chamfer derives from semantic parameters and preserves terminal identity and attachments (51.675212ms)
+✔ unsupported profiles, orientations, and dimensions reject (281.290487ms)
+✔ extension remains compatible with original executor on existing reflection; universal model validates (81.455363ms)
+✔ registered operations compose through universal dependency execution and preserve accepted input for both grammars (484.142009ms)
+✔ reflection selects a construction instance, preserving the other half of the glyph and unrelated glyphs (237.945394ms)
+✔ ports, semantic boundaries, owners and parameterization survive both orders in object-attached space (197.661336ms)
+✔ failed second operation rolls back semantic state, reflection geometry and candidate revisions (25.980591ms)
+✔ dependencies reject missing IDs, cycles and unordered overlapping operations (23.720337ms)
+✔ revision-bound glyph and component selectors reject stale, forged, missing and foreign targets (27.271485ms)
+✔ acceptance creates separate immutable accepted revisions and rejects tampered candidates (98.514404ms)
+✔ revision identity includes parameter content; repeated executions deterministic and repeated aperture rejected (141.278117ms)
+✖ all untouched working-tree files remain byte-identical and promoted files match their audit hashes (23.912395ms)
+✔ follow-up transactions execute only new deltas and retain accepted operation provenance (149.076904ms)
+✔ frozen prerequisite sources match reviewed source hashes (7.630209ms)
+✔ saved TTFs and embedded review bytes match current transactions; compiled operation orders have equal outlines (308.0472ms)
+✔ one grammar resolves distinct one- and two-bowl topology with individual enclosure relationships (38.52946ms)
+✔ topology rejects missing, contradictory, unsupported, orphan and overlapping structures before derivation (11.358887ms)
+✔ single-storey grammar preserves existing a coordinates and metrics without calling its constructor (67.852906ms)
+✔ semantic upper-stem chamfer preserves the flat default and derives role-relative geometry (57.501912ms)
+✔ legacy flat terminal nodes still derive the established default outline (7.763468ms)
+✔ terminal-profile resolver rejects unsupported profiles, parameters, roles, and dimensions (3.59082ms)
+✔ closed deterministic geometry has disjoint counters fully inside the outer sampled boundary (10.250447ms)
+✔ connector boundary joins are G0/G1 with accurate C1 classification and intentional terminal corners (3.411051ms)
+✔ name and encoding do not select geometry; shared dimensions regenerate both topologies (4.647217ms)
+✔ immutable semantic width candidate preserves lower bowl and counter, with invalid candidate rollback (11.382935ms)
+✔ TTF retains unencoded alternate and review fonts use identical compiled outlines with only U+0061 mapping (168.784587ms)
+✖ all untouched protected files retain baseline hashes and promotions match their audit hashes (22.927571ms)
+✔ semantic upper-bowl candidate propagates into compiled font without changing the single form or lower counter (63.260742ms)
+✔ review embeds exact generated bytes and saved fonts match current deterministic compilation (16.999145ms)
+✔ all five schema-v2 examples are structurally valid and reference-consistent (23.668335ms)
+✔ reference style, resolved characteristic, and global reflection are distinct records (2.365235ms)
+✔ lowercase heart substitution preserves uppercase O and unrelated glyph scope (6.384765ms)
+✔ independent design traits do not require a mutually exclusive family selector (1.886231ms)
+✔ lowercase selector exclusions are stable and operation dependencies are explicit (1.822795ms)
+✔ follow-up candidate branches from accepted state and records preserved decisions and narrow diff (0.691528ms)
+✔ contract validation rejects ambiguous resolved selectors and cyclic operation dependencies (6.422729ms)
+✔ 500 to 520 propagates with bounds-derived bearings and unchanged H (252.495118ms)
+✔ plans, candidate identities, outlines and fonts are deterministic (450.031047ms)
+✔ all declared inputs are consumed and each changes actual outline or metrics (140.66329ms)
+✔ undeclared reads and unused declarations fail closed (7.798056ms)
+✔ 500 outlines match existing adapters; semantic topology and IDs remain intact (77.598226ms)
+✔ each adapter failure rolls back the whole candidate and retains input identity (311.596884ms)
+✔ downstream compilation and audit failures create no candidate (189.793091ms)
+✔ geometry corruption is rejected inside executor (93.649943ms)
+✔ stale prior values, plans, revisions, selectors and missing dependencies rejected (227.703247ms)
+✔ topology override retains x-height dependency; conflicting overrides rejected (84.576742ms)
+✔ follow-up delta uses accepted candidate and does not replay previous operations (186.648275ms)
+✔ same-revision selector membership tampering and omitted rebuild are rejected (204.493367ms)
+✔ v1 adapter is deterministic, read-only, and preserves heart semantics and source offsets (384.060181ms)
+✔ adapter retains unresolved, unsupported, conflict, and unknown v1 records instead of dropping them (220.557048ms)
+✔ selector resolver handles classes, the declared universe, IDs, Unicode, exclusions, empty and unknown targets (61.823608ms)
+✔ reflection grammar builds class selectors with exclusions and preserves deterministic membership snapshots (221.250855ms)
+✔ canonicalized contours derive ordered point records from the authoritative segment path (66.155314ms)
+✔ operation DAG orders composition, rejects cycles and detects non-commuting overlaps without dependencies (211.108561ms)
+✔ transaction rollback leaves accepted model and source geometry unchanged when a later operation fails (124.039794ms)
+✔ Scenario 1: heart operation survives adaptation and compiles to Regular and Bold TTF (619.674683ms)
+✔ Scenario 2: lowercase reflection honors b/d exceptions and leaves uppercase, punctuation, space, and .notdef unchanged (156.411092ms)
+✔ entire-glyph-universe and uppercase selectors use the same operation executor across all three legacy seed designs (639.268433ms)
+✔ reflection normalizes multi-contour counter winding and reflects anchors and component transforms (59.081462ms)
+✔ Scenario 3: heart then lowercase reflection composes in dependency order and preserves exclusions (93.02771ms)
+✔ transaction failure after an earlier staged edit creates no candidate revision (55.117025ms)
+✔ maintained executor preserves built-in reflection behavior while extending its dispatch (97.761556ms)
+✔ registered reflection and aperture compose in either dependency order for ring and spine grammars (289.979289ms)
+✔ single-storey a terminal profile changes semantic state and derives bounded geometry through the maintained handler (106.412313ms)
+✔ spine adapter derives the same semantic chamfer while preserving terminal ownership, flat defaults, and metrics (117.169556ms)
+✔ spine terminal requests reject unsupported, malformed, stale, missing, ambiguous, and foreign targets (136.978149ms)
+✔ spine terminal profile composes with reflection in either dependency order (227.490682ms)
+✔ spine terminal and aperture operations compose across accepted follow-up revisions in either order (169.983277ms)
+✔ spine terminal transaction rolls back after a later failure and accepted revisions support follow-up deltas (74.557292ms)
+✔ terminal profile requests reject unsupported values, unknown parameters, missing or ambiguous targets, and stale revisions (356.842204ms)
+✔ terminal profile and reflection compose in either declared order while preserving object-attached semantics (143.615641ms)
+✔ later terminal-operation failure rolls back staged semantic changes, geometry, and candidate history (46.687541ms)
+✔ accepted terminal revisions are immutable and follow-up transactions execute only new deltas (110.890015ms)
+✔ construction-instance reflection preserves neighboring instances, glyph identity, and metrics (42.177328ms)
+✔ aperture ports retain semantic boundary ownership and reflected cap coordinates in both operation orders (207.529175ms)
+✔ dependency ordering, cycles, unordered conflicts, stale selectors, and stale revision preconditions are enforced (45.032308ms)
+✔ a later handler failure rolls back geometry, semantic construction, and candidate history (21.460693ms)
+✔ accepted candidates are separate and immutable, and tampered candidates cannot be accepted (72.06954ms)
+✔ revision identity responds to parameter content, ignores object key order, and stays deterministic (113.598674ms)
+✔ handler maps are per-call plain function maps and asynchronous handlers reject atomically (16.011597ms)
+✔ follow-up transactions execute only new operations and retain accepted operation history (127.576334ms)
+✔ Latin horizontal request carries input, font revision, source range, features, and horizontal metrics without shaped glyph output (12.026327ms)
+✔ Arabic RTL request preserves supplied script, language, direction, and contextual-joining requirement without resolving forms (1.594117ms)
+✔ mixed Latin and Arabic contexts become separate requests with preserved logical source positions and upstream bidi provenance (2.089721ms)
+✔ mixed text without resolved run directions returns unresolved and does not guess (1.884277ms)
+✔ Japanese vertical request preserves column progression, TTB direction, orientation policy, and supported vertical features (2.42924ms)
+✔ Traditional Mongolian keeps TTB run direction distinct from LTR column progression and requires vertical metrics (0.830038ms)
+✔ missing vertical metrics, vertical alternates, script support, language, direction, and feature support are explicit unresolved results (7.104777ms)
+✔ unregistered variation axes and unsupported features do not silently fall back (2.940633ms)
+✔ same accepted construction can request horizontal and vertical presentations without mutating design state (1.689616ms)
+✔ direction-independent heart and reflection decisions retain their meaning and are not rewritten by request construction (1.722249ms)
+✔ unaccepted or unvalidated design snapshots are not used to build requests (1.408691ms)
+✔ the bounded whole-brief resolver preserves text, spans, scopes, qualitative intent, and provenance (18.895792ms)
+✔ one documented wording variant is accepted, while unsupported, ambiguous, conflicting, and malformed input is explicit (5.69515ms)
+✔ invalid schemas and fabricated source spans are rejected deterministically (4.850586ms)
+✔ the planner binds shared decisions to existing construction nodes and refuses the bad double-storey-a geometry (121.946452ms)
+✔ one coordinated executor transaction records the family resolution, adds h, and preserves the accepted glyphs (453.775472ms)
+✔ unsupported or ambiguous language creates no candidate revision (37.437703ms)
+✔ semantic/geometry and compiler failures roll back the coordinated candidate (117.610148ms)
+✔ a later dependent operation failure rolls back the earlier family-resolution and h operations together (45.056397ms)
+✔ technical success and FontFace evidence never set visual approval; human review is separately recorded (202.282024ms)
+✔ the build compiler is the existing diagnostic font adapter, not a contour-specific replacement (60.033285ms)
+✔ all eight writing-context fixtures validate while keeping layout requests outside font-design behavior (8.783447ms)
+✔ script, language, direction, writing mode, and block/column progression are independent fields (1.079386ms)
+✔ Japanese vertical text can mix upright, sideways, and font-alternate orientation without changing writing mode (0.999634ms)
+✔ glyph identities, Unicode mappings, presentation alternates, and semantic construction references stay distinct (0.690918ms)
+✔ Arabic shaping records contextual joining and codepoint sequences independently of bidi direction (0.827067ms)
+✔ horizontal and vertical metrics coexist and vertical fallback is explicit (0.478922ms)
+✔ a multi-codepoint input may shape to a different glyph count and retains its source cluster range (0.530476ms)
+✔ mixed-direction paragraphs retain logical ranges and per-run direction, script, and language (0.689616ms)
+✔ contradictory axes, unresolved run directions, conflicting orientations, and invalid mappings are rejected (3.5743ms)
+✔ existing Latin heart and reflection architecture fixtures retain their original v2 meaning (1.329508ms)
+ℹ tests 196
+ℹ suites 0
+ℹ pass 192
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10336.583908
+
+✖ failing tests:
+
+test at architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs:42:1
+✖ all pre-existing source and artifact bytes still match initial baseline (14.71167ms)
+  AssertionError [ERR_ASSERTION]: ./prototype/README.md
+  + actual - expected
+  
+  + '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392'
+  - '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06'
+  
+      at TestContext.<anonymous> (file:///data/data/com.termux/files/home/lfcfoundry/typeface-studio-linux-visual-validation-handoff/architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs:46:24)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392',
+    expected: '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs:43:1
+✖ all untouched protected files retain original hashes and promotions match their audit hashes (27.981283ms)
+  AssertionError [ERR_ASSERTION]: ./prototype/README.md
+  + actual - expected
+  
+  + '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392'
+  - '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06'
+  
+      at TestContext.<anonymous> (file:///data/data/com.termux/files/home/lfcfoundry/typeface-studio-linux-visual-validation-handoff/architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs:43:402)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392',
+    expected: '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at architecture/universal-design-model/construction-experiment/transaction-composition/composition.test.mjs:36:1
+✖ all untouched working-tree files remain byte-identical and promoted files match their audit hashes (23.912395ms)
+  AssertionError [ERR_ASSERTION]: ./prototype/README.md
+  + actual - expected
+  
+  + '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392'
+  - '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06'
+  
+      at TestContext.<anonymous> (file:///data/data/com.termux/files/home/lfcfoundry/typeface-studio-linux-visual-validation-handoff/architecture/universal-design-model/construction-experiment/transaction-composition/composition.test.mjs:40:24)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392',
+    expected: '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs:71:1
+✖ all untouched protected files retain baseline hashes and promotions match their audit hashes (22.927571ms)
+  AssertionError [ERR_ASSERTION]: ./prototype/README.md
+  + actual - expected
+  
+  + '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392'
+  - '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06'
+  
+      at TestContext.<anonymous> (file:///data/data/com.termux/files/home/lfcfoundry/typeface-studio-linux-visual-validation-handoff/architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs:75:24)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '75da9ddd27f0278c2f94848d2fd8c8eda86aeafbb5d1b533efed39c2432fb392',
+    expected: '8e09704fd09ac38621e97636ee3ddce91fe747ab51ff86fb6a07d2eb189eea06',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,662 @@
+{
+  "verificationStatus": "inconclusive-browser-not-observed",
+  "browser": {
+    "package": "com.android.chrome",
+    "launchIntentsAccepted": 2,
+    "versionName": "unavailable; browser page did not execute to report userAgent",
+    "versionCode": 807807904,
+    "model": "Pixel 7 Pro",
+    "manufacturer": "Google",
+    "androidRelease": "17",
+    "sdk": 37,
+    "kernel": "Linux 6.1.162-android14-11-g9dd05ae3a1de-ab16261587 aarch64",
+    "devicePixelRatio": null
+  },
+  "conditions": {
+    "page": "http://127.0.0.1:8795/architecture/universal-design-model/family-xheight-propagation/browser-verification-2026-11-03/review.html",
+    "fontFacesRequestedByBrowser": false,
+    "fontFaceLoadResults": null,
+    "documentFontsCheck": null,
+    "pageJavaScriptResults": null,
+    "httpAccessLog": [
+      "\"GET /architecture/universal-design-model/family-xheight-propagation/browser-verification-2026-11-03/review.html HTTP/1.1\" 200 -"
+    ],
+    "screenshotAttempt": "/system/bin/screencap -p .../chrome-screen.png",
+    "screenshotResult": "Failed to take screenshot: Capturing failed.",
+    "canvasRasterEvidence": null,
+    "consoleErrors": null
+  },
+  "localServerControl": {
+    "reviewHttpStatus": 200,
+    "sourceFontHttpStatus": 200,
+    "candidateFontHttpStatus": 200,
+    "sourceFontServedBytes": 1700,
+    "candidateFontServedBytes": 1700,
+    "note": "These were Termux requests, not Android Chrome."
+  },
+  "fontFiles": {
+    "source": {
+      "path": "architecture/universal-design-model/family-xheight-propagation/artifacts-final/source.ttf",
+      "bytes": 1700,
+      "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+    },
+    "candidate": {
+      "path": "architecture/universal-design-model/family-xheight-propagation/artifacts-final/candidate.ttf",
+      "bytes": 1700,
+      "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f"
+    }
+  },
+  "fontContent": {
+    "glyphOrder": [
+      ".notdef",
+      "space",
+      "o",
+      "n",
+      "H",
+      "a",
+      "h"
+    ],
+    "glyphs": {
+      ".notdef": {
+        "sameRecord": true,
+        "sourceUnicode": [],
+        "candidateUnicode": [],
+        "sourceAdvance": 620,
+        "candidateAdvance": 620,
+        "sourceContourCount": 2,
+        "candidateContourCount": 2,
+        "sourcePointCount": 8,
+        "candidatePointCount": 8,
+        "changedPointCount": 0,
+        "changedPoints": []
+      },
+      "space": {
+        "sameRecord": true,
+        "sourceUnicode": [
+          32
+        ],
+        "candidateUnicode": [
+          32
+        ],
+        "sourceAdvance": 250,
+        "candidateAdvance": 250,
+        "sourceContourCount": 0,
+        "candidateContourCount": 0,
+        "sourcePointCount": 0,
+        "candidatePointCount": 0,
+        "changedPointCount": 0,
+        "changedPoints": []
+      },
+      "o": {
+        "sameRecord": false,
+        "sourceUnicode": [
+          111
+        ],
+        "candidateUnicode": [
+          111
+        ],
+        "sourceAdvance": 620,
+        "candidateAdvance": 620,
+        "sourceContourCount": 2,
+        "candidateContourCount": 2,
+        "sourcePointCount": 8,
+        "candidatePointCount": 8,
+        "changedPointCount": 6,
+        "changedPoints": [
+          {
+            "contour": 0,
+            "point": 2,
+            "from": {
+              "x": 55,
+              "y": 508,
+              "on": false
+            },
+            "to": {
+              "x": 55,
+              "y": 528,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 3,
+            "from": {
+              "x": 565,
+              "y": 508,
+              "on": false
+            },
+            "to": {
+              "x": 565,
+              "y": 528,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 0,
+            "from": {
+              "x": 439,
+              "y": 381,
+              "on": false
+            },
+            "to": {
+              "x": 439,
+              "y": 399,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 1,
+            "from": {
+              "x": 181,
+              "y": 381,
+              "on": false
+            },
+            "to": {
+              "x": 181,
+              "y": 399,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 2,
+            "from": {
+              "x": 181,
+              "y": 119,
+              "on": false
+            },
+            "to": {
+              "x": 181,
+              "y": 121,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 3,
+            "from": {
+              "x": 439,
+              "y": 119,
+              "on": false
+            },
+            "to": {
+              "x": 439,
+              "y": 121,
+              "on": false
+            }
+          }
+        ]
+      },
+      "n": {
+        "sameRecord": false,
+        "sourceUnicode": [
+          110
+        ],
+        "candidateUnicode": [
+          110
+        ],
+        "sourceAdvance": 650,
+        "candidateAdvance": 650,
+        "sourceContourCount": 1,
+        "candidateContourCount": 1,
+        "sourcePointCount": 16,
+        "candidatePointCount": 16,
+        "changedPointCount": 12,
+        "changedPoints": [
+          {
+            "contour": 0,
+            "point": 1,
+            "from": {
+              "x": 55,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 55,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 2,
+            "from": {
+              "x": 145,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 145,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 3,
+            "from": {
+              "x": 190,
+              "y": 500,
+              "on": false
+            },
+            "to": {
+              "x": 190,
+              "y": 520,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 4,
+            "from": {
+              "x": 280,
+              "y": 540,
+              "on": false
+            },
+            "to": {
+              "x": 280,
+              "y": 560,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 5,
+            "from": {
+              "x": 370,
+              "y": 540,
+              "on": false
+            },
+            "to": {
+              "x": 370,
+              "y": 560,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 6,
+            "from": {
+              "x": 460,
+              "y": 500,
+              "on": false
+            },
+            "to": {
+              "x": 460,
+              "y": 520,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 7,
+            "from": {
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 505,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 8,
+            "from": {
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 595,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 11,
+            "from": {
+              "x": 505,
+              "y": 290,
+              "on": true
+            },
+            "to": {
+              "x": 505,
+              "y": 302,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 12,
+            "from": {
+              "x": 505,
+              "y": 455,
+              "on": false
+            },
+            "to": {
+              "x": 505,
+              "y": 475,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 13,
+            "from": {
+              "x": 145,
+              "y": 455,
+              "on": false
+            },
+            "to": {
+              "x": 145,
+              "y": 475,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 14,
+            "from": {
+              "x": 145,
+              "y": 290,
+              "on": true
+            },
+            "to": {
+              "x": 145,
+              "y": 302,
+              "on": true
+            }
+          }
+        ]
+      },
+      "H": {
+        "sameRecord": true,
+        "sourceUnicode": [
+          72
+        ],
+        "candidateUnicode": [
+          72
+        ],
+        "sourceAdvance": 650,
+        "candidateAdvance": 650,
+        "sourceContourCount": 1,
+        "candidateContourCount": 1,
+        "sourcePointCount": 12,
+        "candidatePointCount": 12,
+        "changedPointCount": 0,
+        "changedPoints": []
+      },
+      "a": {
+        "sameRecord": false,
+        "sourceUnicode": [
+          97
+        ],
+        "candidateUnicode": [
+          97
+        ],
+        "sourceAdvance": 650,
+        "candidateAdvance": 650,
+        "sourceContourCount": 2,
+        "candidateContourCount": 2,
+        "sourcePointCount": 10,
+        "candidatePointCount": 10,
+        "changedPointCount": 7,
+        "changedPoints": [
+          {
+            "contour": 0,
+            "point": 0,
+            "from": {
+              "x": 505,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 505,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 1,
+            "from": {
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 595,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 4,
+            "from": {
+              "x": 55,
+              "y": 0,
+              "on": false
+            },
+            "to": {
+              "x": 37,
+              "y": 0,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 5,
+            "from": {
+              "x": 55,
+              "y": 500,
+              "on": false
+            },
+            "to": {
+              "x": 37,
+              "y": 520,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 1,
+            "from": {
+              "x": 505,
+              "y": 410,
+              "on": true
+            },
+            "to": {
+              "x": 505,
+              "y": 430,
+              "on": true
+            }
+          },
+          {
+            "contour": 1,
+            "point": 2,
+            "from": {
+              "x": 145,
+              "y": 410,
+              "on": false
+            },
+            "to": {
+              "x": 127,
+              "y": 430,
+              "on": false
+            }
+          },
+          {
+            "contour": 1,
+            "point": 3,
+            "from": {
+              "x": 145,
+              "y": 90,
+              "on": false
+            },
+            "to": {
+              "x": 127,
+              "y": 90,
+              "on": false
+            }
+          }
+        ]
+      },
+      "h": {
+        "sameRecord": false,
+        "sourceUnicode": [
+          104
+        ],
+        "candidateUnicode": [
+          104
+        ],
+        "sourceAdvance": 650,
+        "candidateAdvance": 650,
+        "sourceContourCount": 1,
+        "candidateContourCount": 1,
+        "sourcePointCount": 12,
+        "candidatePointCount": 12,
+        "changedPointCount": 6,
+        "changedPoints": [
+          {
+            "contour": 0,
+            "point": 3,
+            "from": {
+              "x": 145,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 145,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 4,
+            "from": {
+              "x": 370,
+              "y": 800,
+              "on": false
+            },
+            "to": {
+              "x": 370,
+              "y": 832,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 5,
+            "from": {
+              "x": 595,
+              "y": 500,
+              "on": true
+            },
+            "to": {
+              "x": 595,
+              "y": 520,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 8,
+            "from": {
+              "x": 505,
+              "y": 380,
+              "on": true
+            },
+            "to": {
+              "x": 505,
+              "y": 395,
+              "on": true
+            }
+          },
+          {
+            "contour": 0,
+            "point": 9,
+            "from": {
+              "x": 325,
+              "y": 600,
+              "on": false
+            },
+            "to": {
+              "x": 325,
+              "y": 624,
+              "on": false
+            }
+          },
+          {
+            "contour": 0,
+            "point": 10,
+            "from": {
+              "x": 145,
+              "y": 380,
+              "on": true
+            },
+            "to": {
+              "x": 145,
+              "y": 395,
+              "on": true
+            }
+          }
+        ]
+      }
+    },
+    "compiledMapping": "Both contain .notdef, space U+0020, o U+006F, n U+006E, H U+0048, a U+0061, h U+0068",
+    "internalAudits": {
+      "source": {
+        "valid": true,
+        "tableCount": 10,
+        "numGlyphs": 7,
+        "unitsPerEm": 1000,
+        "wholeChecksumValid": true
+      },
+      "candidate": {
+        "valid": true,
+        "tableCount": 10,
+        "numGlyphs": 7,
+        "unitsPerEm": 1000,
+        "wholeChecksumValid": true
+      }
+    },
+    "sourceVsCandidate": {
+      "identicalRecords": [
+        ".notdef",
+        "space",
+        "H"
+      ],
+      "differentRecords": [
+        "o",
+        "n",
+        "a",
+        "h"
+      ]
+    },
+    "sourceRevision": "rev:9e756b95e08bc7de",
+    "candidateRevision": "rev:96f4702797761a78"
+  },
+  "visualObservations": {
+    "glyphRecognizability": "Not assessed; no browser raster captured.",
+    "strokeConsistency": "Not assessed; no browser raster captured.",
+    "counterProportions": "Not assessed; no browser raster captured.",
+    "shoulderAndBowlTransitions": "Not assessed; no browser raster captured.",
+    "baselineAndXHeight": "Not assessed; no browser raster captured.",
+    "spacingAndRhythm": "Not assessed; no browser raster captured.",
+    "smallSizeLegibility": "Not assessed; no browser raster captured.",
+    "obviousDefects": "Not assessed; no browser raster captured."
+  },
+  "validationLimits": {
+    "internalAuditIsIndependent": false,
+    "canvasTextMetricsAreSideBearings": false,
+    "visualApproval": "pending; not approved"
+  }
+}

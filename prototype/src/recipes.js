@@ -1,4 +1,5 @@
 import { PathBuilder, contourBounds, ellipseRing, orientContour, polygonContour, rectContour, roundedRectContour } from './contours.js';
+import { applyGlyphInstructions } from './glyph-operations.js';
 
 const BASE_WIDTH = { A: 520, B: 510, E: 450, H: 560, O: 560, a: 500, e: 470, n: 500, o: 500, g: 520 };
 
@@ -9,9 +10,9 @@ export const RECIPE_LIBRARY = Object.freeze({
 });
 
 function localDefaults(system) {
-  if (system === 'humanist') return { stem: 91, contrast: 0.22, xHeight: 545, aperture: 0.22, terminal: 'rounded', spacing: 1.04, serifBracket: 0.2 };
-  if (system === 'serif') return { stem: 100, contrast: 0.46, xHeight: 510, aperture: 0.17, terminal: 'square', spacing: 1.03, serifBracket: 0.24 };
-  return { stem: 94, contrast: 0.08, xHeight: 520, aperture: 0.15, terminal: 'square', spacing: 1, serifBracket: 0.2 };
+  if (system === 'humanist') return { stem: 91, contrast: 0.22, xHeight: 545, aperture: 0.22, terminal: 'rounded', terminalRadiusRatio: 0.35, spacing: 1.04, serifBracket: 0.2 };
+  if (system === 'serif') return { stem: 100, contrast: 0.46, xHeight: 510, aperture: 0.17, terminal: 'square', terminalRadiusRatio: 0.35, spacing: 1.03, serifBracket: 0.24 };
+  return { stem: 94, contrast: 0.08, xHeight: 520, aperture: 0.15, terminal: 'square', terminalRadiusRatio: 0.35, spacing: 1, serifBracket: 0.2 };
 }
 
 function effectiveParameters(spec, system, overrides = {}) {
@@ -20,7 +21,8 @@ function effectiveParameters(spec, system, overrides = {}) {
   p.stem = Math.max(54, Math.round((p.stem || localDefaults(system).stem) * (p.weight >= 600 ? 1.28 : Math.max(0.72, p.weight / 400))));
   p.verticalStem = p.stem;
   p.horizontalStem = Math.max(34, Math.round(p.stem * (1 - Math.min(0.78, p.contrast) * 0.56)));
-  p.terminalRadius = p.terminal === 'rounded' ? Math.round(p.stem * 0.35) : 0;
+  p.terminalRadiusRatio = Math.max(0, Math.min(0.7, Number(p.terminalRadiusRatio) || 0));
+  p.terminalRadius = p.terminal === 'rounded' ? Math.round(p.stem * p.terminalRadiusRatio) : 0;
   p.roundness = p.terminalRadius;
   return p;
 }
@@ -32,7 +34,7 @@ function addContour(g, contour, kind, componentId = kind) {
 }
 
 function rect(g, name, x0, y0, x1, y1, p, radius = null) {
-  const r = radius ?? Math.min(p.terminalRadius, Math.abs(x1 - x0) * 0.25, Math.abs(y1 - y0) * 0.25);
+  const r = radius ?? Math.min(p.terminalRadius, Math.abs(x1 - x0) * 0.5, Math.abs(y1 - y0) * 0.5);
   return addContour(g, r > 0 ? roundedRectContour(`${g.id}.${name}`, x0, y0, x1, y1, r) : rectContour(`${g.id}.${name}`, x0, y0, x1, y1), name.split('-')[0]);
 }
 
@@ -269,8 +271,29 @@ export function generateContourFamily(spec, { system = spec.resolvedParameters.s
   if (!RECIPE_LIBRARY[system]) throw new Error(`Unknown construction system: ${system}`);
   const p = effectiveParameters(spec, system, { ...overrides, ...(style === 'Bold' ? { weight: 700 } : {}) });
   const glyphs = {}, order = [];
+  const glyphInstructionResults = (spec.glyphInstructions?.instructions || []).map(instruction => ({
+    instructionId: instruction.id,
+    status: instruction.resolution.status === 'resolved' ? 'pending'
+      : instruction.resolution.status === 'unsupported' ? 'unsupported' : 'unresolved',
+    reason: instruction.resolution.reason || null,
+    targetGlyphs: [...(instruction.resolution.targetGlyphs || [])]
+  }));
   for (const ch of ['A', 'B', 'E', 'H', 'O', 'a', 'e', 'n', 'o', 'g']) {
     const glyph = recipeGlyph(ch, system, p);
+    const instructionRun = applyGlyphInstructions(glyph, spec.glyphInstructions, {
+      width: Math.round(BASE_WIDTH[ch] * p.width),
+      height: 'A' <= ch && ch <= 'Z' ? p.capHeight : p.xHeight,
+      weight: p.weight,
+      system
+    });
+    for (const result of instructionRun.results) {
+      const existing = glyphInstructionResults.find(item => item.instructionId === result.instructionId);
+      if (existing) {
+        existing.status = result.status;
+        existing.reason = result.reason;
+        existing.targetGlyphs = [...new Set([...existing.targetGlyphs, ch])];
+      }
+    }
     const side = Math.round(50 * p.spacing);
     translateGlyph(glyph, side, 0);
     const bounds = glyphBounds(glyph);
@@ -296,7 +319,7 @@ export function generateContourFamily(spec, { system = spec.resolvedParameters.s
     metadata: { family: `${family} ${system[0].toUpperCase()}${system.slice(1)}`, style, designer: 'LFCFoundry Typeface Studio prototype', copyright: 'Prototype font generated from first-party procedural recipes.', version: '0.100' },
     system, designSpec: spec, design: p,
     metrics: { unitsPerEm: 1000, ascender: 800, descender: system === 'humanist' ? -280 : -220, lineGap: 0 },
-    glyphOrder: order, glyphs,
+    glyphOrder: order, glyphs, glyphInstructionResults,
     spacing: { classes: { cap: ['A','B','E','H','O'], lowercase: ['a','e','n','o','g'] }, pairs: {} }
   };
 }

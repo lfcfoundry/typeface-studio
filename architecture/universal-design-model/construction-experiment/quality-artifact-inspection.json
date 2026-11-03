@@ -1,0 +1,1591 @@
+{
+  "parser": "fontsketch 0.1.0 (same implementation family as compiler)",
+  "fonts": {
+    "originalBase": {
+      "id": "originalBase",
+      "label": "Original base",
+      "file": "LFCFoundry-Semantic-Construction-Base.ttf",
+      "group": "original",
+      "bytes": 1580,
+      "sha256": "f94fcae18a65a32d3f486d7f4fa652826c8f87832a79a3eae02bff76e9473824",
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H"
+      ],
+      "internal": {
+        "fontsketchChecksums": [],
+        "sfntAuditValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "tableTags": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "horizontalMetrics": {
+          ".notdef": {
+            "advanceWidth": 620,
+            "leftSideBearing": 35
+          },
+          "space": {
+            "advanceWidth": 250,
+            "leftSideBearing": 0
+          },
+          "o": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "n": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "H": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          }
+        }
+      },
+      "glyphs": {
+        "o": {
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "horizontalMetric": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 119,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 119,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 226,
+                  "y": 590,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 545,
+                  "on": true
+                },
+                {
+                  "x": 424,
+                  "y": 590,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 424,
+                  "y": 620,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 226,
+                  "y": 620,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "originalOpen": {
+      "id": "originalOpen",
+      "label": "Original open-counter candidate",
+      "file": "LFCFoundry-Semantic-Construction-Open-Counter.ttf",
+      "group": "original",
+      "bytes": 1580,
+      "sha256": "00065a4210071d36ecaf4f25ed7808fb74ee04f665627f0f204e4c6131492018",
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H"
+      ],
+      "internal": {
+        "fontsketchChecksums": [],
+        "sfntAuditValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "tableTags": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "horizontalMetrics": {
+          ".notdef": {
+            "advanceWidth": 620,
+            "leftSideBearing": 35
+          },
+          "space": {
+            "advanceWidth": 250,
+            "leftSideBearing": 0
+          },
+          "o": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "n": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "H": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          }
+        }
+      },
+      "glyphs": {
+        "o": {
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "horizontalMetric": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 475,
+                  "y": 418,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 418,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 82,
+                  "on": false
+                },
+                {
+                  "x": 475,
+                  "y": 82,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 226,
+                  "y": 590,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 545,
+                  "on": true
+                },
+                {
+                  "x": 424,
+                  "y": 590,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 424,
+                  "y": 620,
+                  "on": false
+                },
+                {
+                  "x": 325,
+                  "y": 455,
+                  "on": true
+                },
+                {
+                  "x": 226,
+                  "y": 620,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "smoothCurrent": {
+      "id": "smoothCurrent",
+      "label": "Corrected n; existing H",
+      "file": "LFCFoundry-Semantic-Construction-Smooth-N-Current-H.ttf",
+      "group": "quality",
+      "bytes": 1576,
+      "sha256": "b1ef7eaabdd7b134d11cfbafd7bc5dc88653ac8d08faaaefd27c88ef3ab18fad",
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H"
+      ],
+      "internal": {
+        "fontsketchChecksums": [],
+        "sfntAuditValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "tableTags": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "horizontalMetrics": {
+          ".notdef": {
+            "advanceWidth": 620,
+            "leftSideBearing": 35
+          },
+          "space": {
+            "advanceWidth": 250,
+            "leftSideBearing": 0
+          },
+          "o": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "n": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "H": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          }
+        }
+      },
+      "glyphs": {
+        "o": {
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "horizontalMetric": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 119,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 119,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 190,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 280,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 370,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 460,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "midpoint": {
+      "id": "midpoint",
+      "label": "Corrected n; H midpoint",
+      "file": "LFCFoundry-Semantic-Construction-Smooth-N-H-Midpoint.ttf",
+      "group": "quality",
+      "bytes": 1576,
+      "sha256": "3587987a2da0ceb674e1244485254943d2ec8ed608e9424db693cb35250cbbdd",
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H"
+      ],
+      "internal": {
+        "fontsketchChecksums": [],
+        "sfntAuditValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "tableTags": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "horizontalMetrics": {
+          ".notdef": {
+            "advanceWidth": 620,
+            "leftSideBearing": 35
+          },
+          "space": {
+            "advanceWidth": 250,
+            "leftSideBearing": 0
+          },
+          "o": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "n": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "H": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          }
+        }
+      },
+      "glyphs": {
+        "o": {
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "horizontalMetric": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 119,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 119,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 190,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 280,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 370,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 460,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 395,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 395,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 305,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 305,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "below": {
+      "id": "below",
+      "label": "Corrected n; H 0.48",
+      "file": "LFCFoundry-Semantic-Construction-Smooth-N-H-Low-0_48.ttf",
+      "group": "quality",
+      "bytes": 1576,
+      "sha256": "cbce373331f70deb77b793848631f877dbb86582c0640fa3945d9cdfebfa0eb6",
+      "glyphOrder": [
+        ".notdef",
+        "space",
+        "o",
+        "n",
+        "H"
+      ],
+      "internal": {
+        "fontsketchChecksums": [],
+        "sfntAuditValid": true,
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksumValid": true,
+        "tableTags": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "horizontalMetrics": {
+          ".notdef": {
+            "advanceWidth": 620,
+            "leftSideBearing": 35
+          },
+          "space": {
+            "advanceWidth": 250,
+            "leftSideBearing": 0
+          },
+          "o": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "n": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "H": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          }
+        }
+      },
+      "glyphs": {
+        "o": {
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "horizontalMetric": {
+            "advanceWidth": 620,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 119,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 119,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 190,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 280,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 370,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 460,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "horizontalMetric": {
+            "advanceWidth": 650,
+            "leftSideBearing": 55
+          },
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 381,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 381,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 291,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 291,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "originalAgainstSmooth": {
+      ".notdef": {
+        "outlineIdentical": true,
+        "unicodeIdentical": true,
+        "advanceIdentical": true,
+        "horizontalMetricsIdentical": true
+      },
+      "space": {
+        "outlineIdentical": true,
+        "unicodeIdentical": true,
+        "advanceIdentical": true,
+        "horizontalMetricsIdentical": true
+      },
+      "o": {
+        "outlineIdentical": true,
+        "unicodeIdentical": true,
+        "advanceIdentical": true,
+        "horizontalMetricsIdentical": true
+      },
+      "n": {
+        "outlineIdentical": false,
+        "unicodeIdentical": true,
+        "advanceIdentical": true,
+        "horizontalMetricsIdentical": true
+      },
+      "H": {
+        "outlineIdentical": true,
+        "unicodeIdentical": true,
+        "advanceIdentical": true,
+        "horizontalMetricsIdentical": true
+      }
+    },
+    "hCandidateComparisons": {
+      "midpoint": {
+        ".notdef": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "space": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "o": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "n": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "H": {
+          "outlineIdentical": false,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        }
+      },
+      "below": {
+        ".notdef": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "space": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "o": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "n": {
+          "outlineIdentical": true,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        },
+        "H": {
+          "outlineIdentical": false,
+          "unicodeIdentical": true,
+          "advanceIdentical": true,
+          "horizontalMetricsIdentical": true
+        }
+      }
+    }
+  },
+  "reviewPage": {
+    "embeddedBytesMatch": {
+      "originalBase": true,
+      "originalOpen": true,
+      "smoothCurrent": true,
+      "midpoint": true,
+      "below": true
+    },
+    "allMatch": true
+  },
+  "interpretation": {
+    "correctedNChangesOnlyNFromOriginalBase": true,
+    "midpointChangesOnlyH": true,
+    "lowerAlternativeChangesOnlyH": true,
+    "independentValidation": false
+  }
+}

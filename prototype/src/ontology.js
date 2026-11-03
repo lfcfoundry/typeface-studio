@@ -29,7 +29,9 @@ export const DOMAIN_RULES = [
   { phrases: ['wide apertures', 'wide aperture'], concept: 'aperture.open', parameter: 'aperture', value: 0.3, polarity: 'open', capability: 'supported', explanation: 'Widens the actual mouth in the e contour and the open humanist forms.' },
   { phrases: ['closed apertures', 'closed aperture', 'closed counters'], concept: 'aperture.open', parameter: 'aperture', value: 0.06, polarity: 'closed', capability: 'supported', explanation: 'Narrows the actual aperture geometry.' },
   { phrases: ['open forms', 'open shapes', 'shapes open'], concept: 'aperture.open', parameter: 'aperture', value: 0.25, polarity: 'open', capability: 'supported', explanation: 'Opens the e and humanist bowl forms in the current glyph set.' },
-  { phrases: ['rounded terminals', 'rounded terminal', 'soft terminals', 'soft terminal', 'rounded corners'], concept: 'terminal.rounded', parameter: 'terminal', value: 'rounded', polarity: 'rounded', capability: 'supported', explanation: 'Changes terminal contour end caps and corner construction.' },
+  { phrases: ['slightly rounded terminals', 'slightly rounded terminal'], concept: 'terminal.rounded-degree', parameter: 'terminalRadiusRatio', value: 0.18, secondary: { terminal: 'rounded' }, capability: 'supported', explanation: 'Uses a subtle terminal radius equal to 0.18 of the adjusted stem width.' },
+  { phrases: ['strongly rounded terminals', 'strongly rounded terminal'], concept: 'terminal.rounded-degree', parameter: 'terminalRadiusRatio', value: 0.55, secondary: { terminal: 'rounded' }, capability: 'supported', explanation: 'Uses a pronounced terminal radius equal to 0.55 of the adjusted stem width.' },
+  { phrases: ['rounded terminals', 'rounded terminal', 'soft terminals', 'soft terminal', 'rounded corners'], concept: 'terminal.rounded', parameter: 'terminal', value: 'rounded', polarity: 'rounded', capability: 'supported', explanation: 'Uses the standard terminal radius equal to 0.35 of the adjusted stem width.' },
   { phrases: ['rounded'], concept: 'terminal.rounded', parameter: 'terminal', value: 'rounded', polarity: 'rounded', capability: 'supported', explanation: 'Changes terminal contour end caps and corner construction.' },
   { phrases: ['square terminals', 'square terminal', 'angular terminals', 'angular terminal', 'sharp terminals'], concept: 'terminal.rounded', parameter: 'terminal', value: 'square', polarity: 'square', capability: 'supported', explanation: 'Uses square terminal geometry.' },
   { phrases: ['square construction'], concept: 'construction.geometric', parameter: 'system', value: 'geometric', capability: 'supported', explanation: 'Uses straight-sided geometric construction recipes.' },
@@ -53,7 +55,7 @@ export const DOMAIN_RULES = [
 export const PARAMETERS = Object.freeze({
   family: 'sans', system: 'geometric', width: 1, weight: 400, stem: 94,
   contrast: 0.08, xHeight: 520, capHeight: 700, aperture: 0.15,
-  counterScale: 1, terminal: 'square', spacing: 1, monospaced: false, serifBracket: 0.2
+  counterScale: 1, terminal: 'square', terminalRadiusRatio: 0.35, spacing: 1, monospaced: false, serifBracket: 0.2
 });
 
 export const USAGE_CONTEXTS = ['screen', 'screens', 'header', 'headers', 'headline', 'headlines', 'poster', 'posters', 'body text', 'reading', 'interface', 'print'];

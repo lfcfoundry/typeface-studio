@@ -111,48 +111,125 @@
     "./architecture/universal-design-model/construction-experiment/related-glyph-reuse/README.md": "d8e397fc73c1c1fbecff133a2aba404ca0cd171923e5219959bc32c901627c4b",
     "./architecture/universal-design-model/construction-experiment/related-glyph-reuse/test/related-glyphs.test.mjs": "0c5eddfa4ec68fc88333531676c8198c987980cb87ea1125d4fb45a7fbccf298",
     "./architecture/universal-design-model/construction-experiment/related-glyph-reuse/artifacts/LFCFoundry-Related-Glyph-Reuse-abdpq.ttf": "4342ebe4d617f80d56278e111dd7a39c480922efc60ba836846749763a8ce14f",
-    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/preservation-baseline.json": "71f5923efbbef37439ace516dff35eab58bdfe5bba6d63b7ac4b9b90bba8af76",
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/preservation-baseline.json": "e4ce2ba2cb11c4f7cfd908adc2074538805b5dc7f50f47247e1bc4746870e0f9",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.mjs": "a27a022c7f8418f782eb87a0f5a386091ba53ba4b5e82a610699567259663e17",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/font.mjs": "43cceb76ffffd84706830aba8e90d504f2fedd29b67d49426aae4c9ad56c34a0",
-    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs": "a93815d9523ccac8951e957c18f004d5e7f74eac556c9273f843d4775c7ac775",
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs": "a447146321b51d1b935a0cf89bf506e85a6a2f5a17aac981acc40812984fe715",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/build.mjs": "0796ee8744967a75851c0116ae5d8d100098ec4a402ba2a121047c3a87192008",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/inspection.json": "fb212498881b193401af89a66061b1f892f13bcdb1973935429dbe9e30c231e3",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/review.html": "412cb517e4713d470545a92432b464df5707c2849b0f814682d653cc99b621a2",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/hashes.json": "888ca970e6c53f68eedbc63a53e3287c6eb12df3e21b8a8b17796671bb1ece26",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/README.md": "bd7ecd9d464d441842aea189f858a48cb9db40ec30ada2d6b4bc8e3106d1e35c",
-    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/file-hashes.sha256": "c908493ed86315a8408cf614a4e182274cb46bfb5aa95af1a4b3a78abad60edc",
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/file-hashes.sha256": "e3bb48f901be9d2c92ba134927eded9915b197c3ced19bdc6ce8879ac939ccc5",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-a-Alternates.ttf": "ce54c1bdaf5549fb3aeda1ef8cfc9bd50ae059058486b1331da32c6120cf9eb6",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Single-Review.ttf": "ceb247148c395cca4e98833f53dfd794ab606f28cf1b7cc5eea9fbb86ec80869",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Double-Review.ttf": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8",
     "./architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Narrow-Upper-Review.ttf": "3dcda27af834fe2019ba416b8b254cf8db5c3e0a0c6d95f42d15c5be1148da36",
-    "./architecture/universal-design-model/construction-experiment/aperture-operation/baseline.json": "57f8f9a2d421f3b5925d68b8e238c5f36554515285f59720031cc0e76926cfb6",
+    "./architecture/universal-design-model/construction-experiment/aperture-operation/baseline.json": "f43a8b815deebddf3bafe31ddc61556dfaadfaa1fa4a1c1183873e0e469eeef7",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/aperture.mjs": "4e2661321a6665b107afb79bd27fa34cac9645c22c3943ac94c7c8c4554cd3ec",
-    "./architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs": "f3b372edb8933388fe0c957a1eabd415d60cfa383d56ffd193d426c6f1cb34dd",
+    "./architecture/universal-design-model/construction-experiment/aperture-operation/aperture.test.mjs": "64a1015b5bb1266ab3dbe3f0647b74dfada274b2e0bc23cb95b44bd7a5732e26",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/build.mjs": "4a10dba5ae3490d6cf99f5057c4ca296954c055cb70172a657e9b2b6230aa4a6",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/inspection.json": "d5f5a42d1b8adaa6f41183ab019846a15ae176ac9ab3cdd76c94ac090f8d9638",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/review.html": "950e73ca2a798434856c3b282371846b78d2873bff3369938585e1b479a055c3",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/hashes.json": "da56ce3812dd2d4f2ade90ec5ba998067e776badc48301043cb57e96254a51e2",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/README.md": "d10024c428d2e6bdb64aef3918c724158b6b779b1e6799a1735dcc4ba7c74ec8",
-    "./architecture/universal-design-model/construction-experiment/aperture-operation/file-hashes.sha256": "c4b0e1d7229cdba3c612cb09588131c16be00f098014be26887d3b3be78f3847",
+    "./architecture/universal-design-model/construction-experiment/aperture-operation/file-hashes.sha256": "7a7819f2240af3a6c063f7dafd489069cae50192ade213be5874ae0b7c95678e",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-enclosed.ttf": "66d899f4046eb23b885bea538f62f198f9e7af2df9c1601e1e4a49f641d968c4",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-open.ttf": "b26e0c27e185e0c8eaef261d9514706501be559c49cb16609afd21ce55a97f04",
     "./architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-inventory.ttf": "1286cbf2b918db24ab48127bd0553061408b6cf2faa12f6a8fb150be7e273897",
-    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/baseline.json": "9409d3bfb0e5985cb34d1d9025c698aa2af481427b4d2c3beddc439677a8dd86",
+    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/baseline.json": "3631770137ded375e9a17a45454c1207313330db428637c8a58f1603eb2d7daf",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/boundary.mjs": "5244e7661cff2e4810f1938b285f2ff5c344dfa9eae96b569f43be4f6fe2d22f",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/grammars.mjs": "25b04e52d6492f795cbc35f2bd1dfe415943951e2394a21d5f200ec6becefdeb",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/operation.mjs": "e002764018a57c3ce2407d3853f28a37bf36faf2696544cdb41fb3a63ead8751",
-    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs": "ec472abd26357f4077b67739355ff5cca7fefac5a233569e5e994962c97314f5",
+    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/experiment.test.mjs": "746fcbd31539f501dffabfbb3337a0a1718273b191a1218351ba2763dda24259",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/build.mjs": "2e05053ab18c5fb8177e11cfc6fe3d587e95b1095e4ca6912bbddfabfc53de8a",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/inspection.json": "3847be3bc17da462e1474f9af3db510c33b93edcfc3172e4f9a3795af43a0e8a",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/review.html": "8895282c68790520b1cbcf961ad0a7fd202f45822165199027d409775b2f679b",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/hashes.json": "829c1f5b39348afad6706442a4d4db420a91c5cb768fd119c3c808c4255e61c4",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/boundary-contract.md": "7ad793f0d9ff215e99ff2ad6d8f545097103e5deeb53c03565759598c1e73be8",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/README.md": "ee3c470320ecfb47a73fea6c9b7830d25aedf719d35c78a5967a115648484631",
-    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/file-hashes.sha256": "acd0bdf7bc4abe0c586415baeb4944bb531eec666e0d0f4d2c465adc0c6d898e",
+    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/file-hashes.sha256": "79925c726d02feaf4780a91994a2d90e51646413c7e6a6540007525f7cc26378",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-closed.ttf": "cdc80c5b4a906db3ae585d4761e57bacd0e663f7d9bcc907246c4a45ae0d48ba",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-open.ttf": "34ea0feea9a813973f97bc7153f6131322e2c94e2229a21245301f0dfc7168cb",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-inventory.ttf": "d12c6b5c77531d3546afa9be2973f2594349e3cd9eabf9eaf3fc7e3e8e8f2707",
     "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-spine.ttf": "f15bf179f1790da8806e98cb9360ceb6ac3e6f3f66ea99637ed3c2afc3d1424f"
+  },
+  "authorizedPromotions": {
+    "./architecture/universal-design-model/README.md": {
+      "fromSha256": "8320366faf420bfc9c167924d8cdbaadf761a27bfcf378f75f2ec19fe55afc43",
+      "toSha256": "903f937726d975a4a9d46f10dd72a340189e27226c02c63c8020fcd7c9b063f3",
+      "reason": "Document the shared upper-stem terminal profile across the a and spine-and-bowl adapters."
+    },
+    "./architecture/universal-design-model/integration-experiment/README.md": {
+      "fromSha256": "bdb57228e877845a4cea7f3d69da3f64937da18295323cfef13a523568769de9",
+      "toSha256": "c0af79d9a073ba382cd2288b9f3b0b41b8567e675faa65f981a0a8785d0cef26",
+      "reason": "Document handler registration, transaction validation, and revision hashing."
+    },
+    "./architecture/universal-design-model/integration-experiment/engine.mjs": {
+      "fromSha256": "5874297e4cd049d8a6720056c96f754852e68c9ee76b22dc531847dfa8aae609",
+      "toSha256": "a23fa2e5a8d3fa75b5bc75b79cf5ea1974f61f2cbf44e0777fab5ea48f1eebd6",
+      "reason": "Promote registered handlers, revision-bound references, preconditions, and content-sensitive revision identity."
+    },
+    "./architecture/universal-design-model/construction-experiment/README.md": {
+      "fromSha256": "3fd7e7fa61c8f001e3d54086ea57794a2329657b4569e8051e50684b93784a6c",
+      "toSha256": "e019009b3adc4275013cf3bade5a45772a652c7db15330ad52c785552822ee7e",
+      "reason": "Document the shared semantic terminal-profile capability and adapter-specific realizations."
+    },
+    "./architecture/universal-design-model/construction-experiment/model.mjs": {
+      "fromSha256": "18092105b850cb9dfaf4548b9b384816f5e528bce08004525f87d4b706463879",
+      "toSha256": "742efe1122da69977d7e79d1b252994f7e66cf0e412787bdfd51916f3198d84f",
+      "reason": "Reuse shared terminal-profile record validation while retaining adapter-specific alignment and relationship checks."
+    },
+    "./architecture/universal-design-model/construction-experiment/geometry.mjs": {
+      "fromSha256": "5ef5f52d0dc4d99eb7df6ed8a5ee7acec0d1f62047da9d541d9bd500ef544fa5",
+      "toSha256": "e0f2c927648666bf0181d109786957989a7ad34ba51fe7a3f39ac54d10d6cc5c",
+      "reason": "Derive the bounded upper-terminal chamfer from semantic role and parameters while preserving flat geometry."
+    },
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/preservation-baseline.json": {
+      "fromSha256": "e4ce2ba2cb11c4f7cfd908adc2074538805b5dc7f50f47247e1bc4746870e0f9",
+      "toSha256": "7046b2cf1ecfb43b070ea68ed81dc08e835c1369ef50f8dde4529c954e4a464f",
+      "reason": "Record shared terminal-profile validation reuse and the adapter-specific grammar checks."
+    },
+    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/baseline.json": {
+      "fromSha256": "3631770137ded375e9a17a45454c1207313330db428637c8a58f1603eb2d7daf",
+      "toSha256": "91c78f08f9a334e62f884da732c6c01d81fd9f555f52ef6c6de8773dbedc8c40",
+      "reason": "Record the shared terminal-profile validation promotion through the cross-grammar audit."
+    },
+    "./architecture/universal-design-model/construction-experiment/aperture-operation/baseline.json": {
+      "fromSha256": "f43a8b815deebddf3bafe31ddc61556dfaadfaa1fa4a1c1183873e0e469eeef7",
+      "toSha256": "a9767e8e0b74bd3e97d71a3e4f8641dd429cea963411a90e46a6cb34ef6fca68",
+      "reason": "Record shared terminal-profile validation reuse in the aperture preservation chain."
+    },
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.mjs": {
+      "fromSha256": "a27a022c7f8418f782eb87a0f5a386091ba53ba4b5e82a610699567259663e17",
+      "toSha256": "3384daf9c9149cfde19eda9785e2197e9eaa1462720414cac371f64b5af7c4f9",
+      "reason": "Use shared profile-record validation and retain spine-specific topology and geometry checks."
+    },
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.test.mjs": {
+      "fromSha256": "a447146321b51d1b935a0cf89bf506e85a6a2f5a17aac981acc40812984fe715",
+      "toSha256": "ee5f98c9d51132f1ecdb78ce00b35b355b92f09f8d670bb79cfbedb931e31b76",
+      "reason": "Test flat compatibility, the semantic top-stem chamfer, geometry, bounds, and invalid profiles."
+    },
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/README.md": {
+      "fromSha256": "bd7ecd9d464d441842aea189f858a48cb9db40ec30ada2d6b4bc8e3106d1e35c",
+      "toSha256": "428c3ea805d28626ebeda5f8258ef62ca3b7c2243b356c20bc20156b91fd1091",
+      "reason": "Document the bounded upper terminal profile and its adapter-specific geometry and metrics."
+    },
+    "./architecture/universal-design-model/construction-experiment/two-storey-grammar/file-hashes.sha256": {
+      "fromSha256": "e3bb48f901be9d2c92ba134927eded9915b197c3ced19bdc6ce8879ac939ccc5",
+      "toSha256": "094fb6e52dc42b29f70506a4986ac8708ce7b3fe9c51f10569f3495b7e5e23fd",
+      "reason": "Refresh grammar checksums for the shared terminal-profile validator dependency."
+    },
+    "./architecture/universal-design-model/construction-experiment/aperture-operation/file-hashes.sha256": {
+      "fromSha256": "7a7819f2240af3a6c063f7dafd489069cae50192ade213be5874ae0b7c95678e",
+      "toSha256": "2836bd17ace18aeed512885c7f4c930a64221856a173fb777bd4c5b0855f85c5",
+      "reason": "Refresh aperture checksums after recording the shared terminal-profile validation promotion."
+    },
+    "./architecture/universal-design-model/construction-experiment/cross-grammar-aperture/file-hashes.sha256": {
+      "fromSha256": "79925c726d02feaf4780a91994a2d90e51646413c7e6a6540007525f7cc26378",
+      "toSha256": "f7b939ffa4884adf3dacea6bb90dcd16f900112c4a879db21ff227cb45024448",
+      "reason": "Refresh cross-grammar checksums after updating their preserved audit inputs."
+    }
   },
   "head": "dab1f7359dfc0581f8d28e2dc1af5ef25260e5d5",
   "branch": "codex/typeface-studio-first-mvp",

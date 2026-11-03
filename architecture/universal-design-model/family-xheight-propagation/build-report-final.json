@@ -1,0 +1,1501 @@
+{
+  "version": 1,
+  "sourceRevision": "rev:9e756b95e08bc7de",
+  "candidateRevision": "rev:96f4702797761a78",
+  "canonicalDecision": {
+    "id": "decision:x-height",
+    "from": 500,
+    "to": 520
+  },
+  "plan": {
+    "version": 1,
+    "sourceRevisionId": "rev:9e756b95e08bc7de",
+    "registryRevisionId": "rev:70672ea4505e136a",
+    "sourceHash": "b2282c11d91cb4eee2907464f3f097b2c8ec57928bb7e93057b347f79d25f438",
+    "decisionId": "decision:x-height",
+    "dependencies": [
+      {
+        "glyphId": "glyph:u006f",
+        "method": "construction.ring-from-bowl-counter",
+        "constructionHash": "1585913655c7b02284d0c0b186626918aa29de4c1ab68d3dd21aa56207377759",
+        "reads": [
+          {
+            "nodeId": "part:o-bowl",
+            "field": "xHeightDecisionId",
+            "decisionId": "decision:x-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:o-bowl",
+            "field": "uses-parameter",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:o-counter",
+            "field": "uses-parameter",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          }
+        ]
+      },
+      {
+        "glyphId": "glyph:u006e",
+        "method": "construction.connected-stems-and-shoulder",
+        "constructionHash": "3187d14196eb3a169d50a6c6f2e89511372afba529fc0b52581cf6ca5640272b",
+        "reads": [
+          {
+            "nodeId": "part:n-left-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:n-right-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:n-shoulder",
+            "field": "xHeightDecisionId",
+            "decisionId": "decision:x-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          }
+        ]
+      },
+      {
+        "glyphId": "glyph:u0048",
+        "method": "construction.parallel-stems-and-crossbar",
+        "constructionHash": "18f7f3b9c3afa0abb4dfda63a08a8997ed05e0cd4aa24588e874da8560cb8c3e",
+        "reads": [
+          {
+            "nodeId": "part:H-left-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:H-left-stem",
+            "field": "capHeightDecisionId",
+            "decisionId": "decision:cap-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:H-right-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:H-right-stem",
+            "field": "capHeightDecisionId",
+            "decisionId": "decision:cap-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:H-crossbar",
+            "field": "thicknessDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          }
+        ]
+      },
+      {
+        "glyphId": "glyph:u0061",
+        "method": "construction.bowl-with-attached-stem",
+        "constructionHash": "8ac9d7cad924b40997bbc1dd88888712f3a8cac97b19b7c78853c1c0eae5432c",
+        "reads": [
+          {
+            "nodeId": "part:a-bowl",
+            "field": "xHeightDecisionId",
+            "decisionId": "decision:x-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:a-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          }
+        ]
+      },
+      {
+        "glyphId": "glyph:u0068",
+        "method": "construction.ascender-stem-shoulder-return",
+        "constructionHash": "dab5c66f07a5090d29158337d0e0cc291760e4daf660ec39e792b6c5fc642088",
+        "reads": [
+          {
+            "nodeId": "part:h-ascender-stem",
+            "field": "widthDecisionId",
+            "decisionId": "decision:shared-stem-width",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-ascender-stem",
+            "field": "ascenderDecisionId",
+            "decisionId": "decision:h-ascender",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-shoulder",
+            "field": "xHeightDecisionId",
+            "decisionId": "decision:x-height",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-shoulder",
+            "field": "ascenderDecisionId",
+            "decisionId": "decision:h-ascender",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-upper-terminal",
+            "field": "alignmentDecisionId",
+            "decisionId": "decision:h-ascender",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-lower-terminal",
+            "field": "alignmentDecisionId",
+            "decisionId": "decision:baseline",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          },
+          {
+            "nodeId": "part:h-return-terminal",
+            "field": "alignmentDecisionId",
+            "decisionId": "decision:baseline",
+            "effects": [
+              "geometry",
+              "bounds",
+              "bearings",
+              "spacing-review",
+              "visual-review"
+            ]
+          }
+        ]
+      }
+    ],
+    "overrides": [],
+    "affected": [
+      "glyph:u0061",
+      "glyph:u0068",
+      "glyph:u006e",
+      "glyph:u006f"
+    ],
+    "unaffected": [
+      "glyph:u0048"
+    ],
+    "hash": "80ff7260a0efd4e2e1d438af44723ecae42288f227d5ccc9177e7d890739f365"
+  },
+  "diffs": {
+    "glyph:u006f": {
+      "before": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": -8,
+          "xMax": 565,
+          "yMax": 508
+        },
+        "metrics": {
+          "advanceWidth": 620,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "after": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": -8,
+          "xMax": 565,
+          "yMax": 528
+        },
+        "metrics": {
+          "advanceWidth": 620,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    },
+    "glyph:u006e": {
+      "before": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 540
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "after": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 560
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    },
+    "glyph:u0048": {
+      "before": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 700
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "after": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 700
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    },
+    "glyph:u0061": {
+      "before": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 500
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "after": {
+        "bounds": {
+          "xMin": 37,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 520
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 37,
+          "rightSideBearing": 55
+        }
+      }
+    },
+    "glyph:u0068": {
+      "before": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 700
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      },
+      "after": {
+        "bounds": {
+          "xMin": 55,
+          "yMin": 0,
+          "xMax": 595,
+          "yMax": 700
+        },
+        "metrics": {
+          "advanceWidth": 650,
+          "leftSideBearing": 55,
+          "rightSideBearing": 55
+        }
+      }
+    }
+  },
+  "consumption": {
+    "glyph:u0061": [
+      "decision:shared-stem-width",
+      "decision:x-height"
+    ],
+    "glyph:u0068": [
+      "decision:baseline",
+      "decision:h-ascender",
+      "decision:shared-stem-width",
+      "decision:x-height"
+    ],
+    "glyph:u006e": [
+      "decision:shared-stem-width",
+      "decision:x-height"
+    ],
+    "glyph:u006f": [
+      "decision:shared-stem-width",
+      "decision:x-height"
+    ]
+  },
+  "operationOrder": [
+    "op:xheight:rev:9e756b95e08bc7de:520",
+    "op:xheight:rev:9e756b95e08bc7de:520:glyph:u0061",
+    "op:xheight:rev:9e756b95e08bc7de:520:glyph:u0068",
+    "op:xheight:rev:9e756b95e08bc7de:520:glyph:u006e",
+    "op:xheight:rev:9e756b95e08bc7de:520:glyph:u006f"
+  ],
+  "technicalStatus": "passed",
+  "visualReview": {
+    "status": "not-reviewed",
+    "approved": false
+  },
+  "compiler": "fontsketch 0.1.0; fixed 2024 timestamp; existing compileTypeface path",
+  "node": "v26.13.0",
+  "geometryValidation": "Existing sampled contour validation; exact quadratic bounds calculation. Not a mathematical outline proof.",
+  "compilerBoundary": "Canonical segment-to-point records compared for every glyph before compilation; H parsed font record identical.",
+  "independentValidation": "Not performed",
+  "browserRendering": "See browser-evidence if available; page creation alone is not rendering evidence",
+  "fonts": {
+    "source": {
+      "filename": "artifacts-final/source.ttf",
+      "bytes": 1700,
+      "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 7,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 4,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "parsedGlyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "o": {
+          "name": "o",
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 508,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 508,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 381,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 119,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 119,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "name": "n",
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 190,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 280,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 370,
+                  "y": 540,
+                  "on": false
+                },
+                {
+                  "x": 460,
+                  "y": 500,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 455,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 290,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "name": "H",
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 500,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 90,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 410,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 410,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 90,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "h": {
+          "name": "h",
+          "unicodes": [
+            104
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 370,
+                  "y": 800,
+                  "on": false
+                },
+                {
+                  "x": 595,
+                  "y": 500,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 380,
+                  "on": true
+                },
+                {
+                  "x": 325,
+                  "y": 600,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 380,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "candidate": {
+      "filename": "artifacts-final/candidate.ttf",
+      "bytes": 1700,
+      "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f",
+      "internalAudit": {
+        "signature": "TrueType outlines",
+        "tables": [
+          "OS/2",
+          "cmap",
+          "glyf",
+          "head",
+          "hhea",
+          "hmtx",
+          "loca",
+          "maxp",
+          "name",
+          "post"
+        ],
+        "missingTables": [],
+        "badTableChecksums": [],
+        "wholeChecksum": 2981146554,
+        "wholeChecksumValid": true,
+        "numGlyphs": 7,
+        "cmap": {
+          "format": 4
+        },
+        "horizontalMetrics": {
+          "count": 4,
+          "metrics": [
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 35
+            },
+            {
+              "advanceWidth": 250,
+              "leftSideBearing": 0
+            },
+            {
+              "advanceWidth": 620,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 37
+            },
+            {
+              "advanceWidth": 650,
+              "leftSideBearing": 55
+            }
+          ],
+          "errors": []
+        },
+        "metadata": {
+          "unitsPerEm": 1000,
+          "ascender": 800,
+          "descender": -200,
+          "weightClass": 400,
+          "errors": []
+        },
+        "valid": true
+      },
+      "parsedGlyphs": {
+        ".notdef": {
+          "name": ".notdef",
+          "unicodes": [],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 35,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 35,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 565,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 70,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 630,
+                  "on": true
+                },
+                {
+                  "x": 95,
+                  "y": 70,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "space": {
+          "name": "space",
+          "unicodes": [
+            32
+          ],
+          "advanceWidth": 250,
+          "contours": []
+        },
+        "o": {
+          "name": "o",
+          "unicodes": [
+            111
+          ],
+          "advanceWidth": 620,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 565,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": -8,
+                  "on": false
+                },
+                {
+                  "x": 55,
+                  "y": 528,
+                  "on": false
+                },
+                {
+                  "x": 565,
+                  "y": 528,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 439,
+                  "y": 399,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 399,
+                  "on": false
+                },
+                {
+                  "x": 181,
+                  "y": 121,
+                  "on": false
+                },
+                {
+                  "x": 439,
+                  "y": 121,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "n": {
+          "name": "n",
+          "unicodes": [
+            110
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 190,
+                  "y": 520,
+                  "on": false
+                },
+                {
+                  "x": 280,
+                  "y": 560,
+                  "on": false
+                },
+                {
+                  "x": 370,
+                  "y": 560,
+                  "on": false
+                },
+                {
+                  "x": 460,
+                  "y": 520,
+                  "on": false
+                },
+                {
+                  "x": 505,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 302,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 475,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 475,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 302,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "H": {
+          "name": "H",
+          "unicodes": [
+            72
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 412,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 322,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        },
+        "a": {
+          "name": "a",
+          "unicodes": [
+            97
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 37,
+                  "y": 0,
+                  "on": false
+                },
+                {
+                  "x": 37,
+                  "y": 520,
+                  "on": false
+                }
+              ]
+            },
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 505,
+                  "y": 90,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 430,
+                  "on": true
+                },
+                {
+                  "x": 127,
+                  "y": 430,
+                  "on": false
+                },
+                {
+                  "x": 127,
+                  "y": 90,
+                  "on": false
+                }
+              ]
+            }
+          ]
+        },
+        "h": {
+          "name": "h",
+          "unicodes": [
+            104
+          ],
+          "advanceWidth": 650,
+          "contours": [
+            {
+              "closed": true,
+              "points": [
+                {
+                  "x": 55,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 55,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 700,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 370,
+                  "y": 832,
+                  "on": false
+                },
+                {
+                  "x": 595,
+                  "y": 520,
+                  "on": true
+                },
+                {
+                  "x": 595,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 0,
+                  "on": true
+                },
+                {
+                  "x": 505,
+                  "y": 395,
+                  "on": true
+                },
+                {
+                  "x": 325,
+                  "y": 624,
+                  "on": false
+                },
+                {
+                  "x": 145,
+                  "y": 395,
+                  "on": true
+                },
+                {
+                  "x": 145,
+                  "y": 0,
+                  "on": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

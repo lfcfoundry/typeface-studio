@@ -1,0 +1,26 @@
+{
+  "experiment": "whole-font-brief-resolution-and-coordinated-specimen-v1",
+  "reviewUrl": "http://127.0.0.1:8788/review.html",
+  "localServerResponse": {
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "responseBytes": 15260,
+    "measuredBy": "Node fetch from the Termux shell; this is not browser rendering evidence"
+  },
+  "browserLaunch": {
+    "command": "termux-open-url http://127.0.0.1:8788/review.html",
+    "exitStatus": 0,
+    "interpretation": "The Android URL-open command returned successfully. The active browser/page and FontFace status could not be observed."
+  },
+  "screenshot": {
+    "command": "/system/bin/screencap -p <new experiment browser-evidence path>",
+    "exitStatus": 1,
+    "error": "Failed to take take screenshot. Capturing failed.",
+    "artifactCreated": false
+  },
+  "browserVersion": null,
+  "fontFaceLoadObserved": false,
+  "visibleFontRenderingObserved": false,
+  "visualReviewStatus": "not-reviewed",
+  "conclusion": "The review artifact is ready, but this environment did not provide observable browser-rendering evidence for this run."
+}

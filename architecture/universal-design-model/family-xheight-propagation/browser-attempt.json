@@ -1,0 +1,15 @@
+{
+  "browserPackage": "com.android.chrome",
+  "attemptedPages": [
+    "review.html",
+    "review-final.html"
+  ],
+  "launchCommand": "am start -a android.intent.action.VIEW -d http://127.0.0.1:8793/architecture/universal-design-model/family-xheight-propagation/review-final.html -p com.android.chrome",
+  "intentExitStatus": 0,
+  "pageRequestsReceived": 0,
+  "fontLoadEvidence": false,
+  "renderingEvidence": false,
+  "browserVersion": null,
+  "humanVisualApproval": false,
+  "conclusion": "Launch intent accepted; local collector received no request or POST before shutdown. Browser execution and rendering unverified."
+}

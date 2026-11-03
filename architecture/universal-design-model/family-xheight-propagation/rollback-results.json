@@ -1,0 +1,41 @@
+{
+  "sourceUnchanged": true,
+  "results": [
+    {
+      "stage": "glyph:u0061",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    },
+    {
+      "stage": "glyph:u0068",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    },
+    {
+      "stage": "glyph:u006e",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    },
+    {
+      "stage": "glyph:u006f",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    },
+    {
+      "stage": "compilation",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    },
+    {
+      "stage": "internal-audit",
+      "status": "rejected",
+      "originalModelReference": true,
+      "noRevision": true
+    }
+  ]
+}

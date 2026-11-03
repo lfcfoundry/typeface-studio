@@ -1,6 +1,7 @@
 import nlp from 'compromise/two';
 import { DOMAIN_RULES, PARAMETERS, USAGE_CONTEXTS, tokenizePhrase } from './ontology.js';
 import { ENGINE_CAPABILITIES, SPEC_TYPE, SPEC_VERSION } from './spec.js';
+import { interpretGlyphInstructions } from './glyph-instructions.js';
 
 function languageTokens(brief) {
   const terms = nlp(brief).json().flatMap(sentence => sentence.terms || []);
@@ -138,14 +139,21 @@ function capability(rule) {
 }
 
 export function interpretBrief(brief, base = PARAMETERS) {
-  return interpret(brief, base, languageTokens);
+  return interpret(brief, base, languageTokens, { name: 'compromise/two', version: '14.19.0' });
 }
 
 export function interpretBriefLexical(brief, base = PARAMETERS) {
-  return interpret(brief, base, lexicalTokens);
+  return interpret(brief, base, lexicalTokens, { name: 'first-party-tokenizer', version: '1' });
 }
 
-function interpret(brief, base, tokenize) {
+// Adapter seam used to qualify NLP tokenizers against the exact same first-party
+// typography ontology and resolver. Production continues to use Compromise.
+export function interpretBriefWithTokenizer(brief, tokenize, parser = {}, base = PARAMETERS) {
+  if (typeof tokenize !== 'function') throw new TypeError('A tokenizer function is required.');
+  return interpret(brief, base, tokenize, { name: parser.name || 'custom-tokenizer', version: parser.version || '1' });
+}
+
+function interpret(brief, base, tokenize, parser) {
   const original = String(brief || '').trim();
   const tokens = tokenize(original);
   const matches = domainMatches(tokens, original);
@@ -219,7 +227,7 @@ function interpret(brief, base, tokenize) {
 
   const unsupported = instructions.filter(x => x.capability === 'unsupported');
   const approximations = instructions.filter(x => x.capability === 'approximate');
-  const used = new Set(matches.filter(x => x.rule.parameter).map(x => x.rule.parameter));
+  const used = new Set(matches.flatMap(x => [x.rule.parameter, ...Object.keys(x.rule.secondary || {})].filter(Boolean)));
   const defaults = Object.keys(PARAMETERS).filter(k => !used.has(k)).map(parameter => ({ parameter, value: settings[parameter], reason: 'The brief did not specify this design dimension.' }));
   const explicitParameters = Object.fromEntries([...selected].map(([key, item]) => [key, item.value]));
   for (const [key, value] of negativeSelections) if (value !== undefined) explicitParameters[key] = value;
@@ -231,13 +239,15 @@ function interpret(brief, base, tokenize) {
     if (humanist) { humanist.capability = 'unsupported'; humanist.explanation = 'The prototype has humanist-inspired sans recipes, but not a humanist serif construction system.'; }
   }
   const explicitUnsupported = instructions.filter(x => x.capability === 'unsupported');
+  const glyphInstructions = interpretGlyphInstructions(original);
   const spec = {
     type: SPEC_TYPE, version: SPEC_VERSION,
     source: { brief: original, language: 'en' },
-    parser: { name: tokenize === languageTokens ? 'compromise/two' : 'first-party-tokenizer', version: tokenize === languageTokens ? '14.19.0' : '1', mode: 'deterministic-ontology-v1' },
+    parser: { ...parser, mode: 'deterministic-ontology-v1' },
     ontologyVersion: 'typeface-ontology-1',
     instructions, inferred: instructions.filter(x => x.origin === 'inferred'),
     conflicts, unsupported: explicitUnsupported, approximations: instructions.filter(x => x.capability === 'approximate'), defaults,
+    glyphInstructions,
     usageContext: collectUsageContexts(tokens, original),
     capabilitySnapshot: ENGINE_CAPABILITIES,
     resolvedParameters: settings, explicitParameters

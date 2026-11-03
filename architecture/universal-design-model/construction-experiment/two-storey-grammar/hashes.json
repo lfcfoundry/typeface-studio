@@ -1,0 +1,26 @@
+{
+  "artifacts/LFCFoundry-Grammar-a-Alternates.ttf": {
+    "bytes": 1372,
+    "sha256": "ce54c1bdaf5549fb3aeda1ef8cfc9bd50ae059058486b1331da32c6120cf9eb6"
+  },
+  "artifacts/LFCFoundry-Grammar-Single-Review.ttf": {
+    "bytes": 1316,
+    "sha256": "ceb247148c395cca4e98833f53dfd794ab606f28cf1b7cc5eea9fbb86ec80869"
+  },
+  "artifacts/LFCFoundry-Grammar-Double-Review.ttf": {
+    "bytes": 1344,
+    "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8"
+  },
+  "artifacts/LFCFoundry-Grammar-Narrow-Upper-Review.ttf": {
+    "bytes": 1408,
+    "sha256": "3dcda27af834fe2019ba416b8b254cf8db5c3e0a0c6d95f42d15c5be1148da36"
+  },
+  "inspection.json": {
+    "bytes": 36548,
+    "sha256": "fb212498881b193401af89a66061b1f892f13bcdb1973935429dbe9e30c231e3"
+  },
+  "review.html": {
+    "bytes": 10268,
+    "sha256": "412cb517e4713d470545a92432b464df5707c2849b0f814682d653cc99b621a2"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "artifact": "LFCFoundry-Semantic-Construction-Lowercase-A-Experiment.ttf",
+  "bytes": 1640,
+  "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c",
+  "compilerParser": "fontsketch (compiler implementation family)",
+  "internalAudit": {
+    "valid": true,
+    "missingTables": [],
+    "badTableChecksums": [],
+    "wholeChecksumValid": true,
+    "tables": [
+      "OS/2",
+      "cmap",
+      "glyf",
+      "head",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "horizontalMetrics": {
+      "count": 4,
+      "metrics": [
+        {
+          "advanceWidth": 620,
+          "leftSideBearing": 35
+        },
+        {
+          "advanceWidth": 250,
+          "leftSideBearing": 0
+        },
+        {
+          "advanceWidth": 620,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        },
+        {
+          "advanceWidth": 650,
+          "leftSideBearing": 55
+        }
+      ],
+      "errors": []
+    }
+  },
+  "glyphOrder": [
+    ".notdef",
+    "space",
+    "o",
+    "n",
+    "H",
+    "a"
+  ],
+  "lowercaseA": {
+    "id": "glyph:u0061",
+    "unicode": [
+      97
+    ],
+    "advanceWidth": 650,
+    "contours": [
+      {
+        "closed": true,
+        "points": [
+          {
+            "x": 505,
+            "y": 500,
+            "on": true
+          },
+          {
+            "x": 595,
+            "y": 500,
+            "on": true
+          },
+          {
+            "x": 595,
+            "y": 0,
+            "on": true
+          },
+          {
+            "x": 505,
+            "y": 0,
+            "on": true
+          },
+          {
+            "x": 55,
+            "y": 0,
+            "on": false
+          },
+          {
+            "x": 55,
+            "y": 500,
+            "on": false
+          }
+        ]
+      },
+      {
+        "closed": true,
+        "points": [
+          {
+            "x": 505,
+            "y": 90,
+            "on": true
+          },
+          {
+            "x": 505,
+            "y": 410,
+            "on": true
+          },
+          {
+            "x": 145,
+            "y": 410,
+            "on": false
+          },
+          {
+            "x": 145,
+            "y": 90,
+            "on": false
+          }
+        ]
+      }
+    ],
+    "bounds": {
+      "xMin": 55,
+      "yMin": 0,
+      "xMax": 595,
+      "yMax": 500
+    },
+    "metrics": {
+      "advanceWidth": 650,
+      "leftSideBearing": 55,
+      "rightSideBearing": 55
+    }
+  },
+  "existingGlyphsPreserved": {
+    "o": {
+      "outlineIdentical": true,
+      "unicodeIdentical": true,
+      "advanceIdentical": true
+    },
+    "n": {
+      "outlineIdentical": true,
+      "unicodeIdentical": true,
+      "advanceIdentical": true
+    },
+    "H": {
+      "outlineIdentical": true,
+      "unicodeIdentical": true,
+      "advanceIdentical": true
+    }
+  },
+  "independentValidation": "not-run"
+}

@@ -1,0 +1,11 @@
+{
+  "deviceModel": "Pixel 7 Pro",
+  "androidRelease": "17",
+  "androidApiLevel": "37",
+  "environmentEvidenceCommand": "getprop ro.build.version.release; getprop ro.build.version.sdk; getprop ro.product.model",
+  "browser": "Android Chrome Mobile",
+  "browserVersionFromNavigatorUserAgent": "156.0.0.0 (reduced user agent; major version 156)",
+  "fullBrowserBuildVersion": "not exposed by the available browser page or package query",
+  "browserPlatformValue": "Linux armv81",
+  "devicePixelRatio": 2.8860480785369873
+}

@@ -1,0 +1,222 @@
+[
+  {
+    "file": "architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-enclosed.ttf",
+    "bytes": 1300,
+    "sha256": "66d899f4046eb23b885bea538f62f198f9e7af2df9c1601e1e4a49f641d968c4"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-inventory.ttf",
+    "bytes": 1412,
+    "sha256": "1286cbf2b918db24ab48127bd0553061408b6cf2faa12f6a8fb150be7e273897"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/aperture-operation/artifacts/LFCFoundry-Aperture-open.ttf",
+    "bytes": 1256,
+    "sha256": "b26e0c27e185e0c8eaef261d9514706501be559c49cb16609afd21ce55a97f04"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Base.ttf",
+    "bytes": 1580,
+    "sha256": "f94fcae18a65a32d3f486d7f4fa652826c8f87832a79a3eae02bff76e9473824"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Lowercase-A-Experiment.ttf",
+    "bytes": 1640,
+    "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Open-Counter.ttf",
+    "bytes": 1580,
+    "sha256": "00065a4210071d36ecaf4f25ed7808fb74ee04f665627f0f204e4c6131492018"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Smooth-N-Current-H.ttf",
+    "bytes": 1576,
+    "sha256": "b1ef7eaabdd7b134d11cfbafd7bc5dc88653ac8d08faaaefd27c88ef3ab18fad"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Smooth-N-H-Low-0_48.ttf",
+    "bytes": 1576,
+    "sha256": "cbce373331f70deb77b793848631f877dbb86582c0640fa3945d9cdfebfa0eb6"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/artifacts/LFCFoundry-Semantic-Construction-Smooth-N-H-Midpoint.ttf",
+    "bytes": 1576,
+    "sha256": "3587987a2da0ceb674e1244485254943d2ec8ed608e9424db693cb35250cbbdd"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-closed.ttf",
+    "bytes": 1348,
+    "sha256": "cdc80c5b4a906db3ae585d4761e57bacd0e663f7d9bcc907246c4a45ae0d48ba"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-inventory.ttf",
+    "bytes": 1348,
+    "sha256": "d12c6b5c77531d3546afa9be2973f2594349e3cd9eabf9eaf3fc7e3e8e8f2707"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-open.ttf",
+    "bytes": 1340,
+    "sha256": "34ea0feea9a813973f97bc7153f6131322e2c94e2229a21245301f0dfc7168cb"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/artifacts/LFCFoundry-Cross-Grammar-spine.ttf",
+    "bytes": 1324,
+    "sha256": "f15bf179f1790da8806e98cb9360ceb6ac3e6f3f66ea99637ed3c2afc3d1424f"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/lowercase-h-topology-slice/artifacts/LFCFoundry-Distinct-Topology-H.ttf",
+    "bytes": 1700,
+    "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/lowercase-h-topology-slice/artifacts/LFCFoundry-Distinct-Topology-Parent.ttf",
+    "bytes": 1640,
+    "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/natural-language-topology-slice/artifacts/LFCFoundry-NL-Topology-Double-Storey-A.ttf",
+    "bytes": 1668,
+    "sha256": "b796fa7dd5ef93627caad2cd70c85a638b777993c34cc3a2976b0a95b1c3081e"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/natural-language-topology-slice/artifacts/LFCFoundry-NL-Topology-Single-Storey-A.ttf",
+    "bytes": 1640,
+    "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/related-glyph-reuse/artifacts/LFCFoundry-Related-Glyph-Reuse-abdpq.ttf",
+    "bytes": 1656,
+    "sha256": "4342ebe4d617f80d56278e111dd7a39c480922efc60ba836846749763a8ce14f"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/terminal-profile-font-validation-2026-11-03/single-storey-a-chamfered.ttf",
+    "bytes": 1644,
+    "sha256": "24c605a34f77c98389334bdd5de80bf9c1e070ea7cab900a71640e0a46d1f856"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/terminal-profile-font-validation-2026-11-03/single-storey-a-flat.ttf",
+    "bytes": 1640,
+    "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/terminal-profile-font-validation-2026-11-03/spine-bowl-chamfered.ttf",
+    "bytes": 1348,
+    "sha256": "2521d6b42248ef8439d1937b97847ebf0172a33ca656b76a5692225cef3efb2f"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/terminal-profile-font-validation-2026-11-03/spine-bowl-flat.ttf",
+    "bytes": 1344,
+    "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-ring-A.ttf",
+    "bytes": 1376,
+    "sha256": "ba490600f105ee4772043f5aa45e75409fe64fe9676ff4a19bbcbd5987447a32"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-ring-B.ttf",
+    "bytes": 1376,
+    "sha256": "7d44a8ee3e4f999fb42e5bf428bf589820f2b3c16409a30f690f4862071ee06e"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-ring-aperture.ttf",
+    "bytes": 1464,
+    "sha256": "7e72fa50f6da2f755ade605577a00e7e2c9eebde3e11186294016a1c782091aa"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-ring-baseline.ttf",
+    "bytes": 1448,
+    "sha256": "daea9c1252763862acb4a8640d9178571b0b31237dc299e8a0d3f2ad6db7c0fa"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-ring-reflection.ttf",
+    "bytes": 1472,
+    "sha256": "5732b223891d3737d31dfcae5c266698f412b0350c84cef8315b41e1c4f96c01"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-spine-A.ttf",
+    "bytes": 1480,
+    "sha256": "472186a51c0e8a7e4ec12eebd52bd1f7a55dab9de6be85e6fedb7895ff5beed1"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-spine-B.ttf",
+    "bytes": 1480,
+    "sha256": "b0e10ac363df184d9e7e5f5ae60c3b3949de30862642639e6bdff902dc8ea4d7"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-spine-aperture.ttf",
+    "bytes": 1568,
+    "sha256": "a2ca97464c4e857862d9c76a10270c629b6e96ee47aa0e62830d76f8bad61ba2"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-spine-baseline.ttf",
+    "bytes": 1560,
+    "sha256": "88e1fdf8a7fdc0515309632b7ee01f263b247e7b34ecb6a4a4319beae5346eb1"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/transaction-composition/artifacts/LFCFoundry-Composition-spine-reflection.ttf",
+    "bytes": 1584,
+    "sha256": "998324cf9f350a9fc9cb366c21dccca7b3c5e179dd096d231bc33ec8a04b0b1c"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Double-Review.ttf",
+    "bytes": 1344,
+    "sha256": "a24790bac1f69af32c37e2cbb71c1b72b344530375d131dd3d0c68e4ba932db8"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Narrow-Upper-Review.ttf",
+    "bytes": 1408,
+    "sha256": "3dcda27af834fe2019ba416b8b254cf8db5c3e0a0c6d95f42d15c5be1148da36"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-Single-Review.ttf",
+    "bytes": 1316,
+    "sha256": "ceb247148c395cca4e98833f53dfd794ab606f28cf1b7cc5eea9fbb86ec80869"
+  },
+  {
+    "file": "architecture/universal-design-model/construction-experiment/two-storey-grammar/artifacts/LFCFoundry-Grammar-a-Alternates.ttf",
+    "bytes": 1372,
+    "sha256": "ce54c1bdaf5549fb3aeda1ef8cfc9bd50ae059058486b1331da32c6120cf9eb6"
+  },
+  {
+    "file": "architecture/universal-design-model/family-xheight-propagation/artifacts/candidate.ttf",
+    "bytes": 1700,
+    "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f"
+  },
+  {
+    "file": "architecture/universal-design-model/family-xheight-propagation/artifacts/source.ttf",
+    "bytes": 1700,
+    "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+  },
+  {
+    "file": "architecture/universal-design-model/family-xheight-propagation/artifacts-final/candidate.ttf",
+    "bytes": 1700,
+    "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f"
+  },
+  {
+    "file": "architecture/universal-design-model/family-xheight-propagation/artifacts-final/source.ttf",
+    "bytes": 1700,
+    "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+  },
+  {
+    "file": "architecture/universal-design-model/whole-font-brief-specimen/artifacts/LFCFoundry-Whole-Brief-Partial-Candidate.ttf",
+    "bytes": 1700,
+    "sha256": "44aac2c744b2607037ce0445bdde7c1d9a2c1dd45e465d8e878f76c76e1f5efb"
+  },
+  {
+    "file": "architecture/universal-design-model/whole-font-brief-specimen/artifacts/LFCFoundry-Whole-Brief-Source.ttf",
+    "bytes": 1640,
+    "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+  },
+  {
+    "file": "linux-handoff-evidence/stroke-width-artifacts/primary-width-100.ttf",
+    "bytes": 1704,
+    "sha256": "0d64f58cef5d61f33d1e59abbe1e9cbd6bbeaf62dd0371a7fc9742f5a242f769"
+  },
+  {
+    "file": "linux-handoff-evidence/stroke-width-artifacts/primary-width-90.ttf",
+    "bytes": 1700,
+    "sha256": "43310f5c97481f0c802d02f16e56ac29f5dba67c7aea3c0f9a4a5b3f9d0fdd8f"
+  }
+]

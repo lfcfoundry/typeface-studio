@@ -1,0 +1,36 @@
+✔ 20 realistic benchmark briefs produce deterministic, source-grounded specifications (735.078898ms)
+✔ usage context is separated from design parameters and incidental words stay silent (4.849854ms)
+✔ a compound natural-language brief resolves to actual design parameters (10.266967ms)
+✔ negation and conflicting directions resolve deterministically (15.45638ms)
+✔ unsupported and approximate requests remain visible without false parameter changes (8.282145ms)
+✔ the lexical and Compromise front ends use the same first-party ontology rules (264.546428ms)
+✔ specific phrase grammar recognizes real aperture and anatomy requests (5.014445ms)
+✔ each construction system has ten stable recipe glyphs and valid closed contours (538.863526ms)
+✔ the three construction systems have distinct recipes and anatomy (219.752523ms)
+✔ condensed and wide instructions change recipe geometry and advance metrics (100.98108ms)
+✔ stroke contrast and rounded terminals change actual contours (88.596599ms)
+✔ open apertures and generous counters alter different outline geometry (61.742717ms)
+✔ spacing, monospacing, weight and serif requests affect metrics or contours (152.829631ms)
+✔ combined extreme-but-supported designs remain valid across systems and weights (235.442667ms)
+✔ all three contour systems compile to checksum-valid TrueType-outline fonts (897.608195ms)
+✔ Bold export is not a metadata-only alias of Regular (77.892049ms)
+✔ compiled fonts retain distinct construction-system outlines (166.406088ms)
+✔ the independent SFNT audit rejects corrupted bytes and truncated table ranges (17.56958ms)
+✔ versioned glyph model captures the original brief without folding targets into global scalars (500.611165ms)
+✔ explicit lowercase substitution changes o only; uppercase remains intact (119.854614ms)
+✔ explicit both-case substitution changes O and o but no unrelated glyph (124.049642ms)
+✔ uppercase-only substitution leaves lowercase o unchanged (112.504394ms)
+✔ preservation exceptions and ordinary substitution wording retain explicit case scope (97.440755ms)
+✔ removing a glyph substitution preserves the rest of the design (108.069051ms)
+✔ heart outline has stable quadratic geometry and valid glyph metrics (95.335246ms)
+✔ preview SVG and compiled TTF use the same substituted contour and Unicode mapping (288.588298ms)
+✔ unsupported, ambiguous, and conflicting glyph requests remain explicit (155.452433ms)
+✔ degree modifiers have documented, distinct terminal radius and geometry effects (42.021851ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4711.342165

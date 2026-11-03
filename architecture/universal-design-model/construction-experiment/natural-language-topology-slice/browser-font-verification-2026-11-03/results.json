@@ -1,0 +1,271 @@
+{
+  "capturedAt": "2026-11-03T16:04:35.044Z",
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+    "userAgentData": {
+      "brands": [
+        {
+          "brand": "Not:A-Brand",
+          "version": "8"
+        },
+        {
+          "brand": "Chromium",
+          "version": "156"
+        },
+        {
+          "brand": "Google Chrome",
+          "version": "156"
+        }
+      ],
+      "fullVersionList": [
+        {
+          "brand": "Not:A-Brand",
+          "version": "8.0.0.0"
+        },
+        {
+          "brand": "Chromium",
+          "version": "156.0.8078.79"
+        },
+        {
+          "brand": "Google Chrome",
+          "version": "156.0.8078.79"
+        }
+      ],
+      "mobile": true,
+      "model": "Pixel 7 Pro",
+      "platform": "Android",
+      "platformVersion": "17.0.0"
+    },
+    "platform": "Linux armv81",
+    "language": "en-US",
+    "devicePixelRatio": 2.8860480785369873
+  },
+  "reviewPage": {
+    "loaded": true,
+    "source": {
+      "text": "a a",
+      "computedFontFamily": "SourceA",
+      "computedFontSize": "80px",
+      "fontFaceCheck": true,
+      "faceStatus": "FontFace loaded"
+    },
+    "candidate": {
+      "text": "a a",
+      "computedFontFamily": "CandidateA",
+      "computedFontSize": "80px",
+      "fontFaceCheck": true,
+      "faceStatus": "FontFace loaded"
+    }
+  },
+  "rendering": {
+    "mechanism": "Android Chrome Canvas 2D fillText; not a full-page screenshot",
+    "fontSizeCssPx": 1000,
+    "text": "a",
+    "baseline": 550,
+    "originX": 20,
+    "fill": "#111",
+    "background": "#fff",
+    "rasterThresholdLuminance": "<250"
+  },
+  "fonts": [
+    {
+      "key": "source",
+      "file": "/artifacts/LFCFoundry-NL-Topology-Single-Storey-A.ttf",
+      "bytes": 1640,
+      "loaded": true,
+      "applied": true,
+      "cssFont": "1000px LFCSourceProbe",
+      "textAlign": "left",
+      "textBaseline": "alphabetic",
+      "direction": "ltr",
+      "canvasMetrics": {
+        "width": 649.9989013671875,
+        "actualBoundingBoxLeft": -46.875,
+        "actualBoundingBoxRight": 609.375,
+        "actualBoundingBoxAscent": 500,
+        "actualBoundingBoxDescent": 0
+      },
+      "expectedCounterCount": 1,
+      "raster": {
+        "threshold": 250,
+        "empty": false,
+        "inkPixels": 137833,
+        "bounds": {
+          "xMin": 74,
+          "yMin": 50,
+          "xMax": 614,
+          "yMax": 549,
+          "width": 541,
+          "height": 500
+        },
+        "enclosedBackgroundComponents": 1
+      },
+      "png": {
+        "file": "source-canvas.png",
+        "bytes": 28528,
+        "sha256": "21e3035981877f144e0d762f46ad59d5ee4c7c5589c084d4240ab01388305a81"
+      }
+    },
+    {
+      "key": "candidate",
+      "file": "/artifacts/LFCFoundry-NL-Topology-Double-Storey-A.ttf",
+      "bytes": 1668,
+      "loaded": true,
+      "applied": true,
+      "cssFont": "1000px LFCCandidateProbe",
+      "textAlign": "left",
+      "textBaseline": "alphabetic",
+      "direction": "ltr",
+      "canvasMetrics": {
+        "width": 649.9989013671875,
+        "actualBoundingBoxLeft": -46.875,
+        "actualBoundingBoxRight": 609.375,
+        "actualBoundingBoxAscent": 500,
+        "actualBoundingBoxDescent": 0
+      },
+      "expectedCounterCount": 2,
+      "raster": {
+        "threshold": 250,
+        "empty": false,
+        "inkPixels": 128941,
+        "bounds": {
+          "xMin": 74,
+          "yMin": 50,
+          "xMax": 614,
+          "yMax": 549,
+          "width": 541,
+          "height": 500
+        },
+        "enclosedBackgroundComponents": 2
+      },
+      "png": {
+        "file": "candidate-canvas.png",
+        "bytes": 35631,
+        "sha256": "8e9c71814d782c98bcd9b29378f501a79a60863154548584f7d982b8aaa74215"
+      }
+    }
+  ],
+  "consoleOrRuntimeErrors": [],
+  "resourceFailures": [
+    {
+      "name": "http://127.0.0.1:8766/favicon.ico",
+      "status": 404
+    }
+  ],
+  "inputArtifacts": {
+    "sourceFont": {
+      "path": "artifacts/LFCFoundry-NL-Topology-Single-Storey-A.ttf",
+      "bytes": 1640,
+      "sha256": "2ba88fbe348e2c3f770c9744e569c7fdbf5fe17d01d0873d9db5fd85ad81f50c"
+    },
+    "candidateFont": {
+      "path": "artifacts/LFCFoundry-NL-Topology-Double-Storey-A.ttf",
+      "bytes": 1668,
+      "sha256": "b796fa7dd5ef93627caad2cd70c85a638b777993c34cc3a2976b0a95b1c3081e"
+    },
+    "preexistingReviewHtml": {
+      "path": "../review.html",
+      "sha256": "080ddd2c6b27ccfbde2209616d461ac310810f884c13dab2168cab30f4b6c728"
+    },
+    "preexistingBuildReport": {
+      "path": "../report.json",
+      "sha256": "a335ef683168c743dbadc24b5778ec44a1da4a55c83f47f096db8354370ad96d"
+    }
+  },
+  "fontTableFieldInspection": {
+    "method": "Read the SFNT directory and the uint16 head.unitsPerEm field only; not a structural validation.",
+    "sourceUnitsPerEm": 1000,
+    "candidateUnitsPerEm": 1000
+  },
+  "experimentReportComparison": {
+    "unicodeMapping": {
+      "reportUPlus0061": [
+        97
+      ],
+      "browserCanvasText": "a"
+    },
+    "advanceWidthFontUnits": 650,
+    "leftSideBearingFontUnits": 55,
+    "rightSideBearingFontUnits": 55,
+    "outlineBoundsFontUnits": {
+      "xMin": 55,
+      "yMin": 0,
+      "xMax": 595,
+      "yMax": 500
+    },
+    "canvasExpectedContinuousBoundsAtScale1AndOriginX20": {
+      "xMin": 75,
+      "yMin": 50,
+      "xMax": 615,
+      "yMax": 550
+    },
+    "sourceAndCandidateMetricsMatchReport": true,
+    "sourceAndCandidateRasterBoundsMatch": true,
+    "sourceAndCandidateTopologyRasterCounts": {
+      "sourceEnclosedComponents": 1,
+      "candidateEnclosedComponents": 2
+    },
+    "existingReportFontSha256Matches": true,
+    "unchangedGlyphRecords": {
+      "evidence": "The existing experiment report and passing maintained scenario tests record unchanged compiled o, n, and H glyph records. This browser Canvas probe renders only a."
+    }
+  },
+  "visualInspection": {
+    "method": "The two saved Chrome Canvas PNGs were viewed directly.",
+    "source": "One bowl and one enclosed counter are visible.",
+    "candidate": "Two distinct bowls and two enclosed counters are visible.",
+    "fullPageScreenshot": "Not captured; Android screencap failed."
+  },
+  "independentValidation": {
+    "available": false,
+    "toolsChecked": {
+      "commands": [
+        "ots-sanitize",
+        "ttx",
+        "fc-scan",
+        "fc-query",
+        "fontforge",
+        "hb-shape",
+        "ftdump",
+        "otfinfo"
+      ],
+      "pythonModules": [
+        "fontTools",
+        "PIL",
+        "freetype",
+        "uharfbuzz",
+        "fontforge"
+      ],
+      "nodePackages": [
+        "playwright",
+        "puppeteer",
+        "fontkit",
+        "opentype"
+      ]
+    },
+    "result": "No independent validator was installed. No validator was run. Existing fontsketch/internal SFNT audit evidence is explicitly not considered independent.",
+    "runtimeVersions": {
+      "Node": "v26.13.0",
+      "Python": "3.14.8"
+    }
+  },
+  "screenCaptureAttempt": {
+    "command": "/system/bin/screencap -p <new-verification-dir>/browser-screen.png",
+    "result": "Failed to take take screenshot. Capturing failed.",
+    "screenshotCreated": false
+  },
+  "runtimeErrorsAndRequests": {
+    "consoleOrRuntimeErrors": [],
+    "fontRequestsSucceeded": true,
+    "reviewPageRequestSucceeded": true,
+    "onlyFailedRequest": "Optional /favicon.ico returned 404."
+  },
+  "errorCaptureScope": {
+    "captured": [
+      "top-level probe window errors",
+      "top-level unhandled rejections",
+      "top-level console.error"
+    ],
+    "reviewIframe": "FontFace load status and document.fonts.check were read from the iframe. DevTools console output for the iframe was not available as a separate capture."
+  }
+}
