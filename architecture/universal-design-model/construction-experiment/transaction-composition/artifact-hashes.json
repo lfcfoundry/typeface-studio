@@ -1,0 +1,50 @@
+{
+  "artifacts/LFCFoundry-Composition-ring-baseline.ttf": {
+    "bytes": 1448,
+    "sha256": "daea9c1252763862acb4a8640d9178571b0b31237dc299e8a0d3f2ad6db7c0fa"
+  },
+  "artifacts/LFCFoundry-Composition-ring-reflection.ttf": {
+    "bytes": 1472,
+    "sha256": "5732b223891d3737d31dfcae5c266698f412b0350c84cef8315b41e1c4f96c01"
+  },
+  "artifacts/LFCFoundry-Composition-ring-aperture.ttf": {
+    "bytes": 1464,
+    "sha256": "7e72fa50f6da2f755ade605577a00e7e2c9eebde3e11186294016a1c782091aa"
+  },
+  "artifacts/LFCFoundry-Composition-ring-A.ttf": {
+    "bytes": 1376,
+    "sha256": "ba490600f105ee4772043f5aa45e75409fe64fe9676ff4a19bbcbd5987447a32"
+  },
+  "artifacts/LFCFoundry-Composition-ring-B.ttf": {
+    "bytes": 1376,
+    "sha256": "7d44a8ee3e4f999fb42e5bf428bf589820f2b3c16409a30f690f4862071ee06e"
+  },
+  "artifacts/LFCFoundry-Composition-spine-baseline.ttf": {
+    "bytes": 1560,
+    "sha256": "88e1fdf8a7fdc0515309632b7ee01f263b247e7b34ecb6a4a4319beae5346eb1"
+  },
+  "artifacts/LFCFoundry-Composition-spine-reflection.ttf": {
+    "bytes": 1584,
+    "sha256": "998324cf9f350a9fc9cb366c21dccca7b3c5e179dd096d231bc33ec8a04b0b1c"
+  },
+  "artifacts/LFCFoundry-Composition-spine-aperture.ttf": {
+    "bytes": 1568,
+    "sha256": "a2ca97464c4e857862d9c76a10270c629b6e96ee47aa0e62830d76f8bad61ba2"
+  },
+  "artifacts/LFCFoundry-Composition-spine-A.ttf": {
+    "bytes": 1480,
+    "sha256": "472186a51c0e8a7e4ec12eebd52bd1f7a55dab9de6be85e6fedb7895ff5beed1"
+  },
+  "artifacts/LFCFoundry-Composition-spine-B.ttf": {
+    "bytes": 1480,
+    "sha256": "b0e10ac363df184d9e7e5f5ae60c3b3949de30862642639e6bdff902dc8ea4d7"
+  },
+  "inspection.json": {
+    "bytes": 206184,
+    "sha256": "6787cc205f9114cf682371c18ca2da71097d7fb8411d9f1e0cb137705d1e8cc0"
+  },
+  "review.html": {
+    "bytes": 25680,
+    "sha256": "822f363e98ca6038e30a13d4524102ba2e7b3d006fec3ada437be1ec79bb5f0a"
+  }
+}

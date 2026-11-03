@@ -1,0 +1,14 @@
+{
+  "scope": "transaction-composition only",
+  "protectedFilesVerified": 153,
+  "filesReviewed": 39,
+  "credentialPatternsFound": 0,
+  "symlinks": 0,
+  "dependencyInstallations": 0,
+  "isolatedSmoke": {
+    "passed": 12,
+    "skipped": 1,
+    "skippedReason": "Original workspace byte-preservation check is inapplicable to clean publication tree."
+  },
+  "snapshotNormalization": "One surplus EOF blank line; original hash recorded separately."
+}

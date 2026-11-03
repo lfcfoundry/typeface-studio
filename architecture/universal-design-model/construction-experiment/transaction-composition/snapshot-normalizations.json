@@ -1,0 +1,7 @@
+{
+  "architecture/universal-design-model/integration-experiment/engine.mjs": {
+    "originalSourceSha256": "5874297e4cd049d8a6720056c96f754852e68c9ee76b22dc531847dfa8aae609",
+    "snapshotSha256": "b3074ba310a4dc4add4b127b7350b11dcd7b2fb5e7d140f9af5875dbd1444e92",
+    "normalization": "Remove surplus empty line at EOF; no executable code changes."
+  }
+}

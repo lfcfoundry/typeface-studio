@@ -1,0 +1,20 @@
+--- baseline-universal-executor
++++ isolated-extended-executor
+@@ -2,3 +2,3 @@
+-import { validateSpec } from '../../../prototype/src/spec.js';
+-import { heartOutline, } from '../../../prototype/src/glyph-operations.js';
+-import { contourBounds, rectContour, sampleContour, validateGlyph } from '../../../prototype/src/contours.js';
++import { validateSpec } from './baseline/prototype/src/spec.js';
++import { heartOutline, } from './baseline/prototype/src/glyph-operations.js';
++import { contourBounds, rectContour, sampleContour, validateGlyph } from './baseline/prototype/src/contours.js';
+@@ -404 +404 @@
+-function reflectGlyph(glyph) {
++export function reflectGlyph(glyph) {
+@@ -455 +455 @@
+-export function executeTransaction(model, family, { revisionLabel = 'v2-operation-transaction' } = {}) {
++export function executeTransaction(model, family, { revisionLabel = 'v2-operation-transaction', operationHandlers = {} } = {}) {
+@@ -483,0 +484 @@
++        else if (Object.hasOwn(operationHandlers, op.type)) operationHandlers[op.type]({ model: stagedModel, family: stagedFamily, glyph, operation: op });
+@@ -495 +496 @@
+-    const newRevisionId = `rev:${digest({ base: model.revisions.headRevisionId, operationIds, changedGlyphIds }).slice(0, 16)}`;
++    const newRevisionId = `rev:${digest({ base: model.revisions.headRevisionId, operations: stagedModel.operations, changedGlyphIds, glyphHashes: stagedFamily.glyphOrder.map(id => digest(glyphState(stagedFamily.glyphs[id]))), constructionState: stagedModel.constructionIntegration }).slice(0, 16)}`;

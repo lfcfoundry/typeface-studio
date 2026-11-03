@@ -1,0 +1,15 @@
+{
+  "architecture/universal-design-model/integration-experiment/engine.mjs": "b3074ba310a4dc4add4b127b7350b11dcd7b2fb5e7d140f9af5875dbd1444e92",
+  "prototype/src/spec.js": "35464be24e6deb5cf208a238577eec04630b41b68ec6e866a2d7ee9eeba3ed5b",
+  "prototype/src/glyph-instructions.js": "81854098f1e2fdeefafe51991c138ca75d09e8349c916dc1a3de2962a9c49d29",
+  "prototype/src/glyph-operations.js": "0a1235ce7d29d298a7a0b7b16e98534d0eddf63910d79ed706fb8b9948eecd7c",
+  "prototype/src/contours.js": "447c874ec5cc8dc6011a540c65d55e97db733e0643a77161377655ee57ce5907",
+  "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/grammars.mjs": "25b04e52d6492f795cbc35f2bd1dfe415943951e2394a21d5f200ec6becefdeb",
+  "architecture/universal-design-model/construction-experiment/aperture-operation/aperture.mjs": "4e2661321a6665b107afb79bd27fa34cac9645c22c3943ac94c7c8c4554cd3ec",
+  "architecture/universal-design-model/construction-experiment/two-storey-grammar/grammar.mjs": "a27a022c7f8418f782eb87a0f5a386091ba53ba4b5e82a610699567259663e17",
+  "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/boundary.mjs": "5244e7661cff2e4810f1938b285f2ff5c344dfa9eae96b569f43be4f6fe2d22f",
+  "architecture/universal-design-model/construction-experiment/cross-grammar-aperture/operation.mjs": "e002764018a57c3ce2407d3853f28a37bf36faf2696544cdb41fb3a63ead8751",
+  "architecture/universal-design-model/construction-experiment/two-storey-grammar/font.mjs": "43cceb76ffffd84706830aba8e90d504f2fedd29b67d49426aae4c9ad56c34a0",
+  "prototype/src/font.js": "de9bd0df81c04397221cb2266e5aba56b19792fb38e7b5154716bde523fa7717",
+  "prototype/src/sfnt-audit.js": "6bb5a34532d22621a4d25e7dffa05f4b5f2b13444ba305c9d88a50d79ec4882f"
+}
