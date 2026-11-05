@@ -8,11 +8,26 @@ const STOP = new Set(stop);
 let pool = null;
 function fonts() {
   if (pool) return pool;
-  return pool = DATA.fonts.map(row => {
+  return pool = DATA.fonts.split(';').map(row => {
     const [t, z] = row.split('|'); const tg = []; let norm = 0;
-    for (const p of t.split(',')) { if (!p) continue; const [i, v] = p.split(':').map(Number); tg.push([i, v]); norm += v * v; }
-    return { tg, norm, z: z.split(',').map(v => v === '' ? null : Number(v) / 100) };
+    for (const p of t.split(',')) { if (!p) continue; const [i, v] = p.split(':').map(Number); tg.push([i, v * 10]); norm += v * v * 100; }
+    return { tg, norm, z: z.split(',').map(v => v === '' ? null : Number(v) / 10) };
   });
+}
+// Word -> [[tag, strength 0..255]...], decoded on first use from the packed front-coded list.
+let gl = null;
+function glove() {
+  if (gl) return gl;
+  gl = new Map();
+  const bin = atob(DATA.glove.data); let pos = 0, prev = '';
+  for (const tok of DATA.glove.words.split(' ')) {
+    if (!tok) continue;
+    const w = prev.slice(0, tok.charCodeAt(0) - 48) + tok.slice(1); prev = w;
+    const n = bin.charCodeAt(pos++), e = [];
+    for (let k = 0; k < n; k++, pos += 2) e.push([bin.charCodeAt(pos), bin.charCodeAt(pos + 1)]);
+    gl.set(w, e);
+  }
+  return gl;
 }
 const words = s => (String(s).toLowerCase().replace(/ice cream/g, 'icecream').replace(/sci-fi/g, 'scifi').match(/[a-z]+/g) || []).filter(w => !STOP.has(w));
 const stem = w => w.endsWith('ies') ? w.slice(0, -3) + 'y' : w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w;
@@ -24,7 +39,7 @@ export function tagsFor(brief, skip = new Set()) {
     const w = DATA.lex[w0] ? w0 : stem(w0);
     const lx = DATA.lex[w];
     if (lx) { for (const [i, v] of lx) q[i] += v / 100; any = true; continue; }
-    const g = DATA.glove[w0] || DATA.glove[w];
+    const g = glove().get(w0) || glove().get(w);
     if (g) { for (const [k, s] of g) q[k] += s / 255 * 0.6; any = true; }
   }
   return any ? q : null;
@@ -68,4 +83,4 @@ export function applyMood(prompt, base, used, free) {
 }
 
 // Build the font pool once, after first paint, so the first typed brief does not pay for it.
-export function warmMood() { fonts(); }
+export function warmMood() { fonts(); glove(); }
