@@ -4,6 +4,7 @@
 import PACKED from './mood-data.js';
 
 // The tables ship as base64 raw deflate and are unpacked once with the browser's own DecompressionStream.
+const tick = () => new Promise(r => setTimeout(r, 0)); // give the page a turn between big steps
 let DATA = null, TAGS = null, METRICS = null, STOP = new Set(), loading = null;
 export function moodReady() { return !!DATA; }
 export function initMood() {
@@ -11,8 +12,9 @@ export function initMood() {
   return loading || (loading = (async () => {
     const bytes = Uint8Array.from(atob(PACKED), c => c.charCodeAt(0));
     const text = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text();
-    DATA = JSON.parse(text); TAGS = DATA.tags; METRICS = DATA.metrics; STOP = new Set(DATA.stop);
-    fonts(); glove();
+    await tick(); const data = JSON.parse(text);
+    TAGS = data.tags; METRICS = data.metrics; STOP = new Set(data.stop);
+    DATA = data; await tick(); fonts(); await tick(); glove();
   })());
 }
 let pool = null;
