@@ -7,6 +7,8 @@ import { editGlyphPoint,editMetrics,restoreGenerated } from '../src/core/editor.
 import { buildFont } from '../src/core/font-export.js';
 import { saveProject,loadLatestProject } from '../src/core/persistence.js';
 import { parseFont } from 'fontsketch/core';
+import { initMood } from '../src/core/mood.js';
+await initMood();
 
 function generated(prompt='A rounded geometric sans with wide proportions'){const p=createProject({family:'Test Foundry',prompt});p.design={...p.design,...interpretPrompt(prompt).settings};return generateFamily(p);}
 

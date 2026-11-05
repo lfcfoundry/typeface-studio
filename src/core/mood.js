@@ -1,10 +1,20 @@
 // Mood layer: plain words -> tags -> nearest measured real fonts -> shape shifts -> design settings.
 // Explicit word rules always win; this layer only fills settings the rules left alone, and every
 // change it makes is returned as an "inferred" guess the user can see and undo.
-import DATA from './mood-data.js';
+import PACKED from './mood-data.js';
 
-const { tags: TAGS, metrics: METRICS, stop } = DATA;
-const STOP = new Set(stop);
+// The tables ship as base64 raw deflate and are unpacked once with the browser's own DecompressionStream.
+let DATA = null, TAGS = null, METRICS = null, STOP = new Set(), loading = null;
+export function moodReady() { return !!DATA; }
+export function initMood() {
+  if (DATA) return Promise.resolve();
+  return loading || (loading = (async () => {
+    const bytes = Uint8Array.from(atob(PACKED), c => c.charCodeAt(0));
+    const text = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text();
+    DATA = JSON.parse(text); TAGS = DATA.tags; METRICS = DATA.metrics; STOP = new Set(DATA.stop);
+    fonts(); glove();
+  })());
+}
 let pool = null;
 function fonts() {
   if (pool) return pool;
@@ -76,11 +86,12 @@ export function settingsFromShift(z, base, free) {
 
 // prompt: the user's words; used: Set of words the explicit rules already consumed; free: Set of setting keys not set by rules.
 export function applyMood(prompt, base, used, free) {
+  if (!DATA) return { settings: {}, inferred: [] }; // tables still unpacking; the app re-reads the brief when ready
   const q = tagsFor(prompt, used); if (!q) return { settings: {}, inferred: [] };
   const sh = shiftFromTags(q); if (!sh) return { settings: {}, inferred: [] };
   const { out, why } = settingsFromShift(sh.z, base, free);
   return { settings: out, inferred: Object.keys(out).map(k => ({ key: k, value: out[k], because: `Guessed from the feel of your words: ${why[k]}.` })) };
 }
 
-// Build the font pool once, after first paint, so the first typed brief does not pay for it.
-export function warmMood() { fonts(); glove(); }
+// Unpack and index the tables once, after first paint, so the first typed brief does not pay for it.
+export function warmMood() { return initMood(); }

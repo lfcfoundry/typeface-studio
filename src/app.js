@@ -72,4 +72,4 @@ function bindEvents(){
 async function boot(){S.project=createProject();shell();try{const saved=await loadLatestProject();if(saved&&!validateProject(saved).length){S.project=saved;S.selected=saved.glyphOrder?.[0]||null;S.dirty=false;saveLabel('Recovered saved project');}}catch(err){$('#storageInfo').innerHTML=`<strong>Browser storage unavailable</strong><p class="card-note">${esc(err.message||'Project JSON export/import remains available.')}</p>`;saveLabel('Use project download');}updateFields();renderAll();}
 boot();
 
-(window.requestIdleCallback||(f=>setTimeout(f,300)))(()=>warmMood());
+(window.requestIdleCallback||(f=>setTimeout(f,300)))(()=>warmMood().then(()=>{const b=$('#brief');if(b&&b.value.trim())interpretation(interpretPrompt(b.value,DEFAULT_PARAMS));}).catch(()=>{}));
