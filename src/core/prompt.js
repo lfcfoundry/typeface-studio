@@ -1,3 +1,4 @@
+import { applyMood } from './mood.js';
 import { DEFAULT_PARAMS } from './model.js';
 
 // A deterministic phrase interpreter, not a residual-word detector. Everyday
@@ -136,6 +137,17 @@ export function interpretPrompt(prompt, base = DEFAULT_PARAMS) {
         current.because.push(`“${item.term}” → ${item.explanation}`);changeMap.set(label,current);
       }
     }
+  }
+  // Mood layer: fills only settings the explicit rules left alone; every guess is listed and marked inferred.
+  const ruleKeys = new Set(matches.filter(item => item.set).flatMap(item => Object.keys(item.set)));
+  const usedWords = new Set(matches.flatMap(item => String(item.term || '').toLowerCase().match(/[a-z]+/g) || []));
+  const freeKeys = new Set(['stem', 'width', 'contrast', 'xHeight', 'spacing', 'serifs', 'terminals', 'monospaced'].filter(k => !ruleKeys.has(k)));
+  const mood = applyMood(text, settings, usedWords, freeKeys);
+  Object.assign(settings, mood.settings);
+  if (mood.settings.serifs && !settings.monospaced) { settings.classification = 'Serif'; settings.serifStyle = 'Simple'; }
+  for (const item of mood.inferred) {
+    const label = PARAMETER_NAMES[item.key] || item.key;
+    changeMap.set(label, { parameter: label, value: displayValue(item.key, item.value), because: [item.because], inferred: true });
   }
   const changes=[...changeMap.values()].map(item=>({...item,because:[...new Set(item.because)].join(' ')}));
   const dimensions = [

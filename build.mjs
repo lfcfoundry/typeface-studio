@@ -9,7 +9,7 @@ const dependencyLicense=await readFile(resolve(root,'node_modules/fontsketch/LIC
 const bundled=await build({entryPoints:[resolve(root,'src/app.js')],bundle:true,format:'iife',target:['es2020'],write:false,legalComments:'inline',minify:true,loader:{'.wasm':'dataurl'},define:{'process.env.NODE_ENV':'"production"'}});
 const licenseHtml=dependencyLicense.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const notice=`<details class="software-notice"><summary>Bundled software notice · fontsketch 0.1.0 (MIT)</summary><pre>${licenseHtml}</pre></details>`;
-const html=template.replace(/\s*<link rel="stylesheet" href="\.\/studio\.css">/,'\n  <style>\n'+css+'\n  </style>').replace(/\s*<script type="module" src="\.\/app\.js"><\/script>/,'\n  <script>\n'+bundled.outputFiles[0].text+'\n  </script>').replace('</body>',notice+'\n</body>');
+const html=template.replace(/\s*<link rel="stylesheet" href="\.\/studio\.css">/,()=>'\n  <style>\n'+css+'\n  </style>').replace(/\s*<script type="module" src="\.\/app\.js"><\/script>/,()=>'\n  <script>\n'+bundled.outputFiles[0].text+'\n  </script>').replace('</body>',()=>notice+'\n</body>');
 if(/(?:src|href)=["'](?:https?:|\/\/)|from\s*["']https?:/i.test(html)||/\b(?:fetch|XMLHttpRequest|WebSocket)\s*\(/i.test(bundled.outputFiles[0].text)||/\bimport\s*\(/.test(bundled.outputFiles[0].text))throw new Error('External runtime dependency or network API detected in release HTML.');
 await mkdir(resolve(root,'dist'),{recursive:true});
 await writeFile(resolve(root,'dist/typeface-studio.html'),html,'utf8');

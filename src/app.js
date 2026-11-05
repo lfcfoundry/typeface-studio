@@ -1,5 +1,6 @@
 import {createProject,deserializeProject,serializeProject,validateProject,DEFAULT_PARAMS} from './core/model.js';
 import {interpretPrompt} from './core/prompt.js';
+import {warmMood} from './core/mood.js';
 import {generateFamily,validateGlyph} from './core/generator.js';
 import {editGlyphPoint,editMetrics,restoreGenerated} from './core/editor.js';
 import {buildFont,ttfFilename} from './core/font-export.js';
@@ -70,3 +71,5 @@ function bindEvents(){
 }
 async function boot(){S.project=createProject();shell();try{const saved=await loadLatestProject();if(saved&&!validateProject(saved).length){S.project=saved;S.selected=saved.glyphOrder?.[0]||null;S.dirty=false;saveLabel('Recovered saved project');}}catch(err){$('#storageInfo').innerHTML=`<strong>Browser storage unavailable</strong><p class="card-note">${esc(err.message||'Project JSON export/import remains available.')}</p>`;saveLabel('Use project download');}updateFields();renderAll();}
 boot();
+
+(window.requestIdleCallback||(f=>setTimeout(f,300)))(()=>warmMood());
