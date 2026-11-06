@@ -21,6 +21,10 @@ The six linked TTFs are generated prototype artifacts. In the current environmen
 
 Open `dist/typeface-studio.html` directly in a current browser. The same file can be hosted on GitHub Pages. The build has no runtime network, server, service worker or external-asset requirement. Browser storage may be restricted for `file://`; download the project JSON for portable recovery.
 
+## Speed report and error log
+
+Five quick taps in the top-left corner open two buttons: Save speed report and Save error log. Each saves a small Markdown file on the device; nothing is sent anywhere. This uses the shared field-report 1.1.1 module from JS-modules (vendored in `src/vendor/`). Timed steps: generating glyphs, building each font, unpacking the mood tables.
+
 ## Develop
 
 ```sh
