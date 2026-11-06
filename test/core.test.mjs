@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createProject,serializeProject,deserializeProject,validateProject } from '../src/core/model.js';
 import { interpretPrompt } from '../src/core/prompt.js';
+import { interpretBrief } from '../src/core/brief.js';
 import { generateFamily,PRINTABLE_ASCII,validateGlyph } from '../src/core/generator.js';
 import { editGlyphPoint,editMetrics,restoreGenerated } from '../src/core/editor.js';
 import { buildFont } from '../src/core/font-export.js';
@@ -39,4 +40,13 @@ test('mood layer fills only settings the explicit words left alone and marks eac
   const e=interpretPrompt('A condensed elegant wedding invitation typeface');
   assert.equal(e.settings.width,.72,'explicit condensed beats the mood layer');
   assert.ok(!e.changes.some(c=>c.inferred&&c.parameter==='Width'));
+});
+
+test('brief reader: negation, degree words, but-clauses and font references decide settings with reasons',()=>{
+  const heavy=interpretBrief('A heavy poster font');const limited=interpretBrief('Not too heavy, with serifs');
+  assert.ok(limited.settings.stem<heavy.settings.stem);assert.equal(limited.settings.serifs,true);
+  assert.ok(limited.changes.some(c=>/Read from your words/.test(c.because)));
+  const cond=interpretBrief('Condensed but not too tight');assert.ok(cond.settings.width<1);
+  const ref=interpretBrief('Like Futura but a bit bolder');assert.equal(ref.reference,'jost');assert.equal(ref.settings.serifs,false);
+  const plain=interpretBrief('A thoughtful typeface for all kinds of writing');assert.deepEqual(plain.composer??[],[]);
 });

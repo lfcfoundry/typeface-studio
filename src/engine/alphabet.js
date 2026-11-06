@@ -113,6 +113,15 @@ export function alphabet(p, { line: L, arc: A }) {
   g('/', 400, [st(L(60 * u + s, DSC * 0.3, 340 * u - s, C))]);
   g('(', 300, [st(A(260 * u, cb, 160 * u - s, C * 0.62, 120, 240, q))]);
   g(')', 300, [st(A(40 * u, cb, 160 * u - s, C * 0.62, 60, -60, q))]);
+  // ---------- round 6 structure trials (p.alt = set of variant names; research only until scored) ----------
+  const alt = p.alt || [];
+  if (alt.includes('1flag')) g('1', fw, [st(L(330 * u, 0, 330 * u, C)), st(L(330 * u, C, 140 * u, C - 190))]);
+  if (alt.includes('1base')) g('1', fw, [st(L(310 * u, 0, 310 * u, C)), st(L(310 * u, C, 150 * u, C - 170)), st(L(140 * u, h, 470 * u, h))]);
+  if (alt.includes('3flat')) g('3', fw, [st(L(110 * u, C - h, 450 * u, C - h)), st(L(450 * u, C - h, 250 * u, C * 0.58)), st(cat(L(250 * u, C * 0.58, fcx, C * 0.58), A(fcx, C * 0.3, frx, C * 0.28 - h + oC * 0, 90, -150, q)))]);
+  if (alt.includes('Jdeep')) g('J', 440, [st(cat(L(350 * u - s, C, 350 * u - s, C * 0.32), A(200 * u, C * 0.32, 150 * u - s, C * 0.32 - h + oC, 0, -180, q)))]);
+  if (alt.includes('Jtop')) g('J', 460, [st(cat(L(360 * u - s, C, 360 * u - s, C * 0.32), A(210 * u, C * 0.32, 150 * u - s, C * 0.32 - h + oC, 0, -170, q))), st(L(150 * u, C - h, 360 * u, C - h))]);
+  if (alt.includes('gwide')) { const cx = 260 * u, rx = 190 * u - s, rs = 520 * u - lx; g('g', 540, [bowl(cx + 10 * u, xb, rx, xr), st(cat(L(rs + 20 * u, X, rs + 20 * u, 0), A(cx + 10 * u, 0, rs + 20 * u - cx - 10 * u, -DSC - h + oX, 0, -165, q)))]); }
+  if (alt.includes('aopen')) { const rs = 430 * u - s; g('a', 500, [st(cat(A(250 * u, X * 0.66, rs - 250 * u, X * 0.34 - h + oX, 150 - ap * 0.5, 0, q), L(rs, X * 0.66, rs, 0))), bowl(245 * u, X * 0.25, rs - 245 * u, X * 0.25 - h * 0.6 + oX * 0.5)]); }
   // ---------- remaining printable ASCII (round 6) ----------
   const mirror = (ch, from) => { const s0 = G[from]; G[ch] = { w: s0.w, strokes: s0.strokes.map(st => ({ ...st, pts: st.pts.map(q => ({ x: s0.w - q.x, y: q.y })).reverse() })) }; };
   const y0 = -0.12 * C, y1 = 1.12 * C, mid = X * 0.5;

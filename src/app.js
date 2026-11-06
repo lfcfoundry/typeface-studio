@@ -2,6 +2,7 @@ import FieldReport from './vendor/field-report.cjs';
 const fr=FieldReport.start({name:'typeface-studio',version:'0.1.0',frames:false});
 import {createProject,deserializeProject,serializeProject,validateProject,DEFAULT_PARAMS} from './core/model.js';
 import {interpretPrompt} from './core/prompt.js';
+import {interpretBrief} from './core/brief.js';
 import {warmMood} from './core/mood.js';
 import {prefetchSmooth,buildFontAsync} from './core/smooth-client.js';
 import {generateFamily,validateGlyph} from './core/generator.js';
@@ -37,7 +38,7 @@ function renderAll(){const count=S.project.glyphOrder.length;$('#coverage').text
 function saveLabel(text){const el=$('#saveState');if(el)el.textContent=text||(!S.project.generation.revision?'Not generated yet':S.dirty?'Unsaved changes':'Saved in this browser');}
 function markDirty(){S.dirty=true;saveLabel('Saving…');clearTimeout(S.saveTimer);S.saveTimer=setTimeout(async()=>{try{await saveProject(S.project);S.dirty=false;saveLabel('Saved in this browser');if($('#storageInfo'))$('#storageInfo').innerHTML='<strong>Saved in this browser</strong><p class="card-note">The latest project is stored locally. Download a JSON backup to move it between devices.</p>';}catch(err){saveLabel('Download a backup');if($('#storageInfo'))$('#storageInfo').innerHTML=`<strong>Browser storage unavailable</strong><p class="card-note">${esc(err.message||'Use the project JSON download.')}</p>`;}},500);}
 async function checkStorage(){try{await saveProject(S.project);S.dirty=false;saveLabel('Saved in this browser');$('#storageInfo').innerHTML='<strong>Local recovery is available</strong><p class="card-note">IndexedDB stores this project for the current browser origin. Keep a JSON backup for other devices.</p>';}catch(err){$('#storageInfo').innerHTML=`<strong>Browser storage unavailable</strong><p class="card-note">${esc(err.message||'Use project JSON export for recovery.')}</p>`;}}
-const readBrief=text=>interpretPrompt(text,DEFAULT_PARAMS,{skipMood:S.undone});
+const readBrief=text=>interpretBrief(text,DEFAULT_PARAMS,{skipMood:S.undone});
 function interpretCurrent(){const prompt=$('#brief').value,p=readBrief(prompt);S.project.description.original=prompt;S.project.description.interpreted=structuredClone(p.settings);S.project.design={...DEFAULT_PARAMS,...p.settings,seed:S.project.design.seed};S.project.metadata.family=$('#family').value.trim()||'Untitled Sans';S.project.metadata.designer=$('#designer').value;S.project.metadata.copyright=$('#copyright').value;S.project.metadata.license=$('#license').value;S.project.metadata.licenseURL=$('#licenseURL').value;S.project.metadata.version=$('#version').value||'1.000';interpretation(p);updateParamControls();markDirty();return p;}
 function updateParamControls(){for(const el of $$('[data-param]')){el.value=S.project.design[el.dataset.param];$(`#o-${el.dataset.param}`).textContent=`${Math.round(S.project.design[el.dataset.param]*100)}%`;}$('#classification').value=S.project.design.classification;$('#terminals').value=S.project.design.terminals;}
 function startDesign(){interpretCurrent();setSection('design');}
