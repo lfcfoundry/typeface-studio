@@ -65,3 +65,13 @@ test('Try another picks a different set of reference fonts', async () => {
   setVariant(0);
   assert.notDeepEqual(a.settings, b.settings);
 });
+
+test('letter-spacing words change spacing, not letter width', async () => {
+  await initMood();
+  const a = interpretBrief('wide letter spacing, light weight', DEFAULT_PARAMS, {});
+  assert.ok(a.settings.spacing > 1.05);
+  assert.equal(a.settings.width, 1);
+  const b = interpretBrief('tight letter spacing', DEFAULT_PARAMS, {});
+  assert.ok(b.settings.spacing < 0.95);
+  assert.equal(b.settings.width, 1);
+});

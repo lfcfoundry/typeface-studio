@@ -29,7 +29,17 @@ const appFromPen = p => ({
   ...(p.nibDegrees !== undefined ? { stress: Math.round(clamp(p.nibDegrees, -35, 35)) } : {}),
 });
 
+// "wide letter spacing" is about the gaps between letters, not letter width: say it in the words both readers know.
+const SPACE_WORDS = '(wide|wider|loose|looser|open|airy|generous|extra|increased|large|big|roomy)';
+const TIGHT_WORDS = '(tight|tighter|close|closer|small|reduced|narrow|narrower|minimal)';
+export function normalizeSpacing(t) {
+  const sp = '(?:letter[- ]?spacing|letter[- ]?space|tracking|spacing|kerning)';
+  return String(t)
+    .replace(new RegExp(`\\b${SPACE_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${SPACE_WORDS}\\b`, 'gi'), 'open spacing')
+    .replace(new RegExp(`\\b${TIGHT_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${TIGHT_WORDS}\\b`, 'gi'), 'tight spacing');
+}
 export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
+  prompt = normalizeSpacing(prompt);
   const app = interpretPrompt(prompt, base, opts);
   const rd = read(prompt, { rest: text => penFromApp(interpretPrompt(text, base, opts).settings) });
   const decided = new Set(rd.why.map(w => w.axis));
