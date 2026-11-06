@@ -10,7 +10,7 @@ export function engineParams(design, style = 'Regular') {
   const stem = Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120) * (bold ? 1.55 : 1);
   return {
     ...BASE, ...RECOMMENDED, serifModels: true,
-    stem: Math.round(stem), width: clamp(d.width, 0.65, 1.4), contrast: clamp(d.contrast, 0, 0.8),
+    stem: Math.round(stem), width: clamp(d.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1), contrast: clamp(d.contrast, 0, 0.8),
     xHeight: Math.round(700 * d.xHeight), capHeight: Math.round(700 * d.capHeight), spacing: d.spacing,
     caps: d.terminals === 'Rounded' ? 'round' : 'butt', slab: !!d.serifs, mono: !!d.monospaced,
   };
@@ -37,5 +37,5 @@ export function generateSmooth(designSettings, style = 'Regular') {
     const advance = Math.round(g.advanceWidth);
     out[ch] = { contours, advanceWidth: advance, leftSideBearing: left, rightSideBearing: Math.max(0, advance - right) };
   }
-  return { glyphs: out, kern, monoWidth: Math.round(560 * clamp(designSettings.width, 0.65, 1.4) * designSettings.spacing) };
+  return { glyphs: out, kern, monoWidth: Math.round(560 * clamp(designSettings.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1) * designSettings.spacing) };
 }

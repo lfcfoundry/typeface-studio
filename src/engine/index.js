@@ -1,8 +1,8 @@
 // Typeface Studio letter engine, one entry point. Plain ES modules, no Node or npm imports; runs in a worker.
 import { buildGlyphs, BASE } from './pen.js'; import { autoSpace } from './autospace.js'; import { autoKern } from './autokern.js'; import { FIT } from './tables.js';
 export { BASE };
-// Recommended defaults from rounds 4 and 5. fit / width 1.139 wait on the owner's look card, so they are off unless asked.
-export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true };
+// Recommended defaults from rounds 4 and 5. The owner approved the learned letter fit and the wider default (card, 2026.11.06 10:08 AM ET).
+export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true, fit: true, width: 1.139 };
 export const LEARNED_LOOK = { fit: true, width: 1.139 };
 /**
  * design(settings, { removeOverlaps }) -> { glyphs, kerning, fallbacks, settings }
