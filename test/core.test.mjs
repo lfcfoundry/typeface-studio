@@ -50,3 +50,8 @@ test('brief reader: negation, degree words, but-clauses and font references deci
   const ref=interpretBrief('Like Futura but a bit bolder');assert.equal(ref.reference,'jost');assert.equal(ref.settings.serifs,false);
   const plain=interpretBrief('A thoughtful typeface for all kinds of writing');assert.deepEqual(plain.composer??[],[]);
 });
+test('brief reader maps openness, squareness and stress words to the new sliders',()=>{
+  const sq=interpretBrief('A squarish techno font');assert.ok(sq.settings.squareness>2);
+  const op=interpretBrief('Open letterforms');assert.ok(op.settings.openness>0.3);
+  const st=interpretBrief('Calligraphic with tilted stress');assert.ok(st.settings.stress>0);
+});

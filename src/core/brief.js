@@ -6,8 +6,8 @@ import { interpretPrompt } from './prompt.js';
 import { DEFAULT_PARAMS } from './model.js';
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-const LABEL = { weight: 'stroke thickness', width: 'width', contrast: 'stroke contrast', xh: 'x-height', spacing: 'spacing', serif: 'serif structures', rounded: 'terminals', mono: 'fixed-width metrics', reference: 'starting shape' };
-const KEYS = { weight: ['stem'], width: ['width'], contrast: ['contrast'], xh: ['xHeight'], spacing: ['spacing'], serif: ['serifs'], rounded: ['terminals'], mono: ['monospaced'] };
+const LABEL = { weight: 'stroke thickness', width: 'width', contrast: 'stroke contrast', xh: 'x-height', spacing: 'spacing', serif: 'serif structures', rounded: 'terminals', mono: 'fixed-width metrics', reference: 'starting shape', aperture: 'letter openness', square: 'squareness', stress: 'stress angle' };
+const KEYS = { weight: ['stem'], width: ['width'], contrast: ['contrast'], xh: ['xHeight'], spacing: ['spacing'], serif: ['serifs'], rounded: ['terminals'], mono: ['monospaced'], aperture: ['openness'], square: ['squareness'], stress: ['stress'] };
 
 // app settings that differ from the defaults, as pen settings (used for the words the composer leaves over)
 function penFromApp(s) {
@@ -25,6 +25,8 @@ function penFromApp(s) {
 const appFromPen = p => ({
   stem: +clamp(0.18 + (p.stem - 40) / 120 * 0.68, 0.18, 0.86).toFixed(2), width: +clamp(p.width, 0.65, 1.4).toFixed(2), contrast: +clamp(p.contrast, 0.04, 0.68).toFixed(2),
   xHeight: +clamp(p.xHeight / 700, 0.62, 0.82).toFixed(2), spacing: +clamp(p.spacing, 0.82, 1.22).toFixed(2), serifs: !!p.slab, terminals: p.caps === 'round' ? 'Rounded' : 'Square', monospaced: !!p.mono,
+  ...(p.aperture !== undefined ? { openness: +clamp(p.aperture, -0.25, 0.45).toFixed(2) } : {}), ...(p.square !== undefined ? { squareness: +clamp(p.square, 2, 6).toFixed(1) } : {}),
+  ...(p.nibDegrees !== undefined ? { stress: Math.round(clamp(p.nibDegrees, -35, 35)) } : {}),
 });
 
 export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
@@ -34,9 +36,9 @@ export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
   if (!decided.size) return app;
   const fromPen = appFromPen(rd.settings), settings = { ...app.settings }, changes = app.changes.slice();
   const keys = rd.ref ? Object.keys(fromPen) : [...decided].flatMap(a => KEYS[a] || []); // a referenced font sets every axis; a clause sets only its own
-  for (const k of keys) settings[k] = fromPen[k];
+  for (const k of keys) if (fromPen[k] !== undefined) settings[k] = fromPen[k];
   if (keys.includes('serifs')) { const slab = rd.settings.style === 'slab'; settings.classification = settings.serifs ? (settings.monospaced ? 'Monospace serif' : slab ? 'Slab serif' : 'Serif') : (settings.monospaced ? 'Monospace sans' : 'Geometric sans'); settings.serifStyle = settings.serifs ? (slab ? 'Slab' : 'Simple') : 'None'; }
-  const NAMES = { stem: ['stroke thickness', 'weight'], width: ['width'], contrast: ['stroke contrast'], xHeight: ['x-height'], spacing: ['spacing'], serifs: ['serif structures', 'serif construction', 'classification'], terminals: ['terminals', 'corner softness'], monospaced: ['fixed-width metrics'] };
+  const NAMES = { stem: ['stroke thickness', 'weight'], width: ['width'], contrast: ['stroke contrast'], xHeight: ['x-height'], spacing: ['spacing'], serifs: ['serif structures', 'serif construction', 'classification'], terminals: ['terminals', 'corner softness'], monospaced: ['fixed-width metrics'], openness: ['letter openness'], squareness: ['squareness'], stress: ['stress angle'] };
   const drop = new Set(keys.flatMap(k => NAMES[k] || [])); // the composer's choice replaces the rules' note for the same setting
   const kept = changes.filter(c => !drop.has(String(c.parameter).toLowerCase()));
   for (const w of rd.why) kept.push({ parameter: LABEL[w.axis] || w.axis, value: w.axis === 'reference' ? `like ${w.value}` : '', because: `Read from your words: ${w.because}.` });

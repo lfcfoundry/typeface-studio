@@ -2,6 +2,13 @@
 // turns them into explicit axis decisions with reasons, and hands the leftover words to the word rules and mood layer.
 // Plain ES module, no Node imports. read() below turns a brief into pen settings with reasons.
 const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/false. consume = remove the phrase so later rules don't reread it
+  // round 8: openness (aperture), squareness of bowls, and stress angle of the pen
+  [/\bopen (letter ?forms?|letters|shapes|apertures?|counters|forms)\b|\b(wide|large|big|generous) apertures?\b|\bopen\b(?!\s*(spacing|letter[- ]?spacing))/, 'aperture', +1, true],
+  [/\bclosed (letter ?forms?|letters|shapes|apertures?|counters|forms)\b|\b(tight|narrow|small) apertures?\b|\bclosed\b/, 'aperture', -1, true],
+  [/\b(squarish|squareish|boxy|squared[- ]off|techno|rectangular|squircle|squircular|square bowls?|square curves?)\b/, 'square', +1, true],
+  [/\b(circular|oval|round bowls?|perfectly round|true circles?)\b/, 'square', -1, true],
+  [/\bcalligraph(ic|y)\b|\b(tilted|slanted|angled|diagonal|oblique|inclined) (axis|stress)\b|\bbroad[- ]?nib\b|\bpen[- ]?(like|drawn|written)\b/, 'stress', +1, true],
+  [/\b(vertical|upright|straight|rational) (axis|stress)\b/, 'stress', -1, true],
   [/\bround (letters|shapes|bowls|forms|parts|letterforms)\b/, null, 0, true], // a noun phrase ("make the round letters square"), not a style word
   [/\b(hairline|delicate|fine|thin(ner)?) (\w+ )?(serifs?|hairlines?)\b|\bthin(ner)? (horizontal|vertical|cross) ?(strokes?|bars?|lines?)?\b|\bthin horizontals\b/, 'contrast', +1, true],
   [/\b(high|higher|strong|more|lots of|big) (stroke )?contrast\b|\bthick and thin\b|\bthicks? and thins?\b/, 'contrast', +1, true],
@@ -96,5 +103,9 @@ export function read(brief, { base = {}, rest = null } = {}) {
   if (s.slab) { const slabWords = /\bslab/.test(String(brief).toLowerCase()); s.serif2 = !slabWords; if (s.serif2) s.serifLen = 0.8; s.style = slabWords ? 'slab' : 'serif'; } else s.style = 'sans';
   if (d.rounded !== undefined) s.caps = d.rounded ? 'round' : 'butt';
   if (d.mono !== undefined) s.mono = d.mono;
+  // round 8: openness, squareness and stress (pen keys aperture, square, nib in radians; nibDegrees for the app's slider)
+  if (d.aperture !== undefined) s.aperture = +clamp(d.aperture > 0 ? 0.3 + 0.12 * k('aperture') : 0.3 - 0.35 * k('aperture'), -0.25, 0.45).toFixed(3);
+  if (d.square !== undefined) s.square = +clamp(d.square > 0 ? 2 + 1.6 * k('square') : 2, 2, 6).toFixed(2);
+  if (d.stress !== undefined) { const deg = d.stress > 0 ? clamp(25 * k('stress'), 0, 35) : 0; s.nib = +(deg * Math.PI / 180).toFixed(4); s.nibDegrees = deg; }
   return { settings: s, why: c.why, rest: c.rest, ref: c.ref && c.ref.family };
 }
