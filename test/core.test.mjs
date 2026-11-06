@@ -8,6 +8,7 @@ import { editGlyphPoint,editMetrics,restoreGenerated } from '../src/core/editor.
 import { buildFont } from '../src/core/font-export.js';
 import { saveProject,loadLatestProject } from '../src/core/persistence.js';
 import { parseFont } from 'fontsketch/core';
+import { DEFAULT_PARAMS } from '../src/core/model.js';
 import { initMood } from '../src/core/mood.js';
 await initMood();
 
@@ -54,4 +55,13 @@ test('brief reader maps openness, squareness and stress words to the new sliders
   const sq=interpretBrief('A squarish techno font');assert.ok(sq.settings.squareness>2);
   const op=interpretBrief('Open letterforms');assert.ok(op.settings.openness>0.3);
   const st=interpretBrief('Calligraphic with tilted stress');assert.ok(st.settings.stress>0);
+});
+
+test('Try another picks a different set of reference fonts', async () => {
+  const { setVariant } = await import('../src/core/mood.js');
+  await initMood();
+  setVariant(0); const a = interpretPrompt('a warm friendly storybook font', DEFAULT_PARAMS, {});
+  setVariant(2); const b = interpretPrompt('a warm friendly storybook font', DEFAULT_PARAMS, {});
+  setVariant(0);
+  assert.notDeepEqual(a.settings, b.settings);
 });

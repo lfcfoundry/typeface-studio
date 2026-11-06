@@ -58,11 +58,16 @@ export function tagsFor(brief, skip = new Set()) {
 }
 
 // Nearest 25 real fonts by tag profile, averaged shape shift (z-scores), scaled by the strength of the words.
+let VARIANT = 0;
+export function setVariant(n) { VARIANT = Math.max(0, n | 0); }
+export function getVariant() { return VARIANT; }
 export function shiftFromTags(q, k = 25) {
   let tot = 0, qn = 0; for (const v of q) { tot += v; qn += v * v; } qn = Math.sqrt(qn);
   if (!tot) return null;
   const scored = fonts().map(f => { let d = 0; for (const [i, v] of f.tg) if (q[i]) d += q[i] * v; return [d / (qn * Math.sqrt(f.norm) || 1), f]; })
-    .sort((a, b) => b[0] - a[0]).slice(0, k);
+    .sort((a, b) => b[0] - a[0]);
+  const lo = Math.min(VARIANT * 8, Math.max(0, scored.length - k)); // "Try another" slides the window down the ranked fonts
+  scored.splice(0, lo); scored.length = Math.min(scored.length, k);
   const gain = Math.min(1, tot), z = {};
   METRICS.forEach((m, j) => { let s = 0; for (const [, f] of scored) if (f.z[j] != null) s += f.z[j] / k; z[m] = s * gain; });
   return { z, nearest: scored.slice(0, 3).map(s => s[0]) };
