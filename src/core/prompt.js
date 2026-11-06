@@ -94,7 +94,7 @@ function displayValue(key, value) {
   return String(value);
 }
 
-export function interpretPrompt(prompt, base = DEFAULT_PARAMS) {
+export function interpretPrompt(prompt, base = DEFAULT_PARAMS, { skipMood = null } = {}) {
   const text = String(prompt || '').toLowerCase().replace(/[‐‑‒–—]/g, '-').replace(/[’‘]/g, "'").trim();
   const settings = { ...DEFAULT_PARAMS, ...base };
   const matches = collectMatches(text);
@@ -141,13 +141,15 @@ export function interpretPrompt(prompt, base = DEFAULT_PARAMS) {
   // Mood layer: fills only settings the explicit rules left alone; every guess is listed and marked inferred.
   const ruleKeys = new Set(matches.filter(item => item.set).flatMap(item => Object.keys(item.set)));
   const usedWords = new Set(matches.flatMap(item => String(item.term || '').toLowerCase().match(/[a-z]+/g) || []));
-  const freeKeys = new Set(['stem', 'width', 'contrast', 'xHeight', 'spacing', 'serifs', 'terminals', 'monospaced'].filter(k => !ruleKeys.has(k)));
+  const freeKeys = new Set(['stem', 'width', 'contrast', 'xHeight', 'spacing', 'serifs', 'terminals', 'monospaced'].filter(k => !ruleKeys.has(k) && !skipMood?.has(k)));
   const mood = applyMood(text, settings, usedWords, freeKeys);
   Object.assign(settings, mood.settings);
+  // The mood layer now acts on tone words, so they are no longer reported as not generated.
+  if (mood.inferred.length) for (let i = unsupported.length - 1; i >= 0; i--) if (unsupported[i].concept === 'Stylistic tone') unsupported.splice(i, 1);
   if (mood.settings.serifs && !settings.monospaced) { settings.classification = 'Serif'; settings.serifStyle = 'Simple'; }
   for (const item of mood.inferred) {
     const label = PARAMETER_NAMES[item.key] || item.key;
-    changeMap.set(label, { parameter: label, value: displayValue(item.key, item.value), because: [item.because], inferred: true });
+    changeMap.set(label, { parameter: label, value: displayValue(item.key, item.value), because: [item.because], inferred: true, key: item.key });
   }
   const changes=[...changeMap.values()].map(item=>({...item,because:[...new Set(item.because)].join(' ')}));
   const dimensions = [
