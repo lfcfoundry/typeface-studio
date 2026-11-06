@@ -113,7 +113,29 @@ export function alphabet(p, { line: L, arc: A }) {
   g('/', 400, [st(L(60 * u + s, DSC * 0.3, 340 * u - s, C))]);
   g('(', 300, [st(A(260 * u, cb, 160 * u - s, C * 0.62, 120, 240, q))]);
   g(')', 300, [st(A(40 * u, cb, 160 * u - s, C * 0.62, 60, -60, q))]);
+  // ---------- remaining printable ASCII (round 6) ----------
+  const mirror = (ch, from) => { const s0 = G[from]; G[ch] = { w: s0.w, strokes: s0.strokes.map(st => ({ ...st, pts: st.pts.map(q => ({ x: s0.w - q.x, y: q.y })).reverse() })) }; };
+  const y0 = -0.12 * C, y1 = 1.12 * C, mid = X * 0.5;
+  g(' ', 260, []);
+  g('#', 600, [st(L(190 * u, 0, 260 * u, C)), st(L(360 * u, 0, 430 * u, C)), st(L(80 * u, C * 0.34, 520 * u, C * 0.34)), st(L(90 * u, C * 0.66, 530 * u, C * 0.66))]);
+  g('$', fw, [st(cat(A(fcx, C - C / 4, 190 * u - s, C / 4 - h * 0.5, 25 + ap * 0.4, 270, q), A(fcx, C / 4, 200 * u - s, C / 4 - h * 0.5, 90, -155 - ap * 0.4, q))), st(L(fcx, -0.1 * C, fcx, 1.1 * C))]);
+  g('%', 700, [bowl(170 * u, C * 0.76, 100 * u - s * 0.6, C * 0.22 - h), bowl(530 * u, C * 0.24, 100 * u - s * 0.6, C * 0.22 - h), st(L(140 * u + s, 0, 560 * u - s, C))]);
+  g('&', 640, [bowl(260 * u, C * 0.77, 115 * u - s * 0.6, C * 0.22 - h), st(cat(A(270 * u, C * 0.29, 200 * u - s, C * 0.29 - h, 115, 345, q), L(270 * u + (200 * u - s) * Math.cos(345 * D), C * 0.29 + (C * 0.29 - h) * Math.sin(345 * D), 520 * u, C * 0.46))), st(L(200 * u, C * 0.57, 580 * u - s, 0))]);
+  { const cx = 260 * u, cy = C * 0.74, r = C * 0.21; g('*', 520, [90, 30, -30].map(a => st(L(cx - r * Math.cos(a * D), cy - r * Math.sin(a * D), cx + r * Math.cos(a * D), cy + r * Math.sin(a * D))))); }
+  g('+', fw, [st(L(80 * u, mid, 480 * u, mid)), st(L(280 * u, mid - 200 * u, 280 * u, mid + 200 * u))]);
+  g('=', fw, [st(L(80 * u, mid + 95, 480 * u, mid + 95)), st(L(80 * u, mid - 95, 480 * u, mid - 95))]);
+  g('<', fw, [st(L(470 * u, mid + 200, 90 * u + s, mid)), st(L(90 * u + s, mid, 470 * u, mid - 200))]); mirror('>', '<');
+  g('@', 880, [bowl(390 * u, X * 0.47, 135 * u - s * 0.6, X * 0.42 - h), st(cat(L(525 * u, X * 0.9, 525 * u, X * 0.16), A(620 * u, X * 0.16, 95 * u, X * 0.16 + h, 180, 360, q), A(440 * u, X * 0.16 + C * 0.12, 275 * u, C * 0.55, 0, 300, q)))]);
+  g('[', 300, [st(L(120 * u + s, y0, 120 * u + s, y1)), st(L(120 * u, y1 - h, 260 * u, y1 - h)), st(L(120 * u, y0 + h, 260 * u, y0 + h))]); mirror(']', '[');
+  g('\\', 400, [st(L(60 * u + s, C, 340 * u - s, DSC * 0.3))]);
+  g('^', fw, [st(L(100 * u + s, C * 0.5, 280 * u, C)), st(L(280 * u, C, 460 * u - s, C * 0.5))]);
+  g('_', 500, [st(L(20 * u, -110, 480 * u, -110))]);
+  g('`', 300, [st(L(100 * u, C, 200 * u, C * 0.84))]);
+  g('{', 320, [st(cat(A(290 * u, 0.95 * C, 110 * u, 0.17 * C, 90, 180, q), L(180 * u, 0.95 * C, 180 * u, 0.62 * C), A(80 * u, 0.62 * C, 100 * u, 0.12 * C, 0, -90, q))),
+               st(cat(A(80 * u, 0.38 * C, 100 * u, 0.12 * C, 90, 0, q), L(180 * u, 0.38 * C, 180 * u, 0.05 * C), A(290 * u, 0.05 * C, 110 * u, 0.17 * C, 180, 270, q)))]); mirror('}', '{');
+  g('|', 260, [st(L(130 * u, -0.2 * C, 130 * u, 1.12 * C))]);
+  g('~', fw, [st(cat(A(180 * u, mid, 100 * u, 45, 180, 0, q), A(380 * u, mid, 100 * u, 45, 180, 360, q)))]);
   return G;
 }
-export const NAMES = { '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
+export const NAMES = { ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
   0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' };

@@ -1,7 +1,7 @@
 // Automatic kerning: kern = -0.70 x (how much wider the pair's tightest quarter of rows is than HH / nn), never positive.
 // Rule fitted on 254 Google Fonts sans families that kern; on 51 held-out ones it cut kerning error from 0.195 to 0.109 stems
 // and left pairs that need nothing (no, oo, HO) at zero.
-import { flatten } from './ucheck.js';
+import { flatten } from './geometry.js';
 let BETA = -0.70; const TAU = 0, MIN = 0.1; // MIN: drop kerns under 0.1 stem
 function runsY(polys, y) { const xs = []; for (const q of polys) for (let i = 0; i < q.length - 1; i++) { const a = q[i], b = q[i + 1]; if ((a.y <= y) !== (b.y <= y)) xs.push([a.x + (y - a.y) / (b.y - a.y) * (b.x - a.x), b.y > a.y ? 1 : -1]); }
   xs.sort((m, n) => m[0] - n[0]); const out = []; let w = 0, st = 0; for (const [x, d] of xs) { const nw = w + d; if (w === 0 && nw !== 0) st = x; if (w !== 0 && nw === 0) out.push([st, x]); w = nw; } return out; }

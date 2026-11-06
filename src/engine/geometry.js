@@ -1,4 +1,5 @@
-// Check each union result against the original overlapping strokes by sampling a grid (nonzero fill).
+// Geometry helpers: flatten TrueType quadratic contours, winding test, and a check of each union result against the original overlapping strokes by sampling a grid (nonzero fill).
+const D = Math.PI / 180;
 export function flatten(c) { const P = c.points, n = P.length, out = []; // TrueType quadratic points -> polyline
   let start = P.findIndex(p => p.on); if (start < 0) { start = 0; }
   const get = i => P[(i + n) % n]; const pts = []; for (let i = 0; i < n; i++) pts.push(get(start + i));

@@ -1,7 +1,8 @@
+// Pen engine (app-ready copy of research skeleton3.mjs): plain ES module, no Node or npm imports.
 // Skeleton + nib prototype: one centerline set per glyph, expanded by a pen model.
 // Parameters: stem (weight), width, contrast, nib angle (stress), caps (butt|round),
 // squareness (superellipse bowls), aperture, xHeight, capHeight, slab (serif feet).
-import { removeOverlaps } from 'fontsketch/core';
+import { mismatch } from './geometry.js';
 
 let N = 24; // fixed samples per curve => point-compatible masters for variable fonts
 export const setSamples = n => { N = n; };
@@ -44,10 +45,10 @@ function expand(pts, p, closed = false) {
 }
 const lineDense = (x0, y0, x1, y1) => Array.from({ length: 6 }, (_, i) => ({ x: x0 + (x1 - x0) * i / 5, y: y0 + (y1 - y0) * i / 5 }));
 import { alphabet, NAMES } from './alphabet.js';
-export const FALLBACKS = []; let unionCheck = null; export const setUnionCheck = f => { unionCheck = f; };
+
 function skeletons(p) {
   const G = alphabet(p, { line: lineDense, arc: (cx, cy, rx, ry, a0, a1, q) => arc(cx, cy, rx, ry, a0, a1, q, N) });
-  if (p.slab) for (const g of Object.values(G)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
+  if (p.slab) for (const [ch, g] of Object.entries(G)) if (/[A-Za-z0-9]/.test(ch)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
     if (st.pts.length === 6 && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) > p.xHeight * 0.6) { const w = p.stem * 1.5, hh = p.stem * (1 - Math.max(p.contrast, 0.3)) / 2;
       for (const y of [Math.min(a.y, b.y)]) if (y >= -1) g.strokes.push({ pts: lineDense(a.x - w, y + hh, a.x + w, y + hh), foot: true }); } }
   if (p.proportions) proportion(G, p);
@@ -56,7 +57,7 @@ function skeletons(p) {
 }
 // Learned proportions: stretch each letter's center lines so its ink width matches the median of 596 real sans fonts
 // (relative to cap height). 'letters' keeps today's overall width (divides out the median 1.18x); 'real' also matches it.
-import PROP from './proportions.json' with { type: 'json' };
+import { PROPORTIONS as PROP } from './tables.js';
 function proportion(G, p) { const glob = p.proportions === 'real' ? 1 : 1 / PROP.globalRatio;
   for (const [ch, g] of Object.entries(G)) { const tw = PROP.width[ch]; if (!tw) continue; const xs = g.strokes.flatMap(st => st.pts.map(q => q.x)); const x0 = Math.min(...xs), x1 = Math.max(...xs), span = x1 - x0; if (span < 1) continue;
     const T = tw * p.capHeight * p.width * glob, k = Math.min(1.8, Math.max(0.6, (T - p.stem) / span)), c = (x0 + x1) / 2;
@@ -69,8 +70,8 @@ function applyFit(G, FIT, p) { const C = p.capHeight;
       st.pts = st.pts.map(q => ({ ...q, x: c + (q.x - c) * sx + dx * C, y: q.y + dy * C })); }); } }
 export const touchesGuide = (st, p) => !st.closed && st.pts.some(q => [0, p.xHeight, p.capHeight, -190, Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25)].some(gy => Math.abs(q.y - gy) < 2 + p.stem * 0.6)) || !!st.closed;
 export function rawSkeletons(p) { return skeletons(p); }
-export function buildGlyphs(p, { union = true, only = null } = {}) {
-  const out = {};
+export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks = [] } = {}) {
+  const out = {}; const union = !!removeOverlaps, unionCheck = mismatch;
   for (const [ch, g] of Object.entries(skeletons(p))) { if (only && !only.includes(ch)) continue;
     let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
     if (union) { const raw = contours;
@@ -78,19 +79,10 @@ export function buildGlyphs(p, { union = true, only = null } = {}) {
       const nudged = p.nudge !== true ? raw : g.strokes.flatMap((st, k) => expand(st.pts.map(pt => k % 2 ? { x: pt.x + 1, y: pt.y - 1 } : pt), st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
       contours = removeOverlaps(nudged);
       // safety net: if the union lost or added ink, keep the overlapping strokes for this letter (still a valid font)
-      if (p.verify !== false && unionCheck && unionCheck(raw, contours) > 0.01) { contours = raw; FALLBACKS.push(ch); } }
+      if (p.verify !== false && unionCheck && unionCheck(raw, contours) > 0.01) { contours = raw; fallbacks.push(ch); } }
     let adv = Math.round(g.w * p.spacing + 40); if (p.mono) { const w = Math.round(560 * p.width * p.spacing); contours = contours.map(c => ({ ...c, points: c.points.map(pt => ({ ...pt, x: Math.round(pt.x + (w - adv) / 2) })) })); adv = w; }
     out[ch] = { name: NAMES[ch] || ch, unicodes: [ch.codePointAt(0)], advanceWidth: adv, contours };
   }
   return out;
-}
-import { autoSpace } from './autospace.js'; import { autoKern } from './autokern.js'; import { mismatch } from './ucheck.js';
-// Smooth glyph set: contours, advance widths and kerning pairs, ready for the app's glyph model.
-export function buildSmooth(p) {
-  setUnionCheck(mismatch); FALLBACKS.length = 0;
-  const gl = buildGlyphs(p);
-  if (p.autoSpace && !p.mono) autoSpace(gl, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif: !!(p.slab && p.serifModels) });
-  const kern = p.autoKern && !p.mono ? autoKern(gl, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif: !!(p.slab && p.serifModels) }) : {};
-  return { glyphs: gl, kern };
 }
 export const BASE = { stem: 90, width: 1, contrast: 0.05, nib: 0, caps: 'butt', square: 2, aperture: 0.3, xHeight: 520, capHeight: 700, spacing: 1, slab: false };

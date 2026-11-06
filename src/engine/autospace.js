@@ -1,5 +1,5 @@
 // Automatic letter fit: sidebearings from each side's shape, using a model fitted on 632 Google Fonts sans families.
-import { flatten } from './ucheck.js';
+import { flatten } from './geometry.js';
 const WS = [0.063, 0.766, -0.066, 0.04, 0.519, 0.057]; // sans: 1, flatness, depth, depth^2, flatness*depth, capital
 const WR = [0.415, -0.108, -0.361, 0.058, 0.955, 0.073]; // serif model, fitted on 235 Google Fonts serif families
 let W = WS;
