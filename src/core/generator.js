@@ -1,4 +1,5 @@
 import { DEFAULT_PARAMS } from './model.js';
+import { generateSmooth } from './smooth.js';
 
 const chars = {
   A:['01110','10001','10001','11111','10001','10001','10001'],B:['11110','10001','10001','11110','10001','10001','11110'],C:['01111','10000','10000','10000','10000','10000','01111'],D:['11110','10001','10001','10001','10001','10001','11110'],E:['11111','10000','10000','11110','10000','10000','11111'],F:['11111','10000','10000','11110','10000','10000','10000'],G:['01111','10000','10000','10111','10001','10001','01111'],H:['10001','10001','10001','11111','10001','10001','10001'],I:['111','010','010','010','010','010','111'],J:['00111','00010','00010','00010','10010','10010','01100'],K:['10001','10010','10100','11000','10100','10010','10001'],L:['10000','10000','10000','10000','10000','10000','11111'],M:['10001','11011','10101','10101','10001','10001','10001'],N:['10001','11001','10101','10011','10001','10001','10001'],O:['01110','10001','10001','10001','10001','10001','01110'],P:['11110','10001','10001','11110','10000','10000','10000'],Q:['01110','10001','10001','10001','10101','10010','01101'],R:['11110','10001','10001','11110','10100','10010','10001'],S:['01111','10000','10000','01110','00001','00001','11110'],T:['11111','00100','00100','00100','00100','00100','00100'],U:['10001','10001','10001','10001','10001','10001','01110'],V:['10001','10001','10001','10001','10001','01010','00100'],W:['10001','10001','10001','10101','10101','10101','01010'],X:['10001','10001','01010','00100','01010','10001','10001'],Y:['10001','10001','01010','00100','00100','00100','00100'],Z:['11111','00001','00010','00100','01000','10000','11111'],
@@ -90,13 +91,15 @@ function accentContour(x,y,size=90){return [[x,y],[x+size*.28,y+size*.6],[x+size
 export function generateFamily(project, {replaceManual=false,style='Regular'}={}) {
   if(!project||!project.design)throw new Error('A project with design settings is required.');
   const previous=project.glyphs||{};const generation=project.generation?.revision||0;const created={};const order=[];
+  const smooth=project.design.engine==='pixel'?null:generateSmooth({...DEFAULT_PARAMS,...project.design},style);
   const inventory=[...Array(95)].map((_,i)=>32+i);
   const notdefId='notdef',notdefOutline=[[{x:60,y:0,on:true},{x:60,y:700,on:true},{x:520,y:700,on:true},{x:520,y:0,on:true}],[{x:110,y:80,on:true},{x:470,y:80,on:true},{x:470,y:620,on:true},{x:110,y:620,on:true}]];
   const oldNotdef=previous[notdefId];created[notdefId]=oldNotdef?.manualEdited&&!replaceManual?structuredClone(oldNotdef):{id:notdefId,name:'.notdef',character:'□',unicode:null,contours:notdefOutline,generatedContours:structuredClone(notdefOutline),outlines:notdefOutline,advanceWidth:600,leftSideBearing:60,rightSideBearing:80,manualEdited:false,invalid:false,components:[],generationRevision:generation+1};order.push(notdefId);
   for(const code of inventory){const ch=String.fromCodePoint(code);const pattern=chars[ch];if(!pattern)throw new Error(`The design system has no source pattern for ${JSON.stringify(ch)}.`);
-    const geom=makeContours(pattern,ch,project.design,style);if(ch===' '){if(!project.design.monospaced)geom.advanceWidth=Math.round(300*project.design.spacing);geom.leftSideBearing=0;}const id=glyphId(code);
+    const sm=smooth?.glyphs[ch];const geom=sm?{contours:sm.contours,advanceWidth:sm.advanceWidth,leftSideBearing:sm.leftSideBearing,rightSideBearing:sm.rightSideBearing}:makeContours(pattern,ch,project.design,style);
+    if(smooth&&!sm&&project.design.monospaced){const mw=smooth.monoWidth,k=mw/geom.advanceWidth;for(const c of geom.contours)for(const pt of c)pt.x=Math.round(pt.x*k);geom.advanceWidth=mw;geom.leftSideBearing=Math.round(geom.leftSideBearing*k);} /* temporary: symbols the pen engine lacks keep the pixel drawing, fitted to the fixed width */ if(ch===' '){if(!project.design.monospaced)geom.advanceWidth=Math.round(300*project.design.spacing);geom.leftSideBearing=0;}const id=glyphId(code);
     const old=previous[id];const keep=old?.manualEdited&&!replaceManual;
-    created[id]=keep?structuredClone(old):{id,name:ch===' '?'space':ch,character:ch,unicode:code,contours:geom.contours,generatedContours:structuredClone(geom.contours),outlines:geom.contours,advanceWidth:geom.advanceWidth,leftSideBearing:geom.leftSideBearing,rightSideBearing:Math.max(0,geom.advanceWidth-geom.leftSideBearing-(Math.max(...geom.contours.flat().map(pt=>pt.x),0)-geom.leftSideBearing)),manualEdited:false,invalid:false,components:[],generationRevision:generation+1};
+    created[id]=keep?structuredClone(old):{id,name:ch===' '?'space':ch,character:ch,unicode:code,contours:geom.contours,generatedContours:structuredClone(geom.contours),outlines:geom.contours,advanceWidth:geom.advanceWidth,leftSideBearing:geom.leftSideBearing,rightSideBearing:geom.rightSideBearing??Math.max(0,geom.advanceWidth-geom.leftSideBearing-(Math.max(...geom.contours.flat().map(pt=>pt.x),0)-geom.leftSideBearing)),manualEdited:false,invalid:false,components:[],generationRevision:generation+1};
     order.push(id);
   }
   const acuteId=glyphId(0x301), acuteContour=accentContour(270,600,75);
@@ -105,7 +108,7 @@ export function generateFamily(project, {replaceManual=false,style='Regular'}={}
   const oldE=previous[eacuteId];created[eacuteId]=oldE?.manualEdited&&!replaceManual?structuredClone(oldE):{id:eacuteId,name:'eacute',character:'é',unicode:0xe9,contours:eacuteContours,generatedContours:structuredClone(eacuteContours),outlines:eacuteContours,advanceWidth:e.advanceWidth,leftSideBearing:e.leftSideBearing,rightSideBearing:e.rightSideBearing,manualEdited:false,invalid:false,components:[eId,acuteId],generationRevision:generation+1};order.push(eacuteId);
   for(const glyph of Object.values(created)){if(glyph.generatedAdvanceWidth===undefined)glyph.generatedAdvanceWidth=glyph.advanceWidth;if(glyph.generatedLeftSideBearing===undefined)glyph.generatedLeftSideBearing=glyph.leftSideBearing;if(glyph.generatedRightSideBearing===undefined)glyph.generatedRightSideBearing=glyph.rightSideBearing;}
   project.glyphs=created;project.glyphOrder=order;project.generation.revision=generation+1;project.generation.history=[...(project.generation.history||[]),{revision:generation+1,at:new Date().toISOString(),seed:project.design.seed,summary:`Generated ${order.length} glyphs with shared grid-sans rules.`}].slice(-10);
-  project.styles={Regular:{weight:400},Bold:{weight:700}};project.generatedStyle=style;
+  if(smooth&&Object.keys(smooth.kern).length)project.spacing={...(project.spacing||{}),pairs:{...smooth.kern}};project.styles={Regular:{weight:400},Bold:{weight:700}};project.generatedStyle=style;
   return project;
 }
 
@@ -131,6 +134,7 @@ export function validateGlyph(glyph) {
     if(c.some(p=>!Number.isInteger(p.x)||!Number.isInteger(p.y)||Math.abs(p.x)>32767||Math.abs(p.y)>32767))errors.push(`Contour ${i+1} contains coordinates outside TrueType integer bounds.`);
     const area=c.reduce((sum,p,j)=>sum+p.x*c[(j+1)%c.length].y-c[(j+1)%c.length].x*p.y,0);
     if(Math.abs(area)<2)errors.push(`Contour ${i+1} has no measurable area.`);
+    if(c.some(p=>p.on===false))continue; // control polygons of curves may cross legitimately; the pen engine unions its own strokes
     for(let a=0;a<c.length&&!errors.some(e=>e.startsWith(`Contour ${i+1} self-intersects`));a++)for(let b=a+2;b<c.length;b++){
       if(a===0&&b===c.length-1)continue;
       const p=c[a],q=c[(a+1)%c.length],r=c[b],s=c[(b+1)%c.length];
