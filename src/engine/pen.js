@@ -13,7 +13,7 @@ function arc(cx, cy, rx, ry, a0, a1, n = 2, steps = N) {
     out.push({ x: cx + rx * Math.sign(c) * Math.abs(c) ** (2 / n), y: cy + ry * Math.sign(s) * Math.abs(s) ** (2 / n) }); } return out;
 }
 // thickness of a broad nib moving in direction theta
-const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = W * (1 - p.contrast) * (p.optical ? 0.88 : 1); return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
+const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = Math.max(W * (1 - p.contrast) * (p.optical ? 0.88 : 1), (p.minHair || 0) * p.stem); /* minHair: thin parts never vanish */ return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
 // Expand one open centerline into a closed contour. Offsets along the normal; sharp butt caps or round caps.
 function expand(pts, p, closed = false) {
   if (closed && p.optical) p = { ...p, _round: true };
@@ -48,7 +48,7 @@ import { alphabet, NAMES } from './alphabet.js';
 
 function skeletons(p) {
   const G = alphabet(p, { line: lineDense, arc: (cx, cy, rx, ry, a0, a1, q) => arc(cx, cy, rx, ry, a0, a1, q, N) });
-  if (p.slab) for (const [ch, g] of Object.entries(G)) if (/[A-Za-z0-9]/.test(ch)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
+  if (p.slab && !p.serif2) for (const [ch, g] of Object.entries(G)) if (/[A-Za-z0-9]/.test(ch)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
     if (st.pts.length === 6 && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) > p.xHeight * 0.6) { const w = p.stem * 1.5, hh = p.stem * (1 - Math.max(p.contrast, 0.3)) / 2;
       for (const y of [Math.min(a.y, b.y)]) if (y >= -1) g.strokes.push({ pts: lineDense(a.x - w, y + hh, a.x + w, y + hh), foot: true }); } }
   if (p.proportions) proportion(G, p);
@@ -70,10 +70,30 @@ function applyFit(G, FIT, p) { const C = p.capHeight;
       st.pts = st.pts.map(q => ({ ...q, x: c + (q.x - c) * sx + dx * C, y: q.y + dy * C })); }); } }
 export const touchesGuide = (st, p) => !st.closed && st.pts.some(q => [0, p.xHeight, p.capHeight, -190, Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25)].some(gy => Math.abs(q.y - gy) < 2 + p.stem * 0.6)) || !!st.closed;
 export function rawSkeletons(p) { return skeletons(p); }
+// Bracketed serifs (round 7): small feet at the ends of straight vertical stems, with a curved bracket into the stem.
+// Bottom serifs on both sides; top serifs on both sides for capitals, left only (a head serif) for lowercase.
+function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p, Math.PI / 2) / 2, Lb = (p.serifLen ?? 0.55) * p.stem;
+  const T = Math.max(thick(p, 0) * 0.9, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = (p.bracket ?? 0.9) * T, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
+  const foot = (cx, y0, dir, left, right) => { // dir +1 = bottom serif (grows up), -1 = top serif (grows down)
+    const Y = v => Math.round(y0 + dir * v), cL = cx - sw, cR = cx + sw, P = [];
+    const xl = left ? cL - Lb : cL, xr = right ? cR + Lb : cR;
+    P.push({ x: Math.round(xl), y: Y(0), on: true }, { x: Math.round(xr), y: Y(0), on: true });
+    if (right) P.push({ x: Math.round(xr), y: Y(T), on: true }, { x: Math.round(cR + B), y: Y(T), on: true }, { x: Math.round(cR), y: Y(T), on: false }, { x: Math.round(cR), y: Y(T + Bh), on: true });
+    else P.push({ x: Math.round(cR), y: Y(T + Bh), on: true });
+    if (left) P.push({ x: Math.round(cL), y: Y(T + Bh), on: true }, { x: Math.round(cL), y: Y(T), on: false }, { x: Math.round(cL - B), y: Y(T), on: true }, { x: Math.round(xl), y: Y(T), on: true });
+    else P.push({ x: Math.round(cL), y: Y(T + Bh), on: true });
+    return { closed: true, points: dir > 0 ? P : P.reverse() }; };
+  for (const st of g.strokes) { if (st.closed || st.pts.length !== 6) continue; const a = st.pts[0], b = st.pts[5]; if (Math.abs(a.x - b.x) > 1 || Math.abs(a.y - b.y) < p.xHeight * 0.45) continue;
+    const lo = Math.min(a.y, b.y), hi = Math.max(a.y, b.y), cx = a.x;
+    if (Math.abs(lo) < 3 || Math.abs(lo + 190) < 3) out.push(foot(cx, lo, 1, true, true));
+    if ([p.xHeight, p.capHeight, ASC].some(v => Math.abs(hi - v) < 3)) out.push(foot(cx, hi, -1, true, up)); }
+  return out; }
+const area = c => { let s = 0; const P = c.points; for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length]; s += a.x * b.y - b.x * a.y; } return s; };
 export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks = [] } = {}) {
   const out = {}; const union = !!removeOverlaps, unionCheck = mismatch;
   for (const [ch, g] of Object.entries(skeletons(p))) { if (only && !only.includes(ch)) continue;
     let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
+    if (p.serif2 && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
     if (union) { const raw = contours;
       // optional 1-unit nudge (tested: makes the union worse, so it is off)
       const nudged = p.nudge !== true ? raw : g.strokes.flatMap((st, k) => expand(st.pts.map(pt => k % 2 ? { x: pt.x + 1, y: pt.y - 1 } : pt), st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));

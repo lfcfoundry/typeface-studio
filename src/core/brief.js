@@ -35,7 +35,7 @@ export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
   const fromPen = appFromPen(rd.settings), settings = { ...app.settings }, changes = app.changes.slice();
   const keys = rd.ref ? Object.keys(fromPen) : [...decided].flatMap(a => KEYS[a] || []); // a referenced font sets every axis; a clause sets only its own
   for (const k of keys) settings[k] = fromPen[k];
-  if (keys.includes('serifs')) { settings.classification = settings.serifs ? (settings.monospaced ? 'Monospace serif' : 'Serif') : (settings.monospaced ? 'Monospace sans' : 'Geometric sans'); settings.serifStyle = settings.serifs ? 'Simple' : 'None'; }
+  if (keys.includes('serifs')) { const slab = rd.settings.style === 'slab'; settings.classification = settings.serifs ? (settings.monospaced ? 'Monospace serif' : slab ? 'Slab serif' : 'Serif') : (settings.monospaced ? 'Monospace sans' : 'Geometric sans'); settings.serifStyle = settings.serifs ? (slab ? 'Slab' : 'Simple') : 'None'; }
   const NAMES = { stem: ['stroke thickness', 'weight'], width: ['width'], contrast: ['stroke contrast'], xHeight: ['x-height'], spacing: ['spacing'], serifs: ['serif structures', 'serif construction', 'classification'], terminals: ['terminals', 'corner softness'], monospaced: ['fixed-width metrics'] };
   const drop = new Set(keys.flatMap(k => NAMES[k] || [])); // the composer's choice replaces the rules' note for the same setting
   const kept = changes.filter(c => !drop.has(String(c.parameter).toLowerCase()));

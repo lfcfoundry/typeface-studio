@@ -92,6 +92,8 @@ export function read(brief, { base = {}, rest = null } = {}) {
   if (d.xh !== undefined) s.xHeight = Math.round(clamp(s.xHeight + 45 * d.xh * k('xh'), 450, 600));
   if (d.spacing !== undefined) s.spacing = +clamp(s.spacing * (1 + 0.12 * d.spacing * k('spacing')), 0.8, 1.3).toFixed(3);
   if (d.serif !== undefined) { s.slab = d.serif; s.serifModels = d.serif; }
+  // two serif styles (owner's card 2026.11.06): the word "slab" picks blocky slab feet, any other serif request gets curved serifs
+  if (s.slab) { const slabWords = /\bslab/.test(String(brief).toLowerCase()); s.serif2 = !slabWords; if (s.serif2) s.serifLen = 0.8; s.style = slabWords ? 'slab' : 'serif'; } else s.style = 'sans';
   if (d.rounded !== undefined) s.caps = d.rounded ? 'round' : 'butt';
   if (d.mono !== undefined) s.mono = d.mono;
   return { settings: s, why: c.why, rest: c.rest, ref: c.ref && c.ref.family };
