@@ -1,8 +1,21 @@
 # LFCFoundry Typeface Studio
 
-An offline browser application for describing, generating, editing, previewing, saving and exporting a small procedural TrueType font family.
+## What it is and how it works
 
-## Live demo and experimental contour prototype
+Typeface Studio turns a few words into a TrueType font family you can install. Type what you want ("a warm, friendly storybook font, not too heavy"), press **Make my font**, and see a specimen in your browser. Press **Try another** for a different take. It runs offline from one HTML file.
+
+- **Reading your words.** A built-in reader understands negation ("not too heavy"), degrees ("a bit bolder"), comparisons and "like <font name>". Mood words ("elegant", "calm") are matched against measured real fonts and nudge the settings. Every change is listed with its reason, and each guess has an Undo.
+- **Drawing the letters.** A pen engine draws smooth curved outlines for all 95 printable ASCII characters in three styles: Sans, Serif and Slab, with Regular and Bold weights, automatic spacing and kerning. A pixel-grid style is kept as an extra.
+- **Making the file.** The outlines are compiled to a TrueType font with fontsketch, and the same bytes are previewed and offered for download. Font building runs in a background worker.
+- **Fine control, when wanted.** Sliders for width, heights, stroke thickness and contrast, spacing, openness, squareness and stress angle, plus a glyph grid and editor.
+
+Limits: it covers printable ASCII only, not broad Unicode. Curved letters have many outline points, so hand-editing individual points is awkward. The Slab style is slow at heavy weights. It is not a professional font editor. Visual quality has been checked by eye in Chromium, Firefox and WebKitGTK on a desktop only; phones are untested.
+
+## Why it exists
+
+Most people who want a custom font have no design skills and no wish to learn a font editor. Typeface Studio aims for the fewest steps from an idea to a usable font: one box, one button, nothing sent anywhere, no account.
+
+## Live demo and earlier contour prototype
 
 Open the canonical [GitHub Pages demo](https://lfcfoundry.github.io/typeface-studio/). It links to both the production MVP and a separate experimental contour-engine prototype, plus six prototype TTF downloads.
 
@@ -48,7 +61,7 @@ The prototype benchmark currently uses 20 hand-annotated cases. In the latest ru
 
 ## Exporter and scope
 
-The application uses fontsketch 0.1.0 (MIT) to compile TrueType `glyf`/`loca` outlines and SFNT tables. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Its offline phrase interpreter controls width, stroke weight, contrast, rounded contours, spacing, simple block-serif additions, and fixed-pitch metrics. The contour engine remains a coarse shared row-grid system with printable ASCII plus a combining acute accent and é. Humanist construction, historical type subfamilies, adjustable counter shapes, bracketed serifs, and expressive display forms are disclosed as approximations or unsupported. It exports static Regular and Bold fonts; it is not a professional outline editor or broad Unicode font production system.
+The application uses fontsketch 0.1.0 (MIT) to compile TrueType `glyf`/`loca` outlines and SFNT tables. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Its offline phrase interpreter controls width, stroke weight, contrast, rounded contours, spacing, simple block-serif additions, and fixed-pitch metrics. The default letters now come from the pen engine described above; the pixel row-grid engine remains an option. Humanist construction, historical type subfamilies, adjustable counter shapes, bracketed serifs, and expressive display forms are disclosed as approximations or unsupported. It exports static Regular and Bold fonts; it is not a professional outline editor or broad Unicode font production system.
 
 Project files use schema version 1 and are portable JSON. IndexedDB autosave is best-effort; project download/import is the cross-origin and cross-device backup path.
 
