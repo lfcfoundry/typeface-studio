@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const dir = process.argv[2];
 const read = f => JSON.parse(fs.readFileSync(`${dir}/${f}`));
 const G = read('google-fonts-shapes-and-tags.json'), GL = read('glove-table-40k.json');
-const { LEXICON } = await import(`${dir}/lexicon.mjs`); const { STOP } = await import(`${dir}/anchors.mjs`);
+const { LEXICON } = await import(`${dir}/lexicon-with-business.mjs`); const { STOP } = await import(`${dir}/anchors.mjs`);
 const tags = GL.tags, tagIdx = new Map(tags.map((t, i) => [t, i]));
 const metrics = G.metrics;
 // word -> [[tagIdx, weight*100]...]
