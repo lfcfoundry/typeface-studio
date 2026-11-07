@@ -22,6 +22,13 @@ function penFromApp(s) {
   if (s.monospaced !== DEFAULT_PARAMS.monospaced) o.mono = !!s.monospaced;
   return o;
 }
+// every pen setting for an app design (a follow-up starts from the font the person just made)
+function fullPen(d) {
+  return { stem: Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120), width: d.width, contrast: clamp(d.contrast, 0, 0.8), xHeight: Math.round(700 * d.xHeight), spacing: d.spacing,
+    slab: !!d.serifs, serifModels: !!d.serifs, caps: d.terminals === 'Rounded' ? 'round' : 'butt', mono: !!d.monospaced,
+    aperture: clamp(d.openness ?? 0.3, -0.25, 0.45), square: clamp(d.squareness ?? 2, 2, 6), nib: clamp(d.stress ?? 0, -35, 35) * Math.PI / 180, nibDegrees: d.stress ?? 0,
+    slant: d.slant || 0, italic: !!d.italic };
+}
 const appFromPen = p => ({
   stem: +clamp(0.18 + (p.stem - 40) / 120 * 0.68, 0.18, 0.86).toFixed(2), width: +clamp(p.width, 0.65, 1.4).toFixed(2), contrast: +clamp(p.contrast, 0.04, 0.68).toFixed(2),
   xHeight: +clamp(p.xHeight / 700, 0.62, 0.82).toFixed(2), spacing: +clamp(p.spacing, 0.82, 1.22).toFixed(2), serifs: !!p.slab, terminals: p.caps === 'round' ? 'Rounded' : 'Square', monospaced: !!p.mono,
@@ -42,7 +49,15 @@ export function normalizeSpacing(t) {
 export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
   prompt = normalizeSpacing(prompt);
   const app = interpretPrompt(prompt, base, opts);
-  const rd = read(prompt, { rest: text => penFromApp(interpretPrompt(text, base, opts).settings) });
+  const cur = opts.current ? fullPen(opts.current) : null;
+  const rd = read(prompt, { current: cur, rest: text => penFromApp(interpretPrompt(text, base, opts).settings) });
+  if (rd.refine) { // a follow-up ("a little less round") changes only the font the person just made
+    const now = appFromPen(rd.settings), was = appFromPen(cur), settings = { ...opts.current };
+    for (const k of Object.keys(now)) if (now[k] !== was[k]) settings[k] = now[k];
+    const seen = new Set(), changes = [];
+    for (const w of rd.why) { const c = { parameter: LABEL[w.axis] || w.axis, value: '', because: `Follow-up on your current font: ${w.because}.` }, key = c.parameter + c.because; if (!seen.has(key)) { seen.add(key); changes.push(c); } }
+    return { ...app, settings, changes, chips: app.chips, composer: rd.why, reference: rd.ref || null, refine: true };
+  }
   const decided = new Set(rd.why.map(w => w.axis));
   if (!decided.size) return app;
   const fromPen = appFromPen(rd.settings), settings = { ...app.settings }, changes = app.changes.slice();

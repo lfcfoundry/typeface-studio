@@ -8,11 +8,22 @@ function runsY(polys, y) { const xs = []; for (const q of polys) for (let i = 0;
 function profile(g, top, P = g.contours.map(flatten)) { const L = [], R = [];
   for (let i = 0; i < 30; i++) { const y = top * (i + 0.5) / 30, r = runsY(P, y); L.push(r.length ? r[0][0] : null); R.push(r.length ? g.advanceWidth - r[r.length - 1][1] : null); } return { L, R }; }
 function q25(pa, pb, stem) { const g = []; for (let i = 0; i < 30; i++) if (pa.R[i] != null && pb.L[i] != null) g.push(Math.min(3, (pa.R[i] + pb.L[i]) / stem)); if (!g.length) return null; g.sort((a, b) => a - b); const n = Math.max(1, g.length >> 2); return g.slice(0, n).reduce((a, b) => a + b, 0) / n; }
-export function autoKern(glyphs, { xHeight, capHeight, stem, serif = false }) {
+// round 10 (guard: true, used with weight-aware spacing): never kern a pair closer than half the tightest row gap of HH / nn,
+// so heavy, tightly spaced letters can't touch.
+let GF = 0.5; export function setGuard(v) { GF = v; }
+function profileFull(g, P) { // leftmost and rightmost ink on 120 rows from the descender to above the ascender, one pass over the edges
+  const N = 120, y0 = -240, dy = 1060 / N, lo = new Array(N).fill(Infinity), hi = new Array(N).fill(-Infinity);
+  for (const q of P) for (let i = 0; i < q.length - 1; i++) { const a = q[i], b = q[i + 1]; if (a.y === b.y) continue;
+    const ya = Math.min(a.y, b.y), yb = Math.max(a.y, b.y); let r0 = Math.max(0, Math.ceil((ya - y0) / dy - 0.5)); const r1 = Math.min(N - 1, Math.floor((yb - y0) / dy - 0.5));
+    for (let r = r0; r <= r1; r++) { const y = y0 + (r + 0.5) * dy; if (y < ya || y >= yb) continue; const x = a.x + (y - a.y) / (b.y - a.y) * (b.x - a.x); if (x < lo[r]) lo[r] = x; if (x > hi[r]) hi[r] = x; } }
+  return { L: lo.map(v => v === Infinity ? null : v), R: hi.map(v => v === -Infinity ? null : g.advanceWidth - v) }; }
+function minGap(pa, pb) { let m = Infinity; for (let i = 0; i < pa.R.length; i++) if (pa.R[i] != null && pb.L[i] != null) m = Math.min(m, pa.R[i] + pb.L[i]); return m; }
+export function autoKern(glyphs, { xHeight, capHeight, stem, serif = false, guard = false }) {
   BETA = serif ? -0.54 : -0.70; // serif rule fitted on 203 serif families: error 0.250 -> 0.130 stems
-  const chars = Object.keys(glyphs).filter(c => /[A-Za-z]/.test(c) && glyphs[c].contours.length); const PX = {}, PC = {};
-  for (const c of chars) { const P = glyphs[c].contours.map(flatten); PX[c] = profile(glyphs[c], xHeight, P); PC[c] = profile(glyphs[c], capHeight, P); } // flatten once per letter
-  const refC = q25(PC.H, PC.H, stem), refX = q25(PX.n, PX.n, stem), pairs = {};
+  const chars = Object.keys(glyphs).filter(c => /[A-Za-z]/.test(c) && glyphs[c].contours.length); const PX = {}, PC = {}, PF = {};
+  for (const c of chars) { const P = glyphs[c].contours.map(flatten); PX[c] = profile(glyphs[c], xHeight, P); PC[c] = profile(glyphs[c], capHeight, P); if (guard) PF[c] = profileFull(glyphs[c], P); } // flatten once per letter
+  const refC = q25(PC.H, PC.H, stem), refX = q25(PX.n, PX.n, stem), pairs = {}, gC = guard ? minGap(PF.H, PF.H) * GF : 0, gX = guard ? minGap(PF.n, PF.n) * GF : 0;
   for (const a of chars) for (const b of chars) { const both = /[A-Z]/.test(a) && /[A-Z]/.test(b); const d = both ? q25(PC[a], PC[b], stem) : q25(PX[a], PX[b], stem); if (d == null) continue;
-    const ref = both ? refC : refX; const k = d - ref > TAU ? BETA * (d - ref - TAU) : 0; if (k <= -MIN) pairs[`${glyphs[a].name}|${glyphs[b].name}`] = Math.round(k * stem); }
+    const ref = both ? refC : refX; let k = d - ref > TAU ? BETA * (d - ref - TAU) : 0;
+    if (guard && k < 0) k = Math.max(k, -Math.max(0, minGap(PF[a], PF[b]) - (both ? gC : gX)) / stem); if (k <= -MIN) pairs[`${glyphs[a].name}|${glyphs[b].name}`] = Math.round(k * stem); }
   return pairs; }

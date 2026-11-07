@@ -79,7 +79,10 @@ export function rawSkeletons(p) { return skeletons(p); }
 function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p, Math.PI / 2) / 2, slab = !!p.slab2, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
   // slab: rectangular feet whose reach grows slower than the stem (0.45 stem + 18 units past each stem edge) and whose
   // thickness is 0.55 stem, so heavy weights don't crowd. serif: curved bracket, thin foot.
-  const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem;
+  // round 10: with weightSpace, curved serifs keep a nearly fixed reach as weight grows, as in real serif fonts
+  // (foot reach ~ stem^-0.15 on 76 Google Fonts serif families, so reach in stems ~ (stem / 90 at cap 700)^-1.15)
+  const wR = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -1.15) : 1;
+  const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem * wR;
   const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
   const foot = (cx, y0, dir, left, right) => { // dir +1 = bottom serif (grows up), -1 = top serif (grows down)
     const Y = v => Math.round(y0 + dir * v), cL = cx - sw, cR = cx + sw, P = [];
