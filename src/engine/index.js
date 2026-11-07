@@ -41,3 +41,18 @@ export function tryAnother(settings, k, explicit = []) {
   if (s.square && !pinned.has('square')) out.square = (settings.square ?? 2) + s.square;
   return out;
 }
+
+// Round 15: farthest-point Try another picks. From a small grid of safe moves (x-height -20/0/+20, contrast -.03/0/+.10, squareness
+// -.2/0/+.3) on settings the words did not pin, pick three that are each a visible but modest step (distance .04 to .25) and as far
+// from the base and from each other as possible. Distance is a cheap fit to measured pixel differences, no drawing needed.
+// Returns an array of up to three settings objects (best first). Owner approved switching Try another to these picks 2026.11.07.
+export function tryAnotherPicks(settings, explicit = []) {
+  const pinned = new Set(explicit), P = (a, b) => pinned.has(a) || pinned.has(b);
+  const pxh = P('xHeight', 'xheight'), pc = pinned.has('contrast'), psq = pinned.has('square'), seen = new Set(['0|0|0']), pool = [];
+  for (const xh of [-20, 0, 20]) for (const c of [-0.03, 0, 0.1]) for (const sq of [-0.2, 0, 0.3]) {
+    const q = { xh: pxh ? 0 : xh, c: pc ? 0 : c, sq: psq ? 0 : sq }, k = q.xh + '|' + q.c + '|' + q.sq; if (!seen.has(k)) { seen.add(k); pool.push(q); } }
+  const d = (p, q) => Math.hypot((p.xh - q.xh) / 20 * 0.12, (p.c - q.c) / 0.1 * 0.04, (p.sq - q.sq) / 0.2 * 0.1), O = { xh: 0, c: 0, sq: 0 };
+  const ok = pool.filter(p => d(p, O) >= 0.04 && d(p, O) <= 0.25), sel = [O];
+  for (let i = 0; i < 3 && ok.length; i++) { let best = null, bv = -1; for (const p of ok) { if (sel.includes(p)) continue; const m = Math.min(...sel.map(q => d(q, p))); if (m > bv) { bv = m; best = p; } } if (best) sel.push(best); }
+  return sel.slice(1).map(p => ({ ...settings, xHeight: (settings.xHeight ?? 520) + p.xh, contrast: Math.min(0.6, Math.max(0, (settings.contrast ?? 0.05) + p.c)), square: (settings.square ?? 2) + p.sq }));
+}

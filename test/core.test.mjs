@@ -122,3 +122,12 @@ test('Try another changes the font even when the words pin every setting', async
   assert.equal(a.settings.stem, b.settings.stem);
   assert.equal(a.settings.width, b.settings.width);
 });
+
+test('stepping the Try another number back returns the earlier font', async () => {
+  const { setVariant } = await import('../src/core/mood.js');
+  await initMood();
+  setVariant(0); const a = interpretBrief('a warm friendly storybook font', DEFAULT_PARAMS, {});
+  setVariant(2); interpretBrief('a warm friendly storybook font', DEFAULT_PARAMS, {});
+  setVariant(0); const again = interpretBrief('a warm friendly storybook font', DEFAULT_PARAMS, {});
+  assert.deepEqual(a.settings, again.settings);
+});

@@ -2,7 +2,7 @@
 // the word rules and the mood layer. Where the composer made a decision, its choice wins; everywhere else the rules
 // and mood layer stand. Every decision is listed with the words that caused it.
 import { read } from '../engine/reader.js';
-import { tryAnother } from '../engine/index.js';
+import { tryAnotherPicks } from '../engine/index.js';
 import { getVariant } from './mood.js';
 import { interpretPrompt } from './prompt.js';
 import { DEFAULT_PARAMS } from './model.js';
@@ -52,7 +52,9 @@ export function normalizeSpacing(t) {
 function vary(result, explicit) {
   const k = getVariant(); if (!k || result.refine) return result;
   const pinned = new Set(explicit || []); if (pinned.has('xh')) pinned.add('xHeight');
-  const pen = fullPen({ ...DEFAULT_PARAMS, ...result.settings }), next = tryAnother(pen, k, [...pinned]);
+  const pen = fullPen({ ...DEFAULT_PARAMS, ...result.settings }), picks = tryAnotherPicks(pen, [...pinned]);
+  if (!picks.length) return result;
+  const next = picks[(k - 1) % picks.length];
   const settings = { ...result.settings };
   if (next.xHeight !== pen.xHeight) settings.xHeight = +clamp(next.xHeight / 700, 0.62, 0.82).toFixed(2);
   if (next.contrast !== pen.contrast) settings.contrast = +clamp(next.contrast, 0.04, 0.68).toFixed(2);
