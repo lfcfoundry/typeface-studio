@@ -53,6 +53,12 @@ function skeletons(p) {
       for (const y of [Math.min(a.y, b.y)]) if (y >= -1) g.strokes.push({ pts: lineDense(a.x - w, y + hh, a.x + w, y + hh), foot: true }); } }
   if (p.proportions) proportion(G, p);
   if (p.fit) applyFit(G, p.fit, p);
+  // round 10c (weightWidth): real letters widen as they get bolder so counters stay open (Google Fonts 700 vs 400:
+  // sans n ink 1.115x, o 1.067x, O 1.044x). Center lines widen by (stem / 90 at cap 700)^e, lowercase and capitals separately.
+  if (p.weightWidth) { const q = p.stem / (p.capHeight * 90 / 700), E = p.weightWidthExp || [0.3, 0.1];
+    for (const [ch, g] of Object.entries(G)) { if (!/[A-Za-z0-9]/.test(ch)) continue; const k = Math.pow(q, /[a-z]/.test(ch) ? E[0] : E[1]); if (k === 1) continue;
+      const xs = g.strokes.flatMap(st => st.pts.map(v => v.x)); const x0 = Math.min(...xs), x1 = Math.max(...xs), c = (x0 + x1) / 2;
+      for (const st of g.strokes) st.pts = st.pts.map(v => ({ ...v, x: c + (v.x - c) * k })); g.w += (k - 1) * (x1 - x0); } }
   // slant (round 9): shear the center lines, not the outlines, so the pen keeps its weight and stress like a real oblique.
   // Round letters lean about 10% less than straight ones, a habit of real obliques that keeps bowls from looking tipped over.
   if (p.slant) { const k = Math.tan(p.slant * Math.PI / 180), cy = p.xHeight / 2;
@@ -83,7 +89,9 @@ function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p,
   // (foot reach ~ stem^-0.15 on 76 Google Fonts serif families, so reach in stems ~ (stem / 90 at cap 700)^-1.15)
   const wR = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -1.15) : 1;
   const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem * wR;
-  const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
+  // round 10b: with weightSpace, curved serif feet thin out at heavy weights as in real fonts (foot thickness ~ stem^0.53 on 76 serif families)
+  const wT = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -0.47) : 1;
+  const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9 * wT, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
   const foot = (cx, y0, dir, left, right) => { // dir +1 = bottom serif (grows up), -1 = top serif (grows down)
     const Y = v => Math.round(y0 + dir * v), cL = cx - sw, cR = cx + sw, P = [];
     const xl = left ? cL - Lb : cL, xr = right ? cR + Lb : cR;
