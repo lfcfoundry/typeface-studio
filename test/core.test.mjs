@@ -141,3 +141,11 @@ test('more like Playfair turns a plain sans toward serif with more contrast; les
   const back = likeThis(cur, 'Playfair Display', -1, z); assert.ok(back.settings.contrast < cur.contrast);
   assert.equal(likeThis(d, 'Not A Real Font', 1, null), null);
 });
+
+import { settingsFromShift } from '../src/core/mood.js';
+test('a monospace shape does not also turn on serifs; a plain serif shape still does', () => {
+  const base = { ...DEFAULT_PARAMS }, free = new Set(['serifs', 'monospaced']);
+  assert.equal(settingsFromShift({ foot: 0.9, mono: 2 }, base, free).out.serifs, undefined);
+  assert.equal(settingsFromShift({ foot: 0.9, mono: 0 }, base, free).out.serifs, true);
+  assert.equal(settingsFromShift({ foot: 0.9, mono: 2 }, base, free).out.monospaced, true);
+});
