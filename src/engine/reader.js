@@ -25,7 +25,7 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
   [/\b(narrow|narrower|condensed|compressed|squeezed|skinny)\b/, 'width', -1],
   [/\b(loose|looser|airy|spacious|roomy|open spacing|wide spacing|spaced out|generous spacing|(loosely|widely|generously|openly) (spaced|set))\b/, 'spacing', +1],
   [/\b(tight|tighter|packed|compact|dense|crammed|tight spacing|(tightly|closely|densely) (spaced|set|packed))\b/, 'spacing', -1],
-  [/\bsans[- ]?serifs?\b|\bsans\b|\bno serifs?\b|\bwithout (the )?serifs?\b|\bserifless\b/, 'serif', false, true],
+  [/\bsans?[- ]?serifs?\b|\bsans\b|\bno serifs?\b|\bwithout (the )?serifs?\b|\bserifless\b/, 'serif', false, true],
   [/\bslab(s|[- ]serifs?)?\b|\bserifs?\b|\bserifed\b/, 'serif', true],
   [/\b(round|rounded|rounder|roundish|soft|softer|curvy|bubbly)\b/, 'rounded', true],
   [/\b(sharp|sharper|angular|pointy|pointed|square|squared|crisp|edgy|geometric)\b/, 'rounded', false],
@@ -39,6 +39,15 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
 // Round 9: theme recipes. A theme picks a whole style (and slant or letter shape) the way a designer would; explicit words
 // in the same description still win. Each entry: pattern, axis settings, extra pen settings, short name for the why list.
 const THEMES = [
+  // round 23: owner's own words (1980s audiences, dyslexia, undersized screens, bubble letters); design judgments, not measured
+  [/\b(undersized|too small|far (from|away)|back of the (room|hall)|conference room|projector|large room|big room)\b/, { weight: +1, spacing: +1, serif: false }, {}, 'seen from far away'],
+  [/\bdyslexi[ac]s?\b|\bdyslexic users?\b/, { spacing: +1, width: +1, serif: false, weight: +0.5 }, { style: 'sans' }, 'easier reading for dyslexia (open spacing, clear sans)'],
+  [/\bbubble (letters?|font|type|writing)\b|\bballoon letters?\b|\bpuffy\b/, { weight: +1, rounded: true, width: +1 }, { soft: true }, 'bubble letters'],
+  [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(children|kids?)\b/, { rounded: true, weight: +1, serif: false }, { soft: true }, '1980s children'],
+  [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(business(es)?|corporate|office)\b/, { serif: false, contrast: -1, spacing: 0 }, {}, '1980s business'],
+  [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(teen(s|agers?)?|youth)\b/, { weight: +1, width: +1, serif: false }, { slant: 10 }, '1980s teens'],
+  [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(movie|film|cinema)( posters?)?\b/, { weight: +1, width: -1, contrast: +1 }, {}, '1980s movie posters'],
+  [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(seniors?|senior citizens?|elderly|older (adults|people))\b/, { spacing: +1, width: +1, weight: +0.5, serif: false }, {}, '1980s seniors'],
   [/\btypewriter\b/, { mono: true }, { style: 'slab' }, 'typewriter'], // serif or not is left to the other words (the prototype's gold calls a plain typewriter face sans)
   [/\b(pirates?|treasure maps?|old maps?|antique maps?)\b/, { serif: true, contrast: +1, stress: +1 }, { style: 'serif' }, 'pirate map'],
   [/\b(sports?|sporty|athletic|athletics|fitness|gym|basketball|football|soccer|baseball|hockey|rugby|tennis|marathon)\b( brand| logo| team| wear| apparel)?/, { weight: +1, serif: false }, { slant: 10 }, 'sports'],
@@ -74,7 +83,7 @@ const NEG = /\b(not|no|without|nothing|never|non|isn'?t|aren'?t|don'?t|avoid|any
 export function compose(brief, { families = {}, axesOf = null } = {}) {
   let s = ' ' + String(brief).toLowerCase().replace(/[’']/g, "'") + ' '; const why = [], set = {}, strength = {}; let ref = null;
   // 1. "like X" reference to a font family
-  const m = s.match(/\b(?:like|similar to|in the style of|based on|inspired by|than|compared to|compared with)\s+(?:an?\s+|the\s+)?([a-z0-9 ]+?)(?=\s*(?:,|\bbut\b|\bwith\b|\bwithout\b|\bonly\b|\bjust\b|\band\b|\.|$))/);
+  const m = s.match(/\b(?:like|similar to|in the style of|based on|inspired by|than|compared to|compared with|(?:a |an )?(?:modern |new |fresh |updated )?(?:take|twist|spin|version|update|redesign) (?:on|of)|alternative to|replacement for)\s+(?:an?\s+|the\s+)?([a-z0-9 ]+?)(?=\s*(?:,|\bbut\b|\bwith\b|\bwithout\b|\bonly\b|\bjust\b|\band\b|\.|$))/);
   if (m) { const name = m[1].trim().replace(/\s+(font|typeface)$/, ''); const key = ALIAS[name] || name.replace(/\s+/g, ''); if (families[key]) { ref = { name, family: key, z: families[key] }; s = s.replace(m[0], ' '); why.push({ axis: 'reference', value: key, because: `"${m[0].trim()}"` }); } }
   // 2. clauses: later clauses win; "but / though / yet / however / while" start a new clause
   const clauses = s.split(/,|;|\.|\bbut\b|\bthough\b|\byet\b|\bhowever\b|\bwhile\b|\bwhereas\b/);
@@ -106,7 +115,7 @@ export function compose(brief, { families = {}, axesOf = null } = {}) {
   const extra = {}; const low = ' ' + String(brief).toLowerCase() + ' ';
   for (const [re, axesT, ex, name] of THEMES) { if (!re.test(low)) continue; const hit = low.match(re)[0].trim(); const pre = low.slice(Math.max(0, low.indexOf(hit) - 24), low.indexOf(hit)), tdeg = STRONG.test(pre) ? 1.6 : MILD.test(pre) ? 0.5 : 1;
     if (consumed.some(c => NEG.test(c) && c.includes(hit))) continue; /* round 10: "not playful", "not a sports brand" don't trigger the theme */
-    for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { set[a] = v; strength[a] = typeof v === 'number' ? tdeg : 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
+    for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { const fr = typeof v === 'number' && Math.abs(v) < 1 && v !== 0; /* round 23: a fractional theme value means a smaller step */ set[a] = fr ? Math.sign(v) : v; strength[a] = typeof v === 'number' ? tdeg * (fr ? Math.abs(v) : 1) : 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
     for (const [a, v] of Object.entries(ex)) if (extra[a] === undefined) { if (a === 'slant' && set.italic === false) continue; if (a === 'style' && set.serif === false) continue; extra[a] = a === 'slant' ? Math.round(v * tdeg) : v; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
     /* theme words stay in the text, so the word rules and mood layer still hear them */ }
   for (const k of Object.keys(set)) if (k.startsWith('_c') || k.startsWith('_x')) delete set[k];
@@ -186,5 +195,6 @@ export function read(brief, { base = {}, rest = null, current = null } = {}) {
   const fromTheme = Object.keys(d).filter(a => c.why.some(w => w.axis === a && /^theme/.test(w.because)));
   const explicit = [...Object.keys(d), ...Object.keys(c.extra || {}).map(a => a === 'soft' ? 'contrast' : a)].filter((a, i, A) => A.indexOf(a) === i);
   const why = c.why.map(w => w.axis === 'soft' ? { ...w, axis: 'contrast', value: 'a little lower' } : w);
-  return { settings: s, why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme, refine };
+  const both = /\bboth\b[^.]*\bserif\b[^.]*\bsans?[- ]?(serif)?\b|\bsans?[- ]?(serif)?\b[^.]*\band\b[^.]*\bserif\b|\bserif and sans\b/.test(String(brief).toLowerCase()) ? ['serif', 'sans'] : null; // round 23: a request for both styles; the app shows one result per style
+  return { settings: s, why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme, refine, both };
 }
