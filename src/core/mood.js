@@ -85,7 +85,7 @@ export function settingsFromShift(z, base, free) {
   if (big(z.contrast)) set('contrast', +clamp(base.contrast + 0.25 * z.contrast, 0.04, 0.68).toFixed(2), z.contrast > 0 ? 'more thick-thin contrast' : 'less thick-thin contrast');
   if (big(z.xr)) set('xHeight', +clamp(base.xHeight + 0.057 * z.xr, 0.62, 0.82).toFixed(2), z.xr > 0 ? 'taller lowercase' : 'shorter lowercase');
   if (big(z.sb)) set('spacing', +clamp(base.spacing + 0.12 * z.sb, 0.82, 1.22).toFixed(2), z.sb > 0 ? 'looser spacing' : 'tighter spacing');
-  if (z.foot > 0.45) set('serifs', true, 'feet and serifs');
+  if (z.foot > 0.45 && !(z.mono > 1.2)) set('serifs', true, 'feet and serifs');
   if (z.topw < -0.3 && z.foot < 0.2) set('terminals', 'Rounded', 'rounded stroke ends');
   if (z.mono > 1.2) set('monospaced', true, 'even letter widths');
   return { out, why };
