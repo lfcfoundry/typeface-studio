@@ -25,3 +25,19 @@ export function design(settings = {}, { removeOverlaps = null } = {}) {
   const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif, guard: !!p.weightSpace }) : {};
   return { glyphs, kerning, fallbacks, settings: p };
 }
+
+// Round 12: "Try another" for words that pin every setting. Step k (1 to 3) makes a small move on settings the words did not pin
+// (never weight, width, style, slant, serif or mono). `explicit` is read()'s explicit list; pinned keys are skipped.
+// Owner approved 2026.11.06 (card, Yes, build it). Steps 4+ repeat step 3's shape with a wrap.
+export const TRY_ANOTHER = [
+  { xHeight: +20, contrast: +0.10 },
+  { xHeight: -20, square: -0.2 },
+  { contrast: -0.03, square: +0.3 },
+];
+export function tryAnother(settings, k, explicit = []) {
+  const s = TRY_ANOTHER[(Math.max(1, k | 0) - 1) % TRY_ANOTHER.length], pinned = new Set(explicit), out = { ...settings };
+  if (s.xHeight && !pinned.has('xHeight') && !pinned.has('xheight')) out.xHeight = (settings.xHeight ?? 520) + s.xHeight;
+  if (s.contrast && !pinned.has('contrast')) out.contrast = Math.min(0.6, Math.max(0, (settings.contrast ?? 0.05) + s.contrast));
+  if (s.square && !pinned.has('square')) out.square = (settings.square ?? 2) + s.square;
+  return out;
+}

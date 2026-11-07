@@ -2,6 +2,8 @@
 // the word rules and the mood layer. Where the composer made a decision, its choice wins; everywhere else the rules
 // and mood layer stand. Every decision is listed with the words that caused it.
 import { read } from '../engine/reader.js';
+import { tryAnother } from '../engine/index.js';
+import { getVariant } from './mood.js';
 import { interpretPrompt } from './prompt.js';
 import { DEFAULT_PARAMS } from './model.js';
 
@@ -46,7 +48,22 @@ export function normalizeSpacing(t) {
     .replace(new RegExp(`\\b${SPACE_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${SPACE_WORDS}\\b`, 'gi'), 'open spacing')
     .replace(new RegExp(`\\b${TIGHT_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${TIGHT_WORDS}\\b`, 'gi'), 'tight spacing');
 }
+// Try another: when the words leave x-height, contrast or squareness open, step them a little so the button always shows a different font.
+function vary(result, explicit) {
+  const k = getVariant(); if (!k || result.refine) return result;
+  const pinned = new Set(explicit || []); if (pinned.has('xh')) pinned.add('xHeight');
+  const pen = fullPen({ ...DEFAULT_PARAMS, ...result.settings }), next = tryAnother(pen, k, [...pinned]);
+  const settings = { ...result.settings };
+  if (next.xHeight !== pen.xHeight) settings.xHeight = +clamp(next.xHeight / 700, 0.62, 0.82).toFixed(2);
+  if (next.contrast !== pen.contrast) settings.contrast = +clamp(next.contrast, 0.04, 0.68).toFixed(2);
+  if (next.square !== pen.square) settings.squareness = +clamp(next.square, 2, 6).toFixed(1);
+  return { ...result, settings };
+}
 export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
+  const out = interpretBriefCore(prompt, base, opts);
+  return vary(out.result, out.explicit);
+}
+function interpretBriefCore(prompt, base, opts) {
   prompt = normalizeSpacing(prompt);
   const app = interpretPrompt(prompt, base, opts);
   const cur = opts.current ? fullPen(opts.current) : null;
@@ -56,10 +73,10 @@ export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
     for (const k of Object.keys(now)) if (now[k] !== was[k]) settings[k] = now[k];
     const seen = new Set(), changes = [];
     for (const w of rd.why) { const c = { parameter: LABEL[w.axis] || w.axis, value: '', because: `Follow-up on your current font: ${w.because}.` }, key = c.parameter + c.because; if (!seen.has(key)) { seen.add(key); changes.push(c); } }
-    return { ...app, settings, changes, chips: app.chips, composer: rd.why, reference: rd.ref || null, refine: true };
+    return { result: { ...app, settings, changes, chips: app.chips, composer: rd.why, reference: rd.ref || null, refine: true }, explicit: rd.explicit };
   }
   const decided = new Set(rd.why.map(w => w.axis));
-  if (!decided.size) return app;
+  if (!decided.size) return { result: app, explicit: rd.explicit };
   const fromPen = appFromPen(rd.settings), settings = { ...app.settings }, changes = app.changes.slice();
   const keys = rd.ref ? Object.keys(fromPen) : [...decided].flatMap(a => KEYS[a] || []); // a referenced font sets every axis; a clause sets only its own
   for (const k of keys) if (fromPen[k] !== undefined) settings[k] = fromPen[k];
@@ -69,5 +86,5 @@ export function interpretBrief(prompt, base = DEFAULT_PARAMS, opts = {}) {
   const kept = changes.filter(c => !drop.has(String(c.parameter).toLowerCase()));
   for (const w of rd.why) kept.push({ parameter: LABEL[w.axis] || w.axis, value: w.axis === 'reference' ? `like ${w.value}` : '', because: `Read from your words: ${w.because}.` });
   const chips = app.chips.slice();
-  return { ...app, settings, changes: kept, chips, composer: rd.why, reference: rd.ref || null };
+  return { result: { ...app, settings, changes: kept, chips, composer: rd.why, reference: rd.ref || null }, explicit: rd.explicit };
 }

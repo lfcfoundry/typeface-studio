@@ -111,3 +111,14 @@ test('round 10: follow-up words change the current font, friendly words round th
   const cute = interpretBrief('cute but not childish', DEFAULT_PARAMS, {});
   assert.equal(cute.settings.terminals, 'Rounded');
 });
+
+test('Try another changes the font even when the words pin every setting', async () => {
+  const { setVariant } = await import('../src/core/mood.js');
+  await initMood();
+  setVariant(0); const a = interpretBrief('a thin light elegant font', DEFAULT_PARAMS, {});
+  setVariant(1); const b = interpretBrief('a thin light elegant font', DEFAULT_PARAMS, {});
+  setVariant(0);
+  assert.notDeepEqual(a.settings, b.settings);
+  assert.equal(a.settings.stem, b.settings.stem);
+  assert.equal(a.settings.width, b.settings.width);
+});
