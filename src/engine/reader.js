@@ -30,6 +30,33 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
   [/\b(sharp|sharper|angular|pointy|pointed|square|squared|crisp|edgy|geometric)\b/, 'rounded', false],
   [/\b(mono|monospace|monospaced|fixed[- ]width|typewriter|code|coding|programming|terminal)\b/, 'mono', true],
   [/\b(proportional)\b/, 'mono', false],
+  // round 9: slant
+  [/\b(italic|italics|slanted|slant|leaning|oblique|tilted|sloped|forward[- ]leaning|dynamic lean)\b/, 'italic', true],
+  [/\b(upright|roman|vertical letters|straight up)\b/, 'italic', false],
+];
+
+// Round 9: theme recipes. A theme picks a whole style (and slant or letter shape) the way a designer would; explicit words
+// in the same description still win. Each entry: pattern, axis settings, extra pen settings, short name for the why list.
+const THEMES = [
+  [/\btypewriter\b/, { mono: true }, { style: 'slab' }, 'typewriter'], // serif or not is left to the other words (the prototype's gold calls a plain typewriter face sans)
+  [/\b(pirates?|treasure maps?|old maps?|antique maps?)\b/, { serif: true, contrast: +1, stress: +1 }, { style: 'serif' }, 'pirate map'],
+  [/\b(sports?|sporty|athletic|athletics|fitness|gym|basketball|football|soccer|baseball|hockey|rugby|tennis|marathon)\b( brand| logo| team| wear| apparel)?/, { weight: +1, serif: false }, { slant: 10 }, 'sports'],
+  [/\b(racing|motorsports?|race cars?|rally|livery|speed shop)\b/, { weight: +1, width: +1, serif: false }, { slant: 14 }, 'racing'],
+  [/\bnewspaper (headlines?|masthead|banner)\b|\bheadline type\b|\btabloid\b/, { width: -1, weight: +1 }, {}, 'newspaper headline'],
+  [/\b(sci[- ]?fi|futuristic|space ?age|spaceship|robots?|outer space)\b/, { serif: false, width: +1, rounded: false, square: +1 }, {}, 'sci-fi'],
+  [/\b(cyberpunk|techno|neon city|hacker)\b/, { serif: false, square: +1, rounded: false }, {}, 'cyberpunk'],
+  [/\b(wild west|western|wanted poster|saloon|rodeo|cowboys?)\b/, { serif: true, weight: +1 }, { style: 'slab' }, 'western'],
+  [/\b(varsity|college jersey|jersey letters|letterman)\b/, { serif: true, weight: +1 }, { style: 'slab' }, 'varsity'],
+  [/\bart deco\b|\b1920s\b|\broaring twenties\b|\bgatsby\b/, { serif: false, contrast: +1 }, {}, 'art deco'],
+  [/\b(groovy|disco|1970s|70s|seventies|hippie)\b/, { rounded: true, weight: +1 }, {}, '1970s'],
+  [/\b(handwritten|hand[- ]?written|handwriting|script|cursive|signature)\b/, { stress: +1 }, { slant: 12, italic: true }, 'handwritten'],
+  [/\b(comic books?|comics|cartoons?|superheroe?s?|sound effects?)\b/, { weight: +1, rounded: true }, { slant: 8 }, 'comic book'],
+  [/\b(military|army|stencil|navy|surplus|tactical)\b/, { weight: +1, rounded: false, square: +1, serif: false }, {}, 'military'],
+  [/\b(arcade|8[- ]?bit|video games?|retro games?|pixel)\b/, { mono: true, square: +1, rounded: false }, {}, 'arcade'],
+  [/\b(road signs?|highway|signage|wayfinding|airport signs?)\b/, { serif: false, aperture: +1 }, {}, 'road signs'],
+  [/\b(medieval|fantasy|renaissance|knights?|castles?|wizards?)\b/, { serif: true, stress: +1, contrast: +1 }, { style: 'serif' }, 'medieval'],
+  [/\b(wedding|invitations?)\b/, { contrast: +1, serif: true }, { slant: 10, italic: true }, 'invitation'],
+  [/\b(novels?|books? (text|body)|literary|book interior)\b/, { serif: true }, { style: 'serif' }, 'book'],
 ];
 const STRONG = /\b(very|extremely|super|really|extra|ultra|so|much|way|incredibly)\b/, MILD = /\b(slightly|a bit|a little|a touch|somewhat|kind of|kinda|bit|little|mildly|a tad)\b/;
 // well-known fonts that are not on Google Fonts -> metric-compatible or closest Google Fonts family
@@ -68,15 +95,21 @@ export function compose(brief, { families = {}, axesOf = null } = {}) {
       if (neg) consumed.push(txt); }
   });
   for (const k of Object.keys(set)) if (k.startsWith('_x') && set['_c' + k.slice(2)] === set[k]) delete set[k.slice(2)];
+  // themes fill only what the words left open (explicit words win), and add pen extras (style, slant, italic shapes)
+  const extra = {}; const low = ' ' + String(brief).toLowerCase() + ' ';
+  for (const [re, axesT, ex, name] of THEMES) { if (!re.test(low)) continue; const hit = low.match(re)[0].trim();
+    for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { set[a] = v; strength[a] = 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
+    for (const [a, v] of Object.entries(ex)) if (extra[a] === undefined) { if (a === 'slant' && set.italic === false) continue; if (a === 'style' && set.serif === false) continue; extra[a] = v; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
+    /* theme words stay in the text, so the word rules and mood layer still hear them */ }
   for (const k of Object.keys(set)) if (k.startsWith('_c') || k.startsWith('_x')) delete set[k];
   // leftover text for the word rules and mood layer: drop everything the composer read, including negated phrases
   let rest = ' ' + String(brief).toLowerCase() + ' '; if (ref) rest = rest.replace(m[0].trim(), ' ');
   for (const c of consumed.sort((a, b) => b.length - a.length)) if (c.trim()) rest = rest.split(c.trim()).join(' ');
   rest = rest.replace(/\b(but|though|yet|not|no|without|less|more|very|slightly|a bit|a little|neither|nor|too)\b/g, ' ').replace(/\s+/g, ' ').trim();
-  return { set, strength, ref, why, rest };
+  return { set, strength, ref, why, rest, extra };
 }
 
-// ---- settings for the pen engine (app-ready/index.mjs design()) ----
+// ---- settings for the pen engine (app-ready/index.js design()) ----
 import { METRICS, FAMILIES } from './families.js';
 const FAM = Object.fromEntries(Object.entries(FAMILIES).map(([k, z]) => [k, Object.fromEntries(METRICS.map((m, j) => [m, z[j]]))]));
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -92,20 +125,31 @@ export function read(brief, { base = {}, rest = null } = {}) {
     s.xHeight = Math.round(clamp(520 + 40 * z.xr, 450, 590)); s.spacing = +clamp(1 + 0.12 * z.sb, 0.82, 1.22).toFixed(3); s.slab = z.foot > 0.45; s.serifModels = s.slab; s.mono = z.mono > 1.2; if (z.topw < -0.3 && z.foot < 0.2) s.caps = 'round'; }
   if (rest && c.rest) Object.assign(s, rest(c.rest) || {});
   const k = a => c.strength[a] ?? 1, d = c.set;
-  if (d.weight !== undefined) s.stem = Math.round(clamp(d.weight === 0 ? 90 : s.stem * (1 + 0.35 * d.weight * k('weight')), 40, 170));
-  else if (c.strength.weight < 1 && s.stem > 120) s.stem = 120; // "not too heavy"
-  if (d.width !== undefined) s.width = +clamp(d.width === 0 ? 1 : s.width * (1 + 0.14 * d.width * k('width')), 0.72, 1.35).toFixed(3);
+  // round 9: explicit words move as far as real fonts do (Google Fonts variable fonts: bold 700 = 1.68x the regular stem,
+  // light 300 = 0.755x, condensed 75 = 0.818x the width, expanded 125 = 1.247x); "very" and "slightly" scale the step.
+  if (d.weight !== undefined) s.stem = Math.round(clamp(d.weight === 0 ? 90 : s.stem * (d.weight > 0 ? 1.68 : 0.755) ** k('weight'), 36, 210));
+  else if (c.strength.weight < 1 && s.stem > 130) s.stem = 130; // "not too heavy"
+  if (d.width !== undefined) s.width = +clamp(d.width === 0 ? (base.width ?? 1) : s.width * (d.width > 0 ? 1.247 : 0.818) ** k('width'), 0.62, 1.6).toFixed(3);
   if (d.contrast !== undefined) s.contrast = d.contrast > 0 ? Math.max(s.contrast, 0.35 + 0.15 * (k('contrast') - 1)) : 0;
   if (d.xh !== undefined) s.xHeight = Math.round(clamp(s.xHeight + 45 * d.xh * k('xh'), 450, 600));
   if (d.spacing !== undefined) s.spacing = +clamp(s.spacing * (1 + 0.12 * d.spacing * k('spacing')), 0.8, 1.3).toFixed(3);
   if (d.serif !== undefined) { s.slab = d.serif; s.serifModels = d.serif; }
   // two serif styles (owner's card 2026.11.06): the word "slab" picks blocky slab feet, any other serif request gets curved serifs
-  if (s.slab) { const slabWords = /\bslab/.test(String(brief).toLowerCase()); s.serif2 = !slabWords; if (s.serif2) s.serifLen = 0.8; s.style = slabWords ? 'slab' : 'serif'; } else s.style = 'sans';
   if (d.rounded !== undefined) s.caps = d.rounded ? 'round' : 'butt';
   if (d.mono !== undefined) s.mono = d.mono;
+  // round 9: themes (pirate map, sports brand, typewriter...) add a style, a slant or italic letter shapes, unless words said otherwise
+  const ex = c.extra || {};
+  if (d.italic === true) { s.slant = Math.round(clamp(12 * k('italic'), 6, 18)); s.italic = true; } else if (d.italic === false) { s.slant = 0; s.italic = false; }
+  else if (ex.slant) { s.slant = ex.slant; s.italic = !!ex.italic; }
+  if (ex.style && s.slab && d.serif === undefined) { s.serif2 = ex.style !== 'slab'; s.slab2 = ex.style === 'slab'; if (s.serif2) s.serifLen = 0.8; }
+  if (s.slab) { const slabWords = /\bslab/.test(String(brief).toLowerCase()) || ex.style === 'slab'; s.serif2 = !slabWords; s.slab2 = slabWords; if (s.serif2) s.serifLen = 0.8; s.style = slabWords ? 'slab' : 'serif'; } else s.style = 'sans';
   // round 8: openness, squareness and stress (pen keys aperture, square, nib in radians; nibDegrees for the app's slider)
   if (d.aperture !== undefined) s.aperture = +clamp(d.aperture > 0 ? 0.3 + 0.12 * k('aperture') : 0.3 - 0.35 * k('aperture'), -0.25, 0.45).toFixed(3);
   if (d.square !== undefined) s.square = +clamp(d.square > 0 ? 2 + 1.6 * k('square') : 2, 2, 6).toFixed(2);
   if (d.stress !== undefined) { const deg = d.stress > 0 ? clamp(25 * k('stress'), 0, 35) : 0; s.nib = +(deg * Math.PI / 180).toFixed(4); s.nibDegrees = deg; }
-  return { settings: s, why: c.why, rest: c.rest, ref: c.ref && c.ref.family };
+  // explicit: axes the description decided (by words or by a theme); the app should never let mood guesses move these.
+  // fromTheme: the subset that came from a theme rather than a direct word.
+  const fromTheme = Object.keys(d).filter(a => c.why.some(w => w.axis === a && /^theme/.test(w.because)));
+  const explicit = [...Object.keys(d), ...Object.keys(c.extra || {})];
+  return { settings: s, why: c.why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme };
 }

@@ -6,7 +6,9 @@ export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, auto
 export const LEARNED_LOOK = { fit: true, width: 1.139 };
 // Round 7 (owner's card 2026.11.06 10:13 AM ET: offer both as styles). SERIF = curved bracketed serifs + serif-learned fit; SLAB = the blocky slab feet.
 export const SERIF_LOOK = { slab: true, serifModels: true, serif2: true, serifLen: 0.8 };
-export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifModels: true, serif2: false } };
+// Round 8: slab feet rebuilt as contour slabs (slab2): reach and thickness scale with the stem, both legs of n h m u get feet,
+// and the overlap merge is 9x to 16x faster than the classic stroke feet. slabClassic keeps the round 6 feet.
+export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifModels: true, serif2: false, slab2: true }, slabClassic: { slab: true, serifModels: true, serif2: false } };
 /**
  * design(settings, { removeOverlaps }) -> { glyphs, kerning, fallbacks, settings }
  * settings: any of BASE's keys (stem, width, contrast, nib, caps, square, aperture, xHeight, capHeight, spacing, slab, mono)
@@ -18,7 +20,7 @@ export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifMo
 export function design(settings = {}, { removeOverlaps = null } = {}) {
   const p = { ...BASE, ...settings }; if (p.fit === true) p.fit = p.serif2 ? FIT_SERIF : FIT; const fallbacks = [];
   const glyphs = buildGlyphs(p, { removeOverlaps, fallbacks }); const serif = !!(p.slab && p.serifModels);
-  if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif });
+  if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif, slant: p.slant || 0 });
   const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif }) : {};
   return { glyphs, kerning, fallbacks, settings: p };
 }

@@ -14,6 +14,7 @@ export function engineParams(design, style = 'Regular') {
     xHeight: Math.round(700 * d.xHeight), capHeight: Math.round(700 * d.capHeight), spacing: d.spacing,
     caps: d.terminals === 'Rounded' ? 'round' : 'butt',
     aperture: clamp(d.openness ?? 0.3, -0.25, 0.45), square: clamp(d.squareness ?? 2, 2, 6), nib: clamp(d.stress ?? 0, -35, 35) * Math.PI / 180, ...(d.serifs ? STYLES[d.serifStyle === 'Slab' || d.classification === 'Slab serif' ? 'slab' : 'serif'] : { slab: false }), mono: !!d.monospaced,
+    ...((d.slant || 0) !== 0 ? { slant: clamp(d.slant, -20, 20), italic: !!d.italic } : {}),
   };
 }
 

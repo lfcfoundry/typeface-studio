@@ -1,5 +1,5 @@
 // Center-line skeletons for printable ASCII letters, digits and common punctuation.
-// Every glyph is a few strokes; the pen model in skeleton2.mjs turns them into outlines.
+// Every glyph is a few strokes; the pen model in skeleton2.js turns them into outlines.
 // Coordinates: x already scaled by width u; y in font units. s = half vertical stem, h = half horizontal stroke.
 export function alphabet(p, { line: L, arc: A }) {
   const X = p.xHeight, C = p.capHeight, u = p.width, s = p.stem / 2, h = p.stem * (1 - p.contrast) / 2, q = p.square, ap = p.aperture * 120;
@@ -13,7 +13,7 @@ export function alphabet(p, { line: L, arc: A }) {
   const bowl = (cx, cy, rx, ry) => ring(A(cx, cy, rx, ry, 0, 360, q));
   const dot = (x, y) => st(L(x, y, x, y + p.stem * 0.95));
   const tail = (pts, xEdge, atEnd) => { const e = atEnd ? pts[pts.length - 1] : pts[0], t = { x: Math.max(e.x, xEdge), y: e.y }; return atEnd ? [...pts, t] : [t, ...pts]; };
-  const G = {};
+  const G = {}; const arcYi = X * 0.55, rS0 = 450 * u - s;
   const g = (ch, w, strokes) => { G[ch] = { w: w * u, strokes }; };
   // shared measures
   const lx = 70 * u + s;                       // left stem center for lowercase
@@ -122,6 +122,13 @@ export function alphabet(p, { line: L, arc: A }) {
   if (alt.includes('Jtop')) g('J', 460, [st(cat(L(360 * u - s, C, 360 * u - s, C * 0.32), A(210 * u, C * 0.32, 150 * u - s, C * 0.32 - h + oC, 0, -170, q))), st(L(150 * u, C - h, 360 * u, C - h))]);
   if (alt.includes('gwide')) { const cx = 260 * u, rx = 190 * u - s, rs = 520 * u - lx; g('g', 540, [bowl(cx + 10 * u, xb, rx, xr), st(cat(L(rs + 20 * u, X, rs + 20 * u, 0), A(cx + 10 * u, 0, rs + 20 * u - cx - 10 * u, -DSC - h + oX, 0, -165, q)))]); }
   if (alt.includes('aopen')) { const rs = 430 * u - s; g('a', 500, [st(cat(A(250 * u, X * 0.66, rs - 250 * u, X * 0.34 - h + oX, 150 - ap * 0.5, 0, q), L(rs, X * 0.66, rs, 0))), bowl(245 * u, X * 0.25, rs - 245 * u, X * 0.25 - h * 0.6 + oX * 0.5)]); }
+  // italic letter swaps (round 9, p.italic): single-storey a, tailed i l u (a flick at the foot), f with a descender
+  if (p.italic) { const rs = 430 * u - s, flick = (x, w0) => A(x + 60 * u, 0 + X * 0.12, 60 * u, X * 0.12 - h, 180, 300, q);
+    g('a', 520, [st(cat(L(rs, X, rs, X * 0.12), flick(rs))), bowl(245 * u, xb, rs - 245 * u - s * 0.2, xr)]);
+    g('i', 260, [st(cat(L(110 * u, X, 110 * u, X * 0.12), flick(110 * u))), dot(110 * u, X + 90)]);
+    g('l', 260, [st(cat(L(110 * u, ASC, 110 * u, X * 0.12), flick(110 * u)))]);
+    g('u', 540, [st(cat(L(lx, X, lx, X - arcYi), A((lx + rS0) / 2, X - arcYi, (rS0 - lx) / 2, X - arcYi - h + oX, 180, 360, q))), st(cat(L(rS0, X, rS0, X * 0.12), flick(rS0)))]);
+    g('f', 320, [st(cat(L(160 * u, DSC * 0.8, 160 * u, ASC - 130), A(280 * u, ASC - 130, 120 * u, 130 - h, 180, 40, q))), st(L(40 * u, X - h, 300 * u, X - h))]); }
   // ---------- remaining printable ASCII (round 6) ----------
   const mirror = (ch, from) => { const s0 = G[from]; G[ch] = { w: s0.w, strokes: s0.strokes.map(st => ({ ...st, pts: st.pts.map(q => ({ x: s0.w - q.x, y: q.y })).reverse() })) }; };
   const y0 = -0.12 * C, y1 = 1.12 * C, mid = X * 0.5;

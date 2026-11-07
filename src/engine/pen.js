@@ -1,4 +1,4 @@
-// Pen engine (app-ready copy of research skeleton3.mjs): plain ES module, no Node or npm imports.
+// Pen engine (app-ready copy of research skeleton3.js): plain ES module, no Node or npm imports.
 // Skeleton + nib prototype: one centerline set per glyph, expanded by a pen model.
 // Parameters: stem (weight), width, contrast, nib angle (stress), caps (butt|round),
 // squareness (superellipse bowls), aperture, xHeight, capHeight, slab (serif feet).
@@ -48,11 +48,15 @@ import { alphabet, NAMES } from './alphabet.js';
 
 function skeletons(p) {
   const G = alphabet(p, { line: lineDense, arc: (cx, cy, rx, ry, a0, a1, q) => arc(cx, cy, rx, ry, a0, a1, q, N) });
-  if (p.slab && !p.serif2) for (const [ch, g] of Object.entries(G)) if (/[A-Za-z0-9]/.test(ch)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
+  if (p.slab && !p.serif2 && !p.slab2) for (const [ch, g] of Object.entries(G)) if (/[A-Za-z0-9]/.test(ch)) for (const st of [...g.strokes]) { if (st.closed) continue; const a = st.pts[0], b = st.pts[st.pts.length - 1];
     if (st.pts.length === 6 && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) > p.xHeight * 0.6) { const w = p.stem * 1.5, hh = p.stem * (1 - Math.max(p.contrast, 0.3)) / 2;
       for (const y of [Math.min(a.y, b.y)]) if (y >= -1) g.strokes.push({ pts: lineDense(a.x - w, y + hh, a.x + w, y + hh), foot: true }); } }
   if (p.proportions) proportion(G, p);
   if (p.fit) applyFit(G, p.fit, p);
+  // slant (round 9): shear the center lines, not the outlines, so the pen keeps its weight and stress like a real oblique.
+  // Round letters lean about 10% less than straight ones, a habit of real obliques that keeps bowls from looking tipped over.
+  if (p.slant) { const k = Math.tan(p.slant * Math.PI / 180), cy = p.xHeight / 2;
+    for (const g of Object.values(G)) for (const st of g.strokes) { const kk = st.closed ? k * 0.9 : k; st.pts = st.pts.map(q => ({ ...q, x: q.x + (q.y - cy) * kk })); } }
   return G;
 }
 // Learned proportions: stretch each letter's center lines so its ink width matches the median of 596 real sans fonts
@@ -72,28 +76,35 @@ export const touchesGuide = (st, p) => !st.closed && st.pts.some(q => [0, p.xHei
 export function rawSkeletons(p) { return skeletons(p); }
 // Bracketed serifs (round 7): small feet at the ends of straight vertical stems, with a curved bracket into the stem.
 // Bottom serifs on both sides; top serifs on both sides for capitals, left only (a head serif) for lowercase.
-function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p, Math.PI / 2) / 2, Lb = (p.serifLen ?? 0.55) * p.stem;
-  const T = Math.max(thick(p, 0) * 0.9, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = (p.bracket ?? 0.9) * T, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
+function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p, Math.PI / 2) / 2, slab = !!p.slab2, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
+  // slab: rectangular feet whose reach grows slower than the stem (0.45 stem + 18 units past each stem edge) and whose
+  // thickness is 0.55 stem, so heavy weights don't crowd. serif: curved bracket, thin foot.
+  const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem;
+  const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
   const foot = (cx, y0, dir, left, right) => { // dir +1 = bottom serif (grows up), -1 = top serif (grows down)
     const Y = v => Math.round(y0 + dir * v), cL = cx - sw, cR = cx + sw, P = [];
     const xl = left ? cL - Lb : cL, xr = right ? cR + Lb : cR;
     P.push({ x: Math.round(xl), y: Y(0), on: true }, { x: Math.round(xr), y: Y(0), on: true });
-    if (right) P.push({ x: Math.round(xr), y: Y(T), on: true }, { x: Math.round(cR + B), y: Y(T), on: true }, { x: Math.round(cR), y: Y(T), on: false }, { x: Math.round(cR), y: Y(T + Bh), on: true });
+    if (right && Bh) P.push({ x: Math.round(xr), y: Y(T), on: true }, { x: Math.round(cR + B), y: Y(T), on: true }, { x: Math.round(cR), y: Y(T), on: false }, { x: Math.round(cR), y: Y(T + Bh), on: true });
+    else if (right) P.push({ x: Math.round(xr), y: Y(T), on: true }, { x: Math.round(cR), y: Y(T), on: true });
     else P.push({ x: Math.round(cR), y: Y(T + Bh), on: true });
-    if (left) P.push({ x: Math.round(cL), y: Y(T + Bh), on: true }, { x: Math.round(cL), y: Y(T), on: false }, { x: Math.round(cL - B), y: Y(T), on: true }, { x: Math.round(xl), y: Y(T), on: true });
+    if (left && Bh) P.push({ x: Math.round(cL), y: Y(T + Bh), on: true }, { x: Math.round(cL), y: Y(T), on: false }, { x: Math.round(cL - B), y: Y(T), on: true }, { x: Math.round(xl), y: Y(T), on: true });
+    else if (left) P.push({ x: Math.round(cL), y: Y(T), on: true }, { x: Math.round(xl), y: Y(T), on: true });
     else P.push({ x: Math.round(cL), y: Y(T + Bh), on: true });
     return { closed: true, points: dir > 0 ? P : P.reverse() }; };
-  for (const st of g.strokes) { if (st.closed || st.pts.length !== 6) continue; const a = st.pts[0], b = st.pts[5]; if (Math.abs(a.x - b.x) > 1 || Math.abs(a.y - b.y) < p.xHeight * 0.45) continue;
-    const lo = Math.min(a.y, b.y), hi = Math.max(a.y, b.y), cx = a.x;
-    if (Math.abs(lo) < 3 || Math.abs(lo + 190) < 3) out.push(foot(cx, lo, 1, true, true));
-    if ([p.xHeight, p.capHeight, ASC].some(v => Math.abs(hi - v) < 3)) out.push(foot(cx, hi, -1, true, up)); }
+  // stem ends: any open stroke whose end runs straight up or down for at least 0.3 x-height (catches n, h, m, u right legs too)
+  const run = (pts, e, step) => { let k = e, len = 0; while (k + step >= 0 && k + step < pts.length && Math.abs(pts[k + step].x - pts[e].x) < 1) { len += Math.abs(pts[k + step].y - pts[k].y); k += step; } return len; };
+  for (const st of g.strokes) { if (st.closed || st.foot) continue; const n = st.pts.length;
+    for (const [e, step] of [[0, 1], [n - 1, -1]]) { const q = st.pts[e]; if (run(st.pts, e, step) < p.xHeight * 0.3) continue; const other = st.pts[e + step]; const isTop = other.y < q.y;
+      if (!isTop && (Math.abs(q.y) < 3 || Math.abs(q.y + 190) < 3)) out.push(foot(q.x, q.y, 1, true, true));
+      if (isTop && !/[agq]/.test(ch) && [p.xHeight, p.capHeight, ASC].some(v => Math.abs(q.y - v) < 3)) out.push(foot(q.x, q.y, -1, true, up)); } } // a, g, q: no head serif on the right stem
   return out; }
 const area = c => { let s = 0; const P = c.points; for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length]; s += a.x * b.y - b.x * a.y; } return s; };
 export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks = [] } = {}) {
   const out = {}; const union = !!removeOverlaps, unionCheck = mismatch;
   for (const [ch, g] of Object.entries(skeletons(p))) { if (only && !only.includes(ch)) continue;
     let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
-    if (p.serif2 && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
+    if ((p.serif2 || p.slab2) && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
     if (union) { const raw = contours;
       // optional 1-unit nudge (tested: makes the union worse, so it is off)
       const nudged = p.nudge !== true ? raw : g.strokes.flatMap((st, k) => expand(st.pts.map(pt => k % 2 ? { x: pt.x + 1, y: pt.y - 1 } : pt), st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));

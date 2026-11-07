@@ -6,8 +6,8 @@ import { interpretPrompt } from './prompt.js';
 import { DEFAULT_PARAMS } from './model.js';
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-const LABEL = { weight: 'stroke thickness', width: 'width', contrast: 'stroke contrast', xh: 'x-height', spacing: 'spacing', serif: 'serif structures', rounded: 'terminals', mono: 'fixed-width metrics', reference: 'starting shape', aperture: 'letter openness', square: 'squareness', stress: 'stress angle' };
-const KEYS = { weight: ['stem'], width: ['width'], contrast: ['contrast'], xh: ['xHeight'], spacing: ['spacing'], serif: ['serifs'], rounded: ['terminals'], mono: ['monospaced'], aperture: ['openness'], square: ['squareness'], stress: ['stress'] };
+const LABEL = { weight: 'stroke thickness', width: 'width', contrast: 'stroke contrast', xh: 'x-height', spacing: 'spacing', serif: 'serif structures', rounded: 'terminals', mono: 'fixed-width metrics', reference: 'starting shape', aperture: 'letter openness', square: 'squareness', stress: 'stress angle', italic: 'slant', slant: 'slant', style: 'serif style' };
+const KEYS = { weight: ['stem'], width: ['width'], contrast: ['contrast'], xh: ['xHeight'], spacing: ['spacing'], serif: ['serifs'], rounded: ['terminals'], mono: ['monospaced'], aperture: ['openness'], square: ['squareness'], stress: ['stress'], italic: ['slant', 'italic'], slant: ['slant', 'italic'], style: ['serifs'] };
 
 // app settings that differ from the defaults, as pen settings (used for the words the composer leaves over)
 function penFromApp(s) {
@@ -26,6 +26,7 @@ const appFromPen = p => ({
   stem: +clamp(0.18 + (p.stem - 40) / 120 * 0.68, 0.18, 0.86).toFixed(2), width: +clamp(p.width, 0.65, 1.4).toFixed(2), contrast: +clamp(p.contrast, 0.04, 0.68).toFixed(2),
   xHeight: +clamp(p.xHeight / 700, 0.62, 0.82).toFixed(2), spacing: +clamp(p.spacing, 0.82, 1.22).toFixed(2), serifs: !!p.slab, terminals: p.caps === 'round' ? 'Rounded' : 'Square', monospaced: !!p.mono,
   ...(p.aperture !== undefined ? { openness: +clamp(p.aperture, -0.25, 0.45).toFixed(2) } : {}), ...(p.square !== undefined ? { squareness: +clamp(p.square, 2, 6).toFixed(1) } : {}),
+  ...(p.slant !== undefined ? { slant: +clamp(p.slant, -20, 20).toFixed(0), italic: !!p.italic } : {}),
   ...(p.nibDegrees !== undefined ? { stress: Math.round(clamp(p.nibDegrees, -35, 35)) } : {}),
 });
 

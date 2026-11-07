@@ -75,3 +75,17 @@ test('letter-spacing words change spacing, not letter width', async () => {
   assert.ok(b.settings.spacing < 0.95);
   assert.equal(b.settings.width, 1);
 });
+
+test('round 9: slant words, theme recipes and a slanted font build', async () => {
+  await initMood();
+  const w = interpretBrief('wedding invitation', DEFAULT_PARAMS, {});
+  assert.ok(w.settings.slant > 0 && w.settings.italic && w.settings.serifs);
+  const up = interpretBrief('upright bold wedding invitation', DEFAULT_PARAMS, {});
+  assert.equal(up.settings.slant, 0);
+  const p = createProject({ family: 'Slanted', prompt: 'wedding invitation' });
+  p.design = { ...p.design, ...w.settings };
+  const fam = generateFamily(p);
+  Object.assign(p, fam);
+  const font = buildFont(p, 'Regular');
+  assert.ok(font.bytes.length > 5000);
+});
