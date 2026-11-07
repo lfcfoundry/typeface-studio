@@ -15,8 +15,9 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
   [/\b(low|lower|less|little|no|minimal) (stroke )?contrast\b|\bmonoline\b|\beven strokes?\b|\buniform strokes?\b/, 'contrast', -1, true],
   [/\b(big|large|tall|high|bigger|larger|taller) x-?heights?\b/, 'xh', +1, true],
   [/\b(small|short|low|smaller|shorter) x-?heights?\b/, 'xh', -1, true],
-  [/\b(open spacing|wide spacing|loose spacing|spaced out|generous spacing)\b/, 'spacing', +1, true],
-  [/\btight spacing\b/, 'spacing', -1, true],
+  // round 10: "wider spacing" and "more space between letters" are spacing, not width
+  [/\b(open|wide|wider|loose|looser|generous|more|extra|bigger|larger|roomier) (letter[- ]?)?spacing\b|\bspaced out\b|\bmore (space|room) between (the )?letters\b/, 'spacing', +1, true],
+  [/\b(tight|tighter|narrow|narrower|less|smaller|closer) (letter[- ]?)?spacing\b|\bless (space|room) between (the )?letters\b/, 'spacing', -1, true],
   [/\bgeometric\b/, 'serif', false],
   [/\b(bold|bolder|boldest|heavy|heavier|thick|thicker|fat|fatter|chunky|chunkier|black|strong|stronger|beefy)\b/, 'weight', +1],
   [/\b(light|lighter|thin|thinner|delicate|hairline|fine|finer|skinny|slim|slimmer)\b/, 'weight', -1],
@@ -57,6 +58,8 @@ const THEMES = [
   [/\b(medieval|fantasy|renaissance|knights?|castles?|wizards?)\b/, { serif: true, stress: +1, contrast: +1 }, { style: 'serif' }, 'medieval'],
   [/\b(wedding|invitations?)\b/, { contrast: +1, serif: true }, { slant: 10, italic: true }, 'invitation'],
   [/\b(novels?|books? (text|body)|literary|book interior)\b/, { serif: true }, { style: 'serif' }, 'book'],
+  // round 10: friendly moods round the stroke ends and lower the contrast a little
+  [/\b(friendly|cute|gentle|kids?|kiddy|children'?s?|childlike|playful|cuddly|toddlers?|nursery|baby|babies|preschool|kindergarten|toys?|teddy|huggable|cheerful|bubbly)\b/, { rounded: true }, { soft: true }, 'friendly'],
 ];
 const STRONG = /\b(very|extremely|super|really|extra|ultra|so|much|way|incredibly)\b/, MILD = /\b(slightly|a bit|a little|a touch|somewhat|kind of|kinda|bit|little|mildly|a tad)\b/;
 // well-known fonts that are not on Google Fonts -> metric-compatible or closest Google Fonts family
@@ -67,8 +70,8 @@ const NEG = /\b(not|no|without|nothing|never|non|isn'?t|aren'?t|don'?t|avoid|any
 export function compose(brief, { families = {}, axesOf = null } = {}) {
   let s = ' ' + String(brief).toLowerCase().replace(/[’']/g, "'") + ' '; const why = [], set = {}, strength = {}; let ref = null;
   // 1. "like X" reference to a font family
-  const m = s.match(/\b(?:like|similar to|in the style of|based on|inspired by)\s+(?:an?\s+|the\s+)?([a-z0-9 ]+?)(?=\s*(?:,|\bbut\b|\bwith\b|\bwithout\b|\bonly\b|\bjust\b|\band\b|\.|$))/);
-  if (m) { const name = m[1].trim().replace(/\s+(font|typeface)$/, ''); const key = ALIAS[name] || name.replace(/\s+/g, ''); if (families[key]) { ref = { name, family: key, z: families[key] }; s = s.replace(m[0], ' '); why.push({ axis: 'reference', value: key, because: `"like ${name}"` }); } }
+  const m = s.match(/\b(?:like|similar to|in the style of|based on|inspired by|than|compared to|compared with)\s+(?:an?\s+|the\s+)?([a-z0-9 ]+?)(?=\s*(?:,|\bbut\b|\bwith\b|\bwithout\b|\bonly\b|\bjust\b|\band\b|\.|$))/);
+  if (m) { const name = m[1].trim().replace(/\s+(font|typeface)$/, ''); const key = ALIAS[name] || name.replace(/\s+/g, ''); if (families[key]) { ref = { name, family: key, z: families[key] }; s = s.replace(m[0], ' '); why.push({ axis: 'reference', value: key, because: `"${m[0].trim()}"` }); } }
   // 2. clauses: later clauses win; "but / though / yet / however / while" start a new clause
   const clauses = s.split(/,|;|\.|\bbut\b|\bthough\b|\byet\b|\bhowever\b|\bwhile\b|\bwhereas\b/);
   const consumed = [];
@@ -98,6 +101,7 @@ export function compose(brief, { families = {}, axesOf = null } = {}) {
   // themes fill only what the words left open (explicit words win), and add pen extras (style, slant, italic shapes)
   const extra = {}; const low = ' ' + String(brief).toLowerCase() + ' ';
   for (const [re, axesT, ex, name] of THEMES) { if (!re.test(low)) continue; const hit = low.match(re)[0].trim();
+    if (consumed.some(c => NEG.test(c) && c.includes(hit))) continue; /* round 10: "not playful", "not a sports brand" don't trigger the theme */
     for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { set[a] = v; strength[a] = 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
     for (const [a, v] of Object.entries(ex)) if (extra[a] === undefined) { if (a === 'slant' && set.italic === false) continue; if (a === 'style' && set.serif === false) continue; extra[a] = v; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
     /* theme words stay in the text, so the word rules and mood layer still hear them */ }
@@ -118,25 +122,48 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
  * base: starting pen settings (e.g. RECOMMENDED). rest: optional callback that maps the leftover text to extra settings
  * (plug the app's word rules + mood layer in here); the composer's explicit choices always win over it.
  */
-export function read(brief, { base = {}, rest = null } = {}) {
-  const c = compose(brief, { families: FAM }); const s = { stem: 90, width: 1, contrast: 0.05, xHeight: 520, spacing: 1, caps: 'butt', slab: false, mono: false, ...base };
+// round 10: follow-up tweaks ("a little less round", "twice as bold", "same as before but tighter") change the font the person
+// just made. The app passes its current settings as `current`; read() uses them as the starting point when the words sound
+// like a follow-up, and says so with refine: true.
+const FOLLOW = /^\s*(a (little|bit|touch|tad|lot)|slightly|much|way|even|more|less|make (it|them|the letters)|now|again|same|twice|half|double|triple|just|still|also|and|but|too|bit|keep)\b|\b(than before|as before|same as before|than that|than this|than now|than it is|this time|instead|the same but)\b|^\s*\w+er\b(?!\s+\w+\s+\w+\s+\w+)/;
+export const isFollowUp = brief => FOLLOW.test(String(brief).toLowerCase());
+// "twice as bold", "half as wide", "three times the spacing": a measured factor instead of one step
+const MULT = /\b(twice|two times|2x|double|half|three times|3x|triple|one and a half times|1\.5x)\s+(as\s+|the\s+)?(\w+)/;
+const MULT_F = { twice: 2, 'two times': 2, '2x': 2, double: 2, half: 0.5, 'three times': 3, '3x': 3, triple: 3, 'one and a half times': 1.5, '1.5x': 1.5 };
+export function read(brief, { base = {}, rest = null, current = null } = {}) {
+  const refine = !!current && isFollowUp(brief);
+  const c = compose(brief, { families: FAM }); const s = { stem: 90, width: 1, contrast: 0.05, xHeight: 520, spacing: 1, caps: 'butt', slab: false, mono: false, ...base, ...(refine ? current : {}) };
   if (c.ref) { const z = c.ref.z; // start from the referenced family's measured shape
     s.stem = Math.round(clamp(90 * (1 + 0.45 * z.stem), 40, 170)); s.width = +clamp(1 + 0.16 * z.nadv, 0.76, 1.3).toFixed(3); s.contrast = +clamp(0.05 + 0.25 * z.contrast, 0, 0.7).toFixed(3);
     s.xHeight = Math.round(clamp(520 + 40 * z.xr, 450, 590)); s.spacing = +clamp(1 + 0.12 * z.sb, 0.82, 1.22).toFixed(3); s.slab = z.foot > 0.45; s.serifModels = s.slab; s.mono = z.mono > 1.2; if (z.topw < -0.3 && z.foot < 0.2) s.caps = 'round'; }
-  if (rest && c.rest) Object.assign(s, rest(c.rest) || {});
-  const k = a => c.strength[a] ?? 1, d = c.set;
+  if (rest && c.rest && !refine) Object.assign(s, rest(c.rest) || {}); // a follow-up keeps the current font; mood guesses don't move it
+  // in a follow-up, a plain step ("bolder") is a smaller nudge, 0.6 of a full real-font step (bold 1.68x becomes 1.36x)
+  const k = a => (c.strength[a] ?? 1) * (refine ? 0.6 : 1), d = c.set, s0 = { ...s };
   // round 9: explicit words move as far as real fonts do (Google Fonts variable fonts: bold 700 = 1.68x the regular stem,
   // light 300 = 0.755x, condensed 75 = 0.818x the width, expanded 125 = 1.247x); "very" and "slightly" scale the step.
   if (d.weight !== undefined) s.stem = Math.round(clamp(d.weight === 0 ? 90 : s.stem * (d.weight > 0 ? 1.68 : 0.755) ** k('weight'), 36, 210));
   else if (c.strength.weight < 1 && s.stem > 130) s.stem = 130; // "not too heavy"
   if (d.width !== undefined) s.width = +clamp(d.width === 0 ? (base.width ?? 1) : s.width * (d.width > 0 ? 1.247 : 0.818) ** k('width'), 0.62, 1.6).toFixed(3);
-  if (d.contrast !== undefined) s.contrast = d.contrast > 0 ? Math.max(s.contrast, 0.35 + 0.15 * (k('contrast') - 1)) : 0;
+  if (d.contrast === undefined && c.extra && c.extra.soft) s.contrast = +(s.contrast * 0.5).toFixed(3); // a friendly mood lowers contrast a little (words about contrast win)
+  if (d.contrast !== undefined) {
+    if (refine) s.contrast = +clamp(d.contrast > 0 ? s.contrast + 0.15 * k('contrast') : s.contrast * 0.5 ** k('contrast'), 0, 0.8).toFixed(3); // relative to the current font
+    else s.contrast = d.contrast > 0 ? Math.max(s.contrast, 0.35 + 0.15 * (k('contrast') - 1)) : 0; }
   if (d.xh !== undefined) s.xHeight = Math.round(clamp(s.xHeight + 45 * d.xh * k('xh'), 450, 600));
   if (d.spacing !== undefined) s.spacing = +clamp(s.spacing * (1 + 0.12 * d.spacing * k('spacing')), 0.8, 1.3).toFixed(3);
   if (d.serif !== undefined) { s.slab = d.serif; s.serifModels = d.serif; }
   // two serif styles (owner's card 2026.11.06): the word "slab" picks blocky slab feet, any other serif request gets curved serifs
-  if (d.rounded !== undefined) s.caps = d.rounded ? 'round' : 'butt';
+  if (d.rounded !== undefined) {
+    // in a follow-up, "a little less round" keeps round ends and squares the bowls a little; "rounder" on a round font softens squareness
+    if (refine && MILD.test(String(brief).toLowerCase()) && s.caps === 'round' && !d.rounded) s.square = +clamp((s.square ?? 2) + 0.8, 2, 6).toFixed(2);
+    else if (refine && d.rounded && s.caps === 'round') s.square = +clamp((s.square ?? 2) - 0.8, 2, 6).toFixed(2);
+    else s.caps = d.rounded ? 'round' : 'butt'; }
   if (d.mono !== undefined) s.mono = d.mono;
+  // measured factors: "twice as bold" doubles the stem, "half as wide" halves the width (against the starting point)
+  const mm = String(brief).toLowerCase().match(MULT);
+  if (mm) { const f = MULT_F[mm[1]], ax = (AX.find(([re, a]) => a && re.test(mm[3])) || [])[1], sg = (AX.find(([re, a]) => a && re.test(mm[3])) || [])[2], g = sg < 0 ? 1 / f : f;
+    if (ax === 'weight') s.stem = Math.round(clamp(s0.stem * g, 36, 210)); else if (ax === 'width') s.width = +clamp(s0.width * g, 0.62, 1.6).toFixed(3);
+    else if (ax === 'spacing') s.spacing = +clamp(s0.spacing * g, 0.5, 2).toFixed(3);
+    if (ax) c.why.push({ axis: ax, value: +g.toFixed(3), because: `"${mm[0]}" (x${+g.toFixed(3)})` }); }
   // round 9: themes (pirate map, sports brand, typewriter...) add a style, a slant or italic letter shapes, unless words said otherwise
   const ex = c.extra || {};
   if (d.italic === true) { s.slant = Math.round(clamp(12 * k('italic'), 6, 18)); s.italic = true; } else if (d.italic === false) { s.slant = 0; s.italic = false; }
@@ -153,6 +180,7 @@ export function read(brief, { base = {}, rest = null } = {}) {
   // explicit: axes the description decided (by words or by a theme); the app should never let mood guesses move these.
   // fromTheme: the subset that came from a theme rather than a direct word.
   const fromTheme = Object.keys(d).filter(a => c.why.some(w => w.axis === a && /^theme/.test(w.because)));
-  const explicit = [...Object.keys(d), ...Object.keys(c.extra || {})];
-  return { settings: s, why: c.why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme };
+  const explicit = [...Object.keys(d), ...Object.keys(c.extra || {}).map(a => a === 'soft' ? 'contrast' : a)].filter((a, i, A) => A.indexOf(a) === i);
+  const why = c.why.map(w => w.axis === 'soft' ? { ...w, axis: 'contrast', value: 'a little lower' } : w);
+  return { settings: s, why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme, refine };
 }

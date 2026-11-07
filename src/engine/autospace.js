@@ -12,14 +12,20 @@ const sb = ([fl, dep], upper) => W[0] + W[1] * fl + W[2] * dep + W[3] * dep * de
 // Tracy-style anchors: after the shape model, scale capitals so H gets 1.01 stems per side and lowercase so n
 // averages 0.885 (Google Fonts sans medians). The model alone pulls both toward the middle.
 const ANCHORS = { sans: { H: 1.01, n: 0.885 }, serif: { H: 0.38, n: 0.255 } }; let ANCHOR = ANCHORS.sans;
-export function autoSpace(glyphs, { xHeight, capHeight, stem, spacing = 1, anchor = false, serif = false, slant = 0 }) {
+// Round 10 weight-aware spacing: in real fonts the sidebearing shrinks as the stem grows (Google Fonts variable fonts,
+// wght 300 to 900, 305 sans and 77 serif families): absolute sidebearing ~ stem^b with b = -0.36 (H) / -0.40 (n) for sans and
+// -0.61 / -0.53 for serif. Spacing is in stem units, so it is multiplied by (stem / stemRef)^(b - 1). stemRef is the
+// default stem (90 at cap height 700), so default-weight fonts keep today's spacing.
+const WEIGHT_EXP = { sans: { U: -1.360, L: -1.398 }, serif: { U: -1.609, L: -1.530 } }, STEM_REF = 90 / 700;
+export function autoSpace(glyphs, { xHeight, capHeight, stem, spacing = 1, anchor = false, serif = false, slant = 0, weightSpace = false, weightExp = null }) {
   // slanted letters are measured upright (shear undone), the way italic spacing is judged along the slant
   const k = Math.tan(slant * Math.PI / 180), cy = xHeight / 2, flat = c => { const P = flatten(c); return k ? P.map(q => ({ x: q.x - (q.y - cy) * k, y: q.y })) : P; };
   W = serif ? WR : WS; ANCHOR = serif ? ANCHORS.serif : ANCHORS.sans; let kU = 1, kL = 1;
+  const wq = stem / (STEM_REF * capHeight), WE = weightExp || (serif ? WEIGHT_EXP.serif : WEIGHT_EXP.sans), wU = weightSpace ? Math.pow(wq, WE.U) : 1, wL = weightSpace ? Math.pow(wq, WE.L) : 1;
   if (anchor) { const one = (ch, up) => { const g = glyphs[ch]; if (!g) return null; const F = sideFeatures(g.contours.map(flat), [0, up ? capHeight : xHeight], stem); return (Math.max(0.05, sb(F.L, up)) + Math.max(0.05, sb(F.R, up))) / 2; };
     const h = one('H', 1), n = one('n', 0); if (h) kU = ANCHOR.H / h; if (n) kL = ANCHOR.n / n; }
   for (const [ch, g] of Object.entries(glyphs)) { if (!/[A-Za-z0-9]/.test(ch) || !g.contours.length) continue;
     const polys = g.contours.map(flat); const up = /[A-Z0-9]/.test(ch); const F = sideFeatures(polys, [0, up ? capHeight : xHeight], stem);
-    const k = up ? kU : kL, l = Math.max(0.05, sb(F.L, up)) * k * stem * spacing, r = Math.max(0.05, sb(F.R, up)) * k * stem * spacing, dx = Math.round(l - F.x0);
+    const k = up ? kU * wU : kL * wL, l = Math.max(0.05, sb(F.L, up)) * k * stem * spacing, r = Math.max(0.05, sb(F.R, up)) * k * stem * spacing, dx = Math.round(l - F.x0);
     g.contours = g.contours.map(c => ({ ...c, points: c.points.map(p => ({ ...p, x: p.x + dx })) })); g.advanceWidth = Math.round(F.x1 - F.x0 + l + r); }
   return glyphs; }

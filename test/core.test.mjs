@@ -97,3 +97,17 @@ test('blackletter and stencil requests are reported as not generated', async () 
     assert.ok(r.unsupported.length > 0, w);
   }
 });
+
+test('round 10: follow-up words change the current font, friendly words round the ends', async () => {
+  await initMood();
+  const first = interpretBrief('a calm wide font for a spa', DEFAULT_PARAMS, {});
+  const cur = { ...DEFAULT_PARAMS, ...first.settings };
+  const bolder = interpretBrief('twice as bold', DEFAULT_PARAMS, { current: cur });
+  assert.ok(bolder.refine && bolder.settings.stem > cur.stem);
+  assert.equal(bolder.settings.width, cur.width);
+  assert.equal(bolder.settings.spacing, cur.spacing);
+  const fresh = interpretBrief('twice as bold', DEFAULT_PARAMS, {});
+  assert.ok(!fresh.refine);
+  const cute = interpretBrief('cute but not childish', DEFAULT_PARAMS, {});
+  assert.equal(cute.settings.terminals, 'Rounded');
+});

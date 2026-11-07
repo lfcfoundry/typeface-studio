@@ -13,6 +13,7 @@ export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifMo
  * design(settings, { removeOverlaps }) -> { glyphs, kerning, fallbacks, settings }
  * settings: any of BASE's keys (stem, width, contrast, nib, caps, square, aperture, xHeight, capHeight, spacing, slab, mono)
  *   plus overshoot, optical, flatCut, autoSpace, anchor, autoKern, fit (true = learned table), serifModels.
+ *   round 10: weightSpace (spacing, serif reach and a kerning guard that follow the weight, as measured on real fonts; off by default).
  * removeOverlaps: pass fontsketch's removeOverlaps for download fonts; omit for the fast preview (overlaps kept).
  * glyphs: { char: { name, unicodes, advanceWidth, contours:[{ closed, points:[{x,y,on}] }] } } ready for fontsketch addGlyph.
  * kerning: { 'nameL|nameR': value } ready for font.kerning.pairs.
@@ -20,7 +21,7 @@ export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifMo
 export function design(settings = {}, { removeOverlaps = null } = {}) {
   const p = { ...BASE, ...settings }; if (p.fit === true) p.fit = p.serif2 ? FIT_SERIF : FIT; const fallbacks = [];
   const glyphs = buildGlyphs(p, { removeOverlaps, fallbacks }); const serif = !!(p.slab && p.serifModels);
-  if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif, slant: p.slant || 0 });
-  const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif }) : {};
+  if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif, slant: p.slant || 0, weightSpace: !!p.weightSpace, weightExp: p.weightExp || null });
+  const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif, guard: !!p.weightSpace }) : {};
   return { glyphs, kerning, fallbacks, settings: p };
 }
