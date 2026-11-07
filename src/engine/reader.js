@@ -23,8 +23,8 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
   [/\b(light|lighter|thin|thinner|delicate|hairline|fine|finer|skinny|slim|slimmer)\b/, 'weight', -1],
   [/\b(wide|wider|widest|extended|expanded|broad|broader)\b/, 'width', +1],
   [/\b(narrow|narrower|condensed|compressed|squeezed|skinny)\b/, 'width', -1],
-  [/\b(loose|looser|airy|spacious|roomy|open spacing|wide spacing|spaced out|generous spacing)\b/, 'spacing', +1],
-  [/\b(tight|tighter|packed|compact|dense|crammed|tight spacing)\b/, 'spacing', -1],
+  [/\b(loose|looser|airy|spacious|roomy|open spacing|wide spacing|spaced out|generous spacing|(loosely|widely|generously|openly) (spaced|set))\b/, 'spacing', +1],
+  [/\b(tight|tighter|packed|compact|dense|crammed|tight spacing|(tightly|closely|densely) (spaced|set|packed))\b/, 'spacing', -1],
   [/\bsans[- ]?serifs?\b|\bsans\b|\bno serifs?\b|\bwithout (the )?serifs?\b|\bserifless\b/, 'serif', false, true],
   [/\bslab(s|[- ]serifs?)?\b|\bserifs?\b|\bserifed\b/, 'serif', true],
   [/\b(round|rounded|rounder|roundish|soft|softer|curvy|bubbly)\b/, 'rounded', true],
@@ -59,7 +59,11 @@ const THEMES = [
   [/\b(wedding|invitations?)\b/, { contrast: +1, serif: true }, { slant: 10, italic: true }, 'invitation'],
   [/\b(novels?|books? (text|body)|literary|book interior)\b/, { serif: true }, { style: 'serif' }, 'book'],
   // round 10: friendly moods round the stroke ends and lower the contrast a little
-  [/\b(friendly|cute|gentle|kids?|kiddy|children'?s?|childlike|playful|cuddly|toddlers?|nursery|baby|babies|preschool|kindergarten|toys?|teddy|huggable|cheerful|bubbly)\b/, { rounded: true }, { soft: true }, 'friendly'],
+  // round 21b: small screens and display uses (weights and spacing are real-font habits: small text wants more weight and room; display wants weight)
+  [/\b(small (phone|screen|screens|text|size|sizes)|tiny (text|labels?|print|type)|smartwatch|smart watch|watch face|medicine bottles?|fine print|captions?|subtitles?|labels? on)\b/, { weight: +1, spacing: +1 }, {}, 'small screen or small text'],
+  [/\b(smartwatch|smart watch|watch face|dashboards?|spreadsheets?|tables? of numbers|lots of numbers|data tables?|stock tickers?|license plates?)\b/, { width: -1 }, { style: 'sans' }, 'numbers and tight spaces'],
+  [/\b(billboards?|banners?|marquee|big display|display type|hero text|storefront|shop sign|signboard)\b/, { weight: +1 }, {}, 'display use'],
+  [/\b(friendly|friendlier|cute|gentle|kids?|kiddy|children'?s?|childlike|playful|cuddly|toddlers?|nursery|baby|babies|preschool|kindergarten|toys?|teddy|huggable|cheerful|bubbly)\b/, { rounded: true }, { soft: true }, 'friendly'],
 ];
 const STRONG = /\b(very|extremely|super|really|extra|ultra|so|much|way|incredibly)\b/, MILD = /\b(slightly|a bit|a little|a touch|somewhat|kind of|kinda|bit|little|mildly|a tad)\b/;
 // well-known fonts that are not on Google Fonts -> metric-compatible or closest Google Fonts family
