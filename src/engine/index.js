@@ -19,7 +19,7 @@ export const STYLES = { sans: {}, serif: SERIF_LOOK, slab: { slab: true, serifMo
  * kerning: { 'nameL|nameR': value } ready for font.kerning.pairs.
  */
 export function design(settings = {}, { removeOverlaps = null } = {}) {
-  const p = { ...BASE, ...settings }; if (p.fit === true) p.fit = p.serif2 ? FIT_SERIF : FIT; const fallbacks = [];
+  const p = { ...BASE, ...settings }; if (p.italic && p.italicWidth !== false) p.width = +(p.width * (p.slab ? 0.989 : 0.972)).toFixed(4); /* round 13b, owner approved 2026.11.07: real italics are narrower (sans 0.978x, serif 0.936x of upright; ours was 1.006x and 0.946x) */ if (p.fit === true) p.fit = p.serif2 ? FIT_SERIF : FIT; const fallbacks = [];
   const glyphs = buildGlyphs(p, { removeOverlaps, fallbacks }); const serif = !!(p.slab && p.serifModels);
   if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif, slant: p.slant || 0, weightSpace: !!p.weightSpace, weightExp: p.weightExp || null });
   const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif, guard: !!p.weightSpace }) : {};
