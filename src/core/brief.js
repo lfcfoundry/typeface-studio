@@ -2,6 +2,7 @@
 // the word rules and the mood layer. Where the composer made a decision, its choice wins; everywhere else the rules
 // and mood layer stand. Every decision is listed with the words that caused it.
 import { read } from '../engine/reader.js';
+import { familyZ, zFromSettings, moreLikeThis, settingsFromZ } from '../engine/likethis.js';
 import { tryAnotherPicks } from '../engine/index.js';
 import { getVariant } from './mood.js';
 import { interpretPrompt } from './prompt.js';
@@ -89,4 +90,18 @@ function interpretBriefCore(prompt, base, opts) {
   for (const w of rd.why) kept.push({ parameter: LABEL[w.axis] || w.axis, value: w.axis === 'reference' ? `like ${w.value}` : '', because: `Read from your words: ${w.because}.` });
   const chips = app.chips.slice();
   return { result: { ...app, settings, changes: kept, chips, composer: rd.why, reference: rd.ref || null }, explicit: rd.explicit };
+}
+
+// "More like <font>" / "Less like <font>": step the current design a little toward (or away from) a named reference font.
+// The caller keeps the returned shape numbers (z) and passes them back on the next press so repeated steps do not drift.
+export function likeThis(design, name, dir, z0) {
+  const refZ = familyZ(name); if (!refZ) return null;
+  const pen = fullPen({ ...DEFAULT_PARAMS, ...design });
+  const z = moreLikeThis(z0 || zFromSettings({ ...pen, style: pen.slab ? 'serif' : 'sans' }), refZ, dir < 0 ? -1 : 1, 0.4);
+  const t = settingsFromZ(z), serif = t.style === 'serif';
+  const next = { ...pen, stem: t.stem, width: t.width, contrast: t.contrast, xHeight: t.xHeight, spacing: t.spacing, mono: t.mono, caps: t.caps, slab: serif, serifModels: serif };
+  const settings = { ...design, ...appFromPen(next) };
+  const label = { stem: 'stroke thickness', width: 'width', contrast: 'stroke contrast', xHeight: 'x-height', spacing: 'spacing', serifs: 'serif structures', terminals: 'terminals' };
+  const changes = Object.keys(label).filter(k => settings[k] !== design[k]).map(k => ({ parameter: label[k], value: `${design[k]} → ${settings[k]}`, because: `${dir < 0 ? 'less' : 'more'} like ${name}` }));
+  return { settings, z, changes };
 }

@@ -7,3 +7,7 @@
 .preview-toolbar input[type=range]{width:140px;flex:0 0 140px}.preview-toolbar .button{white-space:nowrap}
 .tool-pair{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .peek{margin:10px 0 0;padding:12px 14px;border:1px dashed var(--line);border-radius:12px;background:var(--paper);font-size:28px;line-height:1.25;overflow-wrap:anywhere}.peek[hidden]{display:none}
+.like-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px}
+.like-row label{font-size:12px;font-weight:600;color:var(--muted,#5b6560)}
+.like-row .button{white-space:nowrap}
+.like-row input{flex:1 1 12em;max-width:18em}
