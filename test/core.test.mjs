@@ -149,3 +149,8 @@ test('a monospace shape does not also turn on serifs; a plain serif shape still 
   assert.equal(settingsFromShift({ foot: 0.9, mono: 0 }, base, free).out.serifs, true);
   assert.equal(settingsFromShift({ foot: 0.9, mono: 2 }, base, free).out.monospaced, true);
 });
+
+test('"san serif" (a common misspelling) reads as sans serif, not Serif', () => {
+  const r = interpretBrief('a san serif font'), s = r.settings || r.result?.settings, c = r.chips || r.result?.chips;
+  assert.equal(s.serifs, false); assert.notEqual(c[0], 'Serif');
+});

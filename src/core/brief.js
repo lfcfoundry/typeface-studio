@@ -46,6 +46,7 @@ const TIGHT_WORDS = '(tight|tighter|close|closer|small|reduced|narrow|narrower|m
 export function normalizeSpacing(t) {
   const sp = '(?:letter[- ]?spacing|letter[- ]?space|tracking|spacing|kerning)';
   return String(t)
+    .replace(/\bsan[- ]serif\b/gi, 'sans serif')
     .replace(new RegExp(`\\b${SPACE_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${SPACE_WORDS}\\b`, 'gi'), 'open spacing')
     .replace(new RegExp(`\\b${TIGHT_WORDS}\\s+${sp}\\b|\\b${sp}\\s+(?:is\\s+|that\\s+is\\s+)?${TIGHT_WORDS}\\b`, 'gi'), 'tight spacing');
 }
