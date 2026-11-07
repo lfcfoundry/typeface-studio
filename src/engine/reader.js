@@ -141,6 +141,9 @@ export function read(brief, { base = {}, rest = null } = {}) {
   const ex = c.extra || {};
   if (d.italic === true) { s.slant = Math.round(clamp(12 * k('italic'), 6, 18)); s.italic = true; } else if (d.italic === false) { s.slant = 0; s.italic = false; }
   else if (ex.slant) { s.slant = ex.slant; s.italic = !!ex.italic; }
+  // a theme that names a serif style (typewriter, western, varsity -> slab; pirate map, medieval, book -> serif) also turns serifs on,
+  // unless the words said no serifs
+  if (ex.style && d.serif === undefined) { s.slab = true; s.serifModels = true; }
   if (ex.style && s.slab && d.serif === undefined) { s.serif2 = ex.style !== 'slab'; s.slab2 = ex.style === 'slab'; if (s.serif2) s.serifLen = 0.8; }
   if (s.slab) { const slabWords = /\bslab/.test(String(brief).toLowerCase()) || ex.style === 'slab'; s.serif2 = !slabWords; s.slab2 = slabWords; if (s.serif2) s.serifLen = 0.8; s.style = slabWords ? 'slab' : 'serif'; } else s.style = 'sans';
   // round 8: openness, squareness and stress (pen keys aperture, square, nib in radians; nibDegrees for the app's slider)
