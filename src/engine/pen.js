@@ -55,7 +55,7 @@ function skeletons(p) {
   if (p.fit) applyFit(G, p.fit, p);
   // round 10c (weightWidth): real letters widen as they get bolder so counters stay open (Google Fonts 700 vs 400:
   // sans n ink 1.115x, o 1.067x, O 1.044x). Center lines widen by (stem / 90 at cap 700)^e, lowercase and capitals separately.
-  if (p.weightWidth) { const q = p.stem / (p.capHeight * 90 / 700), E = p.weightWidthExp || [0.3, 0.1];
+  if (p.weightWidth) { const q = p.stem / (p.capHeight * 90 / 700), E = p.weightWidthExp || [q < 1 ? (p.weightWidthLight ?? 0.12) : 0.3, 0.1];
     for (const [ch, g] of Object.entries(G)) { if (!/[A-Za-z0-9]/.test(ch)) continue; const k = Math.pow(q, /[a-z]/.test(ch) ? E[0] : E[1]); if (k === 1) continue;
       const xs = g.strokes.flatMap(st => st.pts.map(v => v.x)); const x0 = Math.min(...xs), x1 = Math.max(...xs), c = (x0 + x1) / 2;
       for (const st of g.strokes) st.pts = st.pts.map(v => ({ ...v, x: c + (v.x - c) * k })); g.w += (k - 1) * (x1 - x0); } }
