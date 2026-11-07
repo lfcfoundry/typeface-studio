@@ -100,10 +100,10 @@ export function compose(brief, { families = {}, axesOf = null } = {}) {
   for (const k of Object.keys(set)) if (k.startsWith('_x') && set['_c' + k.slice(2)] === set[k]) delete set[k.slice(2)];
   // themes fill only what the words left open (explicit words win), and add pen extras (style, slant, italic shapes)
   const extra = {}; const low = ' ' + String(brief).toLowerCase() + ' ';
-  for (const [re, axesT, ex, name] of THEMES) { if (!re.test(low)) continue; const hit = low.match(re)[0].trim();
+  for (const [re, axesT, ex, name] of THEMES) { if (!re.test(low)) continue; const hit = low.match(re)[0].trim(); const pre = low.slice(Math.max(0, low.indexOf(hit) - 24), low.indexOf(hit)), tdeg = STRONG.test(pre) ? 1.6 : MILD.test(pre) ? 0.5 : 1;
     if (consumed.some(c => NEG.test(c) && c.includes(hit))) continue; /* round 10: "not playful", "not a sports brand" don't trigger the theme */
-    for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { set[a] = v; strength[a] = 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
-    for (const [a, v] of Object.entries(ex)) if (extra[a] === undefined) { if (a === 'slant' && set.italic === false) continue; if (a === 'style' && set.serif === false) continue; extra[a] = v; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
+    for (const [a, v] of Object.entries(axesT)) if (set[a] === undefined && !('_c' + a in set)) { set[a] = v; strength[a] = typeof v === 'number' ? tdeg : 1; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
+    for (const [a, v] of Object.entries(ex)) if (extra[a] === undefined) { if (a === 'slant' && set.italic === false) continue; if (a === 'style' && set.serif === false) continue; extra[a] = a === 'slant' ? Math.round(v * tdeg) : v; why.push({ axis: a, value: v, because: `theme "${name}" ("${hit}")` }); }
     /* theme words stay in the text, so the word rules and mood layer still hear them */ }
   for (const k of Object.keys(set)) if (k.startsWith('_c') || k.startsWith('_x')) delete set[k];
   // leftover text for the word rules and mood layer: drop everything the composer read, including negated phrases

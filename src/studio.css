@@ -6,3 +6,4 @@
 .more-details{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}.more-details summary{font-size:12px;color:var(--muted);cursor:pointer;font-weight:650}
 .preview-toolbar input[type=range]{width:140px;flex:0 0 140px}.preview-toolbar .button{white-space:nowrap}
 .tool-pair{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.peek{margin:10px 0 0;padding:12px 14px;border:1px dashed var(--line);border-radius:12px;background:var(--paper);font-size:28px;line-height:1.25;overflow-wrap:anywhere}.peek[hidden]{display:none}
