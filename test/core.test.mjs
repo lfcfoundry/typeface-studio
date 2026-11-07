@@ -89,3 +89,11 @@ test('round 9: slant words, theme recipes and a slanted font build', async () =>
   const font = buildFont(p, 'Regular');
   assert.ok(font.bytes.length > 5000);
 });
+
+test('blackletter and stencil requests are reported as not generated', async () => {
+  await initMood();
+  for (const w of ['a gothic blackletter', 'army stencil font', 'graffiti tag style']) {
+    const r = interpretBrief(w, DEFAULT_PARAMS, {});
+    assert.ok(r.unsupported.length > 0, w);
+  }
+});
