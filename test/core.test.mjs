@@ -131,3 +131,13 @@ test('stepping the Try another number back returns the earlier font', async () =
   setVariant(0); const again = interpretBrief('a warm friendly storybook font', DEFAULT_PARAMS, {});
   assert.deepEqual(a.settings, again.settings);
 });
+
+import { likeThis } from '../src/core/brief.js';
+test('more like Playfair turns a plain sans toward serif with more contrast; less moves back; unknown font is null', () => {
+  const d = { ...DEFAULT_PARAMS };
+  let z = null, cur = d, first;
+  for (let i = 0; i < 3; i++) { const r = likeThis(cur, 'Playfair Display', 1, z); z = r.z; cur = { ...cur, ...r.settings }; if (!i) first = r; }
+  assert.ok(cur.contrast > d.contrast); assert.equal(cur.serifs, true);
+  const back = likeThis(cur, 'Playfair Display', -1, z); assert.ok(back.settings.contrast < cur.contrast);
+  assert.equal(likeThis(d, 'Not A Real Font', 1, null), null);
+});
