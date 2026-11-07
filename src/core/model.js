@@ -3,7 +3,8 @@ export const DEFAULT_PARAMS = Object.freeze({
   classification: 'Geometric sans', character: 'Geometric', width: 1, weight: 400,
   xHeight: 0.72, capHeight: 0.98, stem: 0.42, contrast: 0.12,
   roundness: 0.16, terminals: 'Square', spacing: 1,
-  serifs: false, serifStyle: 'None', monospaced: false
+  serifs: false, serifStyle: 'None', monospaced: false,
+  openness: 0.3, squareness: 2, stress: 0, slant: 0, italic: false
 });
 
 export function createProject({ family = 'Untitled Sans', designer = '', prompt = '', params = DEFAULT_PARAMS, seed = 73 } = {}) {
