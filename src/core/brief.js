@@ -89,7 +89,9 @@ function interpretBriefCore(prompt, base, opts) {
   const drop = new Set(keys.flatMap(k => NAMES[k] || [])); // the composer's choice replaces the rules' note for the same setting
   const kept = changes.filter(c => !drop.has(String(c.parameter).toLowerCase()));
   for (const w of rd.why) kept.push({ parameter: LABEL[w.axis] || w.axis, value: w.axis === 'reference' ? `like ${w.value}` : '', because: `Read from your words: ${w.because}.` });
-  const chips = app.chips.slice();
+  // the reader may override the word rules (bold, wide, rounded...): the chips must describe the final font, not the first guess
+  settings.weight = Math.round(Math.min(900, Math.max(100, 100 + (settings.stem - 0.18) / 0.68 * 800)) / 100) * 100;
+  const chips = [settings.classification, `${settings.weight} weight intent`, `${Math.round(settings.width * 100)}% width`, `${Math.round(settings.stem * 100)}% stem setting`, `${Math.round(settings.contrast * 100)}% contrast`, `${Math.round(settings.spacing * 100)}% spacing`, String(settings.terminals).toLowerCase() + ' terminals'];
   return { result: { ...app, settings, changes: kept, chips, composer: rd.why, reference: rd.ref || null }, explicit: rd.explicit };
 }
 
