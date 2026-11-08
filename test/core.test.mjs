@@ -78,11 +78,14 @@ test('letter-spacing words change spacing, not letter width', async () => {
 
 test('round 9: slant words, theme recipes and a slanted font build', async () => {
   await initMood();
-  const w = interpretBrief('wedding invitation', DEFAULT_PARAMS, {});
+  // owner 2026.11.07: wedding or invitation briefs are no longer forced italic; italic only with script-like words
+  const plain = interpretBrief('an elegant serif for wedding invitations', DEFAULT_PARAMS, {});
+  assert.ok(!plain.settings.italic && !(plain.settings.slant > 0), 'plain wedding brief stays upright');
+  const w = interpretBrief('a calligraphy script for a wedding invitation', DEFAULT_PARAMS, {});
   assert.ok(w.settings.slant > 0 && w.settings.italic && w.settings.serifs);
   const up = interpretBrief('upright bold wedding invitation', DEFAULT_PARAMS, {});
   assert.equal(up.settings.slant, 0);
-  const p = createProject({ family: 'Slanted', prompt: 'wedding invitation' });
+  const p = createProject({ family: 'Slanted', prompt: 'a calligraphy script for a wedding invitation' });
   p.design = { ...p.design, ...w.settings };
   const fam = generateFamily(p);
   Object.assign(p, fam);

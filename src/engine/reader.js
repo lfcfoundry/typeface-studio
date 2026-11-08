@@ -66,7 +66,8 @@ const THEMES = [
   [/\b(arcade|8[- ]?bit|video games?|retro games?|pixel)\b/, { mono: true, square: +1, rounded: false }, {}, 'arcade'],
   [/\b(road signs?|highway|signage|wayfinding|airport signs?)\b/, { serif: false, aperture: +1 }, {}, 'road signs'],
   [/\b(medieval|fantasy|renaissance|knights?|castles?|wizards?)\b/, { serif: true, stress: +1, contrast: +1 }, { style: 'serif' }, 'medieval'],
-  [/\b(wedding|invitations?)\b/, { contrast: +1, serif: true }, { slant: 10, italic: true }, 'invitation'],
+  [/\b(wedding|invitations?)\b/, { contrast: +0.6, serif: true }, {}, 'invitation'],
+  [/\b(wedding|invitations?)\b(?=.*\b(script|calligraphy|cursive|italic|flowing|handwritten)\b)|\b(script|calligraphy|cursive|italic|flowing|handwritten)\b(?=.*\b(wedding|invitations?)\b)/, {}, { slant: 10, italic: true }, 'invitation script'],
   [/\b(novels?|books? (text|body)|literary|book interior)\b/, { serif: true }, { style: 'serif' }, 'book'],
   // round 10: friendly moods round the stroke ends and lower the contrast a little
   // round 21b: small screens and display uses (weights and spacing are real-font habits: small text wants more weight and room; display wants weight)
