@@ -144,7 +144,7 @@ export const isFollowUp = brief => FOLLOW.test(String(brief).toLowerCase());
 // "twice as bold", "half as wide", "three times the spacing": a measured factor instead of one step
 const MULT = /\b(twice|two times|2x|double|half|three times|3x|triple|one and a half times|1\.5x)\s+(as\s+|the\s+)?(\w+)/;
 const MULT_F = { twice: 2, 'two times': 2, '2x': 2, double: 2, half: 0.5, 'three times': 3, '3x': 3, triple: 3, 'one and a half times': 1.5, '1.5x': 1.5 };
-export function read(brief, { base = {}, rest = null, current = null } = {}) {
+function readOne(brief, { base = {}, rest = null, current = null } = {}) {
   const refine = !!current && isFollowUp(brief);
   const c = compose(brief, { families: FAM });
   // round 23b: a brief that asks for both serif and sans leaves the serif choice open (the app shows one result per style) and lists one reason, not a conflict
@@ -201,4 +201,17 @@ export function read(brief, { base = {}, rest = null, current = null } = {}) {
   const why = c.why.map(w => w.axis === 'soft' ? { ...w, axis: 'contrast', value: 'a little lower' } : w);
   const both = /\bboth\b[^.]*\bserif\b[^.]*\bsans?[- ]?(serif)?\b|\bsans?[- ]?(serif)?\b[^.]*\band\b[^.]*\bserif\b|\bserif and sans\b/.test(String(brief).toLowerCase()) ? ['serif', 'sans'] : null; // round 23: a request for both styles; the app shows one result per style
   return { settings: s, why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme, refine, both };
+}
+
+// round 23c: "both serif and sans" means two separate font groups (owner, 2026.11.07), not one font that does both.
+// read() then returns groups: [{ style: 'serif', ...result }, { style: 'sans', ...result }], each read from the brief with the "both" phrase
+// replaced by that style; the top-level result is the first group (the serif one) so single-result callers still work.
+const BOTH_PHRASE = /\b(?:both\s+)?(?:a\s+)?serif\s+(?:and|&|or|\/)\s+sans?[- ]?(?:serif)?\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?|\bsans?[- ]?(?:serif)?\s+(?:and|&)\s+serif\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?|\bboth\s+(?:a\s+)?serif\b[^.,;]*?\bsans?[- ]?(?:serif)?\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?/i;
+export function read(brief, opts = {}) {
+  const r = readOne(brief, opts);
+  if (!r.both) return r;
+  const stripped = String(brief).replace(BOTH_PHRASE, ' ').replace(/\b(with|in|as)\s*(?=[.,;]|$)/gi, ' ').replace(/\s+([.,;])/g, '$1').replace(/\s+/g, ' ').trim();
+  const groups = [['serif', ' with serifs'], ['sans', ' sans serif']].map(([style, add]) => ({ style, ...readOne((stripped + add).trim(), opts) }));
+  // briefs: the same two texts, so an app that runs its own full pipeline (word rules, mood layer, summary) can interpret each group itself
+  return { ...r, groups, briefs: Object.fromEntries(groups.map(g => [g.style, g.style === 'serif' ? stripped + ' with serifs' : stripped + ' sans serif'])) };
 }
