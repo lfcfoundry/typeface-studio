@@ -127,7 +127,7 @@ let BASEOF = { 'à':['a','grave'],'á':['a','acute'],'â':['a','circ'],'ã':['a'
   { const hy = box('-'), adv = W('-') + stem * .6; add('¯', adv, [bar(stem * .3, adv - stem * .3, cap + stem * .1, hy.y1 - hy.y0)]); const ty = hy.y1 - hy.y0; add('¬', adv, [bar(stem * .3, adv - stem * .3, xh * .45, ty), bar(adv - stem * .3 - stem * .9, adv - stem * .3, xh * .45 - stem * 1.5, stem * 1.5 + ty)]); const pb = box('l'); add('¦', stem * 2.4, [bar(stem * 1.1, stem * 1.1 + stem, cap * .55, cap * .5), bar(stem * 1.1, stem * 1.1 + stem, -cap * .1, cap * .5)]); }
 
   // round 27c: remaining Latin-1 symbols
-  { const o = gl['O'], ob = box('O'), cx = (ob.x0 + ob.x1) / 2, cy = (ob.y0 + ob.y1) / 2, k = .92, ring = scaleAbout(C('O'), cx, cy, k, 0, 0), rb = bbox(ring), mid = (rb.y0 + rb.y1) / 2;
+  { const o = gl['O'], ob = box('O'), cx = (ob.x0 + ob.x1) / 2, cy = (ob.y0 + ob.y1) / 2, k = .92, ring = scaleAbout(C('O'), cx, cy, k, cx, cy), rb = bbox(ring), mid = (rb.y0 + rb.y1) / 2;
     const inner = (ch, kk) => { const b = box(ch), sc = scaleAbout(C(ch), (b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, kk, 0, 0), ib = bbox(sc); return sc.map(c => T(c, (rb.x0 + rb.x1) / 2 - (ib.x0 + ib.x1) / 2, mid - (ib.y0 + ib.y1) / 2)); };
     add('©', o.advanceWidth, [...ring, ...inner('c', .5)]); add('®', o.advanceWidth, [...ring, ...inner('R', .42)]);
     const rg = scaleAbout(C('o'), (box('o').x0 + box('o').x1) / 2, (box('o').y0 + box('o').y1) / 2, .6, 0, 0), gb = bbox(rg), gr = (gb.x1 - gb.x0) / 2; const cxx = gr + stem * 1.2, cyy = xh * .55; const ringC = rg.map(c => T(c, cxx - (gb.x0 + gb.x1) / 2, cyy - (gb.y0 + gb.y1) / 2));
