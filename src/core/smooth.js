@@ -7,13 +7,14 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
 export function engineParams(design, style = 'Regular') {
   const d = design, bold = style === 'Bold';
-  const stem = Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120) * (bold ? 1.55 : 1);
+  const base = Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120), stem = bold ? Math.min(base * 1.55, Math.max(base, 190)) : base; // Bold is 1.55x but never past 190: heavier stems close the counters (research round 27e)
   return {
     ...BASE, ...RECOMMENDED, serifModels: true,
     stem: Math.round(stem), width: clamp(d.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1), contrast: clamp(d.contrast, 0, 0.8),
     xHeight: Math.round(700 * d.xHeight), capHeight: Math.round(700 * d.capHeight), spacing: d.spacing,
     caps: d.terminals === 'Rounded' ? 'round' : 'butt',
     aperture: clamp(d.openness ?? 0.3, -0.25, 0.45), square: clamp(d.squareness ?? 2, 2, 6), nib: clamp(d.stress ?? 0, -35, 35) * Math.PI / 180, ...(d.serifs ? STYLES[d.serifStyle === 'Slab' || d.classification === 'Slab serif' ? 'slab' : 'serif'] : { slab: false }), mono: !!d.monospaced,
+    ...(d.noExtras ? { extras: false } : {}),
     ...((d.slant || 0) !== 0 ? { slant: clamp(d.slant, -20, 20), italic: !!d.italic } : {}),
   };
 }
@@ -37,7 +38,7 @@ export function generateSmooth(designSettings, style = 'Regular') {
     const xs = contours.flat().map(p => p.x);
     const left = xs.length ? Math.min(...xs) : 0, right = xs.length ? Math.max(...xs) : 0;
     const advance = Math.round(g.advanceWidth);
-    out[ch] = { contours, advanceWidth: advance, leftSideBearing: left, rightSideBearing: Math.max(0, advance - right) };
+    out[ch] = { contours, advanceWidth: advance, leftSideBearing: left, rightSideBearing: Math.max(0, advance - right), name: g.name, unicodes: g.unicodes };
   }
   return { glyphs: out, kern, monoWidth: Math.round(560 * clamp(designSettings.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1) * designSettings.spacing) };
 }

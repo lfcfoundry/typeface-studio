@@ -4,6 +4,40 @@
 // Not handled: GPOS/GDEF variations (kerning stays at the default location), MVAR, CFF outlines.
 const rd = (b) => new DataView(b.buffer, b.byteOffset, b.byteLength);
 const f2 = v => v / 16384, fx = v => v / 65536;
+
+// Round 27: resolve GPOS variation deltas (kerning, single adjustments, mark anchors) at the chosen location, in place.
+// Pair kerning changes a lot with weight (Roboto Flex AV -76 at 400, -39 at 900), so a static export must not keep default-weight values.
+function resolveGPOS(gposIn, gdefIn, norm, scalarFn) {
+  const gp = gposIn.slice(), P = rd(gp), gd = rd(gdefIn);
+  if (gd.getUint16(0) !== 1 || gd.getUint16(2) < 3) return gp;
+  const vsO = gd.getUint32(14); if (!vsO) return gp;
+  const vd = new DataView(gdefIn.buffer, gdefIn.byteOffset + vsO), rl = vd.getUint32(2), nD = vd.getUint16(6), nA = vd.getUint16(rl), nR = vd.getUint16(rl + 2);
+  const regions = []; for (let r = 0; r < nR; r++) { const st = [], pk = [], en = []; for (let a = 0; a < nA; a++) { const o = rl + 4 + (r * nA + a) * 6; st.push(f2(vd.getInt16(o))); pk.push(f2(vd.getInt16(o + 2))); en.push(f2(vd.getInt16(o + 4))); } regions.push(scalarFn(pk, st, en)); }
+  const dOff = []; for (let i = 0; i < nD; i++) dOff.push(vd.getUint32(8 + i * 4));
+  const delta = (outer, inner) => { const o = dOff[outer], cnt = vd.getUint16(o), wc = vd.getUint16(o + 2), long = !!(wc & 0x8000), nw = wc & 0x7fff, rc = vd.getUint16(o + 4); const w = long ? 4 : 2, b = long ? 2 : 1; const rowLen = nw * w + (rc - nw) * b; let p = o + 6 + rc * 2 + inner * rowLen, d = 0;
+    for (let k = 0; k < rc; k++) { let v; if (k < nw) { v = long ? vd.getInt32(p) : vd.getInt16(p); p += w; } else { v = long ? vd.getInt16(p) : vd.getInt8(p); p += b; } d += v * regions[vd.getUint16(o + 6 + k * 2)]; } return d; };
+  const dev = (base, off) => { if (!off) return 0; const o = base + off; if (P.getUint16(o + 4) !== 0x8000) return 0; return delta(P.getUint16(o), P.getUint16(o + 2)); };
+  const vSize = f => { let n = 0; for (let i = 0; i < 8; i++) if (f & (1 << i)) n++; return n * 2; };
+  // value record at p with format f (base = subtable start for device offsets); adds device deltas into XPla/YPla/XAdv/YAdv and zeroes the offsets
+  const fixValue = (p, f, base) => { let o = p; const idx = {}; for (let i = 0; i < 4; i++) if (f & (1 << i)) { idx[i] = o; o += 2; } let dp = o; const dI = {}; for (let i = 4; i < 8; i++) if (f & (1 << i)) { dI[i - 4] = dp; dp += 2; }
+    for (const k in dI) { const off = P.getUint16(dI[k]); const d = dev(base, off); if (d && idx[k] !== undefined) P.setInt16(idx[k], Math.round(P.getInt16(idx[k]) + d)); P.setUint16(dI[k], 0); } };
+  const fixAnchor = (aBase) => { if (P.getUint16(aBase) !== 3) return; let dx = dev(aBase, P.getUint16(aBase + 6)), dy = dev(aBase, P.getUint16(aBase + 8)); P.setInt16(aBase + 2, Math.round(P.getInt16(aBase + 2) + dx)); P.setInt16(aBase + 4, Math.round(P.getInt16(aBase + 4) + dy)); P.setUint16(aBase + 6, 0); P.setUint16(aBase + 8, 0); };
+  const seen = new Set();
+  const sub = (st, type) => { if (seen.has(st)) return; seen.add(st);
+    if (type === 9) { const t = P.getUint16(st + 2), o = P.getUint32(st + 4); return sub(st + o, t); }
+    const fmt = P.getUint16(st);
+    if (type === 1) { const vf = P.getUint16(st + 4); if (fmt === 1) fixValue(st + 6, vf, st); else { const n = P.getUint16(st + 6), sz = vSize(vf); for (let i = 0; i < n; i++) fixValue(st + 8 + i * sz, vf, st); } }
+    else if (type === 2) { const vf1 = P.getUint16(st + 4), vf2 = P.getUint16(st + 6), s1 = vSize(vf1), s2 = vSize(vf2);
+      if (fmt === 1) { const n = P.getUint16(st + 8); for (let i = 0; i < n; i++) { const ps = st + P.getUint16(st + 10 + i * 2), c = P.getUint16(ps); let p = ps + 2; for (let k = 0; k < c; k++) { p += 2; if (vf1) fixValue(p, vf1, ps); p += s1; if (vf2) fixValue(p, vf2, ps); p += s2; } } }
+      else { const c1 = P.getUint16(st + 12), c2 = P.getUint16(st + 14); let p = st + 16; for (let i = 0; i < c1 * c2; i++) { if (vf1) fixValue(p, vf1, st); p += s1; if (vf2) fixValue(p, vf2, st); p += s2; } } }
+    else if (type === 3) { const n = P.getUint16(st + 4); for (let i = 0; i < n; i++) { for (const k of [2, 4]) { const ao = P.getUint16(st + 6 + i * 4 + (k - 2)); if (ao) fixAnchor(st + ao); } } }
+    else if (type === 4 || type === 6) { const mc = P.getUint16(st + 6), ma = st + P.getUint16(st + 8), ba = st + P.getUint16(st + 10);
+      const mn = P.getUint16(ma); for (let i = 0; i < mn; i++) { const ao = P.getUint16(ma + 2 + i * 4 + 2); if (ao) fixAnchor(ma + ao); }
+      const bn = P.getUint16(ba); for (let i = 0; i < bn; i++) for (let k = 0; k < mc; k++) { const ao = P.getUint16(ba + 2 + (i * mc + k) * 2); if (ao) fixAnchor(ba + ao); } } };
+  const ll = P.getUint16(8); const nL = P.getUint16(ll);
+  for (let i = 0; i < nL; i++) { const lo = ll + P.getUint16(ll + 2 + i * 2), type = P.getUint16(lo), nS = P.getUint16(lo + 4); for (let k = 0; k < nS; k++) sub(lo + P.getUint16(lo + 6 + k * 2), type); }
+  return gp;
+}
 export function instanceTTF(src, loc, names = {}) {
   const TM = names.timing, _t = () => performance.now(), _t0 = _t();
   const buf = src instanceof Uint8Array ? src : new Uint8Array(src), dv = rd(buf);
@@ -113,7 +147,7 @@ export function instanceTTF(src, loc, names = {}) {
   const sb = outRecs.map(enc), sl = sb.reduce((a, b) => a + b.length, 0), nmN = new Uint8Array(6 + outRecs.length * 12 + sl), nw = rd(nmN); nw.setUint16(2, outRecs.length); nw.setUint16(4, 6 + outRecs.length * 12); let so = 0; outRecs.forEach((r, i) => { const o = 6 + i * 12; nw.setUint16(o, r.pid); nw.setUint16(o + 2, r.eid); nw.setUint16(o + 4, r.lid); nw.setUint16(o + 6, r.id); nw.setUint16(o + 8, sb[i].length); nw.setUint16(o + 10, so); nmN.set(sb[i], 6 + outRecs.length * 12 + so); so += sb[i].length; });
   // assemble
   const keep = Object.keys(T).filter(t => !['fvar', 'avar', 'gvar', 'HVAR', 'MVAR', 'STAT', 'cvar', 'VVAR'].includes(t)); const tabs = {};
-  for (const t of keep) tabs[t] = tb(t); tabs.glyf = glyfN; tabs.loca = locaN; tabs.hmtx = hmN; tabs.head = headN; tabs.hhea = hheaN; tabs['OS/2'] = os2N; tabs.name = nmN;
+  for (const t of keep) tabs[t] = tb(t); if (T.GPOS && T.GDEF) { try { tabs.GPOS = resolveGPOS(tb('GPOS'), tb('GDEF'), norm, (pk, st, en) => scalar(pk, st, en)); } catch (e) { if (names.timing) names.timing.gposError = String(e); } } tabs.glyf = glyfN; tabs.loca = locaN; tabs.hmtx = hmN; tabs.head = headN; tabs.hhea = hheaN; tabs['OS/2'] = os2N; tabs.name = nmN;
   const tags = Object.keys(tabs).sort(); const hdrLen = 12 + tags.length * 16; let size = hdrLen; for (const t of tags) size += (tabs[t].length + 3) & ~3; const outB = new Uint8Array(size), ow = rd(outB);
   ow.setUint32(0, 0x00010000); ow.setUint16(4, tags.length); let es = 1, lg = 0; while (es * 2 <= tags.length) { es *= 2; lg++; } ow.setUint16(6, es * 16); ow.setUint16(8, lg); ow.setUint16(10, tags.length * 16 - es * 16);
   const sum = (b) => { let s = 0; const v = rd(b), n = b.length & ~3; for (let i = 0; i < n; i += 4) s = (s + v.getUint32(i)) >>> 0; const rem = b.length - n; if (rem) { let w = 0; for (let k = 0; k < 4; k++) w = (w << 8) | (k < rem ? b[n + k] : 0); s = (s + (w >>> 0)) >>> 0; } return s; };

@@ -13,7 +13,7 @@ function arc(cx, cy, rx, ry, a0, a1, n = 2, steps = N) {
     out.push({ x: cx + rx * Math.sign(c) * Math.abs(c) ** (2 / n), y: cy + ry * Math.sign(s) * Math.abs(s) ** (2 / n) }); } return out;
 }
 // thickness of a broad nib moving in direction theta
-export const relief = p => p.relief ? 1 - p.relief * Math.min(1, Math.max(0, (p.stem - 105) / 60)) : 1; // round 26: heavy weights thin their horizontal strokes so counters stay open (real bold fonts do the same)
+export const relief = p => p.relief ? 1 - p.relief * Math.min(1.8, Math.max(0, (p.stem - 105) / 60)) /* grows past stem 165 so counters stay open up to the stem cap */ : 1; // round 26: heavy weights thin their horizontal strokes so counters stay open (real bold fonts do the same)
 const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = Math.max(W * (1 - p.contrast) * (p.optical ? 0.88 : 1) * relief(p), (p.minHair || 0) * p.stem); /* minHair: thin parts never vanish */ return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
 // Expand one open centerline into a closed contour. Offsets along the normal; sharp butt caps or round caps.
 function expand(pts, p, closed = false) {
@@ -89,7 +89,7 @@ function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p,
   // round 10: with weightSpace, curved serifs keep a nearly fixed reach as weight grows, as in real serif fonts
   // (foot reach ~ stem^-0.15 on 76 Google Fonts serif families, so reach in stems ~ (stem / 90 at cap 700)^-1.15)
   const wR = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -1.15) : 1;
-  const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem * wR;
+  const Lb = slab ? (p.slabLen ?? 0.45) * Math.min(p.stem, 100) + 0.1 * Math.max(0, p.stem - 100) + 24 /* round 27c: heavy slab feet grow slower so bold slab letters stop touching */ : (p.serifLen ?? 0.55) * p.stem * wR;
   // round 10b: with weightSpace, curved serif feet thin out at heavy weights as in real fonts (foot thickness ~ stem^0.53 on 76 serif families)
   const wT = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -0.47) : 1;
   const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9 * wT, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
@@ -115,7 +115,9 @@ const area = c => { let s = 0; const P = c.points; for (let i = 0; i < P.length;
 export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks = [] } = {}) {
   const out = {}; const union = !!removeOverlaps, unionCheck = mismatch;
   for (const [ch, g] of Object.entries(skeletons(p))) { if (only && !only.includes(ch)) continue;
-    let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
+    // round 27: symbols with tight loops (@ & ? $ % # 8 etc.) use a lighter pen at heavy weights so counters stay open (real bold fonts draw symbols lighter)
+    const pc = p.symbolRelief && /[@&?$%#]/.test(ch) && p.stem > 105 ? { ...p, stem: p.stem * (1 - p.symbolRelief * Math.min(1, (p.stem - 105) / 60)) } : p;
+    let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...pc, nib: 0, contrast: Math.max(pc.contrast, 0.3) } : pc, !!st.closed));
     if ((p.serif2 || p.slab2) && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
     if (union) { const raw = contours;
       // optional 1-unit nudge (tested: makes the union worse, so it is off)
