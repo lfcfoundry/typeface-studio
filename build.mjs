@@ -8,7 +8,7 @@ const css=await readFile(resolve(root,'src/studio.css'),'utf8');
 const dependencyLicense=await readFile(resolve(root,'node_modules/fontsketch/LICENSE'),'utf8');
 const worker=await build({entryPoints:[resolve(root,'src/worker/smooth-worker.js')],bundle:true,format:'iife',target:['es2020'],write:false,minify:true,define:{'process.env.NODE_ENV':'"production"'}});
 const workerSource=worker.outputFiles[0].text.replaceAll('</script','<\\/script');
-const bundled=await build({entryPoints:[resolve(root,'src/app.js')],bundle:true,format:'iife',target:['es2020'],write:false,legalComments:'inline',minify:true,loader:{'.wasm':'dataurl','.woff2':'dataurl'},define:{'process.env.NODE_ENV':'"production"','__WORKER_SOURCE__':JSON.stringify(workerSource)}});
+const bundled=await build({entryPoints:[resolve(root,'src/app.js')],bundle:true,format:'iife',target:['es2020'],write:false,legalComments:'inline',minify:true,loader:{'.wasm':'dataurl','.gz':'dataurl'},define:{'process.env.NODE_ENV':'"production"','__WORKER_SOURCE__':JSON.stringify(workerSource)}});
 const licenseHtml=dependencyLicense.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const licDir=resolve(root,'src/fonts/licenses'),licFiles=(await readdir(licDir)).filter(f=>f.endsWith('.txt')).sort();

@@ -1,8 +1,8 @@
-// Embedded base fonts (data URLs from the build). Imported only by the app, never by Node tests.
-import RobotoFlex from './RobotoFlex.woff2';
-import Fraunces from './Fraunces.woff2';
-import RobotoSerif from './RobotoSerif.woff2';
-import RobotoSlab from './RobotoSlab.woff2';
-import Nunito from './Nunito.woff2';
-import RobotoMono from './RobotoMono.woff2';
+// Embedded base fonts: gzip'd variable TrueType files as data URLs from the build. Imported only by the app, never by Node tests.
+import RobotoFlex from './RobotoFlex.ttf.gz';
+import Fraunces from './Fraunces.ttf.gz';
+import RobotoSerif from './RobotoSerif.ttf.gz';
+import RobotoSlab from './RobotoSlab.ttf.gz';
+import Nunito from './Nunito.ttf.gz';
+import RobotoMono from './RobotoMono.ttf.gz';
 export const FONT_DATA = { RobotoFlex, Fraunces, RobotoSerif, RobotoSlab, Nunito, RobotoMono };
