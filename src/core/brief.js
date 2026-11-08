@@ -3,6 +3,8 @@
 // and mood layer stand. Every decision is listed with the words that caused it.
 import { read } from '../engine/reader.js';
 import { familyZ, zFromSettings, moreLikeThis, settingsFromZ } from '../engine/likethis.js';
+import { FAMILIES, METRICS } from '../engine/families.js';
+import { NAMES } from '../engine/family-names.js';
 import { tryAnotherPicks } from '../engine/index.js';
 import { getVariant } from './mood.js';
 import { interpretPrompt } from './prompt.js';
@@ -109,3 +111,12 @@ export function likeThis(design, name, dir, z0) {
   return { settings, z, changes };
 }
 
+
+// The closest Google font to a design and how far away it is, as a multiple of the typical gap between two Google fonts
+// (median nearest-neighbor distance across all 1,491 families, 0.846). Description only: no logos, no endorsement.
+export function closestFont(design) {
+  const pen = fullPen({ ...DEFAULT_PARAMS, ...design }), z = zFromSettings({ ...pen, style: pen.slab ? 'serif' : 'sans' });
+  const v = METRICS.map(m => z[m]); let best = '', bd = 1e9;
+  for (const k in FAMILIES) { const f = FAMILIES[k]; let d = 0; for (let i = 0; i < 13; i++) { const x = v[i] - f[i]; d += x * x; } if (d < bd) { bd = d; best = k; } }
+  return { name: NAMES[best] || best, ratio: +(Math.sqrt(bd) / 0.846).toFixed(1) };
+}

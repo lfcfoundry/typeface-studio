@@ -180,3 +180,10 @@ test('"both serif and sans" returns two groups, one serif and one sans', async (
   assert.equal(b.settings.serifs, false);
   assert.ok(!interpretBrief('a warm font').both);
 });
+
+test('closest Google font names a real family with a distance', async () => {
+  const { closestFont } = await import('../src/core/brief.js');
+  const c = closestFont({});
+  assert.match(c.name, /^[A-Za-z0-9][A-Za-z0-9 ]*$/);
+  assert.ok(c.ratio >= 0 && c.ratio < 20);
+});
