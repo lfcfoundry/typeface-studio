@@ -60,7 +60,7 @@ const THEMES = [
   [/\b(varsity|college jersey|jersey letters|letterman)\b/, { serif: true, weight: +1 }, { style: 'slab' }, 'varsity'],
   [/\bart deco\b|\b1920s\b|\broaring twenties\b|\bgatsby\b/, { serif: false, contrast: +1 }, {}, 'art deco'],
   [/\b(groovy|disco|1970s|70s|seventies|hippie)\b/, { rounded: true, weight: +1 }, {}, '1970s'],
-  [/\b(handwritten|hand[- ]?written|handwriting|script|cursive|signature)\b/, { stress: +1 }, { slant: 12, italic: true }, 'handwritten'],
+  [/\b(handwritten|hand[- ]?written|handwriting|(?<!european |latin |writing |romance |germanic |non-latin |cyrillic |greek |arabic |every |all )script|cursive|signature)\b/, { stress: +1 }, { slant: 12, italic: true }, 'handwritten'],
   [/\b(comic books?|comics|cartoons?|superheroe?s?|sound effects?)\b/, { weight: +1, rounded: true }, { slant: 8 }, 'comic book'],
   [/\b(military|army|stencil|navy|surplus|tactical)\b/, { weight: +1, rounded: false, square: +1, serif: false }, {}, 'military'],
   [/\b(arcade|8[- ]?bit|video games?|retro games?|pixel)\b/, { mono: true, square: +1, rounded: false }, {}, 'arcade'],

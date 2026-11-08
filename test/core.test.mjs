@@ -187,3 +187,11 @@ test('closest Google font names a real family with a distance', async () => {
   assert.match(c.name, /^[A-Za-z0-9][A-Za-z0-9 ]*$/);
   assert.ok(c.ratio >= 0 && c.ratio < 20);
 });
+
+test('real font base: serif, sans, mono and bold map to open-license variable fonts', async () => {
+  const { realBase } = await import('../src/core/brief.js');
+  const sans = realBase({}), serif = realBase({ serifs: true, serifStyle: 'Simple' }), mono = realBase({ monospaced: true }), bold = realBase({}, true);
+  assert.equal(sans.id, 'RobotoFlex'); assert.ok(['RobotoSerif', 'Fraunces'].includes(serif.id)); assert.equal(mono.id, 'RobotoMono');
+  assert.ok(bold.variation.wght > sans.variation.wght);
+  assert.match(sans.attribution, /Based on Roboto Flex \(SIL OFL 1\.1\)/);
+});

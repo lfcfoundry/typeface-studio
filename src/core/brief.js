@@ -5,6 +5,7 @@ import { read } from '../engine/reader.js';
 import { familyZ, zFromSettings, moreLikeThis, settingsFromZ } from '../engine/likethis.js';
 import { FAMILIES, METRICS } from '../engine/families.js';
 import { NAMES } from '../engine/family-names.js';
+import { pickBase } from '../engine/fontbase.js';
 import { tryAnotherPicks } from '../engine/index.js';
 import { getVariant } from './mood.js';
 import { interpretPrompt } from './prompt.js';
@@ -119,4 +120,10 @@ export function closestFont(design) {
   const v = METRICS.map(m => z[m]); let best = '', bd = 1e9;
   for (const k in FAMILIES) { const f = FAMILIES[k]; let d = 0; for (let i = 0; i < 13; i++) { const x = v[i] - f[i]; d += x * x; } if (d < bd) { bd = d; best = k; } }
   return { name: NAMES[best] || best, ratio: +(Math.sqrt(bd) / 0.846).toFixed(1) };
+}
+
+// The real open-license variable font that drives the letters (hybrid mode), for an app design; bold = the same design 1.68x heavier.
+export function realBase(design, bold = false) {
+  const pen = fullPen({ ...DEFAULT_PARAMS, ...design }), style = pen.slab ? (design.serifStyle === 'Slab' ? 'slab' : 'serif') : 'sans';
+  return pickBase({ ...pen, style, stem: bold ? Math.min(170, Math.round(pen.stem * 1.68)) : pen.stem });
 }
