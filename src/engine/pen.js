@@ -13,7 +13,8 @@ function arc(cx, cy, rx, ry, a0, a1, n = 2, steps = N) {
     out.push({ x: cx + rx * Math.sign(c) * Math.abs(c) ** (2 / n), y: cy + ry * Math.sign(s) * Math.abs(s) ** (2 / n) }); } return out;
 }
 // thickness of a broad nib moving in direction theta
-const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = Math.max(W * (1 - p.contrast) * (p.optical ? 0.88 : 1), (p.minHair || 0) * p.stem); /* minHair: thin parts never vanish */ return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
+export const relief = p => p.relief ? 1 - p.relief * Math.min(1, Math.max(0, (p.stem - 105) / 60)) : 1; // round 26: heavy weights thin their horizontal strokes so counters stay open (real bold fonts do the same)
+const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = Math.max(W * (1 - p.contrast) * (p.optical ? 0.88 : 1) * relief(p), (p.minHair || 0) * p.stem); /* minHair: thin parts never vanish */ return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
 // Expand one open centerline into a closed contour. Offsets along the normal; sharp butt caps or round caps.
 function expand(pts, p, closed = false) {
   if (closed && p.optical) p = { ...p, _round: true };
@@ -107,7 +108,7 @@ function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p,
   const run = (pts, e, step) => { let k = e, len = 0; while (k + step >= 0 && k + step < pts.length && Math.abs(pts[k + step].x - pts[e].x) < 1) { len += Math.abs(pts[k + step].y - pts[k].y); k += step; } return len; };
   for (const st of g.strokes) { if (st.closed || st.foot) continue; const n = st.pts.length;
     for (const [e, step] of [[0, 1], [n - 1, -1]]) { const q = st.pts[e]; if (run(st.pts, e, step) < p.xHeight * 0.3) continue; const other = st.pts[e + step]; const isTop = other.y < q.y;
-      if (!isTop && (Math.abs(q.y) < 3 || Math.abs(q.y + 190) < 3)) out.push(foot(q.x, q.y, 1, true, true));
+      if (!isTop && (Math.abs(q.y) < 3 || Math.abs(q.y + 190) < 3)) { const bowlSide = p.serifBowl !== false && Math.abs(q.y) < 3; /* round 26: where a bowl joins the stem bottom (b, d, a) the foot goes on the free side only; both sides made a blob with the bowl */ out.push(foot(q.x, q.y, 1, !(bowlSide && ch === 'd') && !(bowlSide && ch === 'a'), !(bowlSide && ch === 'b'))); }
       if (isTop && !/[agq]/.test(ch) && [p.xHeight, p.capHeight, ASC].some(v => Math.abs(q.y - v) < 3)) out.push(foot(q.x, q.y, -1, true, up)); } } // a, g, q: no head serif on the right stem
   return out; }
 const area = c => { let s = 0; const P = c.points; for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length]; s += a.x * b.y - b.x * a.y; } return s; };

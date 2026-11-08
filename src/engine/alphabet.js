@@ -1,8 +1,9 @@
 // Center-line skeletons for printable ASCII letters, digits and common punctuation.
 // Every glyph is a few strokes; the pen model in skeleton2.js turns them into outlines.
 // Coordinates: x already scaled by width u; y in font units. s = half vertical stem, h = half horizontal stroke.
+import { relief } from './pen.js';
 export function alphabet(p, { line: L, arc: A }) {
-  const X = p.xHeight, C = p.capHeight, u = p.width, s = p.stem / 2, h = p.stem * (1 - p.contrast) / 2, q = p.square, ap = p.aperture * 120;
+  const X = p.xHeight, C = p.capHeight, u = p.width, s = p.stem / 2, h = p.stem * (1 - p.contrast) * relief(p) / 2, q = p.square, ap = p.aperture * 120;
   // overshoot targets: Google Fonts sans medians (o 1.9% of x-height, O 1.5% of cap height) plus the measured
   // inward pull of our smooth curves (0.4 to 0.9%), so the finished letters land on the targets
   const oX = p.overshoot ? (0.019 + 0.005 + (p.optical ? 0.006 : 0)) * X : 0, oC = p.overshoot ? (0.015 + 0.004 + (p.optical ? 0.005 : 0)) * C : 0;
@@ -20,8 +21,9 @@ export function alphabet(p, { line: L, arc: A }) {
   const xb = X / 2, xr = X / 2 - h + oX;            // lowercase bowl center y and vertical radius
   const cb = C / 2, cr = C / 2 - h + oC;
   // ---------- lowercase ----------
-  { const w = 520, cx = 260 * u, rx = 190 * u - s; // o-like letters
-    g('o', w, [bowl(cx, xb, rx, xr)]);
+  { const ex = Math.max(0, p.stem - 100) * (p.bowlOpen ?? 0), w = 520 + ex / u, cx = 260 * u + ex / 2, rx = 190 * u - s + ex / 2; // o-like letters
+    // round 26 (bowlOpen): bowls with a stem (b d p q g) grow wider with weight so the counter is not eaten by the stem
+    g('o', 520, [bowl(260 * u, xb, 190 * u - s, xr)]);
     g('b', w + 20, [st(L(lx, 0, lx, ASC)), bowl(cx + 10 * u, xb, rx, xr)]);
     g('d', w + 20, [st(L(w * u + 20 * u - lx, 0, w * u + 20 * u - lx, ASC)), bowl(cx + 10 * u, xb, rx, xr)]);
     g('p', w + 20, [st(L(lx, DSC, lx, X)), bowl(cx + 10 * u, xb, rx, xr)]);
