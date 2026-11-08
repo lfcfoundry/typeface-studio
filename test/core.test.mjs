@@ -188,9 +188,23 @@ test('closest Google font names a real family with a distance', async () => {
   assert.ok(c.ratio >= 0 && c.ratio < 20);
 });
 
+test('real font base: serif, sans, mono and bold map to open-license variable fonts', async () => {
+  const { realBase } = await import('../src/core/brief.js');
+  const sans = realBase({}), serif = realBase({ serifs: true, serifStyle: 'Simple' }), mono = realBase({ monospaced: true }), bold = realBase({}, true);
+  assert.equal(sans.id, 'RobotoFlex'); assert.ok(['RobotoSerif', 'Fraunces'].includes(serif.id)); assert.equal(mono.id, 'RobotoMono');
+  assert.ok(bold.variation.wght > sans.variation.wght);
+  assert.match(sans.attribution, /Based on Roboto Flex \(SIL OFL 1\.1\)/);
+});
+
 test('the app wires the font group switch and resets it on Make', async () => {
   const { readFile } = await import('node:fs/promises');
   const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
   assert.ok(src.includes("case'group':{S.group="), 'group switch handler present');
   assert.ok(src.includes("case'make':{S.group=null;"), 'Make resets the group');
+});
+
+test('the app wires the Real font and Drawn letters switch', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
+  assert.ok(src.includes("case'letters':{S.letters="), 'letters switch handler present');
 });
