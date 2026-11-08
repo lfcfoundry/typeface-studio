@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "test": "npm run build && node --test test/*.test.mjs"
+    "test": "npm run build && node --test test/*.test.mjs",
+    "score": "node tools/score-reading.mjs"
   },
   "dependencies": {
     "fontsketch": "0.1.0"

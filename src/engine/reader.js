@@ -42,7 +42,7 @@ const THEMES = [
   // round 23: owner's own words (1980s audiences, dyslexia, undersized screens, bubble letters); design judgments, not measured
   [/\b(undersized|too small|far (from|away)|back of the (room|hall)|conference room|projector|large room|big room)\b/, { weight: +1, spacing: +1, serif: false }, {}, 'seen from far away'],
   [/\b(elderly|seniors?|senior citizens?|older (adults|people|readers?)|old people|aging eyes|poor eyesight|low vision|visually impaired|hard of seeing)\b/, { weight: +0.5, spacing: +1, width: +1 }, {}, 'easier for older or low-vision readers'],
-  [/\bdyslexi[ac]s?\b|\bdyslexic users?\b/, { spacing: +1, width: +1, serif: false, weight: +0.5 }, { style: 'sans' }, 'easier reading for dyslexia (open spacing, clear sans)'],
+  [/\bdyslexi[ac]s?\b|\bdyslexic users?\b/, { spacing: +1, width: +1, serif: false, weight: +0.5, mono: false }, { style: 'sans' }, 'easier reading for dyslexia (open spacing, clear sans)'],
   [/\bbubble (letters?|font|type|writing)\b|\bballoon letters?\b|\bpuffy\b/, { weight: +1, rounded: true, width: +1 }, { soft: true }, 'bubble letters'],
   [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(children|kids?)\b/, { rounded: true, weight: +1, serif: false }, { soft: true }, '1980s children'],
   [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(business(es)?|corporate|office)\b/, { serif: false, contrast: -1, spacing: 0 }, {}, '1980s business'],
@@ -144,9 +144,12 @@ export const isFollowUp = brief => FOLLOW.test(String(brief).toLowerCase());
 // "twice as bold", "half as wide", "three times the spacing": a measured factor instead of one step
 const MULT = /\b(twice|two times|2x|double|half|three times|3x|triple|one and a half times|1\.5x)\s+(as\s+|the\s+)?(\w+)/;
 const MULT_F = { twice: 2, 'two times': 2, '2x': 2, double: 2, half: 0.5, 'three times': 3, '3x': 3, triple: 3, 'one and a half times': 1.5, '1.5x': 1.5 };
-export function read(brief, { base = {}, rest = null, current = null } = {}) {
+function readOne(brief, { base = {}, rest = null, current = null } = {}) {
   const refine = !!current && isFollowUp(brief);
-  const c = compose(brief, { families: FAM }); const s = { stem: 90, width: 1, contrast: 0.05, xHeight: 520, spacing: 1, caps: 'butt', slab: false, mono: false, ...base, ...(refine ? current : {}) };
+  const c = compose(brief, { families: FAM });
+  // round 23b: a brief that asks for both serif and sans leaves the serif choice open (the app shows one result per style) and lists one reason, not a conflict
+  const bothRe = /\bboth\b[^.]*\bserif\b[^.]*\bsans?[- ]?(serif)?\b|\bsans?[- ]?(serif)?\b[^.]*\band\b[^.]*\bserif\b|\bserif and sans\b/.test(String(brief).toLowerCase());
+  if (bothRe) { delete c.set.serif; c.why = c.why.filter(w => w.axis !== 'serif'); c.why.push({ axis: 'serif', value: 'both', because: 'you asked for both serif and sans, so there is one result for each' }); } const s = { stem: 90, width: 1, contrast: 0.05, xHeight: 520, spacing: 1, caps: 'butt', slab: false, mono: false, ...base, ...(refine ? current : {}) };
   if (c.ref) { const z = c.ref.z; // start from the referenced family's measured shape
     s.stem = Math.round(clamp(90 * (1 + 0.45 * z.stem), 40, 170)); s.width = +clamp(1 + 0.16 * z.nadv, 0.76, 1.3).toFixed(3); s.contrast = +clamp(0.05 + 0.25 * z.contrast, 0, 0.7).toFixed(3);
     s.xHeight = Math.round(clamp(520 + 40 * z.xr, 450, 590)); s.spacing = +clamp(1 + 0.12 * z.sb, 0.82, 1.22).toFixed(3); s.slab = z.foot > 0.45; s.serifModels = s.slab; s.mono = z.mono > 1.2; if (z.topw < -0.3 && z.foot < 0.2) s.caps = 'round'; }
@@ -198,4 +201,17 @@ export function read(brief, { base = {}, rest = null, current = null } = {}) {
   const why = c.why.map(w => w.axis === 'soft' ? { ...w, axis: 'contrast', value: 'a little lower' } : w);
   const both = /\bboth\b[^.]*\bserif\b[^.]*\bsans?[- ]?(serif)?\b|\bsans?[- ]?(serif)?\b[^.]*\band\b[^.]*\bserif\b|\bserif and sans\b/.test(String(brief).toLowerCase()) ? ['serif', 'sans'] : null; // round 23: a request for both styles; the app shows one result per style
   return { settings: s, why, rest: c.rest, ref: c.ref && c.ref.family, explicit, fromTheme, refine, both };
+}
+
+// round 23c: "both serif and sans" means two separate font groups (owner, 2026.11.07), not one font that does both.
+// read() then returns groups: [{ style: 'serif', ...result }, { style: 'sans', ...result }], each read from the brief with the "both" phrase
+// replaced by that style; the top-level result is the first group (the serif one) so single-result callers still work.
+const BOTH_PHRASE = /\b(?:both\s+)?(?:a\s+)?serif\s+(?:and|&|or|\/)\s+sans?[- ]?(?:serif)?\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?|\bsans?[- ]?(?:serif)?\s+(?:and|&)\s+serif\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?|\bboth\s+(?:a\s+)?serif\b[^.,;]*?\bsans?[- ]?(?:serif)?\b(\s+(?:options?|versions?|styles?|fonts?|families|groups?|choices?))?/i;
+export function read(brief, opts = {}) {
+  const r = readOne(brief, opts);
+  if (!r.both) return r;
+  const stripped = String(brief).replace(BOTH_PHRASE, ' ').replace(/\b(with|in|as)\s*(?=[.,;]|$)/gi, ' ').replace(/\s+([.,;])/g, '$1').replace(/\s+/g, ' ').trim();
+  const groups = [['serif', ' with serifs'], ['sans', ' sans serif']].map(([style, add]) => ({ style, ...readOne((stripped + add).trim(), opts) }));
+  // briefs: the same two texts, so an app that runs its own full pipeline (word rules, mood layer, summary) can interpret each group itself
+  return { ...r, groups, briefs: Object.fromEntries(groups.map(g => [g.style, g.style === 'serif' ? stripped + ' with serifs' : stripped + ' sans serif'])) };
 }
