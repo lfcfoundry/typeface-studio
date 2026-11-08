@@ -208,3 +208,10 @@ test('the app wires the Real font and Drawn letters switch', async () => {
   const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
   assert.ok(src.includes("case'letters':{S.letters="), 'letters switch handler present');
 });
+
+test('switching to Drawn letters rebuilds the drawn preview and keeps its font family', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
+  assert.ok(src.includes("S.letters==='drawn'&&S.project.glyphOrder.length?refreshPreview():applyReal()"), 'switch recompiles the drawn preview');
+  assert.ok(src.includes('S.drawn={r:r.family,b:b.family}'), 'drawn family names are remembered');
+});
