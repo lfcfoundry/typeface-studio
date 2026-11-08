@@ -13,3 +13,4 @@
 .like-row input{flex:1 1 12em;max-width:18em}
 .peek-group{display:block}.peek-group+.peek-group{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}.peek-label{display:block;font:600 12px/1.3 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#667);margin-bottom:2px}
 .like-row[hidden]{display:none}
+.glyph-layout[hidden]{display:none}
