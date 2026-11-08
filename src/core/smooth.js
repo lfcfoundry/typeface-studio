@@ -14,6 +14,7 @@ export function engineParams(design, style = 'Regular') {
     xHeight: Math.round(700 * d.xHeight), capHeight: Math.round(700 * d.capHeight), spacing: d.spacing,
     caps: d.terminals === 'Rounded' ? 'round' : 'butt',
     aperture: clamp(d.openness ?? 0.3, -0.25, 0.45), square: clamp(d.squareness ?? 2, 2, 6), nib: clamp(d.stress ?? 0, -35, 35) * Math.PI / 180, ...(d.serifs ? STYLES[d.serifStyle === 'Slab' || d.classification === 'Slab serif' ? 'slab' : 'serif'] : { slab: false }), mono: !!d.monospaced,
+    ...(d.noExtras ? { extras: false } : {}),
     ...((d.slant || 0) !== 0 ? { slant: clamp(d.slant, -20, 20), italic: !!d.italic } : {}),
   };
 }
@@ -37,7 +38,7 @@ export function generateSmooth(designSettings, style = 'Regular') {
     const xs = contours.flat().map(p => p.x);
     const left = xs.length ? Math.min(...xs) : 0, right = xs.length ? Math.max(...xs) : 0;
     const advance = Math.round(g.advanceWidth);
-    out[ch] = { contours, advanceWidth: advance, leftSideBearing: left, rightSideBearing: Math.max(0, advance - right) };
+    out[ch] = { contours, advanceWidth: advance, leftSideBearing: left, rightSideBearing: Math.max(0, advance - right), name: g.name, unicodes: g.unicodes };
   }
   return { glyphs: out, kern, monoWidth: Math.round(560 * clamp(designSettings.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1) * designSettings.spacing) };
 }

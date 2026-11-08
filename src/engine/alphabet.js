@@ -49,8 +49,11 @@ export function alphabet(p, { line: L, arc: A }) {
     const scx = 230 * u, srx = 160 * u - s * 0.8, sry = X / 4 - h * 0.5 + oX / 2;
     g('s', 460, [st(cat(A(scx, X - sry - h + oX, srx, sry, 25 + ap * 0.4, 270, q), A(scx, sry + h - oX, srx, sry, 90, -155 - ap * 0.4, q)))]);
   }
+  // round 27: German sharp s (stem, upper arch, lower belly)
+  { const yM = X * 0.56, rx1 = 135 * u - s * 0.5, cy1 = (ASC + yM) / 2, ry1 = (ASC - yM) / 2 - h * 0.5, rx2 = 165 * u - s * 0.4, cy2 = yM / 2 + oX / 2, ry2 = yM / 2 - h * 0.5 + oX / 2;
+    g('\u00df', 540, [st(L(lx, 0, lx, ASC - ry1 * 1.1)), st(cat(A(lx + rx1, cy1, rx1, ry1, 180, -90, q), L(lx + rx1, yM, lx + rx1, yM))), st(cat(A(lx + rx2 - 20 * u, cy2, rx2 - 20 * u, ry2, 100, -170, q)))]); }
   g('i', 220, [st(L(110 * u, 0, 110 * u, X)), dot(110 * u, X + 90)]);
-  g('j', 240, [st(cat(L(150 * u, X, 150 * u, DSC * 0.4), A(60 * u, DSC * 0.4, 90 * u, -DSC * 0.6 - h, 0, -120, q))), dot(150 * u, X + 90)]);
+  g('j', 240, [st(cat(L(150 * u, X, 150 * u, DSC * 0.4), A(60 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q))), dot(150 * u, X + 90)]);
   g('l', 220, [st(L(110 * u, 0, 110 * u, ASC))]);
   g('t', 340, [st(cat(L(120 * u, X * 1.3, 120 * u, X * 0.25), A(240 * u, X * 0.25, 120 * u, X * 0.25 - h, 180, 300, q))), st(L(30 * u, X - h, 300 * u, X - h))]);
   g('f', 320, [st(cat(L(120 * u, 0, 120 * u, ASC - 130), A(240 * u, ASC - 130, 120 * u, 130 - h, 180, 40, q))), st(L(30 * u, X - h, 280 * u, X - h))]);
@@ -143,7 +146,7 @@ export function alphabet(p, { line: L, arc: A }) {
   g('+', fw, [st(L(80 * u, mid, 480 * u, mid)), st(L(280 * u, mid - 200 * u, 280 * u, mid + 200 * u))]);
   g('=', fw, [st(L(80 * u, mid + 95, 480 * u, mid + 95)), st(L(80 * u, mid - 95, 480 * u, mid - 95))]);
   g('<', fw, [st(L(470 * u, mid + 200, 90 * u + s, mid)), st(L(90 * u + s, mid, 470 * u, mid - 200))]); mirror('>', '<');
-  g('@', 880, [bowl(390 * u, X * 0.47, 135 * u - s * 0.6, X * 0.42 - h), st(cat(L(525 * u, X * 0.9, 525 * u, X * 0.16), A(620 * u, X * 0.16, 95 * u, X * 0.16 + h, 180, 360, q), A(440 * u, X * 0.16 + C * 0.12, 275 * u, C * 0.55, 0, 300, q)))]);
+  g('@', 880, [bowl(390 * u, X * 0.47, Math.max(135 * u - s * 0.6, s + 34), Math.max(X * 0.42 - h, h + 34)), st(cat(L(525 * u, X * 0.9, 525 * u, X * 0.16), A(620 * u, X * 0.16, 95 * u, X * 0.16 + h, 180, 360, q), A(440 * u, X * 0.16 + C * 0.12, 275 * u, C * 0.55, 0, 300, q)))]);
   g('[', 300, [st(L(120 * u + s, y0, 120 * u + s, y1)), st(L(120 * u, y1 - h, 260 * u, y1 - h)), st(L(120 * u, y0 + h, 260 * u, y0 + h))]); mirror(']', '[');
   g('\\', 400, [st(L(60 * u + s, C, 340 * u - s, DSC * 0.3))]);
   g('^', fw, [st(L(100 * u + s, C * 0.5, 280 * u, C)), st(L(280 * u, C, 460 * u - s, C * 0.5))]);
@@ -155,5 +158,5 @@ export function alphabet(p, { line: L, arc: A }) {
   g('~', fw, [st(cat(A(180 * u, mid, 100 * u, 45, 180, 0, q), A(380 * u, mid, 100 * u, 45, 180, 360, q)))]);
   return G;
 }
-export const NAMES = { ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
+export const NAMES = { '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
   0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' };

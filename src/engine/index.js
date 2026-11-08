@@ -1,8 +1,8 @@
 // Typeface Studio letter engine, one entry point. Plain ES modules, no Node or npm imports; runs in a worker.
-import { buildGlyphs, BASE } from './pen.js'; import { autoSpace } from './autospace.js'; import { autoKern } from './autokern.js'; import { FIT, FIT_SERIF } from './tables.js';
+import { buildGlyphs, BASE } from './pen.js'; import { addExtras } from './extras.js'; import { autoSpace } from './autospace.js'; import { autoKern } from './autokern.js'; import { FIT, FIT_SERIF } from './tables.js';
 export { BASE };
 // Recommended defaults from rounds 4 and 5. The owner approved the learned letter fit and the wider default (card, 2026.11.06 10:08 AM ET).
-export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true, fit: true, width: 1.139, weightSpace: true, weightWidth: true, relief: 0.3, bowlOpen: 0.6 }; // weightSpace: owner's card 2026.11.06 9:27 PM Eastern; weightWidth: 9:38 PM Eastern
+export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true, fit: true, width: 1.139, weightSpace: true, weightWidth: true, relief: 0.3, bowlOpen: 0.6, symbolRelief: 0.3 }; // weightSpace: owner's card 2026.11.06 9:27 PM Eastern; weightWidth: 9:38 PM Eastern
 export const LEARNED_LOOK = { fit: true, width: 1.139 };
 // Round 7 (owner's card 2026.11.06 10:13 AM ET: offer both as styles). SERIF = curved bracketed serifs + serif-learned fit; SLAB = the blocky slab feet.
 export const SERIF_LOOK = { slab: true, serifModels: true, serif2: true, serifLen: 0.8 };
@@ -23,6 +23,8 @@ export function design(settings = {}, { removeOverlaps = null } = {}) {
   const glyphs = buildGlyphs(p, { removeOverlaps, fallbacks }); const serif = !!(p.slab && p.serifModels);
   if (p.autoSpace && !p.mono) autoSpace(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, spacing: p.spacing, anchor: !!p.anchor, serif, slant: p.slant || 0, weightSpace: !!p.weightSpace, weightExp: p.weightExp || null });
   const kerning = p.autoKern && !p.mono ? autoKern(glyphs, { xHeight: p.xHeight, capHeight: p.capHeight, stem: p.stem, serif, guard: !!p.weightSpace }) : {};
+  if (p.extras !== false && glyphs['H'] && glyphs['o']) { const before = new Set(Object.keys(glyphs)); addExtras(glyphs, kerning, p);
+    if (p.mono) { const mw = glyphs['H'].advanceWidth; for (const ch of Object.keys(glyphs)) { if (before.has(ch)) continue; const g = glyphs[ch]; let a = 1e9, b = -1e9; for (const c of g.contours) for (const q of c.points) { a = Math.min(a, q.x); b = Math.max(b, q.x); } if (!(b > a)) { g.advanceWidth = mw; continue; } const k = (b - a) > mw * 0.92 ? mw * 0.92 / (b - a) : 1; const sh = (mw - (b - a) * k) / 2 - a * k; g.contours = g.contours.map(c => ({ ...c, points: c.points.map(q => ({ ...q, x: Math.round(q.x * k + sh) })) })); g.advanceWidth = mw; } } }
   return { glyphs, kerning, fallbacks, settings: p };
 }
 

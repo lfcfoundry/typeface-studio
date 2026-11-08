@@ -115,7 +115,9 @@ const area = c => { let s = 0; const P = c.points; for (let i = 0; i < P.length;
 export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks = [] } = {}) {
   const out = {}; const union = !!removeOverlaps, unionCheck = mismatch;
   for (const [ch, g] of Object.entries(skeletons(p))) { if (only && !only.includes(ch)) continue;
-    let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
+    // round 27: symbols with tight loops (@ & ? $ % # 8 etc.) use a lighter pen at heavy weights so counters stay open (real bold fonts draw symbols lighter)
+    const pc = p.symbolRelief && /[@&?$%#]/.test(ch) && p.stem > 105 ? { ...p, stem: p.stem * (1 - p.symbolRelief * Math.min(1, (p.stem - 105) / 60)) } : p;
+    let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...pc, nib: 0, contrast: Math.max(pc.contrast, 0.3) } : pc, !!st.closed));
     if ((p.serif2 || p.slab2) && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
     if (union) { const raw = contours;
       // optional 1-unit nudge (tested: makes the union worse, so it is off)
