@@ -1,4 +1,4 @@
-// ttf-instance.mjs: make a static TrueType font from a TrueType variable font (glyf + gvar) at one axis location.
+// ttf-instance.js: make a static TrueType font from a TrueType variable font (glyf + gvar) at one axis location.
 // Pure JS, no dependencies. Round 24c prototype (2026.11.07). Handles avar, gvar (shared and private points, intermediate regions),
 // inferred (IUP) deltas, composite glyphs, phantom points for advance and side bearing, name/OS2/head/hhea/hmtx rewrite.
 // Not handled: GPOS/GDEF variations (kerning stays at the default location), MVAR, CFF outlines.
@@ -96,10 +96,10 @@ export function instanceTTF(src, loc, names = {}) {
   const hmN = new Uint8Array(nG * 4), hmv = rd(hmN); for (let g = 0; g < nG; g++) { hmv.setUint16(g * 4, advs[g]); hmv.setInt16(g * 4 + 2, lsbs[g]); }
   // head, hhea, OS/2, name
   const headN = tb('head').slice(), hdv = rd(headN); hdv.setUint32(8, 0); hdv.setInt16(36, bb[0]); hdv.setInt16(38, bb[1]); hdv.setInt16(40, bb[2]); hdv.setInt16(42, bb[3]); hdv.setInt16(50, 1);
-  const wght = Math.round(loc.wght ?? 400), italic = !!names.italic; let mac = hdv.getUint16(44) & ~3; if (wght >= 700) mac |= 1; if (italic) mac |= 2; hdv.setUint16(44, mac);
+  const wght = Math.round(loc.wght ?? 400), italic = !!names.italic || /Italic|Oblique/.test(names.style || ''), bold = /\bBold\b/.test(names.style || ''); /* round 26: bold bit follows the style name, not the weight number */ let mac = hdv.getUint16(44) & ~3; if (bold) mac |= 1; if (italic) mac |= 2; hdv.setUint16(44, mac);
   const hheaN = tb('hhea').slice(), hhv = rd(hheaN); hhv.setUint16(34, nG); let mxa = 0; for (let g = 0; g < nG; g++) if (advs[g] > mxa) mxa = advs[g]; hhv.setUint16(10, mxa); let minL = 1e9, minR = 1e9, maxE = -1e9; for (let g = 0; g < nG; g++) { const G = glyph(g); if (!G.empty) { minL = Math.min(minL, G.lsbN); const rsb = advs[g] - (G.lsbN + G.bbox[2] - G.bbox[0]); minR = Math.min(minR, rsb); maxE = Math.max(maxE, G.lsbN + G.bbox[2] - G.bbox[0]); } } hhv.setInt16(12, minL); hhv.setInt16(14, minR); hhv.setInt16(16, maxE);
   const os2N = tb('OS/2').slice(), ov = rd(os2N); ov.setUint16(4, Math.max(1, Math.min(1000, wght))); const wd = loc.wdth ?? 100; ov.setUint16(6, wd < 56 ? 1 : wd < 69 ? 2 : wd < 81 ? 3 : wd < 94 ? 4 : wd < 106 ? 5 : wd < 119 ? 6 : wd < 144 ? 7 : wd < 175 ? 8 : 9);
-  let fs = ov.getUint16(62) & ~(1 | 32 | 64); fs |= (italic ? 1 : 0) | (wght >= 700 ? 32 : 0) | (!italic && wght < 700 ? 64 : 0); ov.setUint16(62, fs);
+  let fs = ov.getUint16(62) & ~(1 | 32 | 64); fs |= (italic ? 1 : 0) | (bold ? 32 : 0) | (!italic && !bold ? 64 : 0); ov.setUint16(62, fs);
   // name table
   const nm = tb('name'), nv = rd(nm), nrec = nv.getUint16(2), strOff = nv.getUint16(4), recs = [];
   for (let i = 0; i < nrec; i++) { const o = 6 + i * 12; recs.push({ pid: nv.getUint16(o), eid: nv.getUint16(o + 2), lid: nv.getUint16(o + 4), id: nv.getUint16(o + 6), len: nv.getUint16(o + 8), off: nv.getUint16(o + 10) }); }
