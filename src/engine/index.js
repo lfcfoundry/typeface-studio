@@ -2,7 +2,7 @@
 import { buildGlyphs, BASE } from './pen.js'; import { autoSpace } from './autospace.js'; import { autoKern } from './autokern.js'; import { FIT, FIT_SERIF } from './tables.js';
 export { BASE };
 // Recommended defaults from rounds 4 and 5. The owner approved the learned letter fit and the wider default (card, 2026.11.06 10:08 AM ET).
-export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true, fit: true, width: 1.139, weightSpace: true, weightWidth: true }; // weightSpace: owner's card 2026.11.06 9:27 PM Eastern; weightWidth: 9:38 PM Eastern
+export const RECOMMENDED = { overshoot: true, optical: true, flatCut: true, autoSpace: true, anchor: true, autoKern: true, fit: true, width: 1.139, weightSpace: true, weightWidth: true, relief: 0.3, bowlOpen: 0.6 }; // weightSpace: owner's card 2026.11.06 9:27 PM Eastern; weightWidth: 9:38 PM Eastern
 export const LEARNED_LOOK = { fit: true, width: 1.139 };
 // Round 7 (owner's card 2026.11.06 10:13 AM ET: offer both as styles). SERIF = curved bracketed serifs + serif-learned fit; SLAB = the blocky slab feet.
 export const SERIF_LOOK = { slab: true, serifModels: true, serif2: true, serifLen: 0.8 };
