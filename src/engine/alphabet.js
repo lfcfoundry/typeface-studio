@@ -52,6 +52,8 @@ export function alphabet(p, { line: L, arc: A }) {
   // round 27: German sharp s (stem, upper arch, lower belly)
   { const yM = X * 0.56, rx1 = 135 * u - s * 0.5, cy1 = (ASC + yM) / 2, ry1 = (ASC - yM) / 2 - h * 0.5, rx2 = 165 * u - s * 0.4, cy2 = yM / 2 + oX / 2, ry2 = yM / 2 - h * 0.5 + oX / 2;
     g('\u00df', 540, [st(L(lx, 0, lx, ASC - ry1 * 1.1)), st(cat(A(lx + rx1, cy1, rx1, ry1, 180, -90, q), L(lx + rx1, yM, lx + rx1, yM))), st(cat(A(lx + rx2 - 20 * u, cy2, rx2 - 20 * u, ry2, 100, -170, q)))]); }
+  // round 27c: pound sign
+  g('\u00a3', 520, [st(cat(A(270 * u, C * 0.72, 140 * u - s * 0.5, C * 0.28 - h, 20, 180, q), L(130 * u - s * 0.5, C * 0.72, 130 * u - s * 0.5, h))), st(L(50 * u, h, 450 * u - s, h)), st(L(50 * u, C * 0.46, 290 * u, C * 0.46))]);
   g('i', 220, [st(L(110 * u, 0, 110 * u, X)), dot(110 * u, X + 90)]);
   g('j', 240, [st(cat(L(150 * u, X, 150 * u, DSC * 0.4), A(60 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q))), dot(150 * u, X + 90)]);
   g('l', 220, [st(L(110 * u, 0, 110 * u, ASC))]);
@@ -158,5 +160,5 @@ export function alphabet(p, { line: L, arc: A }) {
   g('~', fw, [st(cat(A(180 * u, mid, 100 * u, 45, 180, 0, q), A(380 * u, mid, 100 * u, 45, 180, 360, q)))]);
   return G;
 }
-export const NAMES = { '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
+export const NAMES = { '\u00a3': 'sterling', '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
   0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' };

@@ -125,6 +125,21 @@ let BASEOF = { 'à':['a','grave'],'á':['a','acute'],'â':['a','circ'],'ã':['a'
     for (const [ch, d] of [['¹', '1'], ['²', '2'], ['³', '3'], ['ª', 'a'], ['º', 'o']]) { const { cs, w } = sup(d); add(ch, w + stem * 1.2, cs.map(c => T(c, stem * .6))); } }
   { const mk = (kind, ch) => { const b = box('o'), cx = (b.x0 + b.x1) / 2; const ms = marks(kind, cx, cap - stem * 1.9, b.y0, b).map(m => sk ? XF(m, shear(sk)) : m); add(ch, W('o'), ms); }; mk('diaer', '¨'); mk('acute', '´'); mk('cedilla', '¸'); }
   { const hy = box('-'), adv = W('-') + stem * .6; add('¯', adv, [bar(stem * .3, adv - stem * .3, cap + stem * .1, hy.y1 - hy.y0)]); const ty = hy.y1 - hy.y0; add('¬', adv, [bar(stem * .3, adv - stem * .3, xh * .45, ty), bar(adv - stem * .3 - stem * .9, adv - stem * .3, xh * .45 - stem * 1.5, stem * 1.5 + ty)]); const pb = box('l'); add('¦', stem * 2.4, [bar(stem * 1.1, stem * 1.1 + stem, cap * .55, cap * .5), bar(stem * 1.1, stem * 1.1 + stem, -cap * .1, cap * .5)]); }
+
+  // round 27c: remaining Latin-1 symbols
+  { const o = gl['O'], ob = box('O'), cx = (ob.x0 + ob.x1) / 2, cy = (ob.y0 + ob.y1) / 2, k = .92, ring = scaleAbout(C('O'), cx, cy, k, 0, 0), rb = bbox(ring), mid = (rb.y0 + rb.y1) / 2;
+    const inner = (ch, kk) => { const b = box(ch), sc = scaleAbout(C(ch), (b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, kk, 0, 0), ib = bbox(sc); return sc.map(c => T(c, (rb.x0 + rb.x1) / 2 - (ib.x0 + ib.x1) / 2, mid - (ib.y0 + ib.y1) / 2)); };
+    add('©', o.advanceWidth, [...ring, ...inner('c', .5)]); add('®', o.advanceWidth, [...ring, ...inner('R', .42)]);
+    const rg = scaleAbout(C('o'), (box('o').x0 + box('o').x1) / 2, (box('o').y0 + box('o').y1) / 2, .6, 0, 0), gb = bbox(rg), gr = (gb.x1 - gb.x0) / 2; const cxx = gr + stem * 1.2, cyy = xh * .55; const ringC = rg.map(c => T(c, cxx - (gb.x0 + gb.x1) / 2, cyy - (gb.y0 + gb.y1) / 2));
+    const tk = []; for (const a of [45, 135, 225, 315]) { const th = a * Math.PI / 180, r0 = gr * .95, r1 = gr + stem * .9, hw = stem * .22; const px = Math.cos(th), py = Math.sin(th), nx = -py, ny = px; tk.push(PS([[cxx + px * r0 + nx * hw, cyy + py * r0 + ny * hw], [cxx + px * r1 + nx * hw, cyy + py * r1 + ny * hw], [cxx + px * r1 - nx * hw, cyy + py * r1 - ny * hw], [cxx + px * r0 - nx * hw, cyy + py * r0 - ny * hw]])); }
+    add('¤', gr * 2 + stem * 2.4, [...ringC, ...tk]); }
+  { const u = box('u'); add('µ', W('u'), [...C('u'), bar(u.x0, u.x0 + stem, -190, xh * .55 + 190)]); }
+  { const b = box('P'); add('¶', W('P') + stem * 1.2, [...C('P'), bar(b.x0 + stem * 2.2, b.x0 + stem * 3.2, b.y0, b.y1 - b.y0)]); }
+  { const dg = (ch, k) => { const b = box(ch), sc = scaleAbout(C(ch), b.x0, b.y0, k, b.x0, b.y0), sb = bbox(sc); return { cs: sc.map(c => T(c, -sb.x0, 0)), w: sb.x1 - sb.x0 }; };
+    const sl = (() => { const b = box('/'), sc = scaleAbout(C('/'), b.x0, b.y0, .8, b.x0, b.y0), sb = bbox(sc); return { cs: sc.map(c => T(c, -sb.x0, -sb.y0)), w: sb.x1 - sb.x0 }; })();
+    const frac = (ch, n, d) => { const a = dg(n, .5), z = dg(d, .5), gap = stem * .15; const aY = cap - bbox(a.cs).y1, zY = -bbox(z.cs).y0; const slX = a.w + gap, zX = slX + sl.w * .62 + gap;
+      add(ch, zX + z.w + stem * .4, [...a.cs.map(c => T(c, stem * .2, aY)), ...sl.cs.map(c => T(c, slX + stem * .2, 0)), ...z.cs.map(c => T(c, zX + stem * .2, zY))]); };
+    frac('¼', '1', '4'); frac('½', '1', '2'); frac('¾', '3', '4'); }
   { add(' ', W(' '), []); }
   if (out['\u00d0']) add('\u0110', out['\u00d0'].advanceWidth, out['\u00d0'].contours.map(cp));
   for (const ch of Object.keys(out)) if (!gl[ch]) gl[ch] = out[ch];

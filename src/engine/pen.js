@@ -89,7 +89,7 @@ function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p,
   // round 10: with weightSpace, curved serifs keep a nearly fixed reach as weight grows, as in real serif fonts
   // (foot reach ~ stem^-0.15 on 76 Google Fonts serif families, so reach in stems ~ (stem / 90 at cap 700)^-1.15)
   const wR = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -1.15) : 1;
-  const Lb = slab ? (p.slabLen ?? 0.45) * p.stem + 24 : (p.serifLen ?? 0.55) * p.stem * wR;
+  const Lb = slab ? (p.slabLen ?? 0.45) * Math.min(p.stem, 100) + 0.1 * Math.max(0, p.stem - 100) + 24 /* round 27c: heavy slab feet grow slower so bold slab letters stop touching */ : (p.serifLen ?? 0.55) * p.stem * wR;
   // round 10b: with weightSpace, curved serif feet thin out at heavy weights as in real fonts (foot thickness ~ stem^0.53 on 76 serif families)
   const wT = p.weightSpace && !slab ? Math.pow(p.stem / (p.capHeight * 90 / 700), -0.47) : 1;
   const T = slab ? Math.max(0.55 * p.stem, thick(p, 0)) : Math.max(thick(p, 0) * 0.9 * wT, (p.minHair || 0.25) * p.stem), B = Lb * 0.75, Bh = slab ? 0 : (p.bracket ?? 0.9) * T;
