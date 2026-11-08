@@ -1,0 +1,23 @@
+// 20 fresh requests written 2026.11.07 7:06 PM Eastern in the owner's hand-written style, labeled before scoring.
+export const FRESH20 = [
+ {k:'use',b:'font for a toddler birthday party invitation',y:{rounded:true,weight:+1}},
+ {k:'use',b:'serious typeface for a legal firm website',y:{serif:true,rounded:false}},
+ {k:'use',b:'bold typeface for a gym poster visible from across the room',y:{weight:+1}},
+ {k:'use',b:'font for a wedding save the date, elegant and light',y:{weight:-1,contrast:+1}},
+ {k:'use',b:'readable typeface for an elderly person reading a medicine label',y:{weight:+1,spacing:+1}},
+ {k:'use',b:'friendly sans for a kids learning app',y:{rounded:true,serif:false}},
+ {k:'use',b:'typeface for a code editor',y:{mono:true}},
+ {k:'use',b:'newspaper body text that stays readable at small sizes',y:{serif:true}},
+ {k:'era',b:'1970s rock concert poster style',y:{weight:+1}},
+ {k:'era',b:'1950s diner menu lettering',y:{rounded:true}},
+ {k:'era',b:'medieval manuscript look',y:{serif:true}},
+ {k:'dev',b:'text that stays legible on a tiny smartwatch screen',y:{weight:+1,width:-1}},
+ {k:'dev',b:'a sans serif for slides shown on a projector in a big hall',y:{serif:false,weight:+1}},
+ {k:'cmp',b:'like helvetica but friendlier',y:{rounded:true}},
+ {k:'cmp',b:'something between a serif and a sans, for a magazine',y:{contrast:+1}},
+ {k:'neg',b:'a clean sans with no rounded corners',y:{serif:false,rounded:false}},
+ {k:'neg',b:'modern but not cold',y:{rounded:true}},
+ {k:'emo',b:'cozy and warm for a coffee shop menu',y:{rounded:true}},
+ {k:'emo',b:'sleek and luxurious for a perfume brand',y:{contrast:+1,weight:-1}},
+ {k:'emo',b:'aggressive and loud for a heavy metal band',y:{weight:+1}},
+];
