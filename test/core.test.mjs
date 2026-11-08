@@ -154,3 +154,16 @@ test('"san serif" (a common misspelling) reads as sans serif, not Serif', () => 
   const r = interpretBrief('a san serif font'), s = r.settings || r.result?.settings, c = r.chips || r.result?.chips;
   assert.equal(s.serifs, false); assert.notEqual(c[0], 'Serif');
 });
+
+test('chips describe the final font when the reader overrides the word rules', async () => {
+  const { warmMood } = await import('../src/core/mood.js'); if (warmMood) await warmMood();
+  for (const brief of ['Bubble letters', 'easy to read for dyslexia']) {
+    const r = interpretBrief(brief), s = r.settings;
+    assert.ok(r.chips.includes(`${Math.round(s.width * 100)}% width`), brief + ' width chip');
+    assert.ok(r.chips.includes(`${Math.round(s.stem * 100)}% stem setting`), brief + ' stem chip');
+    assert.ok(r.chips.includes(`${s.weight} weight intent`), brief + ' weight chip');
+    assert.ok(r.chips.includes(String(s.terminals).toLowerCase() + ' terminals'), brief + ' terminals chip');
+  }
+  const b = interpretBrief('Bubble letters');
+  assert.ok(b.settings.weight >= 700 && b.settings.width > 1.1, 'bubble is bold and wide');
+});
