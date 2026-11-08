@@ -167,3 +167,13 @@ test('chips describe the final font when the reader overrides the word rules', a
   const b = interpretBrief('Bubble letters');
   assert.ok(b.settings.weight >= 700 && b.settings.width > 1.1, 'bubble is bold and wide');
 });
+
+test('"both serif and sans" returns two groups, one serif and one sans', async () => {
+  const { warmMood } = await import('../src/core/mood.js'); if (warmMood) await warmMood();
+  const r = interpretBrief('a warm font, both serif and sans');
+  assert.deepEqual(r.both, ['serif', 'sans']);
+  const a = interpretBrief(r.briefs.serif), b = interpretBrief(r.briefs.sans);
+  assert.equal(a.settings.serifs, true);
+  assert.equal(b.settings.serifs, false);
+  assert.ok(!interpretBrief('a warm font').both);
+});
