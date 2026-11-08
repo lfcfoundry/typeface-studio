@@ -41,6 +41,7 @@ const AX = [ // [pattern, axis, sign, consume?] ; sign for boolean axes: true/fa
 const THEMES = [
   // round 23: owner's own words (1980s audiences, dyslexia, undersized screens, bubble letters); design judgments, not measured
   [/\b(undersized|too small|far (from|away)|back of the (room|hall)|conference room|projector|large room|big room)\b/, { weight: +1, spacing: +1, serif: false }, {}, 'seen from far away'],
+  [/\b(elderly|seniors?|senior citizens?|older (adults|people|readers?)|old people|aging eyes|poor eyesight|low vision|visually impaired|hard of seeing)\b/, { weight: +0.5, spacing: +1, width: +1 }, {}, 'easier for older or low-vision readers'],
   [/\bdyslexi[ac]s?\b|\bdyslexic users?\b/, { spacing: +1, width: +1, serif: false, weight: +0.5 }, { style: 'sans' }, 'easier reading for dyslexia (open spacing, clear sans)'],
   [/\bbubble (letters?|font|type|writing)\b|\bballoon letters?\b|\bpuffy\b/, { weight: +1, rounded: true, width: +1 }, { soft: true }, 'bubble letters'],
   [/(?=.*\b(1980s|eighties|80s|1980's)\b).*\b(children|kids?)\b/, { rounded: true, weight: +1, serif: false }, { soft: true }, '1980s children'],
