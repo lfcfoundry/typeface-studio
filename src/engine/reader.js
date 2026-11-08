@@ -66,7 +66,7 @@ const THEMES = [
   [/\b(arcade|8[- ]?bit|video games?|retro games?|pixel)\b/, { mono: true, square: +1, rounded: false }, {}, 'arcade'],
   [/\b(road signs?|highway|signage|wayfinding|airport signs?)\b/, { serif: false, aperture: +1 }, {}, 'road signs'],
   [/\b(medieval|fantasy|renaissance|knights?|castles?|wizards?)\b/, { serif: true, stress: +1, contrast: +1 }, { style: 'serif' }, 'medieval'],
-  [/\b(wedding|invitations?)\b/, { contrast: +0.6, serif: true }, {}, 'invitation'],
+  [/^(?!.*\b(kid'?s|child'?s|birthday|toddler)\b).*\b(wedding|invitations?)\b/, { contrast: +0.6, serif: true }, {}, 'invitation'],
   [/\b(wedding|invitations?)\b(?=.*\b(script|calligraphy|cursive|italic|flowing|handwritten)\b)|\b(script|calligraphy|cursive|italic|flowing|handwritten)\b(?=.*\b(wedding|invitations?)\b)/, {}, { slant: 10, italic: true }, 'invitation script'],
   [/\b(novels?|books? (text|body)|literary|book interior)\b/, { serif: true }, { style: 'serif' }, 'book'],
   // round 10: friendly moods round the stroke ends and lower the contrast a little
@@ -74,6 +74,22 @@ const THEMES = [
   [/\b(small (phone|screen|screens|text|size|sizes)|tiny (text|labels?|print|type)|smartwatch|smart watch|watch face|medicine bottles?|fine print|captions?|subtitles?|labels? on)\b/, { weight: +1, spacing: +1 }, {}, 'small screen or small text'],
   [/\b(smartwatch|smart watch|watch face|dashboards?|spreadsheets?|tables? of numbers|lots of numbers|data tables?|stock tickers?|license plates?)\b/, { width: -1 }, { style: 'sans' }, 'numbers and tight spaces'],
   [/\b(billboards?|banners?|marquee|big display|display type|hero text|storefront|shop sign|signboard)\b/, { weight: +1 }, {}, 'display use'],
+  // round 25: the 48 app misses, written as groups of words (design judgments, not measured); held-out check in hard118/fresh24.js
+  [/\b(economist|financial times|wall street journal|business (magazine|weekly)|news ?magazine|magazine|newspaper)\b(?! (headlines?|masthead|banner))/, { serif: true, contrast: +0.6 }, { style: 'serif' }, 'newspaper or magazine'],
+  [/\b(cozy|cosy|homey|homely|trattoria|bistro|osteria|restaurant|supper club|tavern|farmhouse)\b/, { serif: true }, {}, 'cozy and restaurant'],
+  [/\b(museums?|galler(y|ies)|exhibits?|archives?|heritage|history|historical|postcards?|nostalgi\w*|sentimental|old[- ]fashioned|vintage|antique|victorian)\b/, { serif: true }, {}, 'museum and old-time'],
+  [/\b(victorian|ornate|baroque|gothic)\b/, { contrast: +1 }, {}, 'ornate'],
+  [/\b(seafood|fish house|oyster|harbou?r|anchor|nautical|lighthouse|sailing|oar)\b/, { serif: true }, {}, 'seafood and nautical'],
+  [/\b(bakery|bakeries|donuts?|doughnuts?|cupcakes?|bake shop|patisserie|ice cream|soda fountain|diner|sundae)\b/, { rounded: true }, { soft: true }, 'bakery and diner'],
+  [/\b(retro diner|diner)\b/, { weight: +1 }, {}, 'diner weight'],
+  [/\b(pals|buddies|learning|preschool|daycare|care home|home care|senior care|beginnings|playful|joyful|bouncy|splash|sunflower)\b/, { rounded: true }, { soft: true }, 'friendly names and play'],
+  [/\b(kid'?s|child'?s)\b|\b(birthday|toddler)\b/, { rounded: true, serif: false }, { soft: true }, 'kids birthday'],
+  [/\bwarm(th)?\b|\bnot cold\b/, { rounded: +0.5 }, {}, 'warm'],
+  [/\b(craft beers?|brewery|brewing|pub|whisk(e)?y|bourbon|rugged|farmers?'? market|chalkboards?|skate\w*|sticker|bold sign|stern|authoritative|commanding|serious)\b/, { weight: +1 }, {}, 'strong and rugged'],
+  [/\b(luxur\w*|perfume|fragrance|expensive|funeral|memorial|sympathy|hospice|delicate|lace|silk|velvet|cashmere|bridal|lingerie|refined|whisper|quiet)\b/, { weight: -1 }, {}, 'light and refined'],
+  [/\b(elegant|mysterious|velvet|lounge|cocktail|delicate|lace|silk|perfume|luxur\w*|midnight|noir)\b/, { contrast: +1 }, {}, 'elegant contrast'],
+  [/\bart deco\b|\b1920s\b|\bspeakeasy\b/, { width: -1 }, {}, 'art deco narrow'],
+  [/\b(dashboards?|spreadsheets?|columns of (figures|numbers)|lots of numbers|data tables?)\b/, { serif: false }, {}, 'numbers sans'],
   [/\b(friendly|friendlier|cute|gentle|kids?|kiddy|children'?s?|childlike|playful|cuddly|toddlers?|nursery|baby|babies|preschool|kindergarten|toys?|teddy|huggable|cheerful|bubbly)\b/, { rounded: true }, { soft: true }, 'friendly'],
 ];
 const STRONG = /\b(very|extremely|super|really|extra|ultra|so|much|way|incredibly)\b/, MILD = /\b(slightly|a bit|a little|a touch|somewhat|kind of|kinda|bit|little|mildly|a tad)\b/;

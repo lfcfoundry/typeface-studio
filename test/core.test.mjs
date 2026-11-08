@@ -195,3 +195,16 @@ test('real font base: serif, sans, mono and bold map to open-license variable fo
   assert.ok(bold.variation.wght > sans.variation.wght);
   assert.match(sans.attribution, /Based on Roboto Flex \(SIL OFL 1\.1\)/);
 });
+
+test('the app wires the font group switch and resets it on Make', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
+  assert.ok(src.includes("case'group':{S.group="), 'group switch handler present');
+  assert.ok(src.includes("case'make':{S.group=null;"), 'Make resets the group');
+});
+
+test('the app wires the Real font and Drawn letters switch', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
+  assert.ok(src.includes("case'letters':{S.letters="), 'letters switch handler present');
+});
