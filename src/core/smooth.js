@@ -7,7 +7,7 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
 export function engineParams(design, style = 'Regular') {
   const d = design, bold = style === 'Bold';
-  const stem = Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120) * (bold ? 1.55 : 1);
+  const base = Math.round(40 + (clamp(d.stem, 0.18, 0.86) - 0.18) / 0.68 * 120), stem = bold ? Math.min(base * 1.55, Math.max(base, 190)) : base; // Bold is 1.55x but never past 190: heavier stems close the counters (research round 27e)
   return {
     ...BASE, ...RECOMMENDED, serifModels: true,
     stem: Math.round(stem), width: clamp(d.width, 0.65, 1.4) * (RECOMMENDED.width ?? 1), contrast: clamp(d.contrast, 0, 0.8),

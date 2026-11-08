@@ -13,7 +13,7 @@ function arc(cx, cy, rx, ry, a0, a1, n = 2, steps = N) {
     out.push({ x: cx + rx * Math.sign(c) * Math.abs(c) ** (2 / n), y: cy + ry * Math.sign(s) * Math.abs(s) ** (2 / n) }); } return out;
 }
 // thickness of a broad nib moving in direction theta
-export const relief = p => p.relief ? 1 - p.relief * Math.min(1, Math.max(0, (p.stem - 105) / 60)) : 1; // round 26: heavy weights thin their horizontal strokes so counters stay open (real bold fonts do the same)
+export const relief = p => p.relief ? 1 - p.relief * Math.min(1.8, Math.max(0, (p.stem - 105) / 60)) /* grows past stem 165 so counters stay open up to the stem cap */ : 1; // round 26: heavy weights thin their horizontal strokes so counters stay open (real bold fonts do the same)
 const thick = (p, th) => { const W = p.stem * (p._round ? (p.optical ? 1.035 : 1) : 1), h = Math.max(W * (1 - p.contrast) * (p.optical ? 0.88 : 1) * relief(p), (p.minHair || 0) * p.stem); /* minHair: thin parts never vanish */ return h + (W - h) * Math.abs(Math.sin(th - p.nib)); };
 // Expand one open centerline into a closed contour. Offsets along the normal; sharp butt caps or round caps.
 function expand(pts, p, closed = false) {
