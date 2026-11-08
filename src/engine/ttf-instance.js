@@ -5,6 +5,7 @@
 const rd = (b) => new DataView(b.buffer, b.byteOffset, b.byteLength);
 const f2 = v => v / 16384, fx = v => v / 65536;
 export function instanceTTF(src, loc, names = {}) {
+  const TM = names.timing, _t = () => performance.now(), _t0 = _t();
   const buf = src instanceof Uint8Array ? src : new Uint8Array(src), dv = rd(buf);
   const T = {}; const nt = dv.getUint16(4);
   for (let i = 0; i < nt; i++) { const o = 12 + i * 16, tag = String.fromCharCode(buf[o], buf[o + 1], buf[o + 2], buf[o + 3]); T[tag] = { o: dv.getUint32(o + 8), l: dv.getUint32(o + 12) }; }
@@ -69,9 +70,10 @@ export function instanceTTF(src, loc, names = {}) {
     const R = v => Math.floor(v + 0.5);
     const xs = G.xs.map((v, i) => R(v + dx[i])), ys = G.ys.map((v, i) => R(v + dy[i]));
     const np1 = pp1 + dx[n], np2 = pp2 + dx[n + 1]; const out = { ...G, xs, ys, advN: R(np2 - np1), pp1N: np1 };
-    if (!G.empty && !G.comp) { out.bbox = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)]; }
+    if (!G.empty && !G.comp) { let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; for (let i = 0; i < xs.length; i++) { const x = xs[i], y = ys[i]; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } out.bbox = [x0, y0, x1, y1]; }
     else if (G.comp) { let a = 1e9, b = 1e9, c = -1e9, d = -1e9; G.comp.forEach((cp, i) => { const sg = glyph(cp.gi); if (sg.bbox) { const T = cp.tr || [1, 0, 0, 1]; for (const [x, y] of [[sg.bbox[0], sg.bbox[1]], [sg.bbox[2], sg.bbox[1]], [sg.bbox[0], sg.bbox[3]], [sg.bbox[2], sg.bbox[3]]]) { const X = x * T[0] + y * T[2] + xs[i], Y = x * T[1] + y * T[3] + ys[i]; a = Math.min(a, X); b = Math.min(b, Y); c = Math.max(c, X); d = Math.max(d, Y); } } }); out.bbox = a > 1e8 ? [0, 0, 0, 0] : [R(a), R(b), R(c), R(d)]; }
     out.lsbN = out.bbox ? R(out.bbox[0] - np1) : 0; cache.set(g, out); return out; }
+  if (TM) TM.setup = _t() - _t0;
   // serialize glyphs
   const parts = [], offs = [0]; let total = 0; const W = (n) => { const a = new Uint8Array(n); return a; };
   const bb = [1e9, 1e9, -1e9, -1e9], advs = [], lsbs = [];
@@ -85,16 +87,17 @@ export function instanceTTF(src, loc, names = {}) {
           if (dX === 0) f |= 16; else if (Math.abs(dX) < 256) { f |= 2 | (dX > 0 ? 16 : 0); xb.push(Math.abs(dX)); } else { xb.push((dX >> 8) & 255, dX & 255); }
           if (dY === 0) f |= 32; else if (Math.abs(dY) < 256) { f |= 4 | (dY > 0 ? 32 : 0); yb.push(Math.abs(dY)); } else { yb.push((dY >> 8) & 255, dY & 255); } fl.push(f); });
         for (let i = 0; i < fl.length;) { let r = 0; while (i + r + 1 < fl.length && fl[i + r + 1] === fl[i] && r < 255) r++; if (r > 0) { a.push(fl[i] | 8, r); } else a.push(fl[i]); i += r + 1; }
-        a.push(...xb, ...yb); }
+        for (let i = 0; i < xb.length; i++) a.push(xb[i]); for (let i = 0; i < yb.length; i++) a.push(yb[i]); }
       while (a.length % 4) a.push(0); bytes = Uint8Array.from(a); }
     parts.push(bytes); total += bytes.length; offs.push(total); }
+  if (TM) TM.glyphs = _t() - _t0 - TM.setup;
   const glyfN = new Uint8Array(total); let po = 0; for (const p of parts) { glyfN.set(p, po); po += p.length; }
   const locaN = new Uint8Array((nG + 1) * 4), lov = rd(locaN); offs.forEach((v, i) => lov.setUint32(i * 4, v));
   const hmN = new Uint8Array(nG * 4), hmv = rd(hmN); for (let g = 0; g < nG; g++) { hmv.setUint16(g * 4, advs[g]); hmv.setInt16(g * 4 + 2, lsbs[g]); }
   // head, hhea, OS/2, name
   const headN = tb('head').slice(), hdv = rd(headN); hdv.setUint32(8, 0); hdv.setInt16(36, bb[0]); hdv.setInt16(38, bb[1]); hdv.setInt16(40, bb[2]); hdv.setInt16(42, bb[3]); hdv.setInt16(50, 1);
   const wght = Math.round(loc.wght ?? 400), italic = !!names.italic; let mac = hdv.getUint16(44) & ~3; if (wght >= 700) mac |= 1; if (italic) mac |= 2; hdv.setUint16(44, mac);
-  const hheaN = tb('hhea').slice(), hhv = rd(hheaN); hhv.setUint16(34, nG); hhv.setUint16(10, Math.max(...advs)); let minL = 1e9, minR = 1e9, maxE = -1e9; for (let g = 0; g < nG; g++) { const G = glyph(g); if (!G.empty) { minL = Math.min(minL, G.lsbN); const rsb = advs[g] - (G.lsbN + G.bbox[2] - G.bbox[0]); minR = Math.min(minR, rsb); maxE = Math.max(maxE, G.lsbN + G.bbox[2] - G.bbox[0]); } } hhv.setInt16(12, minL); hhv.setInt16(14, minR); hhv.setInt16(16, maxE);
+  const hheaN = tb('hhea').slice(), hhv = rd(hheaN); hhv.setUint16(34, nG); let mxa = 0; for (let g = 0; g < nG; g++) if (advs[g] > mxa) mxa = advs[g]; hhv.setUint16(10, mxa); let minL = 1e9, minR = 1e9, maxE = -1e9; for (let g = 0; g < nG; g++) { const G = glyph(g); if (!G.empty) { minL = Math.min(minL, G.lsbN); const rsb = advs[g] - (G.lsbN + G.bbox[2] - G.bbox[0]); minR = Math.min(minR, rsb); maxE = Math.max(maxE, G.lsbN + G.bbox[2] - G.bbox[0]); } } hhv.setInt16(12, minL); hhv.setInt16(14, minR); hhv.setInt16(16, maxE);
   const os2N = tb('OS/2').slice(), ov = rd(os2N); ov.setUint16(4, Math.max(1, Math.min(1000, wght))); const wd = loc.wdth ?? 100; ov.setUint16(6, wd < 56 ? 1 : wd < 69 ? 2 : wd < 81 ? 3 : wd < 94 ? 4 : wd < 106 ? 5 : wd < 119 ? 6 : wd < 144 ? 7 : wd < 175 ? 8 : 9);
   let fs = ov.getUint16(62) & ~(1 | 32 | 64); fs |= (italic ? 1 : 0) | (wght >= 700 ? 32 : 0) | (!italic && wght < 700 ? 64 : 0); ov.setUint16(62, fs);
   // name table
@@ -115,5 +118,5 @@ export function instanceTTF(src, loc, names = {}) {
   ow.setUint32(0, 0x00010000); ow.setUint16(4, tags.length); let es = 1, lg = 0; while (es * 2 <= tags.length) { es *= 2; lg++; } ow.setUint16(6, es * 16); ow.setUint16(8, lg); ow.setUint16(10, tags.length * 16 - es * 16);
   const sum = (b) => { let s = 0; const v = rd(b), n = b.length & ~3; for (let i = 0; i < n; i += 4) s = (s + v.getUint32(i)) >>> 0; const rem = b.length - n; if (rem) { let w = 0; for (let k = 0; k < 4; k++) w = (w << 8) | (k < rem ? b[n + k] : 0); s = (s + (w >>> 0)) >>> 0; } return s; };
   let cur = hdrLen, headOff = 0; tags.forEach((t, i) => { const b = tabs[t], o = 12 + i * 16; for (let k = 0; k < 4; k++) outB[o + k] = t.charCodeAt(k); ow.setUint32(o + 4, sum(b)); ow.setUint32(o + 8, cur); ow.setUint32(o + 12, b.length); outB.set(b, cur); if (t === 'head') headOff = cur; cur += (b.length + 3) & ~3; });
-  ow.setUint32(headOff + 8, (0xB1B0AFBA - sum(outB)) >>> 0); return outB;
+  ow.setUint32(headOff + 8, (0xB1B0AFBA - sum(outB)) >>> 0); if (TM) TM.total = _t() - _t0; return outB;
 }
