@@ -187,3 +187,10 @@ test('closest Google font names a real family with a distance', async () => {
   assert.match(c.name, /^[A-Za-z0-9][A-Za-z0-9 ]*$/);
   assert.ok(c.ratio >= 0 && c.ratio < 20);
 });
+
+test('the app wires the font group switch and resets it on Make', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../src/app.js', import.meta.url), 'utf8');
+  assert.ok(src.includes("case'group':{S.group="), 'group switch handler present');
+  assert.ok(src.includes("case'make':{S.group=null;"), 'Make resets the group');
+});
