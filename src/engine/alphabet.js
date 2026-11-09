@@ -35,6 +35,10 @@ export function alphabet(p, { line: L, arc: A }) {
     const arch = (x0, x1) => cat(A((x0 + x1) / 2, arcY, (x1 - x0) / 2, X - arcY - h + oX, 180, 0, q), L(x1, arcY, x1, 0));
     g('n', w, [st(L(lx, 0, lx, X)), st(arch(lx, rS))]);
     g('h', w, [st(L(lx, 0, lx, ASC)), st(arch(lx, rS))]);
+    // round 28: missing Latin letters kra, eng, long s
+    g('\u0138', 480, [st(L(lx, 0, lx, X)), st(L(lx, X * 0.35, 430 * u, X)), st(L(lx + 80 * u, X * 0.48, 450 * u, 0))]);
+    g('\u014b', w, [st(L(lx, 0, lx, X)), st(cat(A((lx + rS) / 2, arcY, (rS - lx) / 2, X - arcY - h + oX, 180, 0, q), L(rS, arcY, rS, DSC * 0.4), A(rS - 90 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q)))]);
+    g('\u017f', 320, [st(cat(L(120 * u, 0, 120 * u, ASC - 130), A(240 * u, ASC - 130, 120 * u, 130 - h, 180, 40, q)))]);
     g('m', 800, [st(L(lx, 0, lx, X)), st(arch(lx, 400 * u)), st(arch(400 * u, 730 * u - s))]);
     g('r', 360, [st(L(lx, 0, lx, X)), st(A(lx + 150 * u, arcY, 150 * u, X - arcY - h, 180, 70, q))]);
     g('u', w, [st(L(rS, 0, rS, X)), st(cat(L(lx, X, lx, X - arcY), A((lx + rS) / 2, X - arcY, (rS - lx) / 2, X - arcY - h + oX, 180, 360, q)))]);
@@ -87,6 +91,7 @@ export function alphabet(p, { line: L, arc: A }) {
   g('L', 460, [st(L(cl, 0, cl, C)), st(L(cl, h, 430 * u, h))]);
   g('M', 740, [st(L(cl, 0, cl, C)), st(L(cl, C, 370 * u, C * 0.15)), st(L(370 * u, C * 0.15, 660 * u - s, C)), st(L(660 * u - s, C, 660 * u - s, 0))]);
   g('N', 620, [st(L(cl, 0, cl, C)), st(L(cl, C, 540 * u - s, 0)), st(L(540 * u - s, 0, 540 * u - s, C))]);
+  g('\u014a', 620, [st(L(cl, 0, cl, C)), st(L(cl, C, 540 * u - s, 0)), st(cat(L(540 * u - s, C, 540 * u - s, DSC * 0.4), A(540 * u - s - 90 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q)))]);
   { const sryC = C / 4 - h * 0.5 + oC / 2; /* round 28: the two arcs now meet exactly at mid height (they were h apart, which made the spine kink); same construction as lowercase s */ g('S', 540, [st(cat(A(270 * u, C - sryC - h + oC, 200 * u - s, sryC, 25 + ap * 0.4, 270, q), A(270 * u, sryC + h - oC, 210 * u - s, sryC, 90, -155 - ap * 0.4, q)))]); }
   g('T', 540, [st(L(40 * u, C - h, 500 * u, C - h)), st(L(270 * u, 0, 270 * u, C - h))]);
   g('U', 620, [st(cat(L(cl, C, cl, C * 0.38), A(310 * u, C * 0.38, 310 * u - cl, C * 0.38 - h + oC, 180, 360, q), L(620 * u - cl, C * 0.38, 620 * u - cl, C)))]);
@@ -160,5 +165,5 @@ export function alphabet(p, { line: L, arc: A }) {
   g('~', fw, [st(cat(A(180 * u, mid, 100 * u, 45, 180, 0, q), A(380 * u, mid, 100 * u, 45, 180, 360, q)))]);
   return G;
 }
-export const NAMES = { '\u00a3': 'sterling', '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
+export const NAMES = { '\u0138': 'kgreenlandic', '\u014a': 'Eng', '\u014b': 'eng', '\u017f': 'longs', '\u00a3': 'sterling', '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
   0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' };

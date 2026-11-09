@@ -83,7 +83,7 @@ export const touchesGuide = (st, p) => !st.closed && st.pts.some(q => [0, p.xHei
 export function rawSkeletons(p) { return skeletons(p); }
 // Bracketed serifs (round 7): small feet at the ends of straight vertical stems, with a curved bracket into the stem.
 // Bottom serifs on both sides; top serifs on both sides for capitals, left only (a head serif) for lowercase.
-function serifs(ch, g, p) { const out = [], up = /[A-Z]/.test(ch), sw = thick(p, Math.PI / 2) / 2, slab = !!p.slab2, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
+function serifs(ch, g, p) { const out = [], up = /[A-Z\u014a]/.test(ch), sw = thick(p, Math.PI / 2) / 2, slab = !!p.slab2, ASC = Math.round(p.xHeight + (p.capHeight - p.xHeight) * 1.25);
   // slab: rectangular feet whose reach grows slower than the stem (0.45 stem + 18 units past each stem edge) and whose
   // thickness is 0.55 stem, so heavy weights don't crowd. serif: curved bracket, thin foot.
   // round 10: with weightSpace, curved serifs keep a nearly fixed reach as weight grows, as in real serif fonts
@@ -118,7 +118,7 @@ export function buildGlyphs(p, { removeOverlaps = null, only = null, fallbacks =
     // round 27: symbols with tight loops (@ & ? $ % # 8 etc.) use a lighter pen at heavy weights so counters stay open (real bold fonts draw symbols lighter)
     const pc = p.symbolRelief && /[@&?$%#]/.test(ch) && p.stem > 105 ? { ...p, stem: p.stem * (1 - p.symbolRelief * Math.min(1, (p.stem - 105) / 60)) } : p;
     let contours = g.strokes.flatMap(st => expand(st.pts, st.foot ? { ...pc, nib: 0, contrast: Math.max(pc.contrast, 0.3) } : pc, !!st.closed));
-    if ((p.serif2 || p.slab2) && /[A-Za-z0-9]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
+    if ((p.serif2 || p.slab2) && /[A-Za-z0-9\u0138\u014a\u014b\u017f]/.test(ch) && contours.length) { const sg = Math.sign(area(contours[0])) || 1; for (const c of serifs(ch, g, p)) { if (Math.sign(area(c)) !== sg) c.points.reverse(); contours.push(c); } }
     if (union) { const raw = contours;
       // optional 1-unit nudge (tested: makes the union worse, so it is off)
       const nudged = p.nudge !== true ? raw : g.strokes.flatMap((st, k) => expand(st.pts.map(pt => k % 2 ? { x: pt.x + 1, y: pt.y - 1 } : pt), st.foot ? { ...p, nib: 0, contrast: Math.max(p.contrast, 0.3) } : p, !!st.closed));
