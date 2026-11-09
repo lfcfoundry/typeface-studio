@@ -29,12 +29,16 @@ export function alphabet(p, { line: L, arc: A }) {
     g('p', w + 20, [st(L(lx, DSC, lx, X)), bowl(cx + 10 * u, xb, rx, xr)]);
     g('q', w + 20, [st(L(w * u + 20 * u - lx, DSC, w * u + 20 * u - lx, X)), bowl(cx + 10 * u, xb, rx, xr)]);
     const rs = w * u - lx; // right stem of g
-    g('g', w + 20, [bowl(cx + 10 * u, xb, rx, xr), st(cat(L(rs + 20 * u, X, rs + 20 * u, 0), A(cx + 10 * u, 0, rs + 20 * u - cx - 10 * u, -DSC - h, 0, -150, q)))]);
+    { const gx = ex * 0.7, gw = w + gx / u, gcx = cx + gx / 2, grx = rx + gx / 2, grs = gw * u - lx; /* round 28: g gets extra width at weight so its counter stays round */ g('g', gw + 20, [bowl(gcx + 10 * u, xb, grx, xr), st(cat(L(grs + 20 * u, X, grs + 20 * u, 0), A(gcx + 10 * u, 0, grs + 20 * u - gcx - 10 * u, -DSC - h, 0, -150, q)))]); }
   }
   { const w = 520, arcY = X * 0.55, rx = 190 * u - s, rS = 450 * u - s;
     const arch = (x0, x1) => cat(A((x0 + x1) / 2, arcY, (x1 - x0) / 2, X - arcY - h + oX, 180, 0, q), L(x1, arcY, x1, 0));
     g('n', w, [st(L(lx, 0, lx, X)), st(arch(lx, rS))]);
     g('h', w, [st(L(lx, 0, lx, ASC)), st(arch(lx, rS))]);
+    // round 28: missing Latin letters kra, eng, long s
+    g('\u0138', 480, [st(L(lx, 0, lx, X)), st(L(lx, X * 0.35, 430 * u, X)), st(L(lx + 80 * u, X * 0.48, 450 * u, 0))]);
+    g('\u014b', w, [st(L(lx, 0, lx, X)), st(cat(A((lx + rS) / 2, arcY, (rS - lx) / 2, X - arcY - h + oX, 180, 0, q), L(rS, arcY, rS, DSC * 0.4), A(rS - 90 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q)))]);
+    g('\u017f', 320, [st(cat(L(120 * u, 0, 120 * u, ASC - 130), A(240 * u, ASC - 130, 120 * u, 130 - h, 180, 40, q)))]);
     g('m', 800, [st(L(lx, 0, lx, X)), st(arch(lx, 400 * u)), st(arch(400 * u, 730 * u - s))]);
     g('r', 360, [st(L(lx, 0, lx, X)), st(A(lx + 150 * u, arcY, 150 * u, X - arcY - h, 180, 70, q))]);
     g('u', w, [st(L(rS, 0, rS, X)), st(cat(L(lx, X, lx, X - arcY), A((lx + rS) / 2, X - arcY, (rS - lx) / 2, X - arcY - h + oX, 180, 360, q)))]);
@@ -44,7 +48,7 @@ export function alphabet(p, { line: L, arc: A }) {
     g('e', 500, [st(cat(L(70 * u + s, X * 0.52, 440 * u - s, X * 0.52), tail(A(255 * u, xb, 185 * u - s, xr, 0, 320 - ap, q), 255 * u + (185 * u - s) * Math.cos(40 * D), true)))]);
     // double-storey a: right stem, top hook, lower bowl
     const rs = 430 * u - s;
-    g('a', 500, [st(cat(A(250 * u, X * 0.66, rs - 250 * u, X * 0.34 - h, 145 - ap * 0.5, 0, q), L(rs, X * 0.66, rs, 0))), bowl(245 * u, X * 0.27, rs - 245 * u, X * 0.27 - h * 0.6)]);
+    g('a', 500, [st(cat(A(250 * u, X * 0.66, rs - 250 * u, X * 0.34 - h + oX, 145 - ap * 0.5, 0, q), L(rs, X * 0.66, rs, 0))), bowl(245 * u, X * 0.27 + oX * 0.15, rs - 245 * u, X * 0.27 - h * 0.6 + oX * 0.6)]); /* round 28: bold a keeps an open counter */
     // s: upper arc then lower arc
     const scx = 230 * u, srx = 160 * u - s * 0.8, sry = X / 4 - h * 0.5 + oX / 2;
     g('s', 460, [st(cat(A(scx, X - sry - h + oX, srx, sry, 25 + ap * 0.4, 270, q), A(scx, sry + h - oX, srx, sry, 90, -155 - ap * 0.4, q)))]);
@@ -71,7 +75,7 @@ export function alphabet(p, { line: L, arc: A }) {
   { const bw = 300 * u; const half = (y0, y1, extra) => st(cat(L(cl, y1 - h, cl + bw - (y1 - y0) / 2 * 0.6 + extra, y1 - h), A(cl + bw - (y1 - y0) / 2 * 0.6 + extra, (y0 + y1) / 2, (y1 - y0) / 2 * 0.6 + 40 * u - s, (y1 - y0) / 2 - h, 90, -90, q), L(cl + bw - (y1 - y0) / 2 * 0.6 + extra, y0 + h, cl, y0 + h)));
     g('B', 560, [st(L(cl, 0, cl, C)), half(C * 0.53, C, -20 * u), half(0, C * 0.53, 20 * u)]);
     g('P', 540, [st(L(cl, 0, cl, C)), half(C * 0.45, C, 0)]);
-    g('R', 560, [st(L(cl, 0, cl, C)), half(C * 0.45, C, 0), st(L(cl + 200 * u, C * 0.45, 500 * u - s, 0))]);
+    g('R', 560, [st(L(cl, 0, cl, C)), half(C * 0.45, C, Math.max(0, p.stem - 100) * (p.bowlOpen ?? 0) * 0.5), st(L(cl + 170 * u, C * 0.45 + h, 500 * u - s, 0))]);
     g('D', 620, [st(L(cl, 0, cl, C)), st(cat(L(cl, C - h, 300 * u, C - h), A(300 * u, cb, 270 * u - s, cr, 90, -90, q), L(300 * u, h, cl, h)))]); }
   { const cx = 330 * u, rx = 280 * u - s, edge = cx + rx * Math.cos(40 * D);
     let c = A(cx, cb, rx, cr, 40 + ap * 0.7, 320 - ap * 0.7, q); c = tail(tail(c, edge, false), edge, true); g('C', 640, [st(c)]);
@@ -87,7 +91,8 @@ export function alphabet(p, { line: L, arc: A }) {
   g('L', 460, [st(L(cl, 0, cl, C)), st(L(cl, h, 430 * u, h))]);
   g('M', 740, [st(L(cl, 0, cl, C)), st(L(cl, C, 370 * u, C * 0.15)), st(L(370 * u, C * 0.15, 660 * u - s, C)), st(L(660 * u - s, C, 660 * u - s, 0))]);
   g('N', 620, [st(L(cl, 0, cl, C)), st(L(cl, C, 540 * u - s, 0)), st(L(540 * u - s, 0, 540 * u - s, C))]);
-  g('S', 540, [st(cat(A(270 * u, C - C / 4, 200 * u - s, C / 4 - h * 0.5, 25 + ap * 0.4, 270, q), A(270 * u, C / 4, 210 * u - s, C / 4 - h * 0.5, 90, -155 - ap * 0.4, q)))]);
+  g('\u014a', 620, [st(L(cl, 0, cl, C)), st(L(cl, C, 540 * u - s, 0)), st(cat(L(540 * u - s, C, 540 * u - s, DSC * 0.4), A(540 * u - s - 90 * u, DSC * 0.4, 90 * u, Math.max(-DSC * 0.6 - h, 52), 0, -120, q)))]);
+  { const sryC = C / 4 - h * 0.5 + oC / 2; /* round 28: the two arcs now meet exactly at mid height (they were h apart, which made the spine kink); same construction as lowercase s */ g('S', 540, [st(cat(A(270 * u, C - sryC - h + oC, 200 * u - s, sryC, 25 + ap * 0.4, 270, q), A(270 * u, sryC + h - oC, 210 * u - s, sryC, 90, -155 - ap * 0.4, q)))]); }
   g('T', 540, [st(L(40 * u, C - h, 500 * u, C - h)), st(L(270 * u, 0, 270 * u, C - h))]);
   g('U', 620, [st(cat(L(cl, C, cl, C * 0.38), A(310 * u, C * 0.38, 310 * u - cl, C * 0.38 - h + oC, 180, 360, q), L(620 * u - cl, C * 0.38, 620 * u - cl, C)))]);
   g('V', 600, [st(L(40 * u + s, C, 300 * u, 0)), st(L(300 * u, 0, 560 * u - s, C))]);
@@ -160,5 +165,5 @@ export function alphabet(p, { line: L, arc: A }) {
   g('~', fw, [st(cat(A(180 * u, mid, 100 * u, 45, 180, 0, q), A(380 * u, mid, 100 * u, 45, 180, 360, q)))]);
   return G;
 }
-export const NAMES = { '\u00a3': 'sterling', '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
+export const NAMES = { '\u0138': 'kgreenlandic', '\u014a': 'Eng', '\u014b': 'eng', '\u017f': 'longs', '\u00a3': 'sterling', '\u00df': 'germandbls', ' ': 'space', '#': 'numbersign', '$': 'dollar', '%': 'percent', '&': 'ampersand', '*': 'asterisk', '+': 'plus', '<': 'less', '=': 'equal', '>': 'greater', '@': 'at', '[': 'bracketleft', '\\': 'backslash', ']': 'bracketright', '^': 'asciicircum', '_': 'underscore', '`': 'grave', '{': 'braceleft', '|': 'bar', '}': 'braceright', '~': 'asciitilde', '.': 'period', ',': 'comma', ':': 'colon', ';': 'semicolon', '!': 'exclam', '?': 'question', '-': 'hyphen', "'": 'quotesingle', '"': 'quotedbl', '/': 'slash', '(': 'parenleft', ')': 'parenright',
   0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' };
